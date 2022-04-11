@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,10 +14,19 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+// Rotta con middleware  Host
+Route::middleware('auth')
+    ->namespace('Host')->prefix('host')->name('host.')
+    ->group(function () {
+        Route::get('/', 'HomeController@index')->name('home');
+    });
+
+Route::get("{any?}", function () {
+    return view("index");
+})->where("any", ".*");
