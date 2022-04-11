@@ -8,7 +8,6 @@
 </head>
 <body>
     <div id="app">
-        <h1>Ciao sono Homepage</h1>
         <script src="{{asset('js/vue.js')}}"></script>
     </div>
 </body>
