@@ -25,6 +25,8 @@ Route::middleware('auth')
     ->namespace('Host')->prefix('host')->name('host.')
     ->group(function () {
         Route::get('/', 'HomeController@index')->name('home');
+        // resource prende tutte le pagine relative alla crud Apartment
+        Route::resource('apartments', 'ApartmentController');
     });
 
 Route::get("{any?}", function () {
