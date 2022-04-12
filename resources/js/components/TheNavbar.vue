@@ -1,9 +1,9 @@
 <template>
   <div>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <div class="container-fluid">
         <!-- Nav -->
-        <a class="navbar-brand" href="#">Navbar</a>
+        <router-link class="navbar-brand" :to="{ name:'home.index' }">Navbar</router-link>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -39,13 +39,21 @@
                 <li><a class="dropdown-item" href="#">Something else here</a></li>
               </ul>
             </li>
+
+            <!-- search bar -->
+            <form class="d-flex">
+              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+              <button class="btn btn-outline-light" type="submit">Search</button>
+            </form>
           </ul>
 
-          <!-- search bar -->
-          <form class="d-flex">
-            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success" type="submit">Search</button>
-          </form>
+          <!-- login/register area -->
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item d-flex">
+              <a class="btn btn-outline-light mx-2" href="/login">Login</a>
+              <a class="btn btn-outline-light" href="/register">Register</a>
+            </li>
+          </ul>
         </div>
       </div>
     </nav>

@@ -1,9 +1,12 @@
 <template>
-  <div>
+  <div class="container">
       <!-- lista degli appartamenti filtrati -->
-      <h1>Qui lista filtrata</h1>
+      <h1 class="my-4 text-center">Qui lista filtrata degli appartamenti</h1>
 
-      <ApartmentCard></ApartmentCard>
+      <!-- cards -->
+      <div class="d-flex d-flex justify-content-center align-items-center flex-wrap">
+        <ApartmentCard></ApartmentCard>
+      </div>
   </div>
 </template>
 
