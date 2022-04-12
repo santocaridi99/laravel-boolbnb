@@ -9,7 +9,7 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body>
-    <div class="container">
+    <div class="container mt-3">
         <h1>I miei appartamenti</h1>
         <div class="row justify-content-center">
             <div class="col-md-8">
