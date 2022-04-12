@@ -151,13 +151,13 @@ class ApartmentController extends Controller
     public function update(Request $request, $id)
     {
         $data = $request->validate([
-            "title" => "required|min:5|max:100",
-            "description" => "required|min:20|max:255",
+            "title" => "required|min:5",
+            "description" => "required|min:20",
             "room_numbers" => "required",
             "bed_numbers" => "required",
             "bathroom_numbers" => "required",
             "square_meters" => "required",
-            "cover" => "required|mimes:jpg,jpeg,png,bmp|max:500",
+            "cover" => "required",
             "price_per_night" => "required",
             "country" => "required",
             "region" => "required",
@@ -167,7 +167,6 @@ class ApartmentController extends Controller
             "street_number" => "required",
             "post_code" => "required",
             "tags" => "nullable|exists:tags,id",
-            "images" => "nullable|mimes:jpg,jpeg,png,bmp|max:500"
         ]);
 
         $apartment = Apartment::findOrFail($id);
@@ -195,6 +194,8 @@ class ApartmentController extends Controller
 
             // I tag che c'erano prima e ci sono anche ora, non verranno toccati.
             $apartment->tags()->sync($data["tags"]);
+        }else{
+            $apartment->tags()->detach();
         }
 
         return redirect()->route("host.apartments.show", $apartment->slug);
