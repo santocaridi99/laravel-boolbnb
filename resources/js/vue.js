@@ -2,7 +2,7 @@ window.Vue = require('vue');
 
 // importato App dalla cartella js/views
 import App from "./views/App.vue";
-
+import router from "./router";
 
 
 /**

@@ -1,6 +1,11 @@
 import Vue from "vue";
 // importo vue router plugin di vue
 import VueRouter from "vue-router";
+// componenti Vue
+import Home from "./pages/Home.vue";
+import Apartment from "./pages/apartments/Index.vue";
+import ApartmentShow from "./pages/apartments/Show.vue";
+import Message from "./pages/Messages.vue";
 
 // diciamo a vue di utilizzare il plugin
 // avendo indicato tramite metodo statico a vue che vogliamo usare VueRouter,
@@ -11,12 +16,30 @@ Vue.use(VueRouter);
 const router = new VueRouter({ 
     mode:"history",
     routes: [
-    // {
-    //     path: "//",
-    //     component: Home,
-    //     name: "home.index",
-    //     meta: { title: "HomePage", linkText: "Home" },
-    // },
+    {
+        path: "//",
+        component: Home,
+        name: "home.index",
+        meta: { title: "Homepage", linkText: "Home" },
+    },
+    {
+        path: "/apartments",
+        component: Apartment,
+        name: "apartments.index",
+        meta: { title: "Alloggi", linkText: "Alloggi" },
+    },
+    {
+        path: "/apartments/:apartment",
+        component: ApartmentShow,
+        name: "apartments.show",
+        meta: {title: "Dettagli appartamento"}
+    },
+    {
+        path: "/messages",
+        component: Message,
+        name: "messages.index",
+        meta: { title: "Contatta l'Host"},
+    },
 ]
 });
 
