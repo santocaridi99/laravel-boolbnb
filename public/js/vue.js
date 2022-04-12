@@ -12874,7 +12874,8 @@ var app = new Vue({
   el: '#app',
   render: function render(h) {
     return h(_views_App_vue__WEBPACK_IMPORTED_MODULE_0__["default"]);
-  }
+  },
+  router: router
 });
 
 /***/ }),
@@ -12886,7 +12887,7 @@ var app = new Vue({
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\santo\Desktop\Boolean\progetti boolean\laravel-boolbnb\resources\js\vue.js */"./resources/js/vue.js");
+module.exports = __webpack_require__(/*! C:\Users\gerry\Desktop\EndProject\laravel-boolbnb\resources\js\vue.js */"./resources/js/vue.js");
 
 
 /***/ })
