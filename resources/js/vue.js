@@ -1,7 +1,7 @@
 window.Vue = require('vue');
 
 // importato App dalla cartella js/views
-import App from "./views/App.vue"
+import App from "./views/App.vue";
 
 
 
@@ -14,4 +14,5 @@ import App from "./views/App.vue"
 const app = new Vue({
     el: '#app',
     render:(h)=>h(App),
+    router: router
 });
