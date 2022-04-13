@@ -50,21 +50,21 @@ class ApartmentController extends Controller
     public function store(Request $request)
     {
         $data = $request->validate([
-            "title" => "required|min:5",
+            "title" => "required|min:5|max:35",
             "description" => "required|min:20",
-            "room_numbers" => "required",
-            "bed_numbers" => "required",
-            "bathroom_numbers" => "required",
-            "square_meters" => "required",
+            "room_numbers" => "required|numeric",
+            "bed_numbers" => "required|numeric",
+            "bathroom_numbers" => "required|numeric",
+            "square_meters" => "required|numeric",
             "cover" => "required",
-            "price_per_night" => "required",
-            "country" => "required",
-            "region" => "required",
-            "province" => "required",
-            "city" => "required",
-            "street" => "required",
-            "street_number" => "required",
-            "post_code" => "required",
+            "price_per_night" => "required|numeric",
+            "country" => "required|string",
+            "region" => "required|string",
+            "province" => "required|string",
+            "city" => "required|string",
+            "street" => "required|string",
+            "street_number" => "required|numeric",
+            "post_code" =>  "required|string|min:5|max:5",
             "tags" => "nullable|exists:tags,id",
             "latitude" => "required",
             "longitude" => "required",
@@ -198,7 +198,7 @@ class ApartmentController extends Controller
 
             // I tag che c'erano prima e ci sono anche ora, non verranno toccati.
             $apartment->tags()->sync($data["tags"]);
-        }else{
+        } else {
             $apartment->tags()->detach();
         }
 
