@@ -10,8 +10,10 @@ use App\Traits\SlugGenerator;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
-class ApartmentController extends Controller {
+class ApartmentController extends Controller
+{
     use SlugGenerator;
     /**
      * Display a listing of the resource.
@@ -20,9 +22,9 @@ class ApartmentController extends Controller {
      */
     public function index()
     {
-        $apartment = Apartment::where("user_id", Auth::user()->id)
-        ->get();
-        return view("host.apartments.index", compact("apartment"));
+        $apartments = Apartment::where("user_id", Auth::user()->id)
+            ->get();
+        return view("host.apartments.index", compact("apartments"));
     }
 
     /**
@@ -30,13 +32,13 @@ class ApartmentController extends Controller {
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(Apartment $apartment)
+    public function create()
     {
         $tags = Tag::all();
-        $images = Image::where("apartment_id", $apartment->id)
-        ->get();
+        /*  $images = Image::where("apartment_id", $apartment->id)
+            ->get(); */
 
-        return view("host.apartments.create", compact("tags", "images"));
+        return view("host.apartments.create", compact("tags"));
     }
 
     /**
@@ -48,13 +50,13 @@ class ApartmentController extends Controller {
     public function store(Request $request)
     {
         $data = $request->validate([
-            "title" => "required|min:5|max:100",
-            "description" => "required|min:20|max:255",
+            "title" => "required|min:5",
+            "description" => "required|min:20",
             "room_numbers" => "required",
             "bed_numbers" => "required",
             "bathroom_numbers" => "required",
             "square_meters" => "required",
-            "cover" => "required|mimes:jpg,jpeg,png,bmp|max:500",
+            "cover" => "required",
             "price_per_night" => "required",
             "country" => "required",
             "region" => "required",
@@ -64,23 +66,52 @@ class ApartmentController extends Controller {
             "street_number" => "required",
             "post_code" => "required",
             "tags" => "nullable|exists:tags,id",
-            "images" => "nullable|mimes:jpg,jpeg,png,bmp|max:500"
         ]);
 
         $apartment = new Apartment();
         $apartment->fill($data);
-        $apartment->slug = $this->generateUniqueSlug($apartment["title"]);
+
+        // Genero lo slug partendo dal titolo
+        $slug = Str::slug($apartment->title);
+
+        // controllo a db se esiste già un elemento con lo stesso slug
+        $exists = Apartment::where("slug", $slug)->first();
+        $counter = 1;
+
+        // Fintanto che $exists ha un valore diverso da null o false,
+        // eseguo il while
+        while ($exists) {
+            // Genero un nuovo slug, prendendo quello precedente e concatenando un numero incrementale
+            $newSlug = $slug . "-" . $counter;
+            $counter++;
+
+            // controllo a db se esiste già un elemento con i nuovo slug appena generato
+            $exists = Apartment::where("slug", $newSlug)->first();
+
+            // Se non esiste, salvo il nuovo slug nella variabile $slub che verrà poi usata
+            // per assegnare il valore all'interno del nuovo post.
+            if (!$exists) {
+                $slug = $newSlug;
+            }
+        }
+
+        // Assegno il valore di slug al nuovo post
+        $apartment->slug = $slug;
+        $apartment->user_id = Auth::user()->id;
+
         $apartment->save();
 
+        //TUTTE LE RELAZIONI VANNO INSERITE DOPO IL SAVE
         if (key_exists("tags", $data)) {
             $apartment->tags()->attach($data["tags"]);
-          };
+        }
+
 
         // if (key_exists("cover", $data)) {
         // $apartment->cover = Storage::put("cover", $data["cover"]);
         // }
 
-          return redirect()->route("host.apartments.index");
+        return redirect()->route("host.apartments.index");
     }
 
     /**
@@ -120,13 +151,13 @@ class ApartmentController extends Controller {
     public function update(Request $request, $id)
     {
         $data = $request->validate([
-            "title" => "required|min:5|max:100",
-            "description" => "required|min:20|max:255",
+            "title" => "required|min:5",
+            "description" => "required|min:20",
             "room_numbers" => "required",
             "bed_numbers" => "required",
             "bathroom_numbers" => "required",
             "square_meters" => "required",
-            "cover" => "required|mimes:jpg,jpeg,png,bmp|max:500",
+            "cover" => "required",
             "price_per_night" => "required",
             "country" => "required",
             "region" => "required",
@@ -136,7 +167,6 @@ class ApartmentController extends Controller {
             "street_number" => "required",
             "post_code" => "required",
             "tags" => "nullable|exists:tags,id",
-            "images" => "nullable|mimes:jpg,jpeg,png,bmp|max:500"
         ]);
 
         $apartment = Apartment::findOrFail($id);
@@ -148,26 +178,28 @@ class ApartmentController extends Controller {
             // controllare se a db esiste già un immagine
             // Se si, PRIMA di caricare quella nuova, cancelliamo quella vecchia
             if ($apartment->cover) {
-              Storage::delete($apartment->cover);
+                Storage::delete($apartment->cover);
             }
-      
+
             $cover = Storage::put("cover", $data["cover"]);
-      
+
             $apartment->cover = $cover;
             $apartment->save();
-          }
-      
-          if (key_exists("tags", $data)) {
+        }
+
+        if (key_exists("tags", $data)) {
             // Aggiorniamo anche la tabella apartment_tag
-            
+
             // Per l'appartamento corrente, aggiungo le relazioni con i tag ricevuti
-      
+
             // I tag che c'erano prima e ci sono anche ora, non verranno toccati.
             $apartment->tags()->sync($data["tags"]);
-          }
-      
-          return redirect()->route("host.apartments.show", $apartment->slug);
+        }else{
+            $apartment->tags()->detach();
         }
+
+        return redirect()->route("host.apartments.show", $apartment->slug);
+    }
 
     /**
      * Remove the specified resource from storage.

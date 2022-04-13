@@ -6,9 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Apartment extends Model
 {
-    protected $fillable = ["title", "description", "room_numbers", "bed_numbers",
-    "bathroom_numbers", "square_meters", "cover", "price_per_night", "country",
-    "region", "province", "city", "street", "street_number", "post_code", "images"];
+    protected $fillable = [
+        "title", "description", "room_numbers", "bed_numbers",
+        "bathroom_numbers", "square_meters", "cover", "price_per_night", "country",
+        "region", "province", "city", "street", "street_number", "post_code" /*,  "images" */
+    ];
 
     //Collegamenti di cui fa parte
 
