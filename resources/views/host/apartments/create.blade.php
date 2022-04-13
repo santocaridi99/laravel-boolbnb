@@ -123,7 +123,7 @@
       
       <div class="col-md-6">
         <label class="form-label">Via</label>
-        <input type="text" name="street" class="form-control @error('street') is-invalid @enderror"
+        <input id="geoLocationQuery" type="text" name="street" class="form-control @error('street') is-invalid @enderror"
                   placeholder="Inserisci qui la regione" value="{{ old('street') }}" required>
                   @error('street')
                     <div class="invalid-feedback">{{ $message }}</div>
@@ -171,9 +171,32 @@
 
       <div class="form-group">
         <a href="{{ route('host.apartments.index') }}" class="btn btn-secondary">Annulla</a>
-        <button type="submit" class="btn btn-success">Salva appartamento</button>
+        <button id="geocodeBtn" type="submit" class="btn btn-success">Salva appartamento</button>
       </div>
     </form>
   </div>
+
+  <script> 
+    //Here’s what our corresponding javascript would look like: 
+    document.getElementById('geocodeBtn').onclick = function () { 
+        var geocodeOptions = { 
+            query: document.getElementById('geoLocationQuery').value, 
+            key: 'm5upOBKh2ugQazsa72XgmQ7fFAuUxA9y' 
+        }; 
+        // Look up the geocode of the given address 
+        tt.services.geocode(geocodeOptions).then(function (geocodeRes) { 
+            console.log(geocodeRes); 
+            var reverseOptions = { 
+                position: geocodeRes.results[0].position, 
+                key: 'm5upOBKh2ugQazsa72XgmQ7fFAuUxA9y' 
+            } 
+
+            // with our geocode, do a reverse look-up to get our original address back 
+            tt.services.reverseGeocode(reverseOptions).then(function (reverseRes) { 
+                console.log(reverseRes); 
+            }); 
+        }); 
+    }; 
+  </script> 
 </body>
 </html>
