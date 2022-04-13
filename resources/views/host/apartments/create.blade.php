@@ -152,14 +152,33 @@
       </div>
 
         {{-- contenuto del post --}}
-        <div class="col-md-12">
-          <label>Contenuto</label>
-          <textarea name="description" rows="10" class="form-control @error('description') is-invalid @enderror"
-            placeholder="Inizia a scrivere qualcosa..." required>{{ old('description') }}</textarea>
-          @error('description')
-            <div class="invalid-feedback">{{ $message }}</div>
-          @enderror
-        </div>
+      <div class="col-md-12">
+        <label>Contenuto</label>
+        <textarea name="description" rows="10" class="form-control @error('description') is-invalid @enderror"
+          placeholder="Inizia a scrivere qualcosa..." required>{{ old('description') }}</textarea>
+        @error('description')
+          <div class="invalid-feedback">{{ $message }}</div>
+        @enderror
+      </div>
+
+      <div class="col-md-2 d-none">
+        <label class="form-label">Longitudine</label>
+        <input id='longitudeHtml' type="text" name="longitude" class=" form-control @error('longitude') is-invalid @enderror"
+                  placeholder="longitude" value="" >
+                  @error('longitude')
+                     <div class="invalid-feedback">{{ $message }}</div>
+                  @enderror
+      </div>
+
+      <div class="col-md-2 d-none">
+        <label class="form-label">Latitudine</label>
+        <input id='latitudeHtml' type="text" name="latitude" class=" form-control @error('latitude') is-invalid @enderror"
+                  placeholder="latitude" value="" >
+                  @error('longitude')
+                    <div class="invalid-feedback">{{ $message }}</div>
+                  @enderror         
+      </div>
+      
 
       <div class="mb-3">
         <label>Tags</label><br>
@@ -174,8 +193,8 @@
 
       <div class="form-group">
         <a href="{{ route('host.apartments.index') }}" class="btn btn-secondary">Annulla</a>
-        <button type="submit" class="btn btn-success">Salva appartamento</button>
-        <a id="geocodeBtn" class="btn btn-success">Geolocalizza</a> 
+        <button type="submit" class="btn btn-success" onmouseover="beforeSubmit()">Salva appartamento</button>
+        {{-- <a id="geocodeBtn" class="btn btn-success">Geolocalizza</a>  --}}
       </div>
     </form>
   </div>
@@ -183,7 +202,7 @@
   <script> 
 
     //Here’s what our corresponding javascript would look like: 
-    document.getElementById('geocodeBtn').onclick = function () { 
+      beforeSubmit = function () { 
         let city = document.getElementById('geoCity').value;
         let address = document.getElementById('geoAddress').value;
         let civic = document.getElementById('geoCnum').value;
@@ -196,16 +215,24 @@
         }; 
         // Look up the geocode of the given address 
         tt.services.geocode(geocodeOptions).then(function (geocodeRes) { 
-            console.log(geocodeRes); 
+            console.log(geocodeRes);
             var reverseOptions = { 
                 position: geocodeRes.results[0].position, 
                 key: 'm5upOBKh2ugQazsa72XgmQ7fFAuUxA9y' 
             } 
+            console.log(geocodeRes.results[0].position.lat)
+            console.log(geocodeRes.results[0].position.lng)
+            
+            let lat = geocodeRes.results[0].position.lat;
+            let lng = geocodeRes.results[0].position.lng;
 
+            document.getElementById('longitudeHtml').value = lng;
+            document.getElementById('latitudeHtml').value = lat;
+    
             // with our geocode, do a reverse look-up to get our original address back 
-            tt.services.reverseGeocode(reverseOptions).then(function (reverseRes) { 
+            /* tt.services.reverseGeocode(reverseOptions).then(function (reverseRes) { 
                 console.log(reverseRes); 
-            }); 
+            });  */
         }); 
     }; 
   </script> 
