@@ -66,6 +66,8 @@ class ApartmentController extends Controller
             "street_number" => "required",
             "post_code" => "required",
             "tags" => "nullable|exists:tags,id",
+            "latitude" => "required",
+            "longitude" => "required",
         ]);
 
         $apartment = new Apartment();
@@ -167,6 +169,8 @@ class ApartmentController extends Controller
             "street_number" => "required",
             "post_code" => "required",
             "tags" => "nullable|exists:tags,id",
+            "latitude" => "required",
+            "longitude" => "required",
         ]);
 
         $apartment = Apartment::findOrFail($id);
@@ -174,18 +178,18 @@ class ApartmentController extends Controller
             $data["slug"] = $this->generateUniqueSlug($data["title"]);
         }
         $apartment->update($data);
-        if (key_exists("cover", $data)) {
-            // controllare se a db esiste già un immagine
-            // Se si, PRIMA di caricare quella nuova, cancelliamo quella vecchia
-            if ($apartment->cover) {
-                Storage::delete($apartment->cover);
-            }
+        // if (key_exists("cover", $data)) {
+        //     // controllare se a db esiste già un immagine
+        //     // Se si, PRIMA di caricare quella nuova, cancelliamo quella vecchia
+        //     if ($apartment->cover) {
+        //         Storage::delete($apartment->cover);
+        //     }
 
-            $cover = Storage::put("cover", $data["cover"]);
+        //     $cover = Storage::put("cover", $data["cover"]);
 
-            $apartment->cover = $cover;
-            $apartment->save();
-        }
+        //     $apartment->cover = $cover;
+        //     $apartment->save();
+        // }
 
         if (key_exists("tags", $data)) {
             // Aggiorniamo anche la tabella apartment_tag
@@ -209,6 +213,46 @@ class ApartmentController extends Controller
      */
     public function destroy($id)
     {
-        //
+        // appartamenti cestinati (in softdelete)
+        $apartment = Apartment::withTrashed()->findOrFail($id);
+        // elimino i collegamenti con tabella tags
+        $apartment->tags()->detach();
+
+        if ($apartment->cover) {
+            Storage::delete($apartment->cover);
+        }
+        // elemento verrà completamente eliminato
+        $apartment->forceDelete();
+        return redirect()->route("host.apartments.index");
+    }
+
+    public function deletedApartments()
+    {
+        // raccolgo solo gli appartamenti cestinati
+        $apartments = Apartment::where('user_id', Auth::user()->id)->onlyTrashed()->get();
+        // ritorno una view dove li mostra
+        return view("host.apartments.deletedApartments", compact('apartments'));
+    }
+
+    // soft delete function
+    public function softDeleteApartment($id)
+    {
+        // faccio findOrFail di un appartamento
+        $apartment = Apartment::findOrFail($id);
+        // faccio un soft delete
+        $apartment->delete();
+        // reiderizza nella pagina degli appartamento cancellati
+        return redirect()->route('host.apartments.deletedApartments');
+    }
+
+    // restore degli appartamenti cancellati
+    public function restoreApartment($id)
+    {
+        // appartamenti cestinati (in softdelete)
+        $apartment = Apartment::withTrashed()->findOrFail($id);
+        // restore
+        $apartment->restore();
+        // redirect alla pagina deletedApartment
+        return redirect()->route("host.apartments.deletedApartments");
     }
 }

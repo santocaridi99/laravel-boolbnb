@@ -76,7 +76,7 @@
 
             <div class="col-md-2">
                 <label class="form-label">Modifica Immagine di copertina</label>
-                <input type="text" name='cover' class="form-control  @error('cover') is-invalid @enderror" value="{{ old('cover',$apartment->cover) }}">
+                <input type="text" name='cover' class="form-control  @error('cover') is-invalid @enderror" value="{{ old('cover', $apartment->cover) }}">
                 @error('cover')
                 <div class="invalid-feedback">{{ $message }}</div>
                 @enderror

@@ -14,10 +14,23 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <a class="p-2" href="{{ route('host.apartments.create') }}">Crea un nuovo appartamento</a>
+                    <div class="d-flex">
+                        <a class="p-2" href="{{ route('host.apartments.create') }}">Crea un nuovo appartamento</a>
+                        <a class="btn btn-link ms-auto" href="{{ route('host.apartments.deletedApartments')}}">Cestino</a>
+                    </div>
                     @foreach ($apartments as $apartment)
-                        <div class="card p-2">
-                            <p class="text-uppercase"><a href="{{ route('host.apartments.show', $apartment->slug) }}">{{ $apartment->title}}</a></p>
+                        <div class="card p-2 my-3">
+                            <div>
+                                <p class="text-uppercase"><a href="{{ route('host.apartments.show', $apartment->slug) }}">{{ $apartment->title}}</a></p>
+                                {{-- form che permette di soft deletare un post--}}
+                                <form action="{{ route('host.apartments.softDeleteApartment', $apartment->id) }}" method="POST" class="d-inline-block ms-auto">
+                                    @csrf
+                                    @method("delete")
+                                    <button type="submit" class="btn btn-outline-danger btn-sm">
+                                        Elimina appartamento
+                                    </button>
+                                </form>
+                            </div>
                             @if ($apartment->cover)
                                 <img class="img-fluid" src="{{ $apartment->cover }}" alt="" class="post-img">
                             @else

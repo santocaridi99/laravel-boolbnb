@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\User;
+use Carbon\Carbon;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -49,10 +50,16 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
+        $dt = new Carbon();
+        $before = $dt->subYears(18)->format('Y-m-d');
+
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
+            // aggiunto alla validazione lastname e birthdate
+            'lastname' => ['required', 'string', 'max:255'],
+            'birth_date' => ['required', 'date','before:'. $before],
         ]);
     }
 
@@ -68,6 +75,8 @@ class RegisterController extends Controller
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+            'lastname' => $data['lastname'],
+            'birth_date' => $data['birth_date'],
         ]);
     }
 }
