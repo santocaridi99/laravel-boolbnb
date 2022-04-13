@@ -19,7 +19,7 @@
 </head>
 
 <body>
-  <div class="container mt-5">
+  <div class="container mt-5" id="root">
     <form class="row g-3" id="formid" action="{{ route('host.apartments.store') }}" method="post" enctype="multipart/form-data">
 
       @csrf
@@ -179,6 +179,10 @@
                   @enderror         
       </div>
       
+
+      {{-- Prova vue --}}
+
+      <form-coords></form-coords>
 
       <div class="mb-3">
         <label>Tags</label><br>
