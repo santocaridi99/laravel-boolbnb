@@ -14,6 +14,7 @@
         <h3>{{$apartment->title}}</h3>
         <h2>CAP<h1>
         <h3>{{$apartment->post_code}}</H1>
+        <p class="text-uppercase"><a href="{{ route('host.apartments.edit', $apartment->slug) }}">Modifica</a></p>
       </div>
     </div>
   </div>
