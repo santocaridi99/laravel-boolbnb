@@ -13,6 +13,9 @@
     <script src="{{ asset('js/app.js') }}" defer></script>
 
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
+    <script src="https://api.tomtom.com/maps-sdk-for-web/cdn/6.x/6.5.0/services/services-web.min.js"></script>
+
 </head>
 
 <body>
@@ -114,7 +117,7 @@
 
       <div class="col-md-6">
         <label class="form-label">Città</label>
-        <input type="text" name="city" class="form-control @error('city') is-invalid @enderror"
+        <input id='geoCity' type="text" name="city" class="form-control @error('city') is-invalid @enderror"
                   placeholder="Inserisci qui la città" value="{{ old('city') }}" required>
                   @error('city')
                     <div class="invalid-feedback">{{ $message }}</div>
@@ -123,7 +126,7 @@
       
       <div class="col-md-6">
         <label class="form-label">Via</label>
-        <input id="geoLocationQuery" type="text" name="street" class="form-control @error('street') is-invalid @enderror"
+        <input id='geoAddress' type="text" name="street" class="form-control @error('street') is-invalid @enderror"
                   placeholder="Inserisci qui la regione" value="{{ old('street') }}" required>
                   @error('street')
                     <div class="invalid-feedback">{{ $message }}</div>
@@ -132,7 +135,7 @@
 
       <div class="col-md-6">
         <label class="form-label">Numero Civico</label>
-        <input type="number" name="street_number" class="form-control @error('street_number') is-invalid @enderror"
+        <input id='geoCnum' type="number" name="street_number" class="form-control @error('street_number') is-invalid @enderror"
                   placeholder="Inserisci qui il civico" value="{{ old('street_number') }}" required>
                   @error('street_number')
                     <div class="invalid-feedback">{{ $message }}</div>
@@ -171,16 +174,24 @@
 
       <div class="form-group">
         <a href="{{ route('host.apartments.index') }}" class="btn btn-secondary">Annulla</a>
-        <button id="geocodeBtn" type="submit" class="btn btn-success">Salva appartamento</button>
+        <button type="submit" class="btn btn-success">Salva appartamento</button>
+        <a id="geocodeBtn" class="btn btn-success">Geolocalizza</a> 
       </div>
     </form>
   </div>
 
   <script> 
+
     //Here’s what our corresponding javascript would look like: 
     document.getElementById('geocodeBtn').onclick = function () { 
+        let city = document.getElementById('geoCity').value;
+        let address = document.getElementById('geoAddress').value;
+        let civic = document.getElementById('geoCnum').value;
+        
+        let completeAddress = address + ' ' + civic + ' ' + city;
+
         var geocodeOptions = { 
-            query: document.getElementById('geoLocationQuery').value, 
+            query: completeAddress, 
             key: 'm5upOBKh2ugQazsa72XgmQ7fFAuUxA9y' 
         }; 
         // Look up the geocode of the given address 
