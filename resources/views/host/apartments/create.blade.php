@@ -47,7 +47,7 @@
         <label class="form-label">Numero di letti</label>
         <input type="number" min="0" name="bed_numbers" class="form-control @error('bed_numbers') is-invalid @enderror"
                   placeholder="Inserisci qui il numero dei letti" value="{{ old('bed_numbers') }}" required>
-                  @error('form_numbers')
+                  @error('bed_numbers')
                     <div class="invalid-feedback">{{ $message }}</div>
                   @enderror
       </div>
