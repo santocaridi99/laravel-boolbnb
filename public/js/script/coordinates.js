@@ -11,13 +11,13 @@ beforeSubmit = function () {
     };
     // Look up the geocode of the given address
     tt.services.geocode(geocodeOptions).then(function (geocodeRes) {
-        console.log(geocodeRes);
+        /* console.log(geocodeRes); */
         var reverseOptions = {
             position: geocodeRes.results[0].position,
             key: "m5upOBKh2ugQazsa72XgmQ7fFAuUxA9y",
         };
-        console.log(geocodeRes.results[0].position.lat);
-        console.log(geocodeRes.results[0].position.lng);
+        /* console.log(geocodeRes.results[0].position.lat);
+        console.log(geocodeRes.results[0].position.lng); */
 
         let lat = geocodeRes.results[0].position.lat;
         let lng = geocodeRes.results[0].position.lng;
