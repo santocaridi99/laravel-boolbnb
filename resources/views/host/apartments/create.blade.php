@@ -163,7 +163,7 @@
 
       <div class="col-md-2 d-none">
         <label class="form-label">Longitudine</label>
-        <input disabled="disabled" id='longitudeHtml' type="text" name="longitude" class=" form-control @error('longitude') is-invalid @enderror"
+        <input id='longitudeHtml' type="text" name="longitude" class=" form-control @error('longitude') is-invalid @enderror"
                   placeholder="longitude" value="" >
                   @error('longitude')
                      <div class="invalid-feedback">{{ $message }}</div>
@@ -172,7 +172,7 @@
 
       <div class="col-md-2 d-none">
         <label class="form-label">Latitudine</label>
-        <input disabled="disabled"id='latitudeHtml' type="text" name="latitude" class=" form-control @error('latitude') is-invalid @enderror"
+        <input id='latitudeHtml' type="text" name="latitude" class=" form-control @error('latitude') is-invalid @enderror"
                   placeholder="latitude" value="" >
                   @error('longitude')
                     <div class="invalid-feedback">{{ $message }}</div>
