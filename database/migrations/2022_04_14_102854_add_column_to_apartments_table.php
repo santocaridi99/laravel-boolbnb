@@ -14,7 +14,7 @@ class AddColumnToApartmentsTable extends Migration
     public function up()
     {
         Schema::table('apartments', function (Blueprint $table) {
-            $table->boolean('isVisible')->nullable()->default(false)->after('description');
+            $table->boolean('isVisible')->nullable()->default(true)->after('description');
         });
     }
 
