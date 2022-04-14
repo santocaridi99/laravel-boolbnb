@@ -47,7 +47,7 @@
             <div class="col-md-6">
                 <label class="form-label">Numero di letti</label>
                 <input type="number" name="bed_numbers" class="form-control @error('bed_numbers') is-invalid @enderror"
-                  value="{{ old('bed_numbers',$apartment->bed_numbers)}}">
+                    value="{{ old('bed_numbers',$apartment->bed_numbers)}}">
                 @error('form_numbers')
                 <div class="invalid-feedback">{{ $message }}</div>
                 @enderror
@@ -76,7 +76,8 @@
 
             <div class="col-md-2">
                 <label class="form-label">Modifica Immagine di copertina</label>
-                <input type="text" name='cover' class="form-control  @error('cover') is-invalid @enderror" value="{{ old('cover', $apartment->cover) }}">
+                <input type="text" name='cover' class="form-control  @error('cover') is-invalid @enderror"
+                    value="{{ old('cover', $apartment->cover) }}">
                 @error('cover')
                 <div class="invalid-feedback">{{ $message }}</div>
                 @enderror
@@ -95,7 +96,7 @@
             <div class="col-md-6">
                 <label class="form-label">Paese</label>
                 <input type="text" name="country" class="form-control @error('country') is-invalid @enderror"
-                 value="{{ old('country', $apartment->country) }}">
+                    value="{{ old('country', $apartment->country) }}">
                 @error('country')
                 <div class="invalid-feedback">{{ $message }}</div>
                 @enderror
@@ -104,7 +105,7 @@
             <div class="col-md-6">
                 <label class="form-label">Regione</label>
                 <input type="text" name="region" class="form-control @error('region') is-invalid @enderror"
-                     value="{{ old('region',$apartment->region) }}" >
+                    value="{{ old('region',$apartment->region) }}">
                 @error('region')
                 <div class="invalid-feedback">{{ $message }}</div>
                 @enderror
@@ -113,7 +114,7 @@
             <div class="col-md-6">
                 <label class="form-label">Provincia</label>
                 <input type="text" name="province" class="form-control @error('province') is-invalid @enderror"
-                 value="{{ old('province' , $apartment->province) }}">
+                    value="{{ old('province' , $apartment->province) }}">
                 @error('province')
                 <div class="invalid-feedback">{{ $message }}</div>
                 @enderror
@@ -122,7 +123,7 @@
             <div class="col-md-6">
                 <label class="form-label">Città</label>
                 <input type="text" name="city" class="form-control @error('city') is-invalid @enderror"
-                 value="{{ old('city',$apartment->city) }}">
+                    value="{{ old('city',$apartment->city) }}">
                 @error('city')
                 <div class="invalid-feedback">{{ $message }}</div>
                 @enderror
@@ -131,7 +132,7 @@
             <div class="col-md-6">
                 <label class="form-label">Via</label>
                 <input type="text" name="street" class="form-control @error('street') is-invalid @enderror"
-                 value="{{ old('street',$apartment->street) }}">
+                    value="{{ old('street',$apartment->street) }}">
                 @error('street')
                 <div class="invalid-feedback">{{ $message }}</div>
                 @enderror
@@ -150,7 +151,7 @@
             <div class="col-md-6">
                 <label class="form-label">CAP</label>
                 <input type="text" name="post_code" class="form-control @error('post_code') is-invalid @enderror"
-                 value="{{ old('post_code',$apartment->post_code) }}" required>
+                    value="{{ old('post_code',$apartment->post_code) }}" required>
                 @error('post_code')
                 <div class="invalid-feedback">{{ $message }}</div>
                 @enderror
@@ -159,9 +160,26 @@
             {{-- contenuto del post --}}
             <div class="col-md-12">
                 <label>Contenuto</label>
-                <textarea name="description" rows="10" class="form-control @error('description') is-invalid @enderror"
-                    >{{ old('description',$apartment->description) }}</textarea>
+                <textarea name="description" rows="10"
+                    class="form-control @error('description') is-invalid @enderror">{{ old('description',$apartment->description) }}</textarea>
                 @error('description')
+                <div class="invalid-feedback">{{ $message }}</div>
+                @enderror
+            </div>
+            <div class="col-md-2 d-none">
+                <label class="form-label">Longitudine</label>
+                <input id='longitudeHtml' type="text" name="longitude"
+                    class=" form-control @error('longitude') is-invalid @enderror" placeholder="longitude" value="">
+                @error('longitude')
+                <div class="invalid-feedback">{{ $message }}</div>
+                @enderror
+            </div>
+
+            <div class="col-md-2 d-none">
+                <label class="form-label">Latitudine</label>
+                <input id='latitudeHtml' type="text" name="latitude"
+                    class=" form-control @error('latitude') is-invalid @enderror" placeholder="latitude" value="">
+                @error('longitude')
                 <div class="invalid-feedback">{{ $message }}</div>
                 @enderror
             </div>

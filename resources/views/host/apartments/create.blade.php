@@ -198,6 +198,5 @@
     </form>
   </div>
   <script type="text/javascript" src="{{ URL::asset('js/script/coordinates.js') }}"></script> 
-  <script src="{{ asset('js/vue-backend.js') }}"></script>
 </body>
 </html>
