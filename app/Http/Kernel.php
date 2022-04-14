@@ -39,6 +39,8 @@ class Kernel extends HttpKernel
         ],
 
         'api' => [
+            \App\Http\Middleware\EncryptCookies::class, //gestisce i cookie (legge e decripta) 
+            \Illuminate\Session\Middleware\StartSession::class, //tiene traccia delle sessioni attive degli utenti
             'throttle:60,1',
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
         ],

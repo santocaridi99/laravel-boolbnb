@@ -50,8 +50,9 @@
           <!-- login/register area -->
           <ul class="navbar-nav ml-auto">
             <li class="nav-item d-flex">
-              <a class="btn btn-outline-light mx-2" href="/login">Login</a>
-              <a class="btn btn-outline-light" href="/register">Register</a>
+              <a class="nav-link" href="/login" v-if="!user">Login</a>
+              <a class="nav-link" href="/register" v-if="!user">Register</a>
+              <a class="nav-link" href="/host" v-else><i class="user_icon fas fa-user-ninja"></i> <strong>{{user.name}}</strong></a>
             </li>
           </ul>
         </div>
@@ -61,8 +62,35 @@
 </template>
 
 <script>
+import axios from 'axios';
+
 export default {
-  
+  data() {
+    return {
+      user: null,
+    }
+  },
+  methods: {
+    getUser() {
+      axios.get('/api/user')
+        .then(resp => {
+          console.log(resp.data);
+          this.user = resp.data;
+          // salvo l'utente in localStorage con stringify che prende un oggetto e lo converte in JSON
+          localStorage.setItem("user", JSON.stringify(resp.data));
+          // evento custom
+          window.dispatchEvent(new CustomEvent("storedUserChanged"));
+
+      }).catch((er) => {
+          console.error("utente non loggato")
+          localStorage.removeItem('user');
+          window.dispatchEvent(new CustomEvent("storedUserChanged"));
+      });
+    },
+  },
+  mounted() {
+    this.getUser();
+  },
 }
 </script>
 

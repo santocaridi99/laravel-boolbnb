@@ -19,6 +19,28 @@ export default {
     TheNavbar,
     TheFooter,
   },
+  data() {
+    return {
+      user: null,
+    }
+  },
+  methods: {
+    getStoredUser() {
+      const storedUser = localStorage.getItem("user");
+      if (storedUser) {
+        this.user = JSON.parse(storedUser);
+      } else {
+        this.user = null;
+      }
+    },
+  },
+  mounted() {
+     this.getStoredUser();
+
+    window.addEventListener('storedUserChanged', () => {
+      this.getStoredUser();
+    });
+  }
 
 }
 </script>
