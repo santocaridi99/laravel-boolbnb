@@ -52,8 +52,8 @@ class ApartmentController extends Controller
         $data = $request->validate([
             "title" => "required|min:5|max:35",
             "description" => "required|min:20",
-            "room_numbers" => "required|integer|min:0",
-            "bed_numbers" => "required|integer|min:0",
+            "room_numbers" => "required|integer|min:0|max:100",
+            "bed_numbers" => "required|integer|min:0|max:100",
             "bathroom_numbers" => "required|integer|min:0",
             "square_meters" => "required|integer|min:0",
             "cover" => "required",
