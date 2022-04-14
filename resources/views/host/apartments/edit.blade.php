@@ -14,11 +14,14 @@
     <script src="{{ asset('js/app.js') }}" defer></script>
 
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
+    <script src="https://api.tomtom.com/maps-sdk-for-web/cdn/6.x/6.5.0/services/services-web.min.js"></script>
+
 </head>
 
 <body>
     <div class="container mt-5">
-        <form class="row g-3" action="{{ route('host.apartments.update',$apartment->id) }}" method="post"
+        <form class="row g-3"  id="formid" action="{{ route('host.apartments.update',$apartment->id) }}" method="post"
             enctype="multipart/form-data">
 
             @csrf
@@ -122,30 +125,29 @@
 
             <div class="col-md-6">
                 <label class="form-label">Città</label>
-                <input type="text" name="city" class="form-control @error('city') is-invalid @enderror"
-                    value="{{ old('city',$apartment->city) }}">
-                @error('city')
-                <div class="invalid-feedback">{{ $message }}</div>
-                @enderror
+                <input id='geoCity' type="text" name="city" class="form-control @error('city') is-invalid @enderror"
+                        placeholder="Inserisci qui la città" value="{{ old('city') }}" required>
+                        @error('city')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
             </div>
-
+            
             <div class="col-md-6">
                 <label class="form-label">Via</label>
-                <input type="text" name="street" class="form-control @error('street') is-invalid @enderror"
-                    value="{{ old('street',$apartment->street) }}">
-                @error('street')
-                <div class="invalid-feedback">{{ $message }}</div>
-                @enderror
+                <input id='geoAddress' type="text" name="street" class="form-control @error('street') is-invalid @enderror"
+                        placeholder="Inserisci qui la regione" value="{{ old('street') }}" required>
+                        @error('street')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
             </div>
 
             <div class="col-md-6">
                 <label class="form-label">Numero Civico</label>
-                <input type="number" name="street_number"
-                    class="form-control @error('street_number') is-invalid @enderror"
-                    value="{{ old('street_number',$apartment->street_number) }}">
-                @error('street_number')
-                <div class="invalid-feedback">{{ $message }}</div>
-                @enderror
+                <input id='geoCnum' type="number" min="0" name="street_number" class="form-control @error('street_number') is-invalid @enderror"
+                        placeholder="Inserisci qui il civico" value="{{ old('street_number') }}" required>
+                        @error('street_number')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
             </div>
 
             <div class="col-md-6">
@@ -166,7 +168,8 @@
                 <div class="invalid-feedback">{{ $message }}</div>
                 @enderror
             </div>
-            <div class="col-md-2 d-none">
+
+            <div class="col-md-2 ">
                 <label class="form-label">Longitudine</label>
                 <input id='longitudeHtml' type="text" name="longitude"
                     class=" form-control @error('longitude') is-invalid @enderror" placeholder="longitude" value="">
@@ -175,7 +178,7 @@
                 @enderror
             </div>
 
-            <div class="col-md-2 d-none">
+            <div class="col-md-2 ">
                 <label class="form-label">Latitudine</label>
                 <input id='latitudeHtml' type="text" name="latitude"
                     class=" form-control @error('latitude') is-invalid @enderror" placeholder="latitude" value="">
@@ -197,10 +200,12 @@
 
             <div class="form-group">
                 <a href="{{ route('host.apartments.index') }}" class="btn btn-secondary">Annulla</a>
-                <button type="submit" class="btn btn-success">Salva appartamento</button>
+                <a class="btn btn-success" onmousedown="beforeSubmit()">Salva appartamento</a>
+                {{-- <a id="geocodeBtn" class="btn btn-success">Geolocalizza</a>  --}}
             </div>
         </form>
     </div>
+    <script type="text/javascript" src="{{ URL::asset('js/script/coordinates.js') }}"></script> 
 </body>
 
 </html>
