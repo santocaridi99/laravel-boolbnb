@@ -74,11 +74,12 @@
             </div>
 
 
-            <div class="col-md-2">
-                <label class="form-label">Modifica Immagine di copertina</label>
-                <input type="text" name='cover' class="form-control  @error('cover') is-invalid @enderror" value="{{ old('cover', $apartment->cover) }}">
+            <div class="col-md-6">
+                <label class="form-label">Immagine di copertina</label>
+                <input type="file" name='cover' class="form-control @error('cover') is-invalid @enderror">
+                <div class="col-3"><img class="img-fluid" src="{{ asset('storage/' . $apartment->cover) }}" alt="" class="post-img"></div>
                 @error('cover')
-                <div class="invalid-feedback">{{ $message }}</div>
+                   <div class="invalid-feedback">{{ $message }}</div>
                 @enderror
             </div>
 

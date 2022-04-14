@@ -183,29 +183,18 @@ class ApartmentController extends Controller
         if ($data["title"] !== $apartment->title) {
             $data["slug"] = $this->generateUniqueSlug($data["title"]);
         }
+        
         $apartment->update($data);
         if (key_exists("cover", $data)){
             if ($apartment->cover) {
                 Storage::delete($apartment->cover);
               }
         
-              $coverImg = Storage::put("coversImage", $data["cover"]);
+            $coverImg = $apartment->cover = Storage::put("coversImg", $data["cover"]);
         
               $apartment->cover = $coverImg;
               $apartment->save();       
         }
-        // if (key_exists("cover", $data)) {
-        //     // controllare se a db esiste già un immagine
-        //     // Se si, PRIMA di caricare quella nuova, cancelliamo quella vecchia
-        //     if ($apartment->cover) {
-        //         Storage::delete($apartment->cover);
-        //     }
-
-        //     $cover = Storage::put("cover", $data["cover"]);
-
-        //     $apartment->cover = $cover;
-        //     $apartment->save();
-        // }
 
         if (key_exists("tags", $data)) {
             // Aggiorniamo anche la tabella apartment_tag

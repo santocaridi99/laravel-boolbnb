@@ -73,8 +73,8 @@
 
       <div class="col-md-3">
         <label class="form-label">Immagine di copertina</label>
-        <input type="file" name='cover' class="form-control @error('cover') is-invalid @enderror" value="{{ old('square_meters') }}"">
-        <span class="text-center">{{ $apartment->cover }}</span>
+        <input type="file" name='cover' class="form-control @error('cover') is-invalid @enderror">
+        <div><img class="img-fluid" src="{{ asset('storage/' . $apartment->cover) }}" alt="" class="post-img"></div>
         @error('cover')
            <div class="invalid-feedback">{{ $message }}</div>
         @enderror
