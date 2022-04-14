@@ -32,13 +32,13 @@ class ApartmentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Apartment $apartment)
     {
         $tags = Tag::all();
         /*  $images = Image::where("apartment_id", $apartment->id)
             ->get(); */
 
-        return view("host.apartments.create", compact("tags"));
+        return view("host.apartments.create", compact("tags", "apartment"));
     }
 
     /**
@@ -71,11 +71,13 @@ class ApartmentController extends Controller
         ]);
 
         $apartment = new Apartment();
-        $apartment->fill($data);
 
+        
+        $apartment->fill($data);
+        
         // Genero lo slug partendo dal titolo
         $slug = Str::slug($apartment->title);
-
+        
         // controllo a db se esiste già un elemento con lo stesso slug
         $exists = Apartment::where("slug", $slug)->first();
         $counter = 1;
@@ -100,6 +102,10 @@ class ApartmentController extends Controller
         // Assegno il valore di slug al nuovo post
         $apartment->slug = $slug;
         $apartment->user_id = Auth::user()->id;
+
+        if (key_exists("cover", $data)) {
+            $apartment->cover = Storage::put("coversImg", $data["cover"]);
+        }
 
         $apartment->save();
 
@@ -177,19 +183,18 @@ class ApartmentController extends Controller
         if ($data["title"] !== $apartment->title) {
             $data["slug"] = $this->generateUniqueSlug($data["title"]);
         }
+        
         $apartment->update($data);
-        // if (key_exists("cover", $data)) {
-        //     // controllare se a db esiste già un immagine
-        //     // Se si, PRIMA di caricare quella nuova, cancelliamo quella vecchia
-        //     if ($apartment->cover) {
-        //         Storage::delete($apartment->cover);
-        //     }
-
-        //     $cover = Storage::put("cover", $data["cover"]);
-
-        //     $apartment->cover = $cover;
-        //     $apartment->save();
-        // }
+        if (key_exists("cover", $data)){
+            if ($apartment->cover) {
+                Storage::delete($apartment->cover);
+              }
+        
+            $coverImg = $apartment->cover = Storage::put("coversImg", $data["cover"]);
+        
+              $apartment->cover = $coverImg;
+              $apartment->save();       
+        }
 
         if (key_exists("tags", $data)) {
             // Aggiorniamo anche la tabella apartment_tag

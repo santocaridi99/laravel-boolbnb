@@ -32,7 +32,7 @@
                                 </form>
                             </div>
                             @if ($apartment->cover)
-                                <img class="img-fluid" src="{{ $apartment->cover }}" alt="" class="post-img">
+                                <img class="img-fluid" src="{{ asset('storage/' . $apartment->cover) }}" alt="" class="post-img">
                             @else
                                 <img class="img-fluid" src="https://via.placeholder.com/1024x480" alt="" class="img-fluid">
                             @endif
