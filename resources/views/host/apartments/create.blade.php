@@ -36,7 +36,7 @@
 
       <div class="col-md-6">
         <label class="form-label">Numero di stanze</label>
-        <input type="number" name="room_numbers" class="form-control @error('room_numbers') is-invalid @enderror"
+        <input type="number" min="0" name="room_numbers" class="form-control @error('room_numbers') is-invalid @enderror"
                   placeholder="Inserisci qui il numero delle stanze" value="{{ old('room_numbers') }}" required>
                   @error('room_numbers')
                     <div class="invalid-feedback">{{ $message }}</div>
@@ -45,7 +45,7 @@
 
       <div class="col-md-6">
         <label class="form-label">Numero di letti</label>
-        <input type="number" name="bed_numbers" class="form-control @error('bed_numbers') is-invalid @enderror"
+        <input type="number" min="0" name="bed_numbers" class="form-control @error('bed_numbers') is-invalid @enderror"
                   placeholder="Inserisci qui il numero dei letti" value="{{ old('bed_numbers') }}" required>
                   @error('form_numbers')
                     <div class="invalid-feedback">{{ $message }}</div>
@@ -54,7 +54,7 @@
 
       <div class="col-md-6">
         <label class="form-label">Numero di bagni</label>
-        <input type="number" name="bathroom_numbers" class="form-control @error('bathroom_numbers') is-invalid @enderror"
+        <input type="number" min="0" name="bathroom_numbers" class="form-control @error('bathroom_numbers') is-invalid @enderror"
                   placeholder="Inserisci qui il numero dei bagni" value="{{ old('bathroom_numbers') }}" required>
                   @error('bathroom_numbers')
                     <div class="invalid-feedback">{{ $message }}</div>
@@ -63,7 +63,7 @@
 
       <div class="col-md-6">
         <label class="form-label">Metratura</label>
-        <input type="number" name="square_meters" class="form-control @error('square_meters') is-invalid @enderror"
+        <input type="number" min="0" name="square_meters" class="form-control @error('square_meters') is-invalid @enderror"
                   placeholder="Inserisci qui la metratura della stanza" value="{{ old('square_meters') }}" required>
                   @error('square_meters')
                     <div class="invalid-feedback">{{ $message }}</div>
@@ -81,7 +81,7 @@
 
       <div class="col-md-6">
         <label class="form-label">Prezzo per notte</label>
-        <input type="number" name="price_per_night" class="form-control @error('price_per_night') is-invalid @enderror"
+        <input type="number" min="0" name="price_per_night" class="form-control @error('price_per_night') is-invalid @enderror"
                   placeholder="Inserisci qui il prezzo per notte" value="{{ old('price_per_night') }}" required>
                   @error('price_per_night')
                     <div class="invalid-feedback">{{ $message }}</div>
@@ -135,7 +135,7 @@
 
       <div class="col-md-6">
         <label class="form-label">Numero Civico</label>
-        <input id='geoCnum' type="number" name="street_number" class="form-control @error('street_number') is-invalid @enderror"
+        <input id='geoCnum' type="number" min="0" name="street_number" class="form-control @error('street_number') is-invalid @enderror"
                   placeholder="Inserisci qui il civico" value="{{ old('street_number') }}" required>
                   @error('street_number')
                     <div class="invalid-feedback">{{ $message }}</div>
@@ -144,7 +144,7 @@
 
       <div class="col-md-6">
         <label class="form-label">CAP</label>
-        <input type="text" name="post_code" class="form-control @error('post_code') is-invalid @enderror"
+        <input type="number" min="0" name="post_code" class="form-control @error('post_code') is-invalid @enderror"
                   placeholder="Inserisci qui la regione" value="{{ old('post_code') }}" required>
                   @error('post_code')
                     <div class="invalid-feedback">{{ $message }}</div>
