@@ -68,16 +68,17 @@ class ApartmentController extends Controller
             "tags" => "nullable|exists:tags,id",
             "latitude" => "required",
             "longitude" => "required",
+            'isVisible' => 'boolean'
         ]);
 
         $apartment = new Apartment();
 
-        
+
         $apartment->fill($data);
-        
+
         // Genero lo slug partendo dal titolo
         $slug = Str::slug($apartment->title);
-        
+
         // controllo a db se esiste già un elemento con lo stesso slug
         $exists = Apartment::where("slug", $slug)->first();
         $counter = 1;
@@ -177,23 +178,24 @@ class ApartmentController extends Controller
             "tags" => "nullable|exists:tags,id",
             "latitude" => "required",
             "longitude" => "required",
+            'isVisible' => 'boolean'
         ]);
 
         $apartment = Apartment::findOrFail($id);
         if ($data["title"] !== $apartment->title) {
             $data["slug"] = $this->generateUniqueSlug($data["title"]);
         }
-        
+
         $apartment->update($data);
-        if (key_exists("cover", $data)){
+        if (key_exists("cover", $data)) {
             if ($apartment->cover) {
                 Storage::delete($apartment->cover);
-              }
-        
+            }
+
             $coverImg = $apartment->cover = Storage::put("coversImg", $data["cover"]);
-        
-              $apartment->cover = $coverImg;
-              $apartment->save();       
+
+            $apartment->cover = $coverImg;
+            $apartment->save();
         }
 
         if (key_exists("tags", $data)) {

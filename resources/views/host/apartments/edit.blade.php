@@ -159,6 +159,16 @@
                 @enderror
             </div>
 
+ 
+            <div class="form-check mb-3">
+                <label class="form-check-label" for="flexCheckDefault">
+                    L'appartamento è visibile?
+                </label>
+                <input class="form-check-input" type="checkbox" value="1" id="flexCheckDefault" name="isVisible"
+                    {{ $apartment->isVisible ? 'checked' : '' }}>
+            </div>
+
+
             {{-- contenuto del post --}}
             <div class="col-md-12">
                 <label>Contenuto</label>
