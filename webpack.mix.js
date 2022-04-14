@@ -15,3 +15,5 @@ mix.js('resources/js/app.js', 'public/js')
     .js('resources/js/vue.js', 'public/js')
     .js('resources/js/vue-backend.js', 'public/js')
     .sass('resources/sass/app.scss', 'public/css');
+
+mix.copyDirectory('node_modules/@fortawesome/fontawesome-free/webfonts', 'public/webfonts');
