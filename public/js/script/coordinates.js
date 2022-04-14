@@ -33,5 +33,5 @@ beforeSubmit = function () {
 
     setTimeout(() => {
         document.getElementById("formid").submit();
-    }, 1500);
+    }, 500);
 };
