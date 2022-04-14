@@ -17,3 +17,5 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get("/apartments", "Api\ApartmentController@index");

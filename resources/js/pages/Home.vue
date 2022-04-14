@@ -3,6 +3,17 @@
     <!-- title -->
     <h1 class="my-4 text-center">Ciao sono una homepage!</h1>
 
+    <div class="search-bar">
+
+        <input
+          type="text"
+          placeholder="Where do you want to gooo"
+          v-model="key"
+          @keyup.enter="apartmentResearch()"
+        />
+        <button >Search</button> 
+    </div>
+
     <p class="text-center">Qui sotto preview sponsor</p>
     <!-- carousel -->
     <div class="d-flex justify-content-center align-items-center mt-2">
@@ -63,8 +74,42 @@
 </template>
 
 <script>
-export default {
+import axios from "axios";
 
+export default {
+  data(){
+    return{
+      key: null,
+      apartments: [],
+      filteredApartments: [],
+    }
+  },
+  methods: {
+    getApartment(){
+      axios.get('http://127.0.0.1:8000/api/apartments')
+        .then(resp => {
+          console.log(resp.data);
+          this.apartments = resp.data;
+          })
+    },
+
+    // apartmentsResearch(select) {
+
+    //   const params = {
+    //     query: select,
+    //     api_key: "dlg5DIGLPzkA5v7MxIVzPg7gzuQURjzV",
+    //   };
+
+    //   axios
+    //     .get(`https://api.tomtom.com/search/2/nearbySearch/.json?lat=37.337&lon=-121.89&countrySet=Italia&radius=20000&view=Unified&relatedPois=off`, { params })
+    //     .then((response) => {
+    //       this.filteredApartments = response.data.results;
+    //     });
+    // },
+  },
+  mounted() {
+        this.getApartment();
+    },
 }
 </script>
 
