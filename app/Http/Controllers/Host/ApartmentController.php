@@ -70,6 +70,7 @@ class ApartmentController extends Controller
             "latitude" => "required",
             "longitude" => "required",
             "images" => "nullable",
+            'isVisible' => 'boolean'
         ]);
 
         $apartment = new Apartment();
@@ -195,6 +196,7 @@ class ApartmentController extends Controller
             "tags" => "nullable|exists:tags,id",
             "latitude" => "required",
             "longitude" => "required",
+            'isVisible' => 'boolean'
         ]);
 
         $apartment = Apartment::findOrFail($id);

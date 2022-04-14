@@ -150,7 +150,7 @@
         @enderror
       </div>
 
-      <div class="col-md-6">
+      <div class="col-md-5">
         <label class="form-label">CAP</label>
         <input type="number" min="0" name="post_code" class="form-control @error('post_code') is-invalid @enderror"
           placeholder="Inserisci qui la regione" value="{{ old('post_code') }}" required>
@@ -159,7 +159,15 @@
         @enderror
       </div>
 
-      {{-- contenuto del post --}}
+      <div class="form-check mb-3">
+        <label class="form-check-label" for="flexCheckDefault">
+          L'appartamento è visibile?
+        </label>
+        <input class="form-check-input" type="checkbox" value="1" id="flexCheckDefault" name="isVisible"
+          {{ old('isVisible') ? 'checked' : '' }}>
+      </div>
+
+        {{-- contenuto del post --}}
       <div class="col-md-12">
         <label>Contenuto</label>
         <textarea name="description" rows="10" class="form-control @error('description') is-invalid @enderror"
