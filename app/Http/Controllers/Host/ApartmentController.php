@@ -115,7 +115,7 @@ class ApartmentController extends Controller
         if (key_exists("tags", $data)) {
             $apartment->tags()->attach($data["tags"]);
         }
-        
+
         // se la request ha dei file in images
         if ($request->hasFile("images")) {
             // passo ad una variabile files la request delle immagini
@@ -124,12 +124,13 @@ class ApartmentController extends Controller
             foreach ($files as $file) {
                 // assegno ad una variabile name il nome del file
                 // che passo tramite la funzione getClientOriginalName
-                $name=$file->getClientOriginalName();
+                /* $name = $file->getClientOriginalName(); */
+                $name = 'image-' . time() . rand(1, 1000) . '.' . $file->extension();
                 // sposto il file in una cartella image dove passo il nome del file completo
-                $file->move('image',$name);
+                $file->move('image', $name);
                 // in apartment  images creo un istanza Image con create
                 // passo all'istanza il valore di $name al campo images della tabella mages
-                $apartment->images()->create(['images'=>$name]);
+                $apartment->images()->create(['images' => $name]);
             }
         }
 
