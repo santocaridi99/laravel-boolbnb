@@ -65,7 +65,7 @@
             <div class="invalid-feedback">{{ $message }}</div>
             @enderror
         </div>
-        
+
         <div class="col-md-6">
             <label class="form-label">Prezzo per notte</label>
             <input type="number" name="price_per_night"
@@ -189,7 +189,10 @@
             @endforeach
         </div>
         <label class="m-2">Images</label>
-        <input type="file" id="input-file-now-custom-3" class="form-control m-2" name="images[]" multiple>
+        <input type="file" id="input-file-now-custom-3" class="form-control m-2 @error('images') is-invalid @enderror " name="images[]" multiple>
+        @error('images')
+        <div class="invalid-feedback">{{ $message }}</div>
+        @enderror
 
 
         <div class="form-group">
