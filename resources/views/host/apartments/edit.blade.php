@@ -77,12 +77,12 @@
             </div>
 
 
-            <div class="col-md-2">
-                <label class="form-label">Modifica Immagine di copertina</label>
-                <input type="text" name='cover' class="form-control  @error('cover') is-invalid @enderror"
-                    value="{{ old('cover', $apartment->cover) }}">
+            <div class="col-md-6">
+                <label class="form-label">Immagine di copertina</label>
+                <input type="file" name='cover' class="form-control @error('cover') is-invalid @enderror">
+                <div class="col-3"><img class="img-fluid" src="{{ asset('storage/' . $apartment->cover) }}" alt="" class="post-img"></div>
                 @error('cover')
-                <div class="invalid-feedback">{{ $message }}</div>
+                   <div class="invalid-feedback">{{ $message }}</div>
                 @enderror
             </div>
 
@@ -159,6 +159,16 @@
                 @enderror
             </div>
 
+ 
+            <div class="form-check mb-3">
+                <label class="form-check-label" for="flexCheckDefault">
+                    L'appartamento è visibile?
+                </label>
+                <input class="form-check-input" type="checkbox" value="1" id="flexCheckDefault" name="isVisible"
+                    {{ $apartment->isVisible ? 'checked' : '' }}>
+            </div>
+
+
             {{-- contenuto del post --}}
             <div class="col-md-12">
                 <label>Contenuto</label>
@@ -169,7 +179,7 @@
                 @enderror
             </div>
 
-            <div class="col-md-2 ">
+            <div class="col-md-2 d-none">
                 <label class="form-label">Longitudine</label>
                 <input id='longitudeHtml' type="text" name="longitude"
                     class=" form-control @error('longitude') is-invalid @enderror" placeholder="longitude" value="">
@@ -178,7 +188,7 @@
                 @enderror
             </div>
 
-            <div class="col-md-2 ">
+            <div class="col-md-2 d-none">
                 <label class="form-label">Latitudine</label>
                 <input id='latitudeHtml' type="text" name="latitude"
                     class=" form-control @error('latitude') is-invalid @enderror" placeholder="latitude" value="">

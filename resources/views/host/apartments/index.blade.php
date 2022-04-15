@@ -32,11 +32,16 @@
                                 </form>
                             </div>
                             @if ($apartment->cover)
-                                <img class="img-fluid" src="{{ $apartment->cover }}" alt="" class="post-img">
+                                <img class="img-fluid" src="{{ asset('storage/' . $apartment->cover) }}" alt="" class="post-img">
                             @else
                                 <img class="img-fluid" src="https://via.placeholder.com/1024x480" alt="" class="img-fluid">
                             @endif
                             <p>{{ $apartment->description}}</p>
+                            <div class="col-md-12">
+                                @foreach ($apartment->images as $item)
+                                    <img class="img-fluid" src="{{ asset('image/' . $item->images) }}" alt="" class="post-img">
+                                @endforeach
+                            </div>
                         </div>
                     @endforeach
                 </div>
