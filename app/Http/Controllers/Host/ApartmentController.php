@@ -185,7 +185,7 @@ class ApartmentController extends Controller
             "bed_numbers" => "required|integer|between:1,100",
             "bathroom_numbers" => "required|integer|between:1,100",
             "square_meters" => "required|integer|min:0",
-            "cover" => "required",
+            "cover" => "nullable",
             "price_per_night" => "required|numeric|min:0",
             "country" => "required|regex:/^[\pL\s\-]+$/u",
             "region" => "required|regex:/^[\pL\s\-]+$/u",
@@ -197,6 +197,7 @@ class ApartmentController extends Controller
             "tags" => "nullable|exists:tags,id",
             "latitude" => "required",
             "longitude" => "required",
+            "images" => "nullable",
             'isVisible' => 'boolean'
         ]);
 
@@ -205,17 +206,17 @@ class ApartmentController extends Controller
             $data["slug"] = $this->generateUniqueSlug($data["title"]);
         }
 
-        $apartment->update($data);
+
         if (key_exists("cover", $data)) {
             if ($apartment->cover) {
                 Storage::delete($apartment->cover);
             }
-
-            $coverImg = $apartment->cover = Storage::put("coversImg", $data["cover"]);
+            $coverImg= Storage::put("coversImg", $data["cover"]);
 
             $apartment->cover = $coverImg;
             $apartment->save();
         }
+        $apartment->update($data);
 
         if (key_exists("tags", $data)) {
             // Aggiorniamo anche la tabella apartment_tag
@@ -227,17 +228,22 @@ class ApartmentController extends Controller
         } else {
             $apartment->tags()->detach();
         }
-
+        // gestito come le cover
+        // se la richiesta ha le immagini  
+        // svolgo le seguenti operazioni
+        // se ho già elementi nell'appartamento , cancello questa parte di request $apartment->images()
+        // altrimenti procede normalmente e salva le immagini uplodate come da procedimento sulla funzione store.
         if ($request->hasFile("images")) {
+            if($apartment->images){
+                $apartment->images()->delete();
+            }
             $images = $request->file("images");
             foreach ($images as $image) {
                 $name = 'image-' . time() . rand(1, 1000) . '.' . $image->extension();
                 $image->move('image', $name);
                 $apartment->images()->create(['images' => $name]);
             }
-        } else {
-            $apartment->images()->delete();
-        }
+        } 
 
         return redirect()->route("host.apartments.show", $apartment->slug);
     }

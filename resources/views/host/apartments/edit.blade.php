@@ -65,7 +65,7 @@
             <div class="invalid-feedback">{{ $message }}</div>
             @enderror
         </div>
-
+        
         <div class="col-md-6">
             <label class="form-label">Prezzo per notte</label>
             <input type="number" name="price_per_night"
