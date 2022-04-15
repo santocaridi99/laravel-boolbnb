@@ -60,7 +60,7 @@
             </li>
             <li class="nav-item dropdown" v-else>
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                {{ user.name }}
+                {{ user.name }} {{ user.lastname }}
               </a>
               <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <li><a class="dropdown-item" href="/host">Logout</a></li>
