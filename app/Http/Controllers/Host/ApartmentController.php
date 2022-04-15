@@ -11,6 +11,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\File;
 
 class ApartmentController extends Controller
 {
@@ -68,6 +69,7 @@ class ApartmentController extends Controller
             "tags" => "nullable|exists:tags,id",
             "latitude" => "required",
             "longitude" => "required",
+            "images" => "nullable",
             'isVisible' => 'boolean'
         ]);
 
@@ -107,12 +109,28 @@ class ApartmentController extends Controller
         if (key_exists("cover", $data)) {
             $apartment->cover = Storage::put("coversImg", $data["cover"]);
         }
-
         $apartment->save();
 
         //TUTTE LE RELAZIONI VANNO INSERITE DOPO IL SAVE
         if (key_exists("tags", $data)) {
             $apartment->tags()->attach($data["tags"]);
+        }
+        
+        // se la request ha dei file in images
+        if ($request->hasFile("images")) {
+            // passo ad una variabile files la request delle immagini
+            $files = $request->file("images");
+            // per ogni file in files
+            foreach ($files as $file) {
+                // assegno ad una variabile name il nome del file
+                // che passo tramite la funzione getClientOriginalName
+                $name=$file->getClientOriginalName();
+                // sposto il file in una cartella image dove passo il nome del file completo
+                $file->move('image',$name);
+                // in apartment  images creo un istanza Image con create
+                // passo all'istanza il valore di $name al campo images della tabella mages
+                $apartment->images()->create(['images'=>$name]);
+            }
         }
 
 
