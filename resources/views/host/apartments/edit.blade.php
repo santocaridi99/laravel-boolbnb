@@ -1,25 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('layouts.app')
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Apartment Edit</title>
-
-    <!-- CSRF Token -->
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
-
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-
-    <script src="https://api.tomtom.com/maps-sdk-for-web/cdn/6.x/6.5.0/services/services-web.min.js"></script>
-
-</head>
-
-<body>
+@section('content')
     <div class="container mt-5">
         <form class="row g-3"  id="formid" action="{{ route('host.apartments.update',$apartment->id) }}" method="post"
             enctype="multipart/form-data">
@@ -216,6 +197,4 @@
         </form>
     </div>
     <script type="text/javascript" src="{{ URL::asset('js/script/coordinates.js') }}"></script> 
-</body>
-
-</html>
+@endsection
