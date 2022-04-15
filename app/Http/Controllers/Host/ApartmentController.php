@@ -228,6 +228,17 @@ class ApartmentController extends Controller
             $apartment->tags()->detach();
         }
 
+        if ($request->hasFile("images")) {
+            $images = $request->file("images");
+            foreach ($images as $image) {
+                $name = 'image-' . time() . rand(1, 1000) . '.' . $image->extension();
+                $image->move('image', $name);
+                $apartment->images()->create(['images' => $name]);
+            }
+        } else {
+            $apartment->images()->delete();
+        }
+
         return redirect()->route("host.apartments.show", $apartment->slug);
     }
 
@@ -243,10 +254,24 @@ class ApartmentController extends Controller
         $apartment = Apartment::withTrashed()->findOrFail($id);
         // elimino i collegamenti con tabella tags
         $apartment->tags()->detach();
+        $apartment->images()->delete();
 
         if ($apartment->cover) {
             Storage::delete($apartment->cover);
         }
+
+        if ($apartment->images) {
+            $images = $apartment->images();
+            foreach ($images as $image) {
+                Storage::delete("images/{$image}");
+            }
+        }
+
+        // $images = explode(",", $apartment->images);
+
+        // foreach ($images as $image) {
+        //     Storage::delete("images/{$image}");
+        // }
         // elemento verrà completamente eliminato
         $apartment->forceDelete();
         return redirect()->route("host.apartments.index");
