@@ -312,6 +312,6 @@ class ApartmentController extends Controller
         // restore
         $apartment->restore();
         // redirect alla pagina deletedApartment
-        return redirect()->route("host.apartments.deletedApartments");
+        return redirect()->route("host.apartments.index");
     }
 }
