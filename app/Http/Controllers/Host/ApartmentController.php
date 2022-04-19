@@ -62,9 +62,10 @@ class ApartmentController extends Controller
             "country" => "required|regex:/^[\pL\s\-]+$/u",
             "region" => "required|regex:/^[\pL\s\-]+$/u",
             "province" => "required|regex:/^[\pL\s\-]+$/u",
-            "city" => "required|regex:/^[\pL\s\-]+$/u",
+            /* "city" => "required|regex:/^[\pL\s\-]+$/u",
             "street" => "required|string",
-            "street_number" => "required|integer|between:1,15000",
+            "street_number" => "required|integer|between:1,15000", */
+            "streetAddress" => "required|string",
             "post_code" =>  "required|string|min:5|max:5",
             "tags" => "required|exists:tags,id",
             "latitude" => "required",
@@ -191,9 +192,10 @@ class ApartmentController extends Controller
             "country" => "required|regex:/^[\pL\s\-]+$/u",
             "region" => "required|regex:/^[\pL\s\-]+$/u",
             "province" => "required|regex:/^[\pL\s\-]+$/u",
-            "city" => "required|regex:/^[\pL\s\-]+$/u",
+            /* "city" => "required|regex:/^[\pL\s\-]+$/u",
             "street" => "required|string",
-            "street_number" => "required|integer|between:1,15000",
+            "street_number" => "required|integer|between:1,15000", */
+            "streetAddress" => "required|string",
             "post_code" =>  "required|string|min:5|max:5",
             "tags" => "required|exists:tags,id",
             "latitude" => "required",
@@ -213,7 +215,7 @@ class ApartmentController extends Controller
             if ($apartment->cover) {
                 Storage::delete($apartment->cover);
             }
-            $coverImg= Storage::put("coversImg", $data["cover"]);
+            $coverImg = Storage::put("coversImg", $data["cover"]);
 
             $apartment->cover = $coverImg;
             $apartment->save();
@@ -236,7 +238,7 @@ class ApartmentController extends Controller
         // se ho già elementi nell'appartamento , cancello questa parte di request $apartment->images()
         // altrimenti procede normalmente e salva le immagini uplodate come da procedimento sulla funzione store.
         if ($request->hasFile("images")) {
-            if($apartment->images){
+            if ($apartment->images) {
                 $apartment->images()->delete();
             }
             $images = $request->file("images");
@@ -245,7 +247,7 @@ class ApartmentController extends Controller
                 $image->move('image', $name);
                 $apartment->images()->create(['images' => $name]);
             }
-        } 
+        }
 
         return redirect()->route("host.apartments.show", $apartment->slug);
     }

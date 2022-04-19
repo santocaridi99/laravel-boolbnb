@@ -103,33 +103,24 @@
             @enderror
         </div>
 
-        <div class="col-md-6">
-            <label class="form-label">Città</label>
-            <input id='geoCity' type="text" name="city" class="form-control @error('city') is-invalid @enderror"
-                placeholder="Inserisci qui la città" value="{{ old('city', $apartment->city) }}" required>
-            @error('city')
-            <div class="invalid-feedback">{{ $message }}</div>
-            @enderror
-        </div>
-
-        <div class="col-md-6">
+        {{-- <div class="col-md-6">
             <label class="form-label">Via</label>
             <input id='geoAddress' type="text" name="street" class="form-control @error('street') is-invalid @enderror"
                 placeholder="Inserisci qui la regione" value="{{ old('street', $apartment->street) }}" required>
             @error('street')
             <div class="invalid-feedback">{{ $message }}</div>
             @enderror
-        </div>
+        </div> --}}
 
         <div class="col-md-6">
-            <label class="form-label">Numero Civico</label>
-            <input id='geoCnum' type="number" min="0" name="street_number"
-                class="form-control @error('street_number') is-invalid @enderror" placeholder="Inserisci qui il civico"
-                value="{{ old('street_number' , $apartment->street_number) }}" required>
-            @error('street_number')
+            <label class="form-label">Indirizzo completo - (Città, via, civico)</label>
+            <input id='geoAddress' type="text" name="streetAddress" class="form-control @error('streetAddress') is-invalid @enderror"
+              placeholder="Inserisci qui l'indirizzo" value="{{ old('streetAddress', $apartment->streetAddress) }}" required onkeyup="beforeSubmit()">
+            @error('streetAddress')
             <div class="invalid-feedback">{{ $message }}</div>
             @enderror
-        </div>
+          </div>
+      
 
         <div class="col-md-6">
             <label class="form-label">CAP</label>
@@ -163,7 +154,7 @@
         <div class="col-md-2 d-none">
             <label class="form-label">Longitudine</label>
             <input id='longitudeHtml' type="text" name="longitude"
-                class=" form-control @error('longitude') is-invalid @enderror" placeholder="longitude" value="">
+                class=" form-control @error('longitude') is-invalid @enderror" placeholder="longitude" value="{{ old('longitude', $apartment->longitude) }}">
             @error('longitude')
             <div class="invalid-feedback">{{ $message }}</div>
             @enderror
@@ -172,7 +163,7 @@
         <div class="col-md-2 d-none">
             <label class="form-label">Latitudine</label>
             <input id='latitudeHtml' type="text" name="latitude"
-                class=" form-control @error('latitude') is-invalid @enderror" placeholder="latitude" value="">
+                class=" form-control @error('latitude') is-invalid @enderror" placeholder="latitude" value="{{ old('latitude', $apartment->latitude) }}">
             @error('longitude')
             <div class="invalid-feedback">{{ $message }}</div>
             @enderror
@@ -197,8 +188,9 @@
 
         <div class="form-group">
             <a href="{{ route('host.apartments.index') }}" class="btn btn-secondary">Annulla</a>
-            <a class="btn btn-success" onmousedown="beforeSubmit()">Salva appartamento</a>
+            {{-- <a class="btn btn-success" onmousedown="beforeSubmit()">Salva appartamento</a> --}}
             {{-- <a id="geocodeBtn" class="btn btn-success">Geolocalizza</a> --}}
+            <button type="submit" class="btn btn-success">Salva appartamento</button>
         </div>
     </form>
 </div>

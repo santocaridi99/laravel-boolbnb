@@ -12,7 +12,7 @@ class Apartment extends Model
     protected $fillable = [
         "title", "description", "room_numbers", "bed_numbers",
         "bathroom_numbers", "square_meters", "cover", "price_per_night", "country",
-        "region", "province", "city", "street", "street_number", "post_code", "latitude", "longitude", 'isVisible'
+        "region", "province", "streetAddress", "post_code", "latitude", "longitude", 'isVisible'
     ];
     //Collegamenti di cui fa parte
 
