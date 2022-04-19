@@ -182,15 +182,15 @@
             <label>Tags</label><br>
             @foreach ($tags as $tag)
             <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" value="{{ $tag->id }}" id="tag_{{ $tag->id }}"
+                <input class="form-check-input @error('tags') is-invalid @enderror" type="checkbox" value="{{ $tag->id }}" id="tag_{{ $tag->id }}"
                     name="tags[]" {{$apartment->tags->contains($tag) ? 'checked' : ''}}>
                 <label class="form-check-label" for="tag_{{ $tag->id }}">{{ $tag->name }}</label>
             </div>
             @endforeach
         </div>
         <label class="m-2">Images</label>
-        <input type="file" id="input-file-now-custom-3" class="form-control m-2 @error('images') is-invalid @enderror " name="images[]" multiple>
-        @error('images')
+        <input type="file" id="input-file-now-custom-3" class="form-control m-2 @error('images.*') is-invalid @enderror " name="images[]" multiple>
+        @error('images.*')
         <div class="invalid-feedback">{{ $message }}</div>
         @enderror
 
