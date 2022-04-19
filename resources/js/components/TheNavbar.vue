@@ -114,7 +114,7 @@ export default {
   mounted() {
     this.routes = this.$router
       .getRoutes()
-      .filter((route) => !!route.meta.linkText);
+      // .filter((route) => !!route.meta.linkText);
     this.fetchUser();
     console.log(this.routes);
   },
