@@ -57,7 +57,7 @@ class ApartmentController extends Controller
             "bed_numbers" => "required|integer|between:1,100",
             "bathroom_numbers" => "required|integer|between:1,100",
             "square_meters" => "required|integer|min:0",
-            "cover" => "required",
+            "cover" => "required|mimes:jpeg,bmp,png",
             "price_per_night" => "required|numeric|min:0",
             "country" => "required|regex:/^[\pL\s\-]+$/u",
             "region" => "required|regex:/^[\pL\s\-]+$/u",
@@ -70,6 +70,7 @@ class ApartmentController extends Controller
             "latitude" => "required",
             "longitude" => "required",
             "images" => "nullable",
+            "images.*" => "nullable|mimes:jpeg,bmp,png",
             'isVisible' => 'boolean'
         ]);
 
@@ -185,7 +186,7 @@ class ApartmentController extends Controller
             "bed_numbers" => "required|integer|between:1,100",
             "bathroom_numbers" => "required|integer|between:1,100",
             "square_meters" => "required|integer|min:0",
-            "cover" => "nullable",
+            "cover" => "nullable|mimes:jpeg,bmp,png",
             "price_per_night" => "required|numeric|min:0",
             "country" => "required|regex:/^[\pL\s\-]+$/u",
             "region" => "required|regex:/^[\pL\s\-]+$/u",
@@ -198,6 +199,7 @@ class ApartmentController extends Controller
             "latitude" => "required",
             "longitude" => "required",
             "images" => "nullable",
+            "images.*" => "nullable|mimes:jpeg,bmp,png",
             'isVisible' => 'boolean'
         ]);
 
