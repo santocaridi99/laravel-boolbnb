@@ -66,7 +66,7 @@ class ApartmentController extends Controller
             "street" => "required|string",
             "street_number" => "required|integer|between:1,15000", */
             "streetAddress" => "required|string",
-            "post_code" =>  "required|string|min:5|max:5",
+            // "post_code" =>  "required|string|min:5|max:5",
             "tags" => "required|exists:tags,id",
             "latitude" => "required",
             "longitude" => "required",
@@ -196,7 +196,7 @@ class ApartmentController extends Controller
             "street" => "required|string",
             "street_number" => "required|integer|between:1,15000", */
             "streetAddress" => "required|string",
-            "post_code" =>  "required|string|min:5|max:5",
+            // "post_code" =>  "required|string|min:5|max:5",
             "tags" => "required|exists:tags,id",
             "latitude" => "required",
             "longitude" => "required",

@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container mt-5">
-    <form class="row g-3" id="formid" action="{{ route('host.apartments.update',$apartment->id) }}" method="post"
+    <form class="row g-3" id="formid" autocomplete="off" action="{{ route('host.apartments.update',$apartment->id) }}" method="post"
         enctype="multipart/form-data">
 
         @csrf
@@ -112,25 +112,14 @@
             @enderror
         </div> --}}
 
-        <div class="col-md-6">
-            <label class="form-label">Indirizzo completo - (Città, via, civico)</label>
+        <div class="col-md-6 autocomplete">
+            <label class="form-label">Indirizzo completo - (Via civico, CAP Città)</label>
             <input id='geoAddress' type="text" name="streetAddress" class="form-control @error('streetAddress') is-invalid @enderror"
-              placeholder="Inserisci qui l'indirizzo" value="{{ old('streetAddress', $apartment->streetAddress) }}" required onkeyup="beforeSubmit()">
+              placeholder="Inserisci qui l'indirizzo" value="{{ old('streetAddress', $apartment->streetAddress) }}" required onkeyup="if (this.value.length > 6) beforeSubmit()">
             @error('streetAddress')
             <div class="invalid-feedback">{{ $message }}</div>
             @enderror
-          </div>
-      
-
-        <div class="col-md-6">
-            <label class="form-label">CAP</label>
-            <input type="text" name="post_code" class="form-control @error('post_code') is-invalid @enderror"
-                value="{{ old('post_code',$apartment->post_code) }}" required>
-            @error('post_code')
-            <div class="invalid-feedback">{{ $message }}</div>
-            @enderror
         </div>
-
 
         <div class="form-check mb-3">
             <label class="form-check-label" for="flexCheckDefault">
@@ -139,7 +128,6 @@
             <input class="form-check-input" type="checkbox" value="1" id="flexCheckDefault" name="isVisible" {{
                 $apartment->isVisible ? 'checked' : '' }}>
         </div>
-
 
         {{-- contenuto del post --}}
         <div class="col-md-12">
@@ -184,7 +172,6 @@
         @error('images.*')
         <div class="invalid-feedback">{{ $message }}</div>
         @enderror
-
 
         <div class="form-group">
             <a href="{{ route('host.apartments.index') }}" class="btn btn-secondary">Annulla</a>

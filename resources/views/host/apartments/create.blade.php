@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container mt-5" id="root">
-  <form class="row g-3" id="formid" action="{{ route('host.apartments.store') }}" method="post"
+  <form class="row g-3" id="formid" autocomplete="off" action="{{ route('host.apartments.store') }}" method="post"
     enctype="multipart/form-data">
 
     @csrf
@@ -101,20 +101,11 @@
       @enderror
     </div>
 
-    <div class="col-md-6">
-      <label class="form-label">Indirizzo completo - (Città, via, civico)</label>
+    <div class="col-md-6 autocomplete">
+      <label class="form-label">Indirizzo completo - (Via civico, CAP Città)</label>
       <input id='geoAddress' type="text" name="streetAddress" class="form-control @error('streetAddress') is-invalid @enderror"
-        placeholder="Inserisci qui l'indirizzo" value="{{ old('streetAddress') }}" required onkeyup="if (this.value.length > 15) beforeSubmit()">
+        placeholder="Inserisci qui l'indirizzo" value="{{ old('streetAddress') }}" required onkeyup="if (this.value.length > 6) beforeSubmit()">
       @error('streetAddress')
-      <div class="invalid-feedback">{{ $message }}</div>
-      @enderror
-    </div>
-
-    <div class="col-md-5">
-      <label class="form-label">CAP</label>
-      <input type="number" min="0" name="post_code" class="form-control @error('post_code') is-invalid @enderror"
-        placeholder="Inserisci qui la regione" value="{{ old('post_code') }}" required>
-      @error('post_code')
       <div class="invalid-feedback">{{ $message }}</div>
       @enderror
     </div>
@@ -180,6 +171,7 @@
       <button type="submit" class="btn btn-success">Salva appartamento</button>
     </div>
   </form>
+
 </div>
 <script type="text/javascript" src="{{ URL::asset('js/script/coordinates.js') }}"></script>
 @endsection
