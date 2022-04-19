@@ -54,11 +54,11 @@ class RegisterController extends Controller
         $before = $dt->subYears(18)->format('Y-m-d');
 
         return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
+            'name' => ['required', 'string', 'min:2', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
             // aggiunto alla validazione lastname e birthdate
-            'lastname' => ['required', 'string', 'max:255'],
+            'lastname' => ['required', 'string','min:2', 'max:255'],
             'birth_date' => ['required', 'date','before:'. $before],
         ]);
     }
