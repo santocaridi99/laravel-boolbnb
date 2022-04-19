@@ -10,7 +10,7 @@
                     <div class="card p-2 my-3">
                         <p class="text-uppercase"><a href="{{ route('host.apartments.show', $apartment->slug) }}">{{ $apartment->title }}</a></p>
                         @if ($apartment->cover)
-                        <img class="img-fluid" src="{{ $apartment->cover }}" alt="" class="post-img">
+                        <img class="img-fluid" src="{{ asset('storage/' . $apartment->cover) }}" alt="" class="post-img">
                         @else
                         <img class="img-fluid" src="https://via.placeholder.com/1024x480" alt="" class="img-fluid">
                         @endif
