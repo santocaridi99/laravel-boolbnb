@@ -17,6 +17,7 @@ function autocomplete(inp, arr) {
         /*create a DIV element that will contain the items (values):*/
         a = document.createElement("DIV");
         a.setAttribute("id", this.id + "autocomplete-list");
+        a.setAttribute("onclick", "beforeSubmit()");
         a.setAttribute("class", "autocomplete-items");
         /*append the DIV element as a child of the autocomplete container:*/
         this.parentNode.appendChild(a);
@@ -143,6 +144,8 @@ beforeSubmit = function () {
 
         console.log(suggestion);
 
+        autocomplete(document.getElementById("geoAddress"), suggestion);
+
         let lat = geocodeRes.results[0].position.lat;
         let lng = geocodeRes.results[0].position.lng;
 
@@ -153,7 +156,6 @@ beforeSubmit = function () {
         /* tt.services.reverseGeocode(reverseOptions).then(function (reverseRes) { 
           console.log(reverseRes); 
       });  */
-        autocomplete(document.getElementById("geoAddress"), suggestion);
     });
 
     /*     setTimeout(() => {
