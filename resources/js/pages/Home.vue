@@ -63,12 +63,14 @@
 </template>
 
 <script>
+
 export default {
  
 }
 </script>
 
 <style>
+
 .w_500 {
   width: 500px;
 }

@@ -70,7 +70,7 @@
                 v-model="query"
                 @keyup="this.searchBox"
               />
-              <span class="btn btn-outline-light" @click="this.clickSearch">
+              <span class="btn btn-outline-light">
                 Search
               </span>
             </div>
@@ -133,6 +133,11 @@
 
 <script>
 import axios from "axios";
+// import { services } from '@tomtom-international/web-sdk-services';
+// import SearchBox from '@tomtom-international/web-sdk-plugin-searchbox';
+
+// const ttSearchBox = new SearchBox(services, options);
+// const searchBoxHTML = ttSearchBox.getSearchBoxHTML();
 
 export default {
   data() {
@@ -198,6 +203,7 @@ export default {
           window.dispatchEvent(new CustomEvent("storedUserChanged"));
         });
     },
+    
   },
   mounted() {
     this.routes = this.$router.getRoutes();
