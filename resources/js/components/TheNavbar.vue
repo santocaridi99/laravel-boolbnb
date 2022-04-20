@@ -68,7 +68,7 @@
                 placeholder="Search"
                 aria-label="Search"
                 v-model="query"
-                @keyup="this.searchBox"
+                @keyup="this.searchApartment"
               />
               <span class="btn btn-outline-light">
                 Search
@@ -140,43 +140,19 @@ import axios from "axios";
 // const searchBoxHTML = ttSearchBox.getSearchBoxHTML();
 
 export default {
+  props:{
+    luoghi: Array,
+  },
   data() {
     return {
       routes: [],
       user: null,
-      query: "",
-      api_key: "Z4C8r6rK8x69JksEOmCX43MGffYO83xu",
-      luoghi: [],
-      flag: false,
-      lat: null,
-      long: null,
+      query: '',
     };
   },
   methods: {
-    async searchBox() {
-      if (this.query.length >= 2) {
-        const result = await axios
-          .get(
-            `https://api.tomtom.com/search/2/geocode/${this.query}.json?storeResult=false&limit=5&countrySet=it&radius=5&view=Unified&key=Z4C8r6rK8x69JksEOmCX43MGffYO83xu`
-          )
-          .then((res) => {
-            this.luoghi = res.data.results;
-            if (this.luoghi.length > 0) {
-              let coords = this.luoghi[0].position;
-              this.lat = coords.lat;
-              this.long = coords.lon;
-            }
-          });
-        return result;
-      } else {
-        this.lat = null;
-        this.long = null;
-        this.luoghi='';
-      }
-    },
-    clickSearch(luogo) {
-      this.query = luogo;
-      this.searchBox();
+    searchApartment(){
+      this.$emit('searchApartment', this.query);
     },
     fetchUser() {
       // recuperiamo l'utente loggato tramite api
@@ -203,7 +179,6 @@ export default {
           window.dispatchEvent(new CustomEvent("storedUserChanged"));
         });
     },
-    
   },
   mounted() {
     this.routes = this.$router.getRoutes();
