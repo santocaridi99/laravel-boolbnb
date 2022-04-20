@@ -70,9 +70,7 @@
                 v-model="query"
                 @keyup="this.searchBox"
               />
-              <span class="btn btn-outline-light">
-                Search
-              </span>
+              <span class="btn btn-outline-light"> Search </span>
             </div>
           </ul>
           <!-- login/register area -->
@@ -142,42 +140,16 @@ import axios from "axios";
 export default {
   data() {
     return {
-      routes: [],
       user: null,
+      routes: [],
       query: "",
       api_key: "Z4C8r6rK8x69JksEOmCX43MGffYO83xu",
       luoghi: [],
-      flag: false,
       lat: null,
       long: null,
     };
   },
   methods: {
-    async searchBox() {
-      if (this.query.length >= 2) {
-        const result = await axios
-          .get(
-            `https://api.tomtom.com/search/2/geocode/${this.query}.json?storeResult=false&limit=5&countrySet=it&radius=5&view=Unified&key=Z4C8r6rK8x69JksEOmCX43MGffYO83xu`
-          )
-          .then((res) => {
-            this.luoghi = res.data.results;
-            if (this.luoghi.length > 0) {
-              let coords = this.luoghi[0].position;
-              this.lat = coords.lat;
-              this.long = coords.lon;
-            }
-          });
-        return result;
-      } else {
-        this.lat = null;
-        this.long = null;
-        this.luoghi='';
-      }
-    },
-    clickSearch(luogo) {
-      this.query = luogo;
-      this.searchBox();
-    },
     fetchUser() {
       // recuperiamo l'utente loggato tramite api
       axios
@@ -203,7 +175,40 @@ export default {
           window.dispatchEvent(new CustomEvent("storedUserChanged"));
         });
     },
-    
+    getStoredUser() {
+      const storedUser = localStorage.getItem("user");
+      if (storedUser) {
+        this.user = JSON.parse(storedUser);
+      } else {
+        this.user = null;
+      }
+    },
+    // searchbox
+    async searchBox() {
+      if (this.query.length >= 2) {
+        const result = await axios
+          .get(
+            `https://api.tomtom.com/search/2/geocode/${this.query}.json?storeResult=false&limit=5&countrySet=it&radius=5&view=Unified&key=Z4C8r6rK8x69JksEOmCX43MGffYO83xu`
+          )
+          .then((res) => {
+            this.luoghi = res.data.results;
+            if (this.luoghi.length > 0) {
+              let coords = this.luoghi[0].position;
+              this.lat = coords.lat;
+              this.long = coords.lon;
+            }
+          });
+        return result;
+      } else {
+        this.lat = null;
+        this.long = null;
+        this.luoghi = "";
+      }
+    },
+    clickSearch(luogo) {
+      this.query = luogo;
+      this.searchBox();
+    },
   },
   mounted() {
     this.routes = this.$router.getRoutes();

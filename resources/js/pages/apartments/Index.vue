@@ -16,6 +16,16 @@ export default {
   components: {
     ApartmentCard
   },
+  props:{
+     
+  },
+  data(){
+    return{
+      
+      
+
+    }
+  }
 
 }
 </script>

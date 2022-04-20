@@ -11,6 +11,7 @@
 </template>
 
 <script>
+import axios from "axios";
 import TheNavbar from "../components/TheNavbar.vue";
 import TheFooter from "../components/TheFooter.vue";
 
