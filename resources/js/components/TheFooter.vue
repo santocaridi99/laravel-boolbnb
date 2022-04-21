@@ -1,7 +1,7 @@
 <template>
   <div>
-    <footer class="bg-dark fixed-bottom">
-      <p class="text-white text-center">Ciao sono un footer</p>
+    <footer class="bg-dark">
+      <p class="text-white text-center m-0">Ciao sono un footer</p>
     </footer>
   </div>
 </template>

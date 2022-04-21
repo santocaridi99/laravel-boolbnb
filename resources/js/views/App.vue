@@ -49,4 +49,9 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+body {
+  background-color: #111;
+  padding-top: 180px; 
+}
+</style>
