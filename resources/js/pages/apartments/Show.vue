@@ -39,20 +39,29 @@ export default {
     data() {
         return {
             apartmentDet: {},
-            lat: 0,
-            lng: 0,
+            /*             lat: 0,
+            lng: 0, */
+            coords: [0, 0],
+            map: null,
         };
     },
     methods: {
         async showMap() {
             await this.decodeApartment();
 
-            const map = tt.map({
+            this.map = tt.map({
                 key: "Z4C8r6rK8x69JksEOmCX43MGffYO83xu",
                 container: "map",
-                center: [this.lng, this.lat],
+                center: this.coords,
                 zoom: 16,
             });
+
+            this.showMarker();
+        },
+
+        async showMarker() {
+            await this.decodeApartment();
+            let marker = new tt.Marker().setLngLat(this.coords).addTo(this.map);
         },
 
         async decodeApartment() {
@@ -61,9 +70,9 @@ export default {
                     "/api/apartments/" + this.$route.params.apartment
                 );
                 this.apartmentDet = resp.data;
-                this.lat = resp.data.latitude;
-                this.lng = resp.data.longitude;
-                console.log(this.lng, this.lat);
+                /* this.lat = resp.data.latitude;
+                this.lng = resp.data.longitude; */
+                this.coords = [resp.data.longitude, resp.data.latitude];
             } catch (er) {
                 this.$router.replace({ name: "ErrorPage" });
             }
@@ -81,7 +90,6 @@ export default {
 #map {
     width: 500px;
     height: 500px;
-    margin-bottom: 50px;
 }
 /* ---------------- */
 
@@ -94,6 +102,7 @@ img {
     height: 350px;
 }
 .secondary-infos {
+    margin-top: 30px;
     .my-tags {
         display: flex;
         align-items: baseline;
