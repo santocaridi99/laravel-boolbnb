@@ -1,8 +1,8 @@
 <template>
     <div>
-        <TheNavbar @clicked='updateTestLuoghi'></TheNavbar>
+        <TheNavbar @clicked="updateLocations"></TheNavbar>
 
-        <router-view :provaluoghi="testluoghi"></router-view>
+        <router-view :singleLocation="callToLocations"></router-view>
 
         <TheFooter></TheFooter>
     </div>
@@ -21,7 +21,7 @@ export default {
     data() {
         return {
             user: null,
-            testluoghi:null,
+            callToLocations: null,
         };
     },
     methods: {
@@ -33,10 +33,11 @@ export default {
                 this.user = null;
             }
         },
-        updateTestLuoghi(val){
-            this.testluoghi=val;
 
-        }
+        //
+        updateLocations(val) {
+            this.callToLocations = val;
+        },
     },
     mounted() {
         this.getStoredUser();

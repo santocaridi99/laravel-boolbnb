@@ -190,6 +190,7 @@ export default {
         };
     },
     methods: {
+        //Funzione che fa da emit per il passaggio del primo oggetto presente nell'array luoghi[] verso app.vue
         onClickButton() {
             this.$emit("clicked", this.luoghi[0]);
         },

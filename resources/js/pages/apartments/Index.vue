@@ -8,8 +8,8 @@
             class="d-flex d-flex justify-content-center align-items-center flex-wrap"
         >
             <ApartmentCard></ApartmentCard>
-            <div>
-                {{ provaluoghi.address.freeformAddress }}
+            <div v-if="singleLocation !== null">
+                {{ singleLocation.address.freeformAddress }}
             </div>
         </div>
     </div>
@@ -22,7 +22,7 @@ export default {
         ApartmentCard,
     },
     props: {
-        provaluoghi: Object,
+        singleLocation: Object,
     },
     data() {
         return {};
