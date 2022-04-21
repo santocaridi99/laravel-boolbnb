@@ -87,6 +87,7 @@
                             <router-link
                                 :to="'/apartments'"
                                 class="btn btn-outline-light"
+                                :class="[query === '' ? 'btnStop' : '']"
                                 @click.native="onClickButton()"
                             >
                                 Search
@@ -180,6 +181,7 @@ import axios from "axios";
 export default {
     data() {
         return {
+            isAllowed: false,
             user: null,
             routes: [],
             query: "",
@@ -265,6 +267,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.btnStop {
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
 .box {
     background-color: white;
     .my-autocomplete {
