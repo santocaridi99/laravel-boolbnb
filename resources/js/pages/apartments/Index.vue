@@ -18,15 +18,6 @@
                     :key="apartment.id"
                     class="apartment-card m-4"
                 >
-                    <!--  <div>{{ apartment.title }}</div>
-                    <div
-                        class="tags-class d-flex"
-                        v-for="tag of apartment.tags"
-                        :key="tag.id"
-                    >
-                        {{ tag.name }}
-                    </div> -->
-
                     <div class="card" style="width: 18rem">
                         <img
                             class="card-img-top"
@@ -48,7 +39,15 @@
                                     {{ tag.name + " - " }}
                                 </div>
                             </div>
-                            <!--  <a href="#" class="btn btn-primary">Go somewhere</a> -->
+
+                            <router-link
+                                class="btn btn-primary"
+                                :to="{
+                                    name: 'apartments.show',
+                                    params: { apartment: apartment.slug },
+                                }"
+                                >Dettagli</router-link
+                            >
                         </div>
                     </div>
                 </div>
