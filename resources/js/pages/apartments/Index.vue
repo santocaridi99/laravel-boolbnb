@@ -1,6 +1,7 @@
 <template>
     <div class="container">
         <!-- lista degli appartamenti filtrati -->
+        <button @click="filterApartments()">Filtra gli appartamenti</button>
         <h1 class="my-4 text-center">Qui lista filtrata degli appartamenti</h1>
 
         <!-- cards -->
@@ -79,6 +80,7 @@ export default {
         return {
             apartments: [],
             pagination: {},
+            nearbyApartment: [],
         };
     },
     methods: {
@@ -95,12 +97,23 @@ export default {
             }); */
             const resp = await axios.get("/api/apartments?page=" + page);
             this.pagination = resp.data;
-            console.log(resp.data.data);
             this.apartments = resp.data.data;
         },
+        filterApartments(){
+          this.apartments.forEach(element => {
+            let distance = Math.sqrt(Math.pow((this.singleLocation.position.lat - element.latitude), 2) + Math.pow((this.singleLocation.position.lon - element.longitude), 2));
+            let realDistance = (distance * 0.996) * 100;
+            console.log(realDistance, ' km, sono la prima prova');
+            if(realDistance <= 20){
+              this.nearbyApartment = element;
+            }
+          });
+          console.log(this.nearbyApartment);
+        }
     },
     mounted() {
         this.decodeApartmentsJson();
+        // this.filterApartments(this.singleLocation.position.lat, this.singleLocation.position.lon)
     },
 };
 </script>
