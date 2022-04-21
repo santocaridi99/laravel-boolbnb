@@ -20,46 +20,6 @@
                 {{ singleLocation.address.freeformAddress }}
             </div> -->
 
-<<<<<<< HEAD
-            <div class="my-card-cont d-flex">
-                <div
-                    v-for="apartment of apartments"
-                    :key="apartment.id"
-                    class="apartment-card m-4"
-                >
-                    <div class="card" style="width: 18rem">
-                        <img
-                            class="card-img-top"
-                            :src="apartment.cover"
-                            alt="Dummy Image"
-                        />
-                        <div class="card-body">
-                            <h5 class="card-title">{{ apartment.title }}</h5>
-                            <p class="card-text">
-                                {{ apartment.description }}
-                            </p>
-
-                            <div class="d-flex">
-                                <div
-                                    class="tags-class me-1"
-                                    v-for="tag of apartment.tags"
-                                    :key="tag.id"
-                                >
-                                    {{ tag.name + " - " }}
-                                </div>
-                            </div>
-
-                            <router-link
-                                class="btn btn-primary"
-                                :to="{
-                                    name: 'apartments.show',
-                                    params: { apartment: apartment.slug },
-                                }"
-                                >Dettagli</router-link
-                            >
-                        </div>
-                    </div>
-=======
       <div class="my-card-cont d-flex">
         <div
           v-for="apartment of apartments"
@@ -94,7 +54,6 @@
                   :key="tag.id"
                 >
                   {{ tag.name + " - " }}
->>>>>>> 3252b5f3779e5608d93b9e3773e2e5ecba80eb68
                 </div>
               </div>
               <!--  <a href="#" class="btn btn-primary">Go somewhere</a> -->
