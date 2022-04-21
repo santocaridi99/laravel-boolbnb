@@ -1,8 +1,8 @@
 <template>
     <div>
-        <TheNavbar @clicked="onClickChild"></TheNavbar>
+        <TheNavbar @clicked='updateTestLuoghi'></TheNavbar>
 
-        <router-view></router-view>
+        <router-view :provaluoghi="testluoghi"></router-view>
 
         <TheFooter></TheFooter>
     </div>
@@ -21,16 +21,10 @@ export default {
     data() {
         return {
             user: null,
-            callbackLuoghi: [],
+            testluoghi:null,
         };
     },
     methods: {
-        onClickChild(value) {
-            this.callbackLuoghi = value;
-            console.log(value);
-            console.log(this.callbackLuoghi, "questi sono i luoghi");
-        },
-
         getStoredUser() {
             const storedUser = localStorage.getItem("user");
             if (storedUser) {
@@ -39,6 +33,10 @@ export default {
                 this.user = null;
             }
         },
+        updateTestLuoghi(val){
+            this.testluoghi=val;
+
+        }
     },
     mounted() {
         this.getStoredUser();

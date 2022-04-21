@@ -84,12 +84,12 @@
                                 v-model="query"
                                 @keyup="this.searchBox"
                             />
-                            <span
+                            <router-link :to="'/apartments'"
                                 class="btn btn-outline-light"
-                                @click="onClickButton()"
+                                @click.native="onClickButton()"
                             >
                                 Search
-                            </span>
+                            </router-link>
                         </div>
                     </ul>
                     <!-- login/register area -->

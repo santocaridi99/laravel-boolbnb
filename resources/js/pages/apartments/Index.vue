@@ -6,6 +6,9 @@
       <!-- cards -->
       <div class="d-flex d-flex justify-content-center align-items-center flex-wrap">
         <ApartmentCard></ApartmentCard>
+        <div v-for="(luoghi,i) in provaluoghi" :key="luoghi + i">
+          {{luoghi.address.freeformAddress}}
+        </div>
       </div>
   </div>
 </template>
@@ -17,13 +20,11 @@ export default {
     ApartmentCard
   },
   props:{
+    provaluoghi:Array,
      
   },
   data(){
     return{
-      
-      
-
     }
   }
 
