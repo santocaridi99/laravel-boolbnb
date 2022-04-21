@@ -13,7 +13,7 @@ class ApartmentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    /*     public function index(Request $request)
     {
         $filter = $request->input("filter");
         if($filter){
@@ -32,6 +32,28 @@ class ApartmentController extends Controller
         return response()->json($apartments);
         
 
+    } */
+
+    public function index(Request $request)
+    {
+        $apartments = Apartment::paginate(5);
+        $apartments->load("tags", "user");
+
+        /* return response()->json([
+            "isWorking" => 'yes',
+            'dataInvioRichiesta' => now()->format('d-m-Y, H:i'),
+            'apartmentsData' => $apartments
+        ]); */
+
+        //per visualizzare le immagini inviate dal backend
+        $apartments->each(function ($apartment) {
+            //formo l'url completo per l'immagine del apartment
+            if ($apartment->cover) {
+                $apartment->cover = asset('storage/' . $apartment->cover);
+            }
+        });
+
+        return response()->json($apartments);
     }
 
     /**

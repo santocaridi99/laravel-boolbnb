@@ -12,10 +12,48 @@
                 {{ singleLocation.address.freeformAddress }}
             </div> -->
 
-            <div class="my-card-cont">
-                <div v-for="apartment of apartments" :key="apartment.id"></div>
+            <div class="my-card-cont d-flex">
+                <div
+                    v-for="apartment of apartments"
+                    :key="apartment.id"
+                    class="apartment-card m-4"
+                >
+                    <!--  <div>{{ apartment.title }}</div>
+                    <div
+                        class="tags-class d-flex"
+                        v-for="tag of apartment.tags"
+                        :key="tag.id"
+                    >
+                        {{ tag.name }}
+                    </div> -->
+
+                    <div class="card" style="width: 18rem">
+                        <img
+                            class="card-img-top"
+                            :src="apartment.cover"
+                            alt="Dummy Image"
+                        />
+                        <div class="card-body">
+                            <h5 class="card-title">{{ apartment.title }}</h5>
+                            <p class="card-text">
+                                {{ apartment.description }}
+                            </p>
+
+                            <div class="d-flex">
+                                <div
+                                    class="tags-class me-1"
+                                    v-for="tag of apartment.tags"
+                                    :key="tag.id"
+                                >
+                                    {{ tag.name + " - " }}
+                                </div>
+                            </div>
+                            <!--  <a href="#" class="btn btn-primary">Go somewhere</a> -->
+                        </div>
+                    </div>
+                </div>
             </div>
-            <nav>
+            <!-- <nav>
                 <ul class="my-pages">
                     <li v-for="page in pagination.last_page" :key="page">
                         <a class="my-page-link" @click="decodePostJson(page)">
@@ -23,7 +61,7 @@
                         </a>
                     </li>
                 </ul>
-            </nav>
+            </nav> -->
         </div>
     </div>
 </template>
