@@ -1,16 +1,31 @@
 <template>
   <div class="container">
     <!-- lista degli appartamenti filtrati -->
-    <button @click="filterApartments()">Filtra gli appartamenti</button>
     <h1 class="my-4 text-center">Qui lista filtrata degli appartamenti</h1>
-    <input
-      name="search"
-      type="text"
-      class="form-input"
-      placeholder="Filtra post [Premi Invio]"
-      v-model="search"
-      @keydown.enter="searchSubmit"
-    />
+    <div class="d-flex">
+      <input
+        name="search"
+        type="text"
+        class="form-input col-5"
+        placeholder="Filtra post [Premi Invio]"
+        v-model="search"
+        @keydown="searchBox"
+        @keydown.enter="searchSubmit"
+        @keyup.enter="getRadiusApartments"
+      />
+      <button class="col-2" @click="getRadiusApartments()">Filtra gli appartamenti</button>
+    </div>
+     <div v-if="luoghi.length !== 0" class="box">
+      <div
+        v-for="(luogo, i) in luoghi"
+        :key="luogo + i"
+        class="my-autocomplete"
+      >
+        <div @click="clickSearch(luogo.address.freeformAddress)">
+          {{ luogo.address.freeformAddress }}
+        </div>
+      </div>
+    </div>
     <!-- cards -->
     <div
       class="d-flex d-flex justify-content-center align-items-center flex-wrap"
@@ -89,7 +104,11 @@ export default {
       apartments: [],
       pagination: {},
       nearbyApartment: [],
+      newApartments: [],
       search:'',
+      luoghi: [],
+      lat: null,
+      long: null,
     };
   },
   methods: {
@@ -116,6 +135,50 @@ export default {
           this.apartments = resp.data.data;
         });
     },
+    async searchBox() {
+      if (this.search.length >= 2) {
+        const result = await axios
+          .get(
+            `https://api.tomtom.com/search/2/geocode/${this.search}.json?storeResult=false&limit=5&countrySet=it&radius=5&view=Unified&key=Z4C8r6rK8x69JksEOmCX43MGffYO83xu`
+          )
+          .then((res) => {
+            this.luoghi = res.data.results;
+            if (this.luoghi.length > 0) {
+              let coords = this.luoghi[0].position;
+              this.lat = coords.lat;
+              this.long = coords.lon;
+            }
+          });
+        return result;
+      } else {
+        this.lat = null;
+        this.long = null;
+        this.luoghi = "";
+      }
+    },
+    getRadiusApartments (page = 1,search=null){
+      if (page < 1) {
+        page = 1;
+      }
+      if (page > this.pagination.last_page) {
+        page = this.pagination.last_page;
+      }
+        axios
+        .get("/api/apartmentsInRadius", {
+          params: {
+            page,
+            filter:search,
+          },
+        })
+        .then((resp) => {
+          this.newApartments = resp.data.data;
+          console.log(this.newApartments);
+        });
+    },
+    clickSearch(luogo) {
+      this.search = luogo;
+      this.searchBox();
+    },
     filterApartments() {
       this.apartments.forEach((element) => {
         let distance = Math.sqrt(
@@ -125,7 +188,7 @@ export default {
         let realDistance = distance * 0.996 * 100;
         console.log(realDistance, " km, sono la prima prova");
         if (realDistance <= 20) {
-          this.nearbyApartment = element;
+          this.apartments = element;
         }
       });
       console.log(this.nearbyApartment);
@@ -143,4 +206,16 @@ export default {
 };
 </script>
 
-<style></style>
+<style lang="scss" scoped>
+
+.box {
+  background-color: white;
+  .my-autocomplete {
+    cursor: pointer;
+    &:hover {
+      background-color: rgba(152, 152, 246, 0.328);
+    }
+  }
+}
+</style>
+
