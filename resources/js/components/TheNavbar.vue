@@ -84,7 +84,8 @@
                                 v-model="query"
                                 @keyup="this.searchBox"
                             />
-                            <router-link :to="'/apartments'"
+                            <router-link
+                                :to="'/apartments'"
                                 class="btn btn-outline-light"
                                 @click.native="onClickButton()"
                             >
@@ -190,7 +191,7 @@ export default {
     },
     methods: {
         onClickButton() {
-            this.$emit("clicked", this.luoghi);
+            this.$emit("clicked", this.luoghi[0]);
         },
 
         fetchUser() {
