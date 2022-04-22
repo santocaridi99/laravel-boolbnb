@@ -72,7 +72,7 @@ class ApartmentController extends Controller
             "longitude" => "required",
             "images" => "nullable",
             "images.*" => "nullable|mimes:jpeg,bmp,png",
-            'isVisible' => 'boolean'
+            'isVisible' => 'nullable|boolean'
         ]);
 
         $apartment = new Apartment();
@@ -202,7 +202,7 @@ class ApartmentController extends Controller
             "longitude" => "required",
             "images" => "nullable",
             "images.*" => "nullable|mimes:jpeg,bmp,png",
-            'isVisible' => 'boolean'
+            'isVisible' => 'nullable|boolean'
         ]);
 
         $apartment = Apartment::findOrFail($id);

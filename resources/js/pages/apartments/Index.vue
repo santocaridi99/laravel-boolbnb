@@ -31,6 +31,34 @@
                 v-model="beds"
                 @keydown.enter="searchSubmit"
             />
+
+            <input
+                type="radio"
+                id="one"
+                value="1"
+                v-model="picked"
+                @change="searchSubmit"
+            />
+            <label for="one">Uno</label>
+            <br />
+            <input
+                type="radio"
+                id="two"
+                value="2"
+                v-model="picked"
+                @change="searchSubmit"
+            />
+            <label for="two">Due</label>
+            <br />
+            <input
+                type="radio"
+                id="three"
+                value="3"
+                v-model="picked"
+                @change="searchSubmit"
+            />
+            <label for="three">Tre</label>
+            <br />
         </div>
         <div v-if="luoghi.length !== 0" class="box">
             <div
@@ -123,6 +151,7 @@ export default {
             nearbyApartment: [],
             newApartments: [],
             search: "",
+            picked: null,
             luoghi: [],
             lat: null,
             long: null,
@@ -132,7 +161,13 @@ export default {
     },
     methods: {
         // assegnavo valore di default alla pagina 1
-        decodeApartmentsJson(page = 1, search = null, rooms = "*", beds = "*") {
+        decodeApartmentsJson(
+            page = 1,
+            search = null,
+            rooms = "*",
+            beds = "*",
+            picked = null
+        ) {
             if (page < 1) {
                 page = 1;
             }
@@ -149,6 +184,7 @@ export default {
                         filter: search,
                         rooms: rooms,
                         beds: beds,
+                        picked: picked,
                     },
                 })
                 .then((resp) => {
@@ -224,7 +260,13 @@ export default {
         searchSubmit() {
             // sfrutto postapi
             //parto da  pagina 1 e secondo argomento
-            this.decodeApartmentsJson(1, this.search, this.rooms, this.beds);
+            this.decodeApartmentsJson(
+                1,
+                this.search,
+                this.rooms,
+                this.beds,
+                this.picked
+            );
         },
     },
     mounted() {

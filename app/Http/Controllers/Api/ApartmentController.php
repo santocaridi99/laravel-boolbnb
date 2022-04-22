@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Apartment;
 use App\Http\Controllers\Controller;
+use App\Tag;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 
@@ -40,21 +41,27 @@ class ApartmentController extends Controller
         $filter = $request->input("filter");
         $rooms = $request->input("rooms");
         $beds = $request->input('beds');
+        $picked = $request->input('picked');
+
         if ($filter && $rooms && $beds) {
-            $apartments = Apartment::where("streetAddress", "LIKE", "%$filter%")->where("room_numbers", "=", "$rooms")->where("bed_numbers", "=", "$beds")->paginate(5);
+            $apartments = Apartment::where("isVisible", "=", "1")->where("streetAddress", "LIKE", "%$filter%")->where("room_numbers", "=", "$rooms")->where("bed_numbers", "=", "$beds")->paginate(5);
         } elseif ($filter && $rooms) {
-            $apartments = Apartment::where("streetAddress", "LIKE", "%$filter%")->where("room_numbers", "=", "$rooms")->paginate(5);
+            $apartments = Apartment::where("isVisible", "=", "1")->where("streetAddress", "LIKE", "%$filter%")->where("room_numbers", "=", "$rooms")->paginate(5);
         } elseif ($filter && $beds) {
-            $apartments = Apartment::where("streetAddress", "LIKE", "%$filter%")->where("bed_numbers", "=", "$beds")->paginate(5);
+            $apartments = Apartment::where("isVisible", "=", "1")->where("streetAddress", "LIKE", "%$filter%")->where("bed_numbers", "=", "$beds")->paginate(5);
         } elseif ($filter) {
-            $apartments = Apartment::where("streetAddress", "LIKE", "%$filter%")->paginate(5);
+            $apartments = Apartment::where("isVisible", "=", "1")->where("streetAddress", "LIKE", "%$filter%")->paginate(5);
         } else {
-            $apartments = Apartment::paginate(5);
+            $apartments = Apartment::where("isVisible", "=", "1")->paginate(5);
         }
 
-
-
         $apartments->load("tags", "user");
+
+        if ($picked) {
+            $apartments = Apartment::whereHas('tags', function ($query) use ($picked) {
+                $query->where('tag_id', $picked);
+            })->paginate(5);
+        }
 
         /* return response()->json([
             "isWorking" => 'yes',
