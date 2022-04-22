@@ -1,0 +1,124 @@
+// NAVBAR
+.back_nav {
+    font-family: 'Inter', sans-serif;
+
+    .navbar-brand>svg {
+        width: 120px;
+        object-fit: 100%;
+    }
+
+    .log_red:hover {
+        color: #FF6332;
+        transition: all .3s linear;
+    }
+
+    .flex_start {
+        display: flex;
+        justify-content: flex-start;
+    }
+}
+
+// INDEX
+.back_ap {
+    font-family: 'Inter', sans-serif;
+
+    // search bar
+    .search_container {
+        height: 100px;
+        width: 100%;
+        padding: 20px;
+        z-index: 1090;
+
+        input {
+            width: 200px;
+            height: 50px;
+            border-radius: 50px;
+            outline: none;
+            border: none;
+            background-color: #2f353a;
+        }
+    }
+
+    .button_search_bar {
+        background-color: $red_org;
+        border-radius: 50%;
+        border: none;
+        width: 50px;
+        height: 50px;
+    }
+
+    // red button
+    .dng_btn {
+        background-color: $red_org;
+        color: white;
+
+        &:hover {
+            color: $red_org;
+            background-color: white;
+        }
+    }
+
+    // edit button
+    .edit_btn {
+        background-color: $dark_org;
+        color: white;
+
+        &:hover {
+            color: $dark_org;
+            background-color: white;
+        }
+    }
+
+    .card {
+        background-color: #292f33;
+
+        h3 > a {
+            color: rgb(219, 219, 219);
+            // color: rgb(41, 40, 40);
+        }
+    }
+}
+
+// SHOW
+.ap_show {
+    font-family: 'Inter',
+    sans-serif;
+
+    .button_back {
+        background-color: $red_org;
+        border: none;
+        outline: none;
+        height: 50px;
+        border-radius: 50px;
+        color: #fff;
+
+        img {
+            width: 30px;
+            height: 30px;
+            object-fit: contain;
+        }
+    } 
+
+    .edit_btn {
+        background-color: $dark_org;
+        color: white;
+    
+        &:hover {
+            color: $dark_org;
+            background-color: white;
+        }
+    }
+
+    .card {
+        background-color: #292f33;
+
+        h2 {
+            color: rgb(219, 219, 219);
+        }
+
+        .edit_container {
+            top: 20px;
+            right: 30px;
+        }
+    }
+}

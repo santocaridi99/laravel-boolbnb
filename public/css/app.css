@@ -20430,6 +20430,171 @@ fieldset:disabled .btn {
   }
 }
 
+.back_nav {
+  font-family: "Inter", sans-serif;
+}
+
+.back_nav .navbar-brand > svg {
+  width: 120px;
+  -o-object-fit: 100%;
+     object-fit: 100%;
+}
+
+.back_nav .log_red:hover {
+  color: #FF6332;
+  transition: all 0.3s linear;
+}
+
+.back_nav .flex_start {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.back_ap {
+  font-family: "Inter", sans-serif;
+}
+
+.back_ap .search_container {
+  height: 100px;
+  width: 100%;
+  padding: 20px;
+  z-index: 1090;
+}
+
+.back_ap .search_container input {
+  width: 200px;
+  height: 50px;
+  border-radius: 50px;
+  outline: none;
+  border: none;
+  background-color: #2f353a;
+}
+
+.back_ap .button_search_bar {
+  background-color: #FF385C;
+  border-radius: 50%;
+  border: none;
+  width: 50px;
+  height: 50px;
+}
+
+.back_ap .dng_btn {
+  background-color: #FF385C;
+  color: white;
+}
+
+.back_ap .dng_btn:hover {
+  color: #FF385C;
+  background-color: white;
+}
+
+.back_ap .edit_btn {
+  background-color: #FF6332;
+  color: white;
+}
+
+.back_ap .edit_btn:hover {
+  color: #FF6332;
+  background-color: white;
+}
+
+.back_ap .card {
+  background-color: #292f33;
+}
+
+.back_ap .card h3 > a,
+.back_ap .card .h3 > a {
+  color: rgb(219, 219, 219);
+}
+
+.ap_show {
+  font-family: "Inter", sans-serif;
+}
+
+.ap_show .button_back {
+  background-color: #FF385C;
+  border: none;
+  outline: none;
+  height: 50px;
+  border-radius: 50px;
+  color: #fff;
+}
+
+.ap_show .button_back img {
+  width: 30px;
+  height: 30px;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+
+.ap_show .edit_btn {
+  background-color: #FF6332;
+  color: white;
+}
+
+.ap_show .edit_btn:hover {
+  color: #FF6332;
+  background-color: white;
+}
+
+.ap_show .card {
+  background-color: #292f33;
+}
+
+.ap_show .card h2,
+.ap_show .card .h2 {
+  color: rgb(219, 219, 219);
+}
+
+.ap_show .card .edit_container {
+  top: 20px;
+  right: 30px;
+}
+
+a,
+button {
+  text-decoration: none;
+}
+
+li {
+  list-style-type: none;
+}
+
+.op {
+  opacity: 0.4;
+}
+
+.blk_bg {
+  background-color: #111;
+}
+
+.blk_font {
+  color: #111;
+}
+
+.blk_op_bg {
+  background-color: hsla(207deg, 10%, 21%, 0.219);
+}
+
+.f_12 {
+  font-size: 12px;
+}
+
+.max_450 {
+  max-width: 450px;
+}
+
+.w_300 {
+  height: 200px;
+  width: 300px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.h_100 {
+  height: 100px;
+}
+
 /*the container must be positioned relative:*/
 
 .autocomplete {

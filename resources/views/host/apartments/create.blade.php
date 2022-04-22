@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container mt-5" id="root">
+<div class="container text-white mt-5" id="root">
   <form class="row g-3" id="formid" autocomplete="off" action="{{ route('host.apartments.store') }}" method="post"
     enctype="multipart/form-data">
 

@@ -14,6 +14,54 @@
 @import "home";
 @import "navbar";
 
+// Back scss
+@import "backLayout";
+
+// UTILITIES
+
+a,
+button {
+  text-decoration: none;
+}
+
+li {
+  list-style-type: none;
+}
+
+.op {
+  opacity: .4;
+}
+
+.blk_bg {
+  background-color: $blk;
+}
+
+.blk_font {
+  color: $blk;
+}
+
+.blk_op_bg {
+  background-color: hsla(207, 10%, 21%, 0.219);
+}
+
+.f_12 {
+  font-size: 12px;
+}
+
+.max_450 {
+  max-width: 450px;
+}
+
+.w_300 {
+  height: 200px;
+  width: 300px;
+  object-fit: cover;
+}
+
+.h_100 {
+  height: 100px;
+}
+
 // DIV SUGGESTION
 
 /*the container must be positioned relative:*/

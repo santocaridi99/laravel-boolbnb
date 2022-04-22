@@ -27663,8 +27663,8 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\total\Desktop\BOOLEAN\PROGETTO TEAM\laravel-boolbnb\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\total\Desktop\BOOLEAN\PROGETTO TEAM\laravel-boolbnb\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\lucre\Desktop\Laravel\laravel-boolbnb\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\lucre\Desktop\Laravel\laravel-boolbnb\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
