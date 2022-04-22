@@ -39,8 +39,13 @@ class ApartmentController extends Controller
     {
         $filter = $request->input("filter");
         $rooms = $request->input("rooms");
-        if ($filter && $rooms) {
+        $beds = $request->input('beds');
+        if ($filter && $rooms && $beds) {
+            $apartments = Apartment::where("streetAddress", "LIKE", "%$filter%")->where("room_numbers", "=", "$rooms")->where("bed_numbers", "=", "$beds")->paginate(5);
+        } elseif ($filter && $rooms) {
             $apartments = Apartment::where("streetAddress", "LIKE", "%$filter%")->where("room_numbers", "=", "$rooms")->paginate(5);
+        } elseif ($filter && $beds) {
+            $apartments = Apartment::where("streetAddress", "LIKE", "%$filter%")->where("bed_numbers", "=", "$beds")->paginate(5);
         } elseif ($filter) {
             $apartments = Apartment::where("streetAddress", "LIKE", "%$filter%")->paginate(5);
         } else {
