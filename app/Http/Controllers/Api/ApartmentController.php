@@ -38,8 +38,9 @@ class ApartmentController extends Controller
     public function index(Request $request)
     {
         $filter = $request->input("filter");
+        $rooms = $request->input("rooms");
         if ($filter) {
-            $apartments = Apartment::where("streetAddress", "LIKE", "%$filter%")->paginate(5);
+            $apartments = Apartment::where("streetAddress", "LIKE", "%$filter%")->orWhere("room_numbers","=","$rooms")->paginate(5);
         } else {
             $apartments = Apartment::paginate(5);
         }

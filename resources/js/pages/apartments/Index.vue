@@ -15,6 +15,10 @@
       />
       <button class="col-2" @click="getRadiusApartments()">Filtra gli appartamenti</button>
     </div>
+    <div class="d-flex">
+      <input type="number" name='rooms' v-model="rooms"  @keydown.enter="searchSubmit"> 
+
+    </div>
      <div v-if="luoghi.length !== 0" class="box">
       <div
         v-for="(luogo, i) in luoghi"
@@ -109,11 +113,12 @@ export default {
       luoghi: [],
       lat: null,
       long: null,
+      rooms:null,
     };
   },
   methods: {
     // assegnavo valore di default alla pagina 1
-    decodeApartmentsJson(page = 1,search=null) {
+    decodeApartmentsJson(page = 1,search=null , rooms=null) {
       if (page < 1) {
         page = 1;
       }
@@ -128,6 +133,7 @@ export default {
           params: {
             page,
             filter:search,
+            rooms:rooms
           },
         })
         .then((resp) => {
@@ -196,7 +202,7 @@ export default {
     searchSubmit() {
       // sfrutto postapi
       //parto da  pagina 1 e secondo argomento
-      this.decodeApartmentsJson(1, this.search);
+      this.decodeApartmentsJson(1, this.search,this.rooms);
     },
   },
   mounted() {
