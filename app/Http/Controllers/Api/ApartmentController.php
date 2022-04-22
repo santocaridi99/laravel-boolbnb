@@ -39,8 +39,10 @@ class ApartmentController extends Controller
     {
         $filter = $request->input("filter");
         $rooms = $request->input("rooms");
-        if ($filter) {
-            $apartments = Apartment::where("streetAddress", "LIKE", "%$filter%")->orWhere("room_numbers","=","$rooms")->paginate(5);
+        if ($filter && $rooms) {
+            $apartments = Apartment::where("streetAddress", "LIKE", "%$filter%")->where("room_numbers", "=", "$rooms")->paginate(5);
+        } elseif ($filter) {
+            $apartments = Apartment::where("streetAddress", "LIKE", "%$filter%")->paginate(5);
         } else {
             $apartments = Apartment::paginate(5);
         }
@@ -79,25 +81,26 @@ class ApartmentController extends Controller
         return response()->json($apartmentDetails);
     }
 
-    public function location(Request $request){
+    public function location(Request $request)
+    {
         $address = $request->input("filter");
 
         $results = Http::get(`https://api.tomtom.com/search/2/geocode/` . $address . `.json?storeResult=false&limit=5&countrySet=it&radius=5&view=Unified&key=Z4C8r6rK8x69JksEOmCX43MGffYO83xu`);
-        
+
         $lat = $results["results"][0]["position"]["lat"];
         $lon = $results["results"][0]["position"]["lon"];
         $apartments = Apartment::all();
         foreach ($apartments as $apartment) {
             $distance = sqrt(
                 pow($lat - $apartment['latitude'], 2) +
-                  pow($lon - $apartment['longitude'], 2)
-              );
+                    pow($lon - $apartment['longitude'], 2)
+            );
             $realDistance = $distance * 0.996 * 100;
             if ($realDistance <= 20) {
                 $apartmentsInRadius[] = $apartment;
             }
         }
 
-       return response()->json($apartmentsInRadius);
+        return response()->json($apartmentsInRadius);
     }
 }
