@@ -56,6 +56,7 @@
                   {{ tag.name + " - " }}
                 </div>
               </div>
+              <router-link class="btn btn-primary" :to="`/apartments/${apartment.slug}`">Mostra apartamento</router-link>
               <!--  <a href="#" class="btn btn-primary">Go somewhere</a> -->
             </div>
           </div>

@@ -51,7 +51,7 @@ export default {
 
             this.map = tt.map({
                 key: "Z4C8r6rK8x69JksEOmCX43MGffYO83xu",
-                container: "map",
+                container:  'map',
                 center: this.coords,
                 zoom: 16,
             });
@@ -61,7 +61,15 @@ export default {
 
         async showMarker() {
             await this.decodeApartment();
+            // let element = document.createElement('div');
+            // element.id = 'marker';
             let marker = new tt.Marker().setLngLat(this.coords).addTo(this.map);
+
+            var popupOffsets = {
+                bottom: [0, -30],
+            }
+            let popup = new tt.Popup({offset: popupOffsets}).setHTML(this.apartmentDet.title);
+            marker.setPopup(popup).togglePopup();
         },
 
         async decodeApartment() {
@@ -91,6 +99,13 @@ export default {
     width: 500px;
     height: 500px;
 }
+
+// #marker {
+//   background-image: url('/img/marker3.png');
+//   background-size: cover;
+//   width: 50px;
+//   height: 70px;
+// }
 /* ---------------- */
 
 h1 {
@@ -98,8 +113,7 @@ h1 {
 }
 img {
     margin: 40px auto;
-    width: 700px;
-    height: 350px;
+    width: 500px;
 }
 .secondary-infos {
     margin-top: 30px;
