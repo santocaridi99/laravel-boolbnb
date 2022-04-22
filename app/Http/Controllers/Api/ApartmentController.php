@@ -47,6 +47,10 @@ class ApartmentController extends Controller
             $apartments = Apartment::where("isVisible", "=", "1")->where("streetAddress", "LIKE", "%$filter%")->where("room_numbers", "=", "$rooms")->where("bed_numbers", "=", "$beds")->paginate(5);
         } elseif ($filter && $rooms) {
             $apartments = Apartment::where("isVisible", "=", "1")->where("streetAddress", "LIKE", "%$filter%")->where("room_numbers", "=", "$rooms")->paginate(5);
+        } elseif ($filter && $picked) {
+            $apartments = Apartment::whereHas('tags', function ($query) use ($picked) {
+                $query->where('tag_id', $picked)->where("isVisible", "=", "1");
+            })->paginate(5);
         } elseif ($filter && $beds) {
             $apartments = Apartment::where("isVisible", "=", "1")->where("streetAddress", "LIKE", "%$filter%")->where("bed_numbers", "=", "$beds")->paginate(5);
         } elseif ($filter) {
@@ -56,12 +60,6 @@ class ApartmentController extends Controller
         }
 
         $apartments->load("tags", "user");
-
-        if ($picked) {
-            $apartments = Apartment::whereHas('tags', function ($query) use ($picked) {
-                $query->where('tag_id', $picked);
-            })->paginate(5);
-        }
 
         /* return response()->json([
             "isWorking" => 'yes',

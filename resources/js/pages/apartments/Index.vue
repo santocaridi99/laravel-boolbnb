@@ -10,53 +10,25 @@
                 placeholder="Filtra post [Premi Invio]"
                 v-model="search"
                 @keydown="searchBox"
-                @keydown.enter="searchSubmit"
-                @keyup.enter="getRadiusApartments"
             />
-            <button class="col-2" @click="getRadiusApartments()">
+            <button class="btn btn-success" @click="searchSubmit">Invia</button>
+            <!-- <button class="col-2" @click="getRadiusApartments()">
                 Filtra gli appartamenti
-            </button>
+            </button> -->
         </div>
         <div class="d-flex m-3">
-            <input
-                type="number"
-                name="rooms"
-                v-model="rooms"
-                @keydown.enter="searchSubmit"
-            />
+            <input type="number" name="rooms" v-model="rooms" />
 
-            <input
-                type="number"
-                name="beds"
-                v-model="beds"
-                @keydown.enter="searchSubmit"
-            />
+            <input type="number" name="beds" v-model="beds" />
 
-            <input
-                type="radio"
-                id="one"
-                value="1"
-                v-model="picked"
-                @change="searchSubmit"
-            />
+            <input type="radio" id="one" value="1" v-model="picked" />
+
             <label for="one">Uno</label>
             <br />
-            <input
-                type="radio"
-                id="two"
-                value="2"
-                v-model="picked"
-                @change="searchSubmit"
-            />
+            <input type="radio" id="two" value="2" v-model="picked" />
             <label for="two">Due</label>
             <br />
-            <input
-                type="radio"
-                id="three"
-                value="3"
-                v-model="picked"
-                @change="searchSubmit"
-            />
+            <input type="radio" id="three" value="3" v-model="picked" />
             <label for="three">Tre</label>
             <br />
         </div>
