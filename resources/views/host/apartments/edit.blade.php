@@ -125,6 +125,7 @@
             <label class="form-check-label" for="flexCheckDefault">
                 L'appartamento è visibile?
             </label>
+            <input type="hidden" name='isVisible' value="0">
             <input class="form-check-input" type="checkbox" value="1" id="flexCheckDefault" name="isVisible" {{
                 $apartment->isVisible ? 'checked' : '' }}>
         </div>

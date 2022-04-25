@@ -1,49 +1,64 @@
 <template>
-  <div>
-    <div class="fixed-top black_banner d-flex flex-column justify-content-center align-items-center">  
-      <div class="search_container text-center d-flex align-items-center justify-content-center">
-        <!-- searchbar -->
-        <input
-          name="search"
-          type="text"
-          class="search_bar ps-3"
-          placeholder="Inserisci la via [Premi Invio]"
-          v-model="search"
-          @keydown.enter="searchSubmit"
-        />
-        <button class="button_search_bar ms-2" @click="filterApartments()"><i class="fas fa-search"></i></button>
-        <button class="filter_button ms-2"> <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="none"><path stroke="#fff" stroke-linecap="round" stroke-width="1.5" d="M6 8.746h12M6 15.317h12"/><circle cx="7.5" cy="8.746" r="1.5" fill="#fff" stroke="#fff" stroke-width="1.5" style="animation:slide 1.5s cubic-bezier(.86,0,.07,1) infinite alternate both"/><circle cx="16.5" cy="15.254" r="1.5" fill="#fff" stroke="#fff" stroke-width="1.5" style="animation:slide-2 1.5s cubic-bezier(.86,0,.07,1) infinite alternate both"/></svg></button>
-      </div>
-  </div>
+    <div class="container">
+        <!-- lista degli appartamenti filtrati -->
+        <h1 class="my-4 text-center">Qui lista filtrata degli appartamenti</h1>
+        <div class="d-flex">
+            <input
+                name="search"
+                type="text"
+                class="form-input col-5"
+                placeholder="Filtra post [Premi Invio]"
+                v-model="search"
+                @keydown="searchBox"
+            />
+            <button class="btn btn-success" @click="searchSubmit">Invia</button>
+            <!-- <button class="col-2" @click="getRadiusApartments()">
+                Filtra gli appartamenti
+            </button> -->
+        </div>
+        <div class="d-flex m-3">
+            <input type="number" name="rooms" v-model="rooms" />
 
-  <div class="container custom_container mt-5">
+            <input type="number" name="beds" v-model="beds" />
 
-    <!-- title - Ricerca --> 
-    <div class="title_back my-5 text-center fw-bold">
-      <h1>{{this.search}}
-        <h1 class="title_front mt-4">{{this.search}}</h1>
-      </h1> 
-    </div>
+            <input type="radio" id="one" value="1" v-model="picked" />
 
-  </div>
-
-    <!-- cards -->
-    <!-- <div
-      class="d-flex d-flex justify-content-center align-items-center flex-wrap"
-    > -->
-      <!-- <ApartmentCard></ApartmentCard>
+            <label for="one">Uno</label>
+            <br />
+            <input type="radio" id="two" value="2" v-model="picked" />
+            <label for="two">Due</label>
+            <br />
+            <input type="radio" id="three" value="3" v-model="picked" />
+            <label for="three">Tre</label>
+            <br />
+        </div>
+        <div v-if="luoghi.length !== 0" class="box">
+            <div
+                v-for="(luogo, i) in luoghi"
+                :key="luogo + i"
+                class="my-autocomplete"
+            >
+                <div @click="clickSearch(luogo.address.freeformAddress)">
+                    {{ luogo.address.freeformAddress }}
+                </div>
+            </div>
+        </div>
+        <!-- cards -->
+        <div
+            class="d-flex d-flex justify-content-center align-items-center flex-wrap"
+        >
+            <!-- <ApartmentCard></ApartmentCard>
             <div v-if="singleLocation !== null">
                 {{ singleLocation.address.freeformAddress }}
             </div> -->
 
-      <div class="container-fluid">
-        <div></div>
-        <div
-          v-for="apartment of apartments"
-          :key="apartment.id"
-          class="apartment-card mt-5"
-        >
-          <!--  <div>{{ apartment.title }}</div>
+            <div class="my-card-cont d-flex">
+                <div
+                    v-for="apartment of apartments"
+                    :key="apartment.id"
+                    class="apartment-card m-4"
+                >
+                    <!--  <div>{{ apartment.title }}</div>
                     <div
                         class="tags-class d-flex"
                         v-for="tag of apartment.tags"
@@ -52,35 +67,33 @@
                         {{ tag.name }}
                     </div> -->
 
-          <div class="flat_cover">
-            <img
-              :src="apartment.cover"
-              alt="Dummy Image"
-            />
-            
-            <div class="card_bg">
-              <h3>{{ apartment.title }}</h3>
-              <p>
-                {{ apartment.description }}
-              </p>
-              <h5>Cosa troverai:</h5>
-              <div class="d-flex">
-                <div
-                  class="tags-class me-1"
-                  v-for="tag of apartment.tags"
-                  :key="tag.id"
-                >
-                 
-                  {{ tag.name }}
+                    <div class="card" style="width: 18rem">
+                        <img
+                            class="card-img-top"
+                            :src="apartment.cover"
+                            alt="Dummy Image"
+                        />
+                        <div class="card-body">
+                            <h5 class="card-title">{{ apartment.title }}</h5>
+                            <p class="card-text">
+                                {{ apartment.description }}
+                            </p>
+
+                            <div class="d-flex">
+                                <div
+                                    class="tags-class me-1"
+                                    v-for="tag of apartment.tags"
+                                    :key="tag.id"
+                                >
+                                    {{ tag.name + " - " }}
+                                </div>
+                            </div>
+                            <!--  <a href="#" class="btn btn-primary">Go somewhere</a> -->
+                        </div>
+                    </div>
                 </div>
-              </div>
-              <button class="button_forward d-flex align-items-center mt-4 px-4"><router-link class="text-white" :to="`/apartments/${apartment.slug}`">Scopri <img class="ps-2" src="/img/frecce.svg" alt=""></router-link></button>
-              <!--  <a href="#" class="btn btn-primary">Go somewhere</a> -->
             </div>
-          </div>
-        </div>
-      </div>
-      <!-- <nav>
+            <!-- <nav>
                 <ul class="my-pages">
                     <li v-for="page in pagination.last_page" :key="page">
                         <a class="my-page-link" @click="decodePostJson(page)">
@@ -89,6 +102,7 @@
                     </li>
                 </ul>
             </nav> -->
+        </div>
     </div>
 </template>
 
@@ -96,69 +110,152 @@
 import axios from "axios";
 import ApartmentCard from "../../components/ApartmentCard.vue";
 export default {
-  components: {
-    ApartmentCard,
-  },
-  props: {
-    singleLocation: Object,
-  },
-  data() {
-    return {
-      apartments: [],
-      pagination: {},
-      nearbyApartment: [],
-      search:'',
-    };
-  },
-  methods: {
-    // assegnavo valore di default alla pagina 1
-    decodeApartmentsJson(page = 1,search=null) {
-      if (page < 1) {
-        page = 1;
-      }
-      if (page > this.pagination.last_page) {
-        page = this.pagination.last_page;
-      }
-      /*  axios.get("/api/posts").then((resp) => {
+    components: {
+        ApartmentCard,
+    },
+    props: {
+        singleLocation: Object,
+    },
+    data() {
+        return {
+            apartments: [],
+            pagination: {},
+            nearbyApartment: [],
+            newApartments: [],
+            search: "",
+            picked: null,
+            luoghi: [],
+            lat: null,
+            long: null,
+            rooms: null,
+            beds: null,
+        };
+    },
+    methods: {
+        // assegnavo valore di default alla pagina 1
+        decodeApartmentsJson(
+            page = 1,
+            search = null,
+            rooms = "*",
+            beds = "*",
+            picked = null
+        ) {
+            if (page < 1) {
+                page = 1;
+            }
+            if (page > this.pagination.last_page) {
+                page = this.pagination.last_page;
+            }
+            /*  axios.get("/api/posts").then((resp) => {
                 this.postToPrint = resp.data;
             }); */
-      axios
-        .get("/api/apartments", {
-          params: {
-            page,
-            filter:search,
-          },
-        })
-        .then((resp) => {
-          this.pagination = resp.data;
-          this.apartments = resp.data.data;
-        });
+            axios
+                .get("/api/apartments", {
+                    params: {
+                        page,
+                        filter: search,
+                        rooms: rooms,
+                        beds: beds,
+                        picked: picked,
+                    },
+                })
+                .then((resp) => {
+                    this.pagination = resp.data;
+                    this.apartments = resp.data.data;
+                });
+        },
+        async searchBox() {
+            if (this.search.length >= 2) {
+                const result = await axios
+                    .get(
+                        `https://api.tomtom.com/search/2/geocode/${this.search}.json?storeResult=false&limit=5&countrySet=it&radius=5&view=Unified&key=Z4C8r6rK8x69JksEOmCX43MGffYO83xu`
+                    )
+                    .then((res) => {
+                        this.luoghi = res.data.results;
+                        if (this.luoghi.length > 0) {
+                            let coords = this.luoghi[0].position;
+                            this.lat = coords.lat;
+                            this.long = coords.lon;
+                        }
+                    });
+                return result;
+            } else {
+                this.lat = null;
+                this.long = null;
+                this.luoghi = "";
+            }
+        },
+        getRadiusApartments(page = 1, search = null) {
+            if (page < 1) {
+                page = 1;
+            }
+            if (page > this.pagination.last_page) {
+                page = this.pagination.last_page;
+            }
+            axios
+                .get("/api/apartmentsInRadius", {
+                    params: {
+                        page,
+                        filter: search,
+                    },
+                })
+                .then((resp) => {
+                    this.newApartments = resp.data.data;
+                    console.log(this.newApartments);
+                });
+        },
+        clickSearch(luogo) {
+            this.search = luogo;
+            this.searchBox();
+        },
+        filterApartments() {
+            this.apartments.forEach((element) => {
+                let distance = Math.sqrt(
+                    Math.pow(
+                        this.singleLocation.position.lat - element.latitude,
+                        2
+                    ) +
+                        Math.pow(
+                            this.singleLocation.position.lon -
+                                element.longitude,
+                            2
+                        )
+                );
+                let realDistance = distance * 0.996 * 100;
+                console.log(realDistance, " km, sono la prima prova");
+                if (realDistance <= 20) {
+                    this.apartments = element;
+                }
+            });
+            console.log(this.nearbyApartment);
+        },
+        searchSubmit() {
+            // sfrutto postapi
+            //parto da  pagina 1 e secondo argomento
+            this.decodeApartmentsJson(
+                1,
+                this.search,
+                this.rooms,
+                this.beds,
+                this.picked
+            );
+        },
     },
-    filterApartments() {
-      this.apartments.forEach((element) => {
-        let distance = Math.sqrt(
-          Math.pow(this.singleLocation.position.lat - element.latitude, 2) +
-            Math.pow(this.singleLocation.position.lon - element.longitude, 2)
-        );
-        let realDistance = distance * 0.996 * 100;
-        console.log(realDistance, " km, sono la prima prova");
-        if (realDistance <= 20) {
-          this.nearbyApartment = element;
-        }
-      });
-      console.log(this.nearbyApartment);
+    mounted() {
+        this.decodeApartmentsJson();
+        // this.filterApartments(this.singleLocation.position.lat, this.singleLocation.position.lon)
     },
-    searchSubmit() {
-      // sfrutto postapi
-      //parto da  pagina 1 e secondo argomento
-      this.decodeApartmentsJson(1, this.search);
-    },
-  },
-  mounted() {
-    this.decodeApartmentsJson();
-    // this.filterApartments(this.singleLocation.position.lat, this.singleLocation.position.lon)
-  },
 };
 </script>
 
-<style></style>
+<style lang="scss" scoped>
+.box {
+    background-color: white;
+    .my-autocomplete {
+        cursor: pointer;
+        &:hover {
+            background-color: rgba(152, 152, 246, 0.328);
+        }
+    }
+}
+</style>
