@@ -1,7 +1,8 @@
 <template>
-    <div class="m-5">
-        <h1>{{ apartmentDet.title }}</h1>
-        <div>{{ apartmentDet.description }}</div>
+    <div class="container-fluid m-5">
+        <!-- title - Nome Appartamento --> 
+        <h1 class="front_show">{{ apartmentDet.title }}</h1>
+        <div class="front_show">{{ apartmentDet.description }}</div>
 
         <img
             class="card-img-top"

@@ -1,30 +1,47 @@
 <template>
-  <div class="container">
-    <!-- lista degli appartamenti filtrati -->
-    <button @click="filterApartments()">Filtra gli appartamenti</button>
-    <h1 class="my-4 text-center">Qui lista filtrata degli appartamenti</h1>
-    <input
-      name="search"
-      type="text"
-      class="form-input"
-      placeholder="Filtra post [Premi Invio]"
-      v-model="search"
-      @keydown.enter="searchSubmit"
-    />
+  <div>
+    <div class="fixed-top black_banner d-flex flex-column justify-content-center align-items-center">  
+      <div class="search_container text-center d-flex align-items-center justify-content-center">
+        <!-- searchbar -->
+        <input
+          name="search"
+          type="text"
+          class="search_bar ps-3"
+          placeholder="Inserisci la via [Premi Invio]"
+          v-model="search"
+          @keydown.enter="searchSubmit"
+        />
+        <button class="button_search_bar ms-2" @click="filterApartments()"><i class="fas fa-search"></i></button>
+        <button class="filter_button ms-2"> <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="none"><path stroke="#fff" stroke-linecap="round" stroke-width="1.5" d="M6 8.746h12M6 15.317h12"/><circle cx="7.5" cy="8.746" r="1.5" fill="#fff" stroke="#fff" stroke-width="1.5" style="animation:slide 1.5s cubic-bezier(.86,0,.07,1) infinite alternate both"/><circle cx="16.5" cy="15.254" r="1.5" fill="#fff" stroke="#fff" stroke-width="1.5" style="animation:slide-2 1.5s cubic-bezier(.86,0,.07,1) infinite alternate both"/></svg></button>
+      </div>
+  </div>
+
+  <div class="container custom_container mt-5">
+
+    <!-- title - Ricerca --> 
+    <div class="title_back my-5 text-center fw-bold">
+      <h1>{{this.search}}
+        <h1 class="title_front mt-4">{{this.search}}</h1>
+      </h1> 
+    </div>
+
+  </div>
+
     <!-- cards -->
-    <div
+    <!-- <div
       class="d-flex d-flex justify-content-center align-items-center flex-wrap"
-    >
+    > -->
       <!-- <ApartmentCard></ApartmentCard>
             <div v-if="singleLocation !== null">
                 {{ singleLocation.address.freeformAddress }}
             </div> -->
 
-      <div class="my-card-cont d-flex">
+      <div class="container-fluid">
+        <div></div>
         <div
           v-for="apartment of apartments"
           :key="apartment.id"
-          class="apartment-card m-4"
+          class="apartment-card mt-5"
         >
           <!--  <div>{{ apartment.title }}</div>
                     <div
@@ -35,28 +52,29 @@
                         {{ tag.name }}
                     </div> -->
 
-          <div class="card" style="width: 18rem">
+          <div class="flat_cover">
             <img
-              class="card-img-top"
               :src="apartment.cover"
               alt="Dummy Image"
             />
-            <div class="card-body">
-              <h5 class="card-title">{{ apartment.title }}</h5>
-              <p class="card-text">
+            
+            <div class="card_bg">
+              <h3>{{ apartment.title }}</h3>
+              <p>
                 {{ apartment.description }}
               </p>
-
+              <h5>Cosa troverai:</h5>
               <div class="d-flex">
                 <div
                   class="tags-class me-1"
                   v-for="tag of apartment.tags"
                   :key="tag.id"
                 >
-                  {{ tag.name + " - " }}
+                 
+                  {{ tag.name }}
                 </div>
               </div>
-              <router-link class="btn btn-primary" :to="`/apartments/${apartment.slug}`">Mostra apartamento</router-link>
+              <button class="button_forward d-flex align-items-center mt-4 px-4"><router-link class="text-white" :to="`/apartments/${apartment.slug}`">Scopri <img class="ps-2" src="/img/frecce.svg" alt=""></router-link></button>
               <!--  <a href="#" class="btn btn-primary">Go somewhere</a> -->
             </div>
           </div>
@@ -72,7 +90,6 @@
                 </ul>
             </nav> -->
     </div>
-  </div>
 </template>
 
 <script>

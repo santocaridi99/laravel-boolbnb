@@ -8,7 +8,7 @@
 
 .custom_nav{
     background-color: #fff;
-    color: #111;
+    color: $blk;
     width: 100%;
     .custom_link{
         margin-bottom: 0;
@@ -25,7 +25,7 @@
 
 //   searchbar
 .black_banner {
-background-color: #111;
+background-color: $blk;
 width: 100%;
 height: 100px;
 margin-top: 108.91px;
@@ -35,7 +35,7 @@ z-index: 1098;
         position: absolute;
         top: 82px;
         background-color: #fff;
-        color: #111;
+        color: $blk;
         width: 280px;
         border-radius: 25px;
         .my-autocomplete {
@@ -57,7 +57,7 @@ z-index: 1098;
         }
         .button_search_bar {
             color: #fff;
-            background-color: #ff385d;
+            background-color: $red_org;
             border-radius: 50%;
             border: none;
             width: 50px;
@@ -73,17 +73,17 @@ z-index: 1098;
 
 
 .nav_text {
-    color: #111;
+    color: $blk;
     &:hover{
         font-weight: 600;
-        color: #111;
+        color: $blk;
     }
 }
 
 .nav_icon {
     display: none;
     &:hover {
-        color: #111;
+        color: $blk;
     }
     .icon {
         font-size: 28px;
@@ -109,7 +109,7 @@ z-index: 1098;
     }
     .nav_icon {
         display: block;
-        color: #111;
+        color: $blk;
         .nav_icon_text{
             font-size: 12px;
             margin-bottom: 0;
@@ -129,7 +129,7 @@ z-index: 1098;
     }
     .nav_icon {
         display: block;
-        color: #111;
+        color: $blk;
         .nav_icon_text{
             font-size: 12px;
             margin-bottom: 0;

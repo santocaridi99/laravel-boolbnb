@@ -11,8 +11,10 @@
 @import '~@fortawesome/fontawesome-free/css/all.css';
 
 // Pages
-@import "home";
-@import "navbar";
+@import "frontHome";
+@import "frontNavbar";
+@import "frontIndex";
+@import "frontShow";
 
 // Back scss
 @import "backLayout";
@@ -22,6 +24,38 @@
 a,
 button {
   text-decoration: none;
+}
+
+.button_back,
+.button_forward {
+  background-color: $dark_org;
+  color: #fff;
+  border: none;
+  outline: none;
+  height: 50px;
+  border-radius: 50px;
+  &:hover {
+    color: #fff;
+  }
+}
+
+.button_back{
+  background-color: $dark_org;
+  img {
+    width: 30px;
+    height: 30px;
+    object-fit: contain;
+    transform: rotateY(180deg);
+  }
+}
+
+.button_forward {
+  background-color: $red_org;
+  img {
+    width: 30px;
+    height: 30px;
+    object-fit: contain;
+  }
 }
 
 li {
