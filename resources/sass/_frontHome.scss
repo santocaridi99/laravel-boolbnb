@@ -65,7 +65,7 @@
 
 //   searchbar
   .blackbanner {
-    background-color: #111;
+    background-color: $blk;
     width: 100%;
     height: 100px;
     margin-top: 108.91px;
@@ -85,7 +85,7 @@
         }
         .button_search_bar{
             color: #fff;
-            background-color: #FF385C;
+            background-color: $red_org;
             border-radius: 50%;
             border: none;
             width: 50px;
@@ -109,7 +109,7 @@
                 padding-left: 30px;
                 position:absolute;
                 top: 20px;
-                color: white;
+                color: #fff;
             }
         }
     }
@@ -162,7 +162,7 @@
             font-weight: 800;
         }
         .button_banner {
-            background-color: #FF385C;
+            background-color: $red_org;
             border: none;
             outline: none;
             height: 50px;

@@ -77,7 +77,6 @@ class ApartmentController extends Controller
 
         $apartment = new Apartment();
 
-
         $apartment->fill($data);
 
         // Genero lo slug partendo dal titolo
@@ -202,7 +201,7 @@ class ApartmentController extends Controller
             "longitude" => "required",
             "images" => "nullable",
             "images.*" => "nullable|mimes:jpeg,bmp,png",
-            'isVisible' => 'boolean'
+            "isVisible" => "boolean"
         ]);
 
         $apartment = Apartment::findOrFail($id);
