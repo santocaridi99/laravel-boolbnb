@@ -21,15 +21,41 @@
 
             <input type="number" name="beds" v-model="beds" />
 
-            <input type="radio" id="one" value="1" v-model="picked" />
-
-            <label for="one">Uno</label>
+            <input type="checkbox" id="1" value="1" v-model="picked" />
+            <label for="1">Piscina</label>
             <br />
-            <input type="radio" id="two" value="2" v-model="picked" />
-            <label for="two">Due</label>
+            <input type="checkbox" id="2" value="2" v-model="picked" />
+            <label for="2">Cortile</label>
             <br />
-            <input type="radio" id="three" value="3" v-model="picked" />
-            <label for="three">Tre</label>
+            <input type="checkbox" id="three" value="3" v-model="picked" />
+            <label for="3">Colazione incluse</label>
+            <br />
+            <input type="checkbox" id="4" value="4" v-model="picked" />
+            <label for="4">Vista mare</label>
+            <br />
+            <input type="checkbox" id="5" value="5" v-model="picked" />
+            <label for="5">Posto auto</label>
+            <br />
+            <input type="checkbox" id="6" value="6" v-model="picked" />
+            <label for="6">Ingresso privato</label>
+            <br />
+            <input type="checkbox" id="7" value="7" v-model="picked" />
+            <label for="7">Patio o balcone</label>
+            <br />
+            <input type="checkbox" id="8" value="8" v-model="picked" />
+            <label for="8">TV</label>
+            <br />
+            <input type="checkbox" id="9" value="9" v-model="picked" />
+            <label for="9">Wi-fi</label>
+            <br />
+            <input type="checkbox" id="10" value="10" v-model="picked" />
+            <label for="10">Riscaldamenti</label>
+            <br />
+            <input type="checkbox" id="11" value="11" v-model="picked" />
+            <label for="11">Aria condizionata</label>
+            <br />
+            <input type="checkbox" id="12" value="12" v-model="picked" />
+            <label for="12">Vicino al centro</label>
             <br />
         </div>
         <div v-if="luoghi.length !== 0" class="box">
@@ -127,7 +153,7 @@ export default {
             nearbyApartment: [],
             newApartments: [],
             search: "",
-            picked: null,
+            picked: [],
             luoghi: [],
             lat: null,
             long: null,
