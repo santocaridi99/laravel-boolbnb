@@ -61,6 +61,8 @@ class ApartmentController extends Controller
         $rooms = $request->input("rooms");
         $beds = $request->input('beds');
         $picked = $request->input('picked');
+        $radius = $request->input('radius');
+        $noResults = 'Non ho trovato nessun risultato';
 
         $filter = $request->input("filter");
 
@@ -69,7 +71,7 @@ class ApartmentController extends Controller
             $coordinate = Http::get('https://api.tomtom.com/search/2/search/.json?key=Z4C8r6rK8x69JksEOmCX43MGffYO83xu&query=' . $filter . '&countrySet=IT' . '&limit=1');
             $lat = $coordinate["results"][0]["position"]["lat"];
             $lon = $coordinate["results"][0]["position"]["lon"];
-            // dump($lat,$lon);
+            // dd($radius);
             // $notFilteredApartments = Apartment::all();
             if ($filter && $rooms && $beds) {
                 $notFilteredApartments = Apartment::where("isVisible", "=", "1")->where("room_numbers", "=", "$rooms")->where("bed_numbers", "=", "$beds")->orderBy('streetAddress', 'DESC')->paginate(5);
@@ -104,10 +106,11 @@ class ApartmentController extends Controller
 
             foreach ($notFilteredApartments as $apartment) {
                 $distance = sqrt(pow($lat - $apartment['latitude'], 2) + pow($lon - $apartment['longitude'], 2)) * 100;
-                if ($distance <= 20) {
+                if ($distance <= $radius) {
                     $filteredApartments[] = $apartment;
                 }
             }
+
             // dd($filteredApartments);
             return response()->json($filteredApartments);
         } else {

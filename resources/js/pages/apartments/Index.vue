@@ -31,6 +31,19 @@
             <input type="radio" id="three" value="3" v-model="picked" />
             <label for="three">Tre</label>
             <br />
+            <input type="range" list="tickmarks" min="0" max="150" v-model="radius" step="15">
+            <datalist id="tickmarks" name="radius">
+              <option value="15" label="15km"></option>
+              <option value="30"></option>
+              <option value="45"></option>
+              <option value="60"></option>
+              <option value="75" label="75km"></option>
+              <option value="90"></option>
+              <option value="105"></option>
+              <option value="120"></option>
+              <option value="135"></option>
+              <option value="150" label="150km"></option>
+            </datalist>
         </div>
         <div v-if="luoghi.length !== 0" class="box">
             <div
@@ -133,6 +146,7 @@ export default {
             long: null,
             rooms: null,
             beds: null,
+            radius: 20,
         };
     },
     methods: {
@@ -142,7 +156,8 @@ export default {
             search = null,
             rooms = "*",
             beds = "*",
-            picked = null
+            picked = null,
+            radius = 20,
         ) {
             if (page < 1) {
                 page = 1;
@@ -162,6 +177,7 @@ export default {
                             rooms: rooms,
                             beds: beds,
                             picked: picked,
+                            radius: radius,
                         },
                     })
                     .then((resp) => {
@@ -260,7 +276,8 @@ export default {
                 this.search,
                 this.rooms,
                 this.beds,
-                this.picked
+                this.picked,
+                this.radius
             );
         },
     },
@@ -270,7 +287,8 @@ export default {
             this.search,
             this.rooms,
             this.beds,
-            this.picked
+            this.picked,
+            this.radius
         );
         // this.filterApartments(this.singleLocation.position.lat, this.singleLocation.position.lon)
     },
