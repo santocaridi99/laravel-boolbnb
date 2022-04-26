@@ -88,7 +88,11 @@
                                     {{ tag.name + " - " }}
                                 </div>
                             </div>
-                            <!--  <a href="#" class="btn btn-primary">Go somewhere</a> -->
+                            <router-link
+                                class="btn btn-primary"
+                                :to="`/apartments/${apartment.slug}`"
+                                >Mostra apartamento</router-link
+                            >
                         </div>
                     </div>
                 </div>
