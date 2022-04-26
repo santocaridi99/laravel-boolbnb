@@ -144,22 +144,22 @@
                                 <div class="d-flex mx-4 i_buttons">
                                     {{-- edit button --}}
                                     <div class="ms-2">
-                                        <button class="edit_btn" type="button"
+                                        <a class="edit_btn" type="button"
                                             href="{{ route('host.apartments.edit', $apartment->slug) }}"
                                             title="Modifica appartamento">
                                             <i class="fa-solid fa-pen-to-square"></i>
-                                        </button>
+                                        </a>
                                     </div>
 
                                     {{-- form che permette di soft deletare un post--}}
                                     <div class="ms-2">
                                         <form
                                             action="{{ route('host.apartments.softDeleteApartment', $apartment->id) }}"
-                                            method="POST" class="d-inline-block ms-auto">
+                                            method="POST">
                                             @csrf
                                             @method("delete")
 
-                                            <button type="submit" class="dng_btn"
+                                            <button type="submit" class="dng_btn p-0 border-0 transparent_bg"
                                                 title="Elimina appartamento">
                                                 <i class="fa-solid fa-trash-can"></i>
                                             </button>

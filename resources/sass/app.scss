@@ -71,12 +71,16 @@ li {
   background-color: $blk;
 }
 
+.blk_op_bg {
+  background-color: hsla(207, 10%, 21%, 0.219);
+}
+
 .blk_font {
   color: $blk;
 }
 
-.blk_op_bg {
-  background-color: hsla(207, 10%, 21%, 0.219);
+.transparent_bg {
+  background-color: transparent;
 }
 
 .f_12 {
