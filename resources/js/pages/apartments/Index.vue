@@ -133,7 +133,7 @@ export default {
   },
   methods: {
     // assegnavo valore di default alla pagina 1
-    decodeApartmentsJson(
+    async decodeApartmentsJson(
       page = 1,
       search = null,
       rooms = "*",
@@ -149,7 +149,8 @@ export default {
       /*  axios.get("/api/posts").then((resp) => {
                 this.postToPrint = resp.data;
             }); */
-      axios
+    try{
+      const resp = await axios
         .get("/api/apartments", {
           params: {
             page,
@@ -174,6 +175,12 @@ export default {
             console.log(this.apartments, "sono apartments");
           }
         });
+        return resp
+
+    }catch(e){
+      console.log('catturato errore , magari la città non è prensete nel db  ' + e.message)
+    }
+     
     },
     async searchBox() {
       if (this.search.length >= 2) {
