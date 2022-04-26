@@ -1,9 +1,8 @@
-window.Vue = require('vue');
+window.Vue = require("vue");
 
 // importato App dalla cartella js/views
 import App from "./views/App.vue";
 import router from "./router";
-
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -11,8 +10,10 @@ import router from "./router";
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
+Vue.component("contact-form", require("./components/ContactForm.vue"));
+
 const app = new Vue({
-    el: '#app',
-    render:(h)=>h(App),
-    router: router
+    el: "#app",
+    render: (h) => h(App),
+    router: router,
 });

@@ -21,3 +21,5 @@ Route::middleware('auth')->get('/user', function (Request $request) {
 Route::get("/apartments", 'Api\ApartmentController@index');
 // Route::get("/apartments", 'Api\ApartmentController@location');
 Route::get("/apartments/{apartment}", "Api\ApartmentController@show");
+
+Route::post("/messages", "Api\MessageController@store");

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Host;
 use App\Apartment;
 use App\Http\Controllers\Controller;
 use App\Image;
+use App\Message;
 use App\Tag;
 use App\Traits\SlugGenerator;
 use Illuminate\Http\Request;
@@ -152,8 +153,9 @@ class ApartmentController extends Controller
     public function show($slug)
     {
         $apartment = Apartment::where("slug", $slug)->first();
+        $messages = Message::where('apartment_id', $apartment->id)->get();
 
-        return view("host.apartments.show", compact("apartment"));
+        return view("host.apartments.show", compact("apartment", 'messages'));
     }
 
     /**

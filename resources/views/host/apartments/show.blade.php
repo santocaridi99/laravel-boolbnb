@@ -53,7 +53,12 @@
             
           </div>
         </div>
-
+        <h3>Messaggi:</h3>
+        @foreach ($messages as $message)
+          <div class="col-md-2">
+            {{$message->content}}
+          </div>
+        @endforeach
       </div>
     </div>
 
