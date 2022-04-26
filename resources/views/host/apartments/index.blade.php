@@ -12,11 +12,11 @@
 
     <div class="row justify-content-center mt-4">
         <div class="col-10">
-            <div class="d-flex align-items-center">
+            <div class="d-flex justify-content-center">
                 {{-- create --}}
                 <div class="create_container">
-                    <a class="btn btn-link create_svg" href="{{ route('host.apartments.create') }}">
-                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="none">
+                    <a class="create_svg" href="{{ route('host.apartments.create') }}">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" width="37" height="37" fill="none">
                             <style>
                                 @keyframes bounce {
                                     0% {
@@ -55,7 +55,7 @@
                 </div>
                 
                 {{-- trash bin --}}
-                <a class="btn btn-link ms-auto" href="{{ route('host.apartments.deletedApartments')}}" title="Cestino">
+                <a class="ms-auto" href="{{ route('host.apartments.deletedApartments')}}" title="Cestino">
                     {{-- <span class="text-white">Cestino</span> --}}
                     <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" width="37" height="37" fill="none">
                         <style>
@@ -144,11 +144,11 @@
                                 <div class="d-flex mx-4 i_buttons">
                                     {{-- edit button --}}
                                     <div class="ms-2">
-                                        <a class="edit_btn" type="button"
+                                        <button class="edit_btn" type="button"
                                             href="{{ route('host.apartments.edit', $apartment->slug) }}"
                                             title="Modifica appartamento">
                                             <i class="fa-solid fa-pen-to-square"></i>
-                                        </a>
+                                        </button>
                                     </div>
 
                                     {{-- form che permette di soft deletare un post--}}
@@ -159,10 +159,10 @@
                                             @csrf
                                             @method("delete")
 
-                                            <a type="submit" class="dng_btn"
+                                            <button type="submit" class="dng_btn"
                                                 title="Elimina appartamento">
                                                 <i class="fa-solid fa-trash-can"></i>
-                                            </a>
+                                            </button>
                                         </form>
                                     </div>
                                 </div>

@@ -20108,7 +20108,7 @@ fieldset:disabled .btn {
   padding-left: 30px;
   position: absolute;
   top: 20px;
-  color: white;
+  color: #fff;
 }
 
 .custom_container .ispirations {
@@ -20361,7 +20361,7 @@ fieldset:disabled .btn {
 
 .black_banner .search_container .button_search_bar {
   color: #fff;
-  background-color: #ff385d;
+  background-color: #FF385C;
   border-radius: 50%;
   border: none;
   width: 50px;
@@ -20428,6 +20428,85 @@ fieldset:disabled .btn {
     font-size: 12px;
     margin-bottom: 0;
   }
+}
+
+@-webkit-keyframes slide {
+  0% {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(10px);
+  }
+}
+
+@keyframes slide {
+  0% {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(10px);
+  }
+}
+
+@-webkit-keyframes slide-2 {
+  0% {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-10px);
+  }
+}
+
+@keyframes slide-2 {
+  0% {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-10px);
+  }
+}
+
+.filter_button {
+  color: #fff;
+  background-color: #FF6332;
+  border-radius: 50%;
+  border: none;
+  width: 50px;
+  height: 50px;
+}
+
+.flat_cover {
+  width: 400px;
+  height: 300px;
+  overflow: hidden;
+  border-radius: 25px;
+  position: relative;
+}
+
+.flat_cover img {
+  width: 100%;
+}
+
+.flat_cover .card_bg {
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 25px;
+  width: 400px;
+}
+
+.flat_cover .card_bg .tags-class {
+  background-color: #111;
+  padding: 5px 10px;
+  border-radius: 20px;
+  color: #fff;
+}
+
+.front_show {
+  color: #fff;
 }
 
 .back_nav {
@@ -20610,6 +20689,44 @@ fieldset:disabled .btn {
 a,
 button {
   text-decoration: none;
+}
+
+.button_back,
+.button_forward {
+  background-color: #FF6332;
+  color: #fff;
+  border: none;
+  outline: none;
+  height: 50px;
+  border-radius: 50px;
+}
+
+.button_back:hover,
+.button_forward:hover {
+  color: #fff;
+}
+
+.button_back {
+  background-color: #FF6332;
+}
+
+.button_back img {
+  width: 30px;
+  height: 30px;
+  -o-object-fit: contain;
+     object-fit: contain;
+  transform: rotateY(180deg);
+}
+
+.button_forward {
+  background-color: #FF385C;
+}
+
+.button_forward img {
+  width: 30px;
+  height: 30px;
+  -o-object-fit: contain;
+     object-fit: contain;
 }
 
 li {
