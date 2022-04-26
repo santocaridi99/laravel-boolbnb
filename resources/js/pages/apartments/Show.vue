@@ -28,14 +28,20 @@
                 </div>
             </div>
         </div>
+
+        <div v-if="apartmentDet.id" class="my-form">
+            <contact-form :apartment_id="apartmentDet.id"></contact-form>
+        </div>
     </div>
 </template>
 
 <script>
 import axios from "axios";
 import tt from "@tomtom-international/web-sdk-maps";
+import ContactForm from "../../components/ContactForm.vue";
 
 export default {
+    components: { ContactForm },
     name: "Map",
     data() {
         return {

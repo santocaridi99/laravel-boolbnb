@@ -21,16 +21,55 @@
 
             <input type="number" name="beds" v-model="beds" />
 
-            <input type="radio" id="one" value="1" v-model="picked" />
-
-            <label for="one">Uno</label>
+            <input type="checkbox" id="1" value="1" v-model="picked" name="picked[]" />
+            <label for="1">Piscina</label>
             <br />
-            <input type="radio" id="two" value="2" v-model="picked" />
-            <label for="two">Due</label>
+            <input type="checkbox" id="2" value="2" v-model="picked" name="picked[]" />
+            <label for="2">Cortile</label>
             <br />
-            <input type="radio" id="three" value="3" v-model="picked" />
-            <label for="three">Tre</label>
+            <input type="checkbox" id="three" value="3" v-model="picked" name="picked[]" />
+            <label for="3">Colazione incluse</label>
             <br />
+            <input type="checkbox" id="4" value="4" v-model="picked" name="picked[]" />
+            <label for="4">Vista mare</label>
+            <br />
+            <input type="checkbox" id="5" value="5" v-model="picked" name="picked[]" />
+            <label for="5">Posto auto</label>
+            <br />
+            <input type="checkbox" id="6" value="6" v-model="picked" name="picked[]" />
+            <label for="6">Ingresso privato</label>
+            <br />
+            <input type="checkbox" id="7" value="7" v-model="picked" name="picked[]" />
+            <label for="7">Patio o balcone</label>
+            <br />
+            <input type="checkbox" id="8" value="8" v-model="picked" name="picked[]" />
+            <label for="8">TV</label>
+            <br />
+            <input type="checkbox" id="9" value="9" v-model="picked" name="picked[]" />
+            <label for="9">Wi-fi</label>
+            <br />
+            <input type="checkbox" id="10" value="10" v-model="picked" name="picked[]" />
+            <label for="10">Riscaldamenti</label>
+            <br />
+            <input type="checkbox" id="11" value="11" v-model="picked" name="picked[]" />
+            <label for="11">Aria condizionata</label>
+            <br />
+            <input type="checkbox" id="12" value="12" v-model="picked" name="picked[]" />
+            <label for="12">Vicino al centro</label>
+            <br />
+            <input type="range" list="tickmarks" min="0" max="150" v-model="radius" step="15">
+            <datalist id="tickmarks" name="radius">
+              <option value="15" label="15km"></option>
+              <option value="30"></option>
+              <option value="45"></option>
+              <option value="60"></option>
+              <option value="75" label="75km"></option>
+              <option value="90"></option>
+              <option value="105"></option>
+              <option value="120"></option>
+              <option value="135"></option>
+              <option value="150" label="150km"></option>
+            </datalist>
         </div>
         <div v-if="luoghi.length !== 0" class="box">
             <div
@@ -88,7 +127,11 @@
                                     {{ tag.name + " - " }}
                                 </div>
                             </div>
-                            <!--  <a href="#" class="btn btn-primary">Go somewhere</a> -->
+                            <router-link
+                                class="btn btn-primary"
+                                :to="`/apartments/${apartment.slug}`"
+                                >Mostra apartamento</router-link
+                            >
                         </div>
                     </div>
                 </div>
@@ -123,22 +166,24 @@ export default {
             nearbyApartment: [],
             newApartments: [],
             search: "",
-            picked: null,
+            picked: [],
             luoghi: [],
             lat: null,
             long: null,
             rooms: null,
             beds: null,
+            radius: 20,
         };
     },
     methods: {
         // assegnavo valore di default alla pagina 1
-        decodeApartmentsJson(
+        async decodeApartmentsJson(
             page = 1,
             search = null,
             rooms = "*",
             beds = "*",
-            picked = null
+            radius = 20,
+            picked = []
         ) {
             if (page < 1) {
                 page = 1;
@@ -149,20 +194,40 @@ export default {
             /*  axios.get("/api/posts").then((resp) => {
                 this.postToPrint = resp.data;
             }); */
-            axios
-                .get("/api/apartments", {
-                    params: {
-                        page,
-                        filter: search,
-                        rooms: rooms,
-                        beds: beds,
-                        picked: picked,
-                    },
-                })
-                .then((resp) => {
-                    this.pagination = resp.data;
-                    this.apartments = resp.data.data;
-                });
+            try {
+                const resp = await axios
+                    .get("/api/apartments", {
+                        params: {
+                            page,
+                            filter: search,
+                            rooms: rooms,
+                            beds: beds,
+                            picked: picked,
+                            radius: radius,
+                        },
+                    })
+                    .then((resp) => {
+                        if (!search) {
+                            console.log(resp.data.data, "sono resp.data.data");
+                            this.pagination = resp.data;
+                            console.log(this.pagination);
+                            this.apartments = resp.data.data;
+                            console.log(this.apartments, "sono apartments");
+                        } else {
+                            console.log(resp.data.data, "sono resp.data.data");
+                            this.pagination = resp;
+                            console.log(this.pagination);
+                            this.apartments = resp.data;
+                            console.log(this.apartments, "sono apartments");
+                        }
+                    });
+                return resp;
+            } catch (e) {
+                console.log(
+                    "catturato errore , magari la città non è prensete nel db  " +
+                        e.message
+                );
+            }
         },
         async searchBox() {
             if (this.search.length >= 2) {
@@ -185,25 +250,25 @@ export default {
                 this.luoghi = "";
             }
         },
-        getRadiusApartments(page = 1, search = null) {
-            if (page < 1) {
-                page = 1;
-            }
-            if (page > this.pagination.last_page) {
-                page = this.pagination.last_page;
-            }
-            axios
-                .get("/api/apartmentsInRadius", {
-                    params: {
-                        page,
-                        filter: search,
-                    },
-                })
-                .then((resp) => {
-                    this.newApartments = resp.data.data;
-                    console.log(this.newApartments);
-                });
-        },
+        // getRadiusApartments(page = 1, search = null) {
+        //   if (page < 1) {
+        //     page = 1;
+        //   }
+        //   if (page > this.pagination.last_page) {
+        //     page = this.pagination.last_page;
+        //   }
+        //   axios
+        //     .get("/api/apartmentsInRadius", {
+        //       params: {
+        //         page,
+        //         filter: search,
+        //       },
+        //     })
+        //     .then((resp) => {
+        //       this.newApartments = resp.data.data;
+        //       console.log(this.newApartments);
+        //     });
+        // },
         clickSearch(luogo) {
             this.search = luogo;
             this.searchBox();
@@ -237,12 +302,20 @@ export default {
                 this.search,
                 this.rooms,
                 this.beds,
-                this.picked
+                this.picked,
+                this.radius
             );
         },
     },
     mounted() {
-        this.decodeApartmentsJson();
+        this.decodeApartmentsJson(
+            1,
+            this.search,
+            this.rooms,
+            this.beds,
+            this.picked,
+            this.radius
+        );
         // this.filterApartments(this.singleLocation.position.lat, this.singleLocation.position.lon)
     },
 };

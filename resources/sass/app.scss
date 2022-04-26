@@ -30,6 +30,7 @@ button {
 .button_forward {
   background-color: $dark_org;
   color: #fff;
+  font-size: 18px;
   border: none;
   outline: none;
   height: 50px;
@@ -42,8 +43,8 @@ button {
 .button_back{
   background-color: $dark_org;
   img {
-    width: 30px;
-    height: 30px;
+    width: 35px;
+    height: 35px;
     object-fit: contain;
     transform: rotateY(180deg);
   }
@@ -52,8 +53,8 @@ button {
 .button_forward {
   background-color: $red_org;
   img {
-    width: 30px;
-    height: 30px;
+    width: 35px;
+    height: 35px;
     object-fit: contain;
   }
 }
