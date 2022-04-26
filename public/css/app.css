@@ -20454,56 +20454,74 @@ fieldset:disabled .btn {
   font-family: "Inter", sans-serif;
 }
 
-.back_ap .search_container {
-  height: 100px;
-  width: 100%;
-  padding: 20px;
-  z-index: 1090;
-}
-
-.back_ap .search_container input {
-  width: 200px;
+.back_ap .create_container {
   height: 50px;
-  border-radius: 50px;
-  outline: none;
-  border: none;
-  background-color: #2f353a;
+  width: 400px;
+  display: block;
+  overflow: hidden;
 }
 
-.back_ap .button_search_bar {
-  background-color: #FF385C;
-  border-radius: 50%;
-  border: none;
-  width: 50px;
-  height: 50px;
+.back_ap .create_container:hover .create_slide {
+  left: 50px;
 }
 
-.back_ap .dng_btn {
-  background-color: #FF385C;
+.back_ap .create_container .create_svg {
+  z-index: 1000;
+  width: 40px;
+  background-color: #111;
+}
+
+.back_ap .create_container .create_slide {
+  position: relative;
+  top: -35px;
+  left: -280px;
+  height: 40px;
+  transition: all linear 1s;
+  z-index: -1;
+}
+
+.back_ap .show_img {
+  height: 350px;
+}
+
+.back_ap .dng_btn i {
   color: white;
+  text-align: center;
+  border: none;
+  height: 35px;
+  width: 35px;
+  line-height: 35px;
+  border-radius: 50%;
+  background-color: #FF385C;
+  transition: all 0.3s ease-in-out;
 }
 
-.back_ap .dng_btn:hover {
+.back_ap .dng_btn i:hover {
   color: #FF385C;
   background-color: white;
+  transition: all 0.3s ease-in-out;
 }
 
-.back_ap .edit_btn {
-  background-color: #FF6332;
+.back_ap .edit_btn i {
   color: white;
+  text-align: center;
+  border: none;
+  height: 35px;
+  width: 35px;
+  line-height: 35px;
+  border-radius: 50%;
+  background-color: #FF6332;
+  transition: all 0.3s ease-in-out;
 }
 
-.back_ap .edit_btn:hover {
+.back_ap .edit_btn i:hover {
   color: #FF6332;
   background-color: white;
+  transition: all 0.3s ease-in-out;
 }
 
-.back_ap .card {
-  background-color: #292f33;
-}
-
-.back_ap .card h3 > a,
-.back_ap .card .h3 > a {
+.back_ap .ap_title h2 > a,
+.back_ap .ap_title .h2 > a {
   color: rgb(219, 219, 219);
 }
 
@@ -20512,7 +20530,7 @@ fieldset:disabled .btn {
 }
 
 .ap_show .button_back {
-  background-color: #FF385C;
+  background-color: #FF6332;
   border: none;
   outline: none;
   height: 50px;
@@ -20525,16 +20543,25 @@ fieldset:disabled .btn {
   height: 30px;
   -o-object-fit: contain;
      object-fit: contain;
+  transform: rotateY(180deg);
 }
 
-.ap_show .edit_btn {
-  background-color: #FF6332;
+.ap_show .edit_btn i {
   color: white;
+  text-align: center;
+  border: none;
+  height: 35px;
+  width: 35px;
+  line-height: 35px;
+  border-radius: 50%;
+  background-color: #FF6332;
+  transition: all 0.3s ease-in-out;
 }
 
-.ap_show .edit_btn:hover {
+.ap_show .edit_btn i:hover {
   color: #FF6332;
   background-color: white;
+  transition: all 0.3s ease-in-out;
 }
 
 .ap_show .card {
@@ -20547,8 +20574,37 @@ fieldset:disabled .btn {
 }
 
 .ap_show .card .edit_container {
-  top: 20px;
+  top: 15px;
   right: 30px;
+}
+
+@media screen and (max-width: 991px) {
+  .back_ap .show_img {
+    height: 200px;
+  }
+
+  .back_ap .ap_body {
+    position: relative;
+  }
+
+  .back_ap .i_buttons .edit_btn > i,
+  .back_ap .i_buttons .dng_btn > i {
+    height: 42px;
+    width: 42px;
+    font-size: 16px;
+    line-height: 42px;
+    position: absolute;
+  }
+
+  .back_ap .edit_btn > i {
+    top: -190px;
+    right: 10px;
+  }
+
+  .back_ap .dng_btn > i {
+    top: -140px;
+    right: 10px;
+  }
 }
 
 a,
@@ -20593,6 +20649,19 @@ li {
 
 .h_100 {
   height: 100px;
+}
+
+.h_150 {
+  height: 150px;
+}
+
+.obj_fit {
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.blk_op_bg {
+  background-color: #292f33;
 }
 
 /*the container must be positioned relative:*/

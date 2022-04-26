@@ -22,57 +22,77 @@
 .back_ap {
     font-family: 'Inter', sans-serif;
 
-    // search bar
-    .search_container {
-        height: 100px;
-        width: 100%;
-        padding: 20px;
-        z-index: 1090;
+    .create_container {
+        height:50px;
+        width:400px;
+        display:block;
+        overflow:hidden;
+        
+        &:hover .create_slide {
+            left: 50px;
+        }
 
-        input {
-            width: 200px;
-            height: 50px;
-            border-radius: 50px;
-            outline: none;
-            border: none;
-            background-color: #2f353a;
+        .create_svg {
+            z-index: 1000;
+            width: 40px;
+            background-color: $blk;
+        }
+
+        .create_slide {
+            position:relative;
+            top:-35px;
+            left:-280px;
+            height: 40px;
+            // background: red;
+            transition: all linear 1s;
+            z-index: -1;
         }
     }
 
-    .button_search_bar {
-        background-color: $red_org;
-        border-radius: 50%;
-        border: none;
-        width: 50px;
-        height: 50px;
+    .show_img {
+        height: 350px;
     }
 
     // red button
-    .dng_btn {
-        background-color: $red_org;
+    .dng_btn i {
         color: white;
+        text-align: center;
+        border: none;
+        height: 35px;
+        width: 35px;
+        line-height: 35px;
+        border-radius: 50%;
+        background-color: $red_org;
+        transition: all .3s ease-in-out;
 
         &:hover {
             color: $red_org;
             background-color: white;
+            transition: all .3s ease-in-out;
         }
     }
 
     // edit button
-    .edit_btn {
-        background-color: $dark_org;
+    .edit_btn i {
         color: white;
+        text-align: center;
+        border: none;
+        height: 35px;
+        width: 35px;
+        line-height: 35px;
+        border-radius: 50%;
+        background-color: $dark_org;
+        transition: all .3s ease-in-out;
 
         &:hover {
             color: $dark_org;
             background-color: white;
+            transition: all .3s ease-in-out;
         }
     }
 
-    .card {
-        background-color: #292f33;
-
-        h3 > a {
+    .ap_title {
+        h2 > a {
             color: rgb(219, 219, 219);
             // color: rgb(41, 40, 40);
         }
@@ -85,7 +105,7 @@
     sans-serif;
 
     .button_back {
-        background-color: $red_org;
+        background-color: $dark_org;
         border: none;
         outline: none;
         height: 50px;
@@ -96,16 +116,25 @@
             width: 30px;
             height: 30px;
             object-fit: contain;
+            transform: rotateY(180deg);
         }
     } 
 
-    .edit_btn {
-        background-color: $dark_org;
+    .edit_btn i {
         color: white;
+        text-align: center;
+        border: none;
+        height: 35px;
+        width: 35px;
+        line-height: 35px;
+        border-radius: 50%;
+        background-color: $dark_org;
+        transition: all .3s ease-in-out;
     
         &:hover {
             color: $dark_org;
             background-color: white;
+            transition: all .3s ease-in-out;
         }
     }
 
@@ -117,8 +146,56 @@
         }
 
         .edit_container {
-            top: 20px;
+            top: 15px;
             right: 30px;
         }
     }
+}
+
+
+@media screen and (max-width: 575px) {
+
+    // .back_ap {
+    //     .i_buttons .edit_btn > i,
+    //     .i_buttons .dng_btn > i {
+    //         height: 25px;
+    //         width: 25px;
+    //         font-size: 12px;
+    //         line-height: 25px;
+    //     }
+    // }
+    
+}
+
+@media screen and (max-width: 991px) {
+
+    .back_ap {
+        .show_img {
+            height: 200px;
+        }
+
+        .ap_body {
+            position: relative;
+        }
+
+        .i_buttons .edit_btn>i,
+        .i_buttons .dng_btn>i {
+            height: 42px;
+            width: 42px;
+            font-size: 16px;
+            line-height: 42px;
+            position: absolute;
+        }
+
+        .edit_btn>i {
+            top: -190px;
+            right: 10px;
+        }
+
+        .dng_btn>i {
+            top: -140px;
+            right: 10px;
+        }
+    }
+
 }
