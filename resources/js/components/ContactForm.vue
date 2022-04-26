@@ -1,7 +1,6 @@
 <template>
     <div>
         <h1>Contatti</h1>
-
         <div v-if="!formSubmitted">
             <div class="mb-3">
                 <label for="exampleFormControlInput2" class="form-label"
@@ -98,6 +97,7 @@
 import axios from "axios";
 export default {
     props: ["apartment_id"],
+
     data() {
         return {
             formSubmitted: false,
@@ -108,6 +108,7 @@ export default {
                 content: "",
                 apartment_id: this.apartment_id,
             },
+            user: null,
             formValidationErrors: null,
         };
     },
@@ -143,6 +144,56 @@ export default {
                 );
             }
         },
+
+        isUserLogged() {
+            if (this.user.name != null) {
+                this.formData.name = this.user.name;
+                this.formData.lastname = this.user.lastname;
+                this.formData.email = this.user.email;
+            }
+        },
+
+        fetchUser() {
+            // recuperiamo l'utente loggato tramite api
+            axios
+                .get("/api/user")
+                .then((resp) => {
+                    // Nel caso in cui sia loggato, riceviamo i dettagli dell'utente
+                    // li salviamo in una variabile locale.
+                    this.user = resp.data;
+                    console.log(this.user);
+                    // All'interno del localStorage, salviamo i dettagli dell'utente
+                    localStorage.setItem("user", JSON.stringify(resp.data));
+                    // Per comunicare in tempo reale che l'utente loggato è cambiato,
+                    // lanciamo un evento custom su window
+                    window.dispatchEvent(new CustomEvent("storedUserChanged"));
+                    if (this.user !== null) {
+                        this.formData.name = this.user.name;
+                        this.formData.email = this.user.email;
+                        console.log(this.formData.name);
+                    }
+                })
+                .catch((er) => {
+                    // Entriamo nel catch SOLO se l'utente non è loggato e il server ci ritorna
+                    // un codice diverso da 200. Se non siamo loggati abbiamo un 401.
+                    // Nel caso di errore, cancelliamo i dettagli dell'utente dal localStorage
+                    localStorage.removeItem("user");
+                    // Per comunicare in tempo reale che l'utente loggato è cambiato,
+                    // lanciamo un evento custom su window
+                    window.dispatchEvent(new CustomEvent("storedUserChanged"));
+                });
+        },
+        getStoredUser() {
+            const storedUser = localStorage.getItem("user");
+            if (storedUser) {
+                this.user = JSON.parse(storedUser);
+            } else {
+                this.user = null;
+            }
+        },
+    },
+    mounted() {
+        this.fetchUser();
     },
 };
 </script>
