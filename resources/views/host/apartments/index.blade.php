@@ -159,10 +159,10 @@
                                             @csrf
                                             @method("delete")
 
-                                            <a type="submit" class="dng_btn"
+                                            <button type="submit" class="dng_btn"
                                                 title="Elimina appartamento">
                                                 <i class="fa-solid fa-trash-can"></i>
-                                            </a>
+                                            </button>
                                         </form>
                                     </div>
                                 </div>
