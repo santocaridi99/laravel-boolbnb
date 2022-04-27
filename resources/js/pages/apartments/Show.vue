@@ -1,36 +1,48 @@
 <template>
-    <div class="container-fluid m-5">
-        <!-- title - Nome Appartamento --> 
-        <h1 class="front_show">{{ apartmentDet.title }}</h1>
-        <div class="front_show">{{ apartmentDet.description }}</div>
+    <div>
+            <!-- <div class="circle">
+                <div class="circle2"></div>
+            </div> -->
+        <div class="container-fluid m-5">
+            <!-- title - Nome Appartamento --> 
+            <h1 class="front_show">{{ apartmentDet.title }}</h1>
+            <!-- <div class="front_show">{{ apartmentDet.description }}</div> -->
 
-        <img
-            class="card-img-top"
-            :src="'	http://127.0.0.1:8000/storage/' + apartmentDet.cover"
-            alt="Dummy Image"
-        />
+            <img
+                class="cover_img"
+                :src="'http://127.0.0.1:8000/storage/' + apartmentDet.cover"
+                alt="Flat cover"
+            />  
+            <!-- <div
+                            class=""
+                            v-for="image of apartmentDet.images"
+                            :key="image.id"
+                        >
+                            <img :src="image.images" alt="">
+                        </div>                  -->
 
-        <div id="map" class="map"></div>
+            <div id="map" class="map"></div>
 
-        <div class="secondary-infos">
-            <div class="my-tags">
-                <i class="fa-solid fa-caret-right"></i>
-                <span>Tags:</span>
+            <div class="">
+                <div class="my-tags">
+                    <i class="fa-solid fa-caret-right"></i>
+                    <span>Tags:</span>
 
-                <div class="d-flex">
-                    <div
-                        class="tags-class"
-                        v-for="tag of apartmentDet.tags"
-                        :key="tag.id"
-                    >
-                        <img :src="tag.icon" alt="">
+                    <div class="d-flex">
+                        <div
+                            class="tags-class"
+                            v-for="tag of apartmentDet.tags"
+                            :key="tag.id"
+                        >
+                            <img :src="tag.icon" alt="">
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
 
-        <div v-if="apartmentDet.id" class="my-form">
-            <contact-form :apartment_id="apartmentDet.id"></contact-form>
+            <div v-if="apartmentDet.id" class="my-form">
+                <contact-form :apartment_id="apartmentDet.id"></contact-form>
+            </div>
         </div>
     </div>
 </template>
@@ -115,13 +127,10 @@ export default {
 // }
 /* ---------------- */
 
-h1 {
-    color: rgb(14, 126, 231);
-}
-img {
-    margin: 40px auto;
-    width: 500px;
-}
+// h1 {
+//     color: rgb(14, 126, 231);
+// }
+
 .secondary-infos {
     margin-top: 30px;
     // .my-tags {

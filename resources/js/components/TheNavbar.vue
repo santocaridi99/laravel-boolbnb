@@ -56,7 +56,7 @@
 
         <div class="fixed-top black_banner d-flex flex-column justify-content-center align-items-center">  
             <div class="search_container text-center d-flex align-items-center justify-content-center">
-                <!-- <button class="button_forward d-flex align-items-center mt-5 px-4"><router-link class=" text-white" aria-current="page" :to="{ name: 'host.index' }">Alloggi</router-link> <img class="ps-2" src="/img/frecce.svg" alt=""></button> -->
+                <!-- <button class="button_forward d-flex align-items-center mt-5 px-4"><router-link class=" text-white" aria-current="page" :to="{ name: 'apartments.index' }">Alloggi</router-link> <img class="ps-2" src="/img/frecce.svg" alt=""> -->
 
                 <!-- search bar -->
                 <input
