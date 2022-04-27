@@ -266,6 +266,7 @@ class ApartmentController extends Controller
         // elimino i collegamenti con tabella tags
         $apartment->tags()->detach();
         $apartment->images()->delete();
+        $apartment->messages()->delete();
 
         if ($apartment->cover) {
             Storage::delete($apartment->cover);
@@ -277,7 +278,6 @@ class ApartmentController extends Controller
                 Storage::delete("images/{$image}");
             }
         }
-
         // $images = explode(",", $apartment->images);
 
         // foreach ($images as $image) {
