@@ -61,11 +61,9 @@ class ApartmentController extends Controller
         $rooms = $request->input("rooms");
         $beds = $request->input('beds');
         $picked = $request->input('picked');
-        $radius = $request->input('radius');
-        $noResults = 'Non ho trovato nessun risultato';
-
         $filter = $request->input("filter");
-
+        $radius = $request->input('radius');
+       
 
         if ($filter) {
             $coordinate = Http::get('https://api.tomtom.com/search/2/search/.json?key=Z4C8r6rK8x69JksEOmCX43MGffYO83xu&query=' . $filter . '&countrySet=IT' . '&limit=1');
