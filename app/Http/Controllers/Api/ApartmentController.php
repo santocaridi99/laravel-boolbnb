@@ -61,9 +61,6 @@ class ApartmentController extends Controller
         $rooms = $request->input("rooms");
         $beds = $request->input('beds');
         $picked = $request->input('picked');
-        $radius = $request->input('radius');
-        $noResults = 'Non ho trovato nessun risultato';
-
         $filter = $request->input("filter");
         $radius = $request->input('radius');
        
