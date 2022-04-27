@@ -15,7 +15,7 @@ class ApartmentsTableSeeder extends Seeder
         $apartments = [
             [
                 'title' => 'Appartamento a Roma',
-                'description' => 'Appartamento',
+                'description' => 'Questo appartamento è situato nella fantastica Tor Bella Monaca',
                 'isVisible' => 1,
                 'room_numbers' => 2,
                 'bed_numbers' => 3,
@@ -34,7 +34,7 @@ class ApartmentsTableSeeder extends Seeder
             ],
             [
                 'title' => 'Appartamento a Milano',
-                'description' => 'Appartamento',
+                'description' => 'Questo appartamento è situato nella fantastica Tor Bella Monaca',
                 'isVisible' => 1,
                 'room_numbers' => 3,
                 'bed_numbers' => 1,
@@ -53,7 +53,7 @@ class ApartmentsTableSeeder extends Seeder
             ],
             [
                 'title' => 'Appartamento a Torino',
-                'description' => 'Appartamento',
+                'description' => 'Questo appartamento è situato nella fantastica Tor Bella Monaca',
                 'isVisible' => 1,
                 'room_numbers' => 6,
                 'bed_numbers' => 3,
@@ -72,7 +72,7 @@ class ApartmentsTableSeeder extends Seeder
             ],
             [
                 'title' => 'Appartamento a Palermo',
-                'description' => 'Appartamento',
+                'description' => 'Questo appartamento è situato nella fantastica Tor Bella Monaca',
                 'isVisible' => 1,
                 'room_numbers' => 3,
                 'bed_numbers' => 4,
@@ -91,7 +91,7 @@ class ApartmentsTableSeeder extends Seeder
             ],
             [
                 'title' => 'Appartamento a Bari',
-                'description' => 'Appartamento',
+                'description' => 'Questo appartamento è situato nella fantastica Tor Bella Monaca',
                 'isVisible' => 1,
                 'room_numbers' => 2,
                 'bed_numbers' => 1,
@@ -110,7 +110,7 @@ class ApartmentsTableSeeder extends Seeder
             ],
             [
                 'title' => 'Appartamento a Bologna',
-                'description' => 'Appartamento',
+                'description' => 'Questo appartamento è situato nella fantastica Tor Bella Monaca',
                 'isVisible' => 1,
                 'room_numbers' => 5,
                 'bed_numbers' => 1,
@@ -129,7 +129,7 @@ class ApartmentsTableSeeder extends Seeder
             ],
             [
                 'title' => 'Appartamento a Milano',
-                'description' => 'Appartamento',
+                'description' => 'Questo appartamento è situato nella fantastica Tor Bella Monaca',
                 'isVisible' => 1,
                 'room_numbers' => 3,
                 'bed_numbers' => 2,
@@ -148,7 +148,7 @@ class ApartmentsTableSeeder extends Seeder
             ],
             [
                 'title' => 'Appartamento a Firenze',
-                'description' => 'Appartamento',
+                'description' => 'Questo appartamento è situato nella fantastica Tor Bella Monaca',
                 'isVisible' => 1,
                 'room_numbers' => 3,
                 'bed_numbers' => 1,
@@ -167,7 +167,7 @@ class ApartmentsTableSeeder extends Seeder
             ],
             [
                 'title' => 'Appartamento a Napoli',
-                'description' => 'Appartamento',
+                'description' => 'Questo appartamento è situato nella fantastica Tor Bella Monaca',
                 'isVisible' => 1,
                 'room_numbers' => 3,
                 'bed_numbers' => 1,
@@ -186,7 +186,7 @@ class ApartmentsTableSeeder extends Seeder
             ],
             [
                 'title' => 'Appartamento a Roma',
-                'description' => 'Appartamento',
+                'description' => 'Questo appartamento è situato nella fantastica Tor Bella Monaca',
                 'isVisible' => 1,
                 'room_numbers' => 8,
                 'bed_numbers' => 6,
@@ -205,7 +205,7 @@ class ApartmentsTableSeeder extends Seeder
             ],
             [
                 'title' => 'Appartamento a Roma',
-                'description' => 'Appartamento',
+                'description' => 'Questo appartamento è situato nella fantastica Tor Bella Monaca',
                 'isVisible' => 1,
                 'room_numbers' => 5,
                 'bed_numbers' => 2,

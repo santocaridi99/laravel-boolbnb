@@ -247,7 +247,7 @@
                                 class="w-100 ex"
                                 :to="`/apartments/${apartment.slug}`"
                             >
-                                <!-- <img
+                                <img
                                     v-if="
                                         apartment.cover ===
                                         'http://127.0.0.1:8000/storage/cover'
@@ -255,9 +255,10 @@
                                     class="card-img-top"
                                     src="https://fakeimg.pl/350x200/?text=Scarpe"
                                     alt="Dummy Image"
-                                /> -->
+                                />
                                 <img
                                     class="card-img-top"
+                                    v-else
                                     :src="apartment.cover"
                                     alt="Dummy Image"
                                 />

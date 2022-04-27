@@ -20,10 +20,22 @@
                 <div class="ap_card bg-light rounded mx-3 mb-5">
                     <div class="row g-0">
                         <div class="col-lg-12 col-md-12 col-sm-12 d-flex align-items-center blk_op_bg">
-                            @if ($apartment->cover)
-                                <img class="w-100 rounded obj_fit show_img" src="{{ asset('storage/' . $apartment->cover) }}" alt="" />
+                            @if ($apartment->cover !== 'cover')
+                                <a href="{{ route('host.apartments.show', $apartment->slug) }}" class="w-100 ex">
+                                    <img 
+                                        class="w-100 rounded obj_fit show_img"
+                                        src="{{ asset('storage/' . $apartment->cover) }}"
+                                        alt=""
+                                    />
+                                </a>
                             @else
-                                <img class="w-100 rounded obj_fit show_img" src="https://via.placeholder.com/1024x480" alt="" />
+                                <a href="{{ route('host.apartments.show', $apartment->slug) }}" class="w-100">
+                                    <img 
+                                        class="w-100 rounded obj_fit show_img"
+                                        src="https://fakeimg.pl/800x600/?text=Scarpe"
+                                        alt=""
+                                    />
+                                </a>
                             @endif
                         </div>
         
