@@ -53,40 +53,6 @@
                 </li>
             </ul>
         </nav>
-
-        <div class="fixed-top black_banner d-flex flex-column justify-content-center align-items-center">  
-            <div class="search_container text-center d-flex align-items-center justify-content-center">
-                <!-- <button class="button_forward d-flex align-items-center mt-5 px-4"><router-link class=" text-white" aria-current="page" :to="{ name: 'apartments.index' }">Alloggi</router-link> <img class="ps-2" src="/img/frecce.svg" alt=""> -->
-
-                <!-- search bar -->
-                <input
-                name="query"
-                class="search_bar ps-3"
-                placeholder="Dove vuoi andare?"
-                v-model="query"
-                @keyup="this.searchBox"/>
-                <router-link
-                :to="'/apartments'"
-                class="button_search_bar ms-2"
-                :class="[query === '' ? 'btnStop' : '']"
-                @click.native="onClickButton()"
-                >
-                <i class="fas fa-search"></i>
-                </router-link>
-            </div>
-            <div v-if="luoghi.length !== 0" class="box p-2">
-                <div
-                v-for="(luogo, i) in luoghi"
-                :key="luogo + i"
-                class="my-autocomplete p-2"
-                >
-                    <div @click="clickSearch(luogo.address.freeformAddress)">
-                        {{ luogo.address.freeformAddress }}
-                    </div>
-                </div>
-
-            </div>
-        </div>
     </div>
 </template>
 
