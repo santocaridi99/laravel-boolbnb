@@ -193,6 +193,7 @@
                     value="10"
                     v-model="picked"
                     name="picked[]"
+                    @change="searchSubmit"
                 />
                 <label for="10">Riscaldamenti</label>
                 <br />
@@ -202,6 +203,7 @@
                     value="11"
                     v-model="picked"
                     name="picked[]"
+                    @change="searchSubmit"
                 />
                 <label for="11">Aria condizionata</label>
                 <br />
@@ -211,6 +213,7 @@
                     value="12"
                     v-model="picked"
                     name="picked[]"
+                    @change="searchSubmit"
                 />
                 <label for="12">Vicino al centro</label>
                 <br />
@@ -232,13 +235,11 @@
             </div>
         </div>
         <!-- appartamenti -->
-        <!-- <div class="row g-0 d-flex justify-content-center flat_row"> -->
-
         <div class="back_ap">
             <div class="ap_card">
                 <div class="row flat_row g-0">
                     <div
-                        class="col-xxl-3 col-lg-4 col-md-12 col-sm-12 px-3 mb-5"
+                        class="col-xxl-3 col-lg-4 col-md-6 col-sm-12 px-3 mb-5"
                         v-for="apartment of apartments"
                         :key="apartment.id"
                     >
@@ -254,13 +255,13 @@
                                     "
                                     class="card-img-top"
                                     src="https://fakeimg.pl/350x200/?text=Scarpe"
-                                    alt="Dummy Image"
+                                    alt="Flat Cover"
                                 />
                                 <img
                                     class="card-img-top"
                                     v-else
                                     :src="apartment.cover"
-                                    alt="Dummy Image"
+                                    alt="Flat Cover"
                                 />
                             </router-link>
 
@@ -359,12 +360,12 @@
 
                                 <!-- {{-- descrizione --}} -->
                                 <div class="text-break p-3 bg-light">
-                                    <h5 class="px-3">Su questo annuncio:</h5>
+                                    <!-- <h5 class="px-3">Su questo annuncio:</h5>
                                     <p
                                         class="ap_text font-monospace lh-base overflow-hidden mb-0 px-3 h_100 op_9"
                                     >
                                         {{ apartment.description }}
-                                    </p>
+                                    </p> -->
                                     <button
                                         class="button_forward d-flex align-items-center ms-auto px-3"
                                     >
@@ -574,13 +575,5 @@ export default {
 //         }
 //     }
 // }
-.my-input-num {
-    background-color: transparent;
-    color: white;
-    width: 65px;
 
-    &:focus {
-        outline: none;
-    }
-}
 </style>

@@ -1,7 +1,11 @@
 <template>
     <div>
-        <h1>Contatti</h1>
-        <div v-if="!formSubmitted">
+        <div class="title_back my-5 text-center fw-bold">
+      <h1>Contatta l'host
+        <h1 class="title_front mt-4">Contatta l'host</h1>
+      </h1> 
+    </div>
+        <div v-if="!formSubmitted" class="text-white">
             <div class="mb-3">
                 <label for="exampleFormControlInput2" class="form-label"
                     >Nome</label
@@ -70,17 +74,12 @@
                     v-if="formValidationErrors && formValidationErrors.content"
                     >{{ formValidationErrors.content }}</span
                 >
-            </div>
-
-            <div class="pb-5">
-                <button
-                    type="submit"
-                    class="btn btn-primary"
-                    @click="formSubmit"
-                >
-                    Invia!
-                </button>
-            </div>
+            </div> 
+            <button type="submit" class="button_forward d-flex align-items-center px-4" @click="formSubmit">
+                Invia
+                <img class="ps-2" src="/img/frecce.svg" alt="">
+            </button>
+            
         </div>
 
         <div v-else class="alert alert-success py-5">
@@ -97,7 +96,7 @@
 import axios from "axios";
 export default {
     props: ["apartment_id"],
-
+   
     data() {
         return {
             formSubmitted: false,
@@ -198,4 +197,22 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.title_back{
+        max-width: 680px;
+        margin: 0 auto;
+        h1{
+        position: relative;
+        font-size: 80px;
+        font-weight: 700;
+            .title_front {
+                font-size: 38px;
+                font-weight: 500;
+                padding-left: 60px;
+                position:absolute;
+                top: 20px;
+                color: #fff;
+            }
+        }
+    }
+</style>

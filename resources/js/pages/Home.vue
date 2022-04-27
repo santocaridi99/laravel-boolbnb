@@ -73,7 +73,7 @@
     <!-- <img src="/img/mountains-banner.png" alt=""> -->
       <div class="banner_text">
       <h2>Sei <br> povero?</h2>
-      <button class="button_forward d-flex align-items-center mt-5 px-4">Consigliami <img class="ps-2" src="/img/frecce.svg" alt=""></button>
+      <button class="button_forward d-flex align-items-center mt-5 px-4"><router-link class=" text-white" aria-current="page" :to="{ name: 'apartments.index' }">Consigliami</router-link> <img class="ps-2" src="/img/frecce.svg" alt=""></button>
       </div>
     </div>
   
