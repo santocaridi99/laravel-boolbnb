@@ -29,7 +29,23 @@
           <h2 class="mt-2 mb-3 fw-bold">{{$apartment->title}}</h2>
 
           {{-- img --}}
-          <img class="img-fluid w-100 mb-2 rounded max_450" src="{{ asset('storage/' . $apartment->cover) }}" alt="" class="post-img">
+          @if ($apartment->cover !== 'cover')
+            <a href="{{ route('host.apartments.show', $apartment->slug) }}" class="w-100 ex">
+                <img 
+                    class="w-100 rounded obj_fit show_img"
+                    src="{{ asset('storage/' . $apartment->cover) }}"
+                    alt=""
+                />
+            </a>
+          @else
+            <a href="{{ route('host.apartments.show', $apartment->slug) }}" class="w-100">
+                <img 
+                    class="w-100 rounded obj_fit show_img"
+                    src="https://fakeimg.pl/800x600/?text=Scarpe"
+                    alt=""
+                />
+            </a>
+          @endif
         </div>
         
         <div class="col-lg-7 col-md-12 col-sm-12 text-white ps-4 d-flex flex-column justify-content-center">
