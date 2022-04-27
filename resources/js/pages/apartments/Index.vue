@@ -247,10 +247,19 @@
                                 class="w-100 ex"
                                 :to="`/apartments/${apartment.slug}`"
                             >
+                                <!-- <img
+                                    v-if="
+                                        apartment.cover ===
+                                        'http://127.0.0.1:8000/storage/cover'
+                                    "
+                                    class="card-img-top"
+                                    src="https://fakeimg.pl/350x200/?text=Scarpe"
+                                    alt="Dummy Image"
+                                /> -->
                                 <img
-                                    class="blk_op_bg w-100 obj_fit show_img"
+                                    class="card-img-top"
                                     :src="apartment.cover"
-                                    alt="Flat Cover"
+                                    alt="Dummy Image"
                                 />
                             </router-link>
 
