@@ -1,7 +1,20 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container text-white mt-5" id="root">
+<div class="container text-white mt-5 create_container" id="root">
+  {{-- title --}}
+  <h1 class="text-white text-center mb-3">Crea un nuovo appartamento</h1>
+
+  {{-- back button --}}
+  <div class="me-auto mb-4">
+    <a class="text-white" href="{{ route('host.apartments.index') }}">
+      <button class="d-flex align-items-center px-4 button_back">
+        <img class="ps-2" src="/img/frecce.svg" alt=""> Torna indietro
+      </button>
+    </a>
+  </div>
+
+  {{-- FORM --}}
   <form class="row g-3" id="formid" autocomplete="off" action="{{ route('host.apartments.store') }}" method="post"
     enctype="multipart/form-data">
 

@@ -20713,7 +20713,8 @@ fieldset:disabled .btn {
   }
 
   .back_ap .i_buttons .edit_btn > i,
-  .back_ap .i_buttons .dng_btn > i {
+  .back_ap .i_buttons .dng_btn > i,
+  .back_ap .i_buttons .restore_btn {
     height: 42px;
     width: 42px;
     font-size: 16px;
@@ -20722,6 +20723,11 @@ fieldset:disabled .btn {
   }
 
   .back_ap .edit_btn > i {
+    top: -190px;
+    right: 10px;
+  }
+
+  .back_ap .restore_btn {
     top: -190px;
     right: 10px;
   }
