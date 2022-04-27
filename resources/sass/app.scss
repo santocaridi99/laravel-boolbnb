@@ -1,5 +1,5 @@
 // Fonts
-@import url("https://fonts.googleapis.com/css?family=Nunito");
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
 // Variables
 @import "variables";
@@ -10,7 +10,123 @@
 // Fontawesome
 @import '~@fortawesome/fontawesome-free/css/all.css';
 
+// Pages
+@import "frontHome";
+@import "frontNavbar";
+@import "frontIndex";
+@import "frontShow";
+@import "frontLayout";
 
+// Back scss
+@import "backLayout";
+
+// UTILITIES
+
+a,
+button {
+  text-decoration: none;
+}
+
+.button_back,
+.button_forward {
+  background-color: $dark_org;
+  color: #fff;
+  font-size: 18px;
+  border: none;
+  outline: none;
+  height: 50px;
+  border-radius: 50px;
+  &:hover {
+    color: #fff;
+  }
+}
+
+.button_back{
+  background-color: $dark_org;
+  img {
+    width: 35px;
+    height: 35px;
+    object-fit: contain;
+    transform: rotateY(180deg);
+  }
+}
+
+.button_forward {
+  background-color: $red_org;
+  img {
+    width: 35px;
+    height: 35px;
+    object-fit: contain;
+  }
+}
+
+li {
+  list-style-type: none;
+}
+
+// OPACITY
+
+.op {
+  opacity: .4;
+}
+
+.op_9 {
+  opacity: .9;
+}
+
+// BG COLORS
+
+.blk_bg {
+  background-color: $blk;
+}
+
+.blk_op_bg {
+  background-color: #292f33;
+}
+
+.transparent_bg {
+  background-color: transparent;
+}
+
+// FONT COLORS
+
+.blk_font {
+  color: $blk;
+}
+
+.white_font {
+  color: rgb(219, 219, 219);
+}
+
+.f_12 {
+  font-size: 12px;
+}
+
+// WIDTH/HEIGHT
+
+.max_450 {
+  max-width: 450px;
+}
+
+.w_300 {
+  height: 200px;
+  width: 300px;
+  object-fit: cover;
+}
+
+.h_100 {
+  height: 100px;
+}
+
+.h_150 {
+  height: 150px;
+}
+
+// OBJ FIT
+
+.obj_fit {
+  object-fit: cover;
+}
 
 // DIV SUGGESTION
 
