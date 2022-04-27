@@ -9,7 +9,7 @@
 
     {{-- Title --}}
     <div class="col-md-6">
-      <label class="form-label">Titolo</label>
+      <label class="form-label">Titolo*</label>
       <input type="text" name="title" class="form-control @error('title') is-invalid @enderror"
         placeholder="Inserisci qui il tuo titolo" value="{{ old('title') }}" required>
       @error('title')
@@ -18,7 +18,7 @@
     </div>
 
     <div class="col-md-6">
-      <label class="form-label">Numero di stanze</label>
+      <label class="form-label">Numero di stanze*</label>
       <input type="number" min="0" name="room_numbers" class="form-control @error('room_numbers') is-invalid @enderror"
         placeholder="Inserisci qui il numero delle stanze" value="{{ old('room_numbers') }}" required>
       @error('room_numbers')
@@ -27,7 +27,7 @@
     </div>
 
     <div class="col-md-6">
-      <label class="form-label">Numero di letti</label>
+      <label class="form-label">Numero di letti*</label>
       <input type="number" min="0" name="bed_numbers" class="form-control @error('bed_numbers') is-invalid @enderror"
         placeholder="Inserisci qui il numero dei letti" value="{{ old('bed_numbers') }}" required>
       @error('bed_numbers')
@@ -36,7 +36,7 @@
     </div>
 
     <div class="col-md-6">
-      <label class="form-label">Numero di bagni</label>
+      <label class="form-label">Numero di bagni*</label>
       <input type="number" min="0" name="bathroom_numbers"
         class="form-control @error('bathroom_numbers') is-invalid @enderror"
         placeholder="Inserisci qui il numero dei bagni" value="{{ old('bathroom_numbers') }}" required>
@@ -46,7 +46,7 @@
     </div>
 
     <div class="col-md-6">
-      <label class="form-label">Metratura</label>
+      <label class="form-label">Metratura*</label>
       <input type="number" min="0" name="square_meters"
         class="form-control @error('square_meters') is-invalid @enderror"
         placeholder="Inserisci qui la metratura della stanza" value="{{ old('square_meters') }}" required>
@@ -57,7 +57,7 @@
 
 
     <div class="col-md-3">
-      <label class="form-label">Immagine di copertina</label>
+      <label class="form-label">Immagine di copertina*</label>
       <input type="file" name='cover' class="form-control @error('cover') is-invalid @enderror">
       @error('cover')
       <div class="invalid-feedback">{{ $message }}</div>
@@ -65,7 +65,7 @@
     </div>
 
     <div class="col-md-6">
-      <label class="form-label">Prezzo per notte</label>
+      <label class="form-label">Prezzo per notte*</label>
       <input type="number" min="0" name="price_per_night"
         class="form-control @error('price_per_night') is-invalid @enderror"
         placeholder="Inserisci qui il prezzo per notte" value="{{ old('price_per_night') }}" required>
@@ -112,7 +112,7 @@
 
     <div class="form-check mb-3">
       <label class="form-check-label" for="flexCheckDefault">
-        L'appartamento è visibile?
+        L'appartamento è visibile?*
       </label>
       <input class="form-check-input" type="checkbox" value="1" id="flexCheckDefault" name="isVisible" {{
         old('isVisible') ? 'checked' : '' }}>
@@ -120,7 +120,7 @@
 
     {{-- contenuto del post --}}
     <div class="col-md-12">
-      <label>Contenuto</label>
+      <label>Contenuto*</label>
       <textarea name="description" rows="10" class="form-control @error('description') is-invalid @enderror"
         placeholder="Inizia a scrivere qualcosa..." required>{{ old('description') }}</textarea>
       @error('description')
@@ -147,7 +147,7 @@
     </div>
 
     <div class="mb-3">
-      <label>Tags</label><br>
+      <label>Tags*</label><br>
       @foreach ($tags as $tag)
       <div class="form-check form-check-inline">
         <input class="form-check-input @error('tags') is-invalid @enderror" type="checkbox" value="{{ $tag->id }}" id="tag_{{ $tag->id }}" name="tags[]">

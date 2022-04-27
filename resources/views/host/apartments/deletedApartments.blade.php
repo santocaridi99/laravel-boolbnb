@@ -19,7 +19,7 @@
                         {{-- buttons --}}
                         <div class="ms-auto">
                             {{-- form --}}
-                            <form action="{{ route('host.apartments.destroy', $apartment->id) }}" method="POST" class="d-inline-block">
+                            <form action="{{ route('host.apartments.destroy', $apartment->id) }}" method="POST" class="d-inline-block delete">
                                 @csrf
                                 @method("delete")
                                 <button type="submit" class="btn btn-outline-danger btn-sm">
@@ -27,11 +27,27 @@
                                 </button>
                             </form>
                             <a class="ms-auto btn btn-outline-success btn-sm" href="{{ route('host.apartments.restoreApartment', $apartment->id) }}">Restore</a>
-                        </div>
+                        </div>    
                     </div>
                     @endforeach
                 </div>
             </div>
         </div>
     </div>
-@endsection
+    
+    <script>
+        const form=document.querySelector(".delete")
+        form.addEventListener("submit", function(event) {
+          event.preventDefault();
+    
+        const result = confirm("Are you sure?");
+    
+        if (result) {
+            form.submit();
+          }
+        });
+    </script>
+
+    @endsection
+
+   
