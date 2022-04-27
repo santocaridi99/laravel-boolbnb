@@ -11,7 +11,7 @@
     <div class="col-md-6">
       <label class="form-label">Titolo*</label>
       <input type="text" name="title" class="form-control @error('title') is-invalid @enderror"
-        placeholder="Inserisci qui il tuo titolo" value="{{ old('title') }}" required  data-parsley-pattern="^(?:[A-Za-z]+[ -])*[A-Za-z]+$" data-parsley-length='[5,35]' data-parsley-trigger='change'>
+        placeholder="Inserisci qui il tuo titolo" value="{{ old('title') }}" required  data-parsley-pattern="^(?:[A-Za-z]+[ -])*[A-Za-z]+$" data-parsley-length='[5,100]' data-parsley-trigger='change'>
       @error('title')
       <div class="invalid-feedback">{{ $message }}</div>
       @enderror
@@ -121,7 +121,7 @@
     <div class="col-md-12">
       <label>Contenuto*</label>
       <textarea name="description" rows="10" class="form-control @error('description') is-invalid @enderror"
-        placeholder="Inizia a scrivere qualcosa..." required   data-parsley-length='[20,100]'  data-parsley-trigger="change" >{{ old('description') }}</textarea>
+        placeholder="Inizia a scrivere qualcosa..." required   data-parsley-length='[20,250]'  data-parsley-trigger="change" >{{ old('description') }}</textarea>
       @error('description')
       <div class="invalid-feedback">{{ $message }}</div>
       @enderror

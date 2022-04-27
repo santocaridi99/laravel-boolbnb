@@ -52,8 +52,8 @@ class ApartmentController extends Controller
     public function store(Request $request)
     {
         $data = $request->validate([
-            "title" => "required|min:5|max:35",
-            "description" => "required|min:20|max:200",
+            "title" => "required|min:5|max:100",
+            "description" => "required|min:20|max:250",
             "room_numbers" => "required|integer|between:1,100",
             "bed_numbers" => "required|integer|between:1,100",
             "bathroom_numbers" => "required|integer|between:1,100",
@@ -182,13 +182,13 @@ class ApartmentController extends Controller
     public function update(Request $request, $id)
     {
         $data = $request->validate([
-            "title" => "required|min:5|max:35",
-            "description" => "required|min:20|max:200",
+            "title" => "required|min:5|max:100",
+            "description" => "required|min:20|max:250",
             "room_numbers" => "required|integer|between:1,100",
             "bed_numbers" => "required|integer|between:1,100",
             "bathroom_numbers" => "required|integer|between:1,100",
             "square_meters" => "required|integer|between:1,1200",
-            "cover" => "required|mimes:jpeg,bmp,png",
+            "cover" => "nullable|mimes:jpeg,bmp,png",
             "price_per_night" => "required|numeric|min:0",
             "country" => "required|regex:/^[\pL\s\-]+$/u",
             "region" => "required|regex:/^[\pL\s\-]+$/u",
