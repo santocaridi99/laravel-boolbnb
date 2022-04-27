@@ -36,35 +36,35 @@
 </button> -->
         <div class="m-5 text-white" v-if="show">
             <div class="">
-                <input class="input_bar m-2" type="number" name="rooms" v-model="rooms" placeholder="rooms"/>
-                <input class="input_bar m-2" type="number" name="beds" v-model="beds" placeholder="beds"/>
+                <input class="input_bar m-2" type="number" name="rooms" v-model="rooms" placeholder="rooms" @change="searchSubmit" />
+                <input class="input_bar m-2" type="number" name="beds" v-model="beds" placeholder="beds" @change="searchSubmit" />
             </div>
             <div>
-                <input type="checkbox" id="1" value="1" v-model="picked" name="picked[]" />
+                <input type="checkbox" id="1" value="1" v-model="picked" name="picked[]" @change="searchSubmit" />
                 <label for="1">Piscina</label>
                 <br />
-                <input type="checkbox" id="2" value="2" v-model="picked" name="picked[]" />
+                <input type="checkbox" id="2" value="2" v-model="picked" name="picked[]" @change="searchSubmit"  />
                 <label for="2">Cortile</label>
                 <br />
-                <input type="checkbox" id="three" value="3" v-model="picked" name="picked[]" />
+                <input type="checkbox" id="three" value="3" v-model="picked" name="picked[]" @change="searchSubmit"  />
                 <label for="3">Colazione incluse</label>
                 <br />
-                <input type="checkbox" id="4" value="4" v-model="picked" name="picked[]" />
+                <input type="checkbox" id="4" value="4" v-model="picked" name="picked[]" @change="searchSubmit"  />
                 <label for="4">Vista mare</label>
                 <br />
-                <input type="checkbox" id="5" value="5" v-model="picked" name="picked[]" />
+                <input type="checkbox" id="5" value="5" v-model="picked" name="picked[]" @change="searchSubmit" />
                 <label for="5">Posto auto</label>
                 <br />
-                <input type="checkbox" id="6" value="6" v-model="picked" name="picked[]" />
+                <input type="checkbox" id="6" value="6" v-model="picked" name="picked[]" @change="searchSubmit"  />
                 <label for="6">Ingresso privato</label>
                 <br />
-                <input type="checkbox" id="7" value="7" v-model="picked" name="picked[]" />
+                <input type="checkbox" id="7" value="7" v-model="picked" name="picked[]" @change="searchSubmit" />
                 <label for="7">Patio o balcone</label>
                 <br />
-                <input type="checkbox" id="8" value="8" v-model="picked" name="picked[]" />
+                <input type="checkbox" id="8" value="8" v-model="picked" name="picked[]" @change="searchSubmit" />
                 <label for="8">TV</label>
                 <br />
-                <input type="checkbox" id="9" value="9" v-model="picked" name="picked[]" />
+                <input type="checkbox" id="9" value="9" v-model="picked" name="picked[]" @change="searchSubmit" />
                 <label for="9">Wi-fi</label>
                 <br />
                 <input type="checkbox" id="10" value="10" v-model="picked" name="picked[]" />
