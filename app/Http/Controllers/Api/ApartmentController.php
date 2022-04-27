@@ -63,7 +63,7 @@ class ApartmentController extends Controller
         $picked = $request->input('picked');
         $filter = $request->input("filter");
         $radius = $request->input('radius');
-       
+
 
         if ($filter) {
             $coordinate = Http::get('https://api.tomtom.com/search/2/search/.json?key=Z4C8r6rK8x69JksEOmCX43MGffYO83xu&query=' . $filter . '&countrySet=IT' . '&limit=1');
@@ -77,7 +77,7 @@ class ApartmentController extends Controller
                 $notFilteredApartments = Apartment::where("isVisible", "=", "1")->where("room_numbers", "=", "$rooms")->orderBy('streetAddress', 'DESC')->paginate(15);
             } elseif ($filter && $picked) {
                 $notFilteredApartments = Apartment::whereHas('tags', function ($query) use ($picked) {
-                    $query->where('tag_id', $picked)->where("isVisible", "=", "1")->orderBy('streetAddress', 'DESC');
+                    $query->whereIn('tag_id', $picked)->where("isVisible", "=", "1")->orderBy('streetAddress', 'DESC');
                 })->paginate(15);
             } elseif ($filter && $beds) {
                 $notFilteredApartments = Apartment::where("isVisible", "=", "1")->where("bed_numbers", "=", "$beds")->orderBy('streetAddress', 'DESC')->paginate(15);
@@ -118,7 +118,7 @@ class ApartmentController extends Controller
                 $apartments = Apartment::where("isVisible", "=", "1")->where("room_numbers", "=", "$rooms")->orderBy('streetAddress', 'DESC')->paginate(15);
             } elseif ($picked) {
                 $apartments = Apartment::whereHas('tags', function ($query) use ($picked) {
-                    $query->where('tag_id', $picked)->where("isVisible", "=", "1")->orderBy('streetAddress', 'DESC');
+                    $query->whereIn('tag_id', $picked)->where("isVisible", "=", "1")->orderBy('streetAddress', 'DESC');
                 })->paginate(15);
             } elseif ($beds) {
                 $apartments = Apartment::where("isVisible", "=", "1")->where("bed_numbers", "=", "$beds")->orderBy('streetAddress', 'DESC')->paginate(15);
