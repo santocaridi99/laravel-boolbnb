@@ -63,7 +63,8 @@ class ApartmentController extends Controller
         $picked = $request->input('picked');
 
         $filter = $request->input("filter");
-
+        $radius = $request->input('radius');
+       
 
         if ($filter) {
             $coordinate = Http::get('https://api.tomtom.com/search/2/search/.json?key=Z4C8r6rK8x69JksEOmCX43MGffYO83xu&query=' . $filter . '&countrySet=IT' . '&limit=1');
@@ -104,7 +105,7 @@ class ApartmentController extends Controller
 
             foreach ($notFilteredApartments as $apartment) {
                 $distance = sqrt(pow($lat - $apartment['latitude'], 2) + pow($lon - $apartment['longitude'], 2)) * 100;
-                if ($distance <= 20) {
+                if ($distance <= $radius) {
                     $filteredApartments[] = $apartment;
                 }
             }

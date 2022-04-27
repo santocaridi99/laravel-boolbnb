@@ -1,90 +1,182 @@
 <template>
-    <div class="container">
-        <!-- lista degli appartamenti filtrati -->
-        <h1 class="my-4 text-center">Qui lista filtrata degli appartamenti</h1>
-        <div class="d-flex">
-            <input
-                name="search"
-                type="text"
-                class="form-input col-5"
-                placeholder="Filtra post [Premi Invio]"
-                v-model="search"
-                @keydown="searchBox"
-            />
-            <button class="btn btn-success" @click="searchSubmit">Invia</button>
-            <!-- <button class="col-2" @click="getRadiusApartments()">
+  <div class="container">
+    <!-- lista degli appartamenti filtrati -->
+    <h1 class="my-4 text-center">Qui lista filtrata degli appartamenti</h1>
+    <div class="d-flex">
+      <input
+        name="search"
+        type="text"
+        class="form-input col-5"
+        placeholder="Filtra post [Premi Invio]"
+        v-model="search"
+        @keydown="searchBox"
+      />
+      <button class="btn btn-success" @click="searchSubmit">Invia</button>
+      <!-- <button class="col-2" @click="getRadiusApartments()">
                 Filtra gli appartamenti
             </button> -->
-        </div>
-        <div class="d-flex m-3">
-            <input type="number" name="rooms" v-model="rooms" />
+    </div>
+    <div class="d-flex m-3">
+      <input type="number" name="rooms" v-model="rooms" />
 
-            <input type="number" name="beds" v-model="beds" />
+      <input type="number" name="beds" v-model="beds" />
 
-            <input type="checkbox" id="1" value="1" v-model="picked" name="picked[]" />
-            <label for="1">Piscina</label>
-            <br />
-            <input type="checkbox" id="2" value="2" v-model="picked" name="picked[]" />
-            <label for="2">Cortile</label>
-            <br />
-            <input type="checkbox" id="three" value="3" v-model="picked" name="picked[]" />
-            <label for="3">Colazione incluse</label>
-            <br />
-            <input type="checkbox" id="4" value="4" v-model="picked" name="picked[]" />
-            <label for="4">Vista mare</label>
-            <br />
-            <input type="checkbox" id="5" value="5" v-model="picked" name="picked[]" />
-            <label for="5">Posto auto</label>
-            <br />
-            <input type="checkbox" id="6" value="6" v-model="picked" name="picked[]" />
-            <label for="6">Ingresso privato</label>
-            <br />
-            <input type="checkbox" id="7" value="7" v-model="picked" name="picked[]" />
-            <label for="7">Patio o balcone</label>
-            <br />
-            <input type="checkbox" id="8" value="8" v-model="picked" name="picked[]" />
-            <label for="8">TV</label>
-            <br />
-            <input type="checkbox" id="9" value="9" v-model="picked" name="picked[]" />
-            <label for="9">Wi-fi</label>
-            <br />
-            <input type="checkbox" id="10" value="10" v-model="picked" name="picked[]" />
-            <label for="10">Riscaldamenti</label>
-            <br />
-            <input type="checkbox" id="11" value="11" v-model="picked" name="picked[]" />
-            <label for="11">Aria condizionata</label>
-            <br />
-            <input type="checkbox" id="12" value="12" v-model="picked" name="picked[]" />
-            <label for="12">Vicino al centro</label>
-            <br />
+      <input
+        type="checkbox"
+        id="1"
+        value="1"
+        v-model="picked"
+        name="picked[]"
+      />
+      <label for="1">Piscina</label>
+      <br />
+      <input
+        type="checkbox"
+        id="2"
+        value="2"
+        v-model="picked"
+        name="picked[]"
+      />
+      <label for="2">Cortile</label>
+      <br />
+      <input
+        type="checkbox"
+        id="three"
+        value="3"
+        v-model="picked"
+        name="picked[]"
+      />
+      <label for="3">Colazione incluse</label>
+      <br />
+      <input
+        type="checkbox"
+        id="4"
+        value="4"
+        v-model="picked"
+        name="picked[]"
+      />
+      <label for="4">Vista mare</label>
+      <br />
+      <input
+        type="checkbox"
+        id="5"
+        value="5"
+        v-model="picked"
+        name="picked[]"
+      />
+      <label for="5">Posto auto</label>
+      <br />
+      <input
+        type="checkbox"
+        id="6"
+        value="6"
+        v-model="picked"
+        name="picked[]"
+      />
+      <label for="6">Ingresso privato</label>
+      <br />
+      <input
+        type="checkbox"
+        id="7"
+        value="7"
+        v-model="picked"
+        name="picked[]"
+      />
+      <label for="7">Patio o balcone</label>
+      <br />
+      <input
+        type="checkbox"
+        id="8"
+        value="8"
+        v-model="picked"
+        name="picked[]"
+      />
+      <label for="8">TV</label>
+      <br />
+      <input
+        type="checkbox"
+        id="9"
+        value="9"
+        v-model="picked"
+        name="picked[]"
+      />
+      <label for="9">Wi-fi</label>
+      <br />
+      <input
+        type="checkbox"
+        id="10"
+        value="10"
+        v-model="picked"
+        name="picked[]"
+      />
+      <label for="10">Riscaldamenti</label>
+      <br />
+      <input
+        type="checkbox"
+        id="11"
+        value="11"
+        v-model="picked"
+        name="picked[]"
+      />
+      <label for="11">Aria condizionata</label>
+      <br />
+      <input
+        type="checkbox"
+        id="12"
+        value="12"
+        v-model="picked"
+        name="picked[]"
+      />
+      <label for="12">Vicino al centro</label>
+      <br />
+      <input
+        type="range"
+        list="tickmarks"
+        min="0"
+        max="150"
+        v-model="radius"
+        step="15"
+      />
+      <datalist id="tickmarks" name="radius">
+        <option value="15" label="15km"></option>
+        <option value="30"></option>
+        <option value="45"></option>
+        <option value="60"></option>
+        <option value="75" label="75km"></option>
+        <option value="90"></option>
+        <option value="105"></option>
+        <option value="120"></option>
+        <option value="135"></option>
+        <option value="150" label="150km"></option>
+      </datalist>
+    </div>
+    <div v-if="luoghi.length !== 0" class="box">
+      <div
+        v-for="(luogo, i) in luoghi"
+        :key="luogo + i"
+        class="my-autocomplete"
+      >
+        <div @click="clickSearch(luogo.address.freeformAddress)">
+          {{ luogo.address.freeformAddress }}
         </div>
-        <div v-if="luoghi.length !== 0" class="box">
-            <div
-                v-for="(luogo, i) in luoghi"
-                :key="luogo + i"
-                class="my-autocomplete"
-            >
-                <div @click="clickSearch(luogo.address.freeformAddress)">
-                    {{ luogo.address.freeformAddress }}
-                </div>
-            </div>
-        </div>
-        <!-- cards -->
-        <div
-            class="d-flex d-flex justify-content-center align-items-center flex-wrap"
-        >
-            <!-- <ApartmentCard></ApartmentCard>
+      </div>
+    </div>
+    <!-- cards -->
+    <div
+      class="d-flex d-flex justify-content-center align-items-center flex-wrap"
+    >
+      <!-- <ApartmentCard></ApartmentCard>
             <div v-if="singleLocation !== null">
                 {{ singleLocation.address.freeformAddress }}
             </div> -->
 
-            <div class="my-card-cont d-flex">
-                <div
-                    v-for="apartment of apartments"
-                    :key="apartment.id"
-                    class="apartment-card m-4"
-                >
-                    <!--  <div>{{ apartment.title }}</div>
+      <div class="my-card-cont d-flex">
+        <div
+          v-for="apartment of apartments"
+          :key="apartment.id"
+          class="apartment-card m-4"
+        >
+          <!--  <div>{{ apartment.title }}</div>
                     <div
                         class="tags-class d-flex"
                         v-for="tag of apartment.tags"
@@ -93,37 +185,37 @@
                         {{ tag.name }}
                     </div> -->
 
-                    <div class="card" style="width: 18rem">
-                        <img
-                            class="card-img-top"
-                            :src="apartment.cover"
-                            alt="Dummy Image"
-                        />
-                        <div class="card-body">
-                            <h5 class="card-title">{{ apartment.title }}</h5>
-                            <p class="card-text">
-                                {{ apartment.description }}
-                            </p>
+          <div class="card" style="width: 18rem">
+            <img
+              class="card-img-top"
+              :src="apartment.cover"
+              alt="Dummy Image"
+            />
+            <div class="card-body">
+              <h5 class="card-title">{{ apartment.title }}</h5>
+              <p class="card-text">
+                {{ apartment.description }}
+              </p>
 
-                            <div class="d-flex">
-                                <div
-                                    class="tags-class me-1"
-                                    v-for="tag of apartment.tags"
-                                    :key="tag.id"
-                                >
-                                    {{ tag.name + " - " }}
-                                </div>
-                            </div>
-                            <router-link
-                                class="btn btn-primary"
-                                :to="`/apartments/${apartment.slug}`"
-                                >Mostra apartamento</router-link
-                            >
-                        </div>
-                    </div>
+              <div class="d-flex">
+                <div
+                  class="tags-class me-1"
+                  v-for="tag of apartment.tags"
+                  :key="tag.id"
+                >
+                  {{ tag.name + " - " }}
                 </div>
+              </div>
+              <router-link
+                class="btn btn-primary"
+                :to="`/apartments/${apartment.slug}`"
+                >Mostra apartamento</router-link
+              >
             </div>
-            <!-- <nav>
+          </div>
+        </div>
+      </div>
+      <!-- <nav>
                 <ul class="my-pages">
                     <li v-for="page in pagination.last_page" :key="page">
                         <a class="my-page-link" @click="decodePostJson(page)">
@@ -132,185 +224,190 @@
                     </li>
                 </ul>
             </nav> -->
-        </div>
     </div>
+  </div>
 </template>
 
 <script>
 import axios from "axios";
 import ApartmentCard from "../../components/ApartmentCard.vue";
 export default {
-    components: {
-        ApartmentCard,
-    },
-    props: {
-        singleLocation: Object,
-    },
-    data() {
-        return {
-            apartments: [],
-            pagination: {},
-            nearbyApartment: [],
-            newApartments: [],
-            search: "",
-            picked: [],
-            luoghi: [],
-            lat: null,
-            long: null,
-            rooms: null,
-            beds: null,
-        };
-    },
-    methods: {
-        // assegnavo valore di default alla pagina 1
-        async decodeApartmentsJson(
-            page = 1,
-            search = null,
-            rooms = "*",
-            beds = "*",
-            picked = []
-        ) {
-            if (page < 1) {
-                page = 1;
-            }
-            if (page > this.pagination.last_page) {
-                page = this.pagination.last_page;
-            }
-            /*  axios.get("/api/posts").then((resp) => {
+  components: {
+    ApartmentCard,
+  },
+  props: {
+    singleLocation: Object,
+  },
+  data() {
+    return {
+      apartments: [],
+      pagination: {},
+      nearbyApartment: [],
+      newApartments: [],
+      search: "",
+      picked: [],
+      luoghi: [],
+      lat: null,
+      long: null,
+      rooms: null,
+      beds: null,
+      radius: 20,
+    };
+  },
+  methods: {
+    // assegnavo valore di default alla pagina 1
+    async decodeApartmentsJson(
+      page = 1,
+      search = null,
+      rooms = "*",
+      beds = "*",
+      picked = [],
+      radius = 20
+    ) {
+      if (page < 1) {
+        page = 1;
+      }
+      if (page > this.pagination.last_page) {
+        page = this.pagination.last_page;
+      }
+      /*  axios.get("/api/posts").then((resp) => {
                 this.postToPrint = resp.data;
             }); */
-            try {
-                const resp = await axios
-                    .get("/api/apartments", {
-                        params: {
-                            page,
-                            filter: search,
-                            rooms: rooms,
-                            beds: beds,
-                            picked: picked,
-                        },
-                    })
-                    .then((resp) => {
-                        if (!search) {
-                            console.log(resp.data.data, "sono resp.data.data");
-                            this.pagination = resp.data;
-                            console.log(this.pagination);
-                            this.apartments = resp.data.data;
-                            console.log(this.apartments, "sono apartments");
-                        } else {
-                            console.log(resp.data.data, "sono resp.data.data");
-                            this.pagination = resp;
-                            console.log(this.pagination);
-                            this.apartments = resp.data;
-                            console.log(this.apartments, "sono apartments");
-                        }
-                    });
-                return resp;
-            } catch (e) {
-                console.log(
-                    "catturato errore , magari la città non è prensete nel db  " +
-                        e.message
-                );
-            }
-        },
-        async searchBox() {
-            if (this.search.length >= 2) {
-                const result = await axios
-                    .get(
-                        `https://api.tomtom.com/search/2/geocode/${this.search}.json?storeResult=false&limit=5&countrySet=it&radius=5&view=Unified&key=Z4C8r6rK8x69JksEOmCX43MGffYO83xu`
-                    )
-                    .then((res) => {
-                        this.luoghi = res.data.results;
-                        if (this.luoghi.length > 0) {
-                            let coords = this.luoghi[0].position;
-                            this.lat = coords.lat;
-                            this.long = coords.lon;
-                        }
-                    });
-                return result;
+      try {
+        const resp = await axios
+          .get("/api/apartments", {
+            params: {
+              page,
+              filter: search,
+              rooms: rooms,
+              beds: beds,
+              picked: picked,
+              radius: radius,
+            },
+          })
+          .then((resp) => {
+            if (!search) {
+              console.log(resp.data.data, "sono resp.data.data");
+              this.pagination = resp.data;
+              console.log(this.pagination);
+              this.apartments = resp.data.data;
+              console.log(this.apartments, "sono apartments");
             } else {
-                this.lat = null;
-                this.long = null;
-                this.luoghi = "";
+              console.log(resp.data.data, "sono resp.data.data");
+              this.pagination = resp;
+              console.log(this.pagination);
+              this.apartments = resp.data;
+              console.log(this.apartments, "sono apartments");
             }
-        },
-        // getRadiusApartments(page = 1, search = null) {
-        //   if (page < 1) {
-        //     page = 1;
-        //   }
-        //   if (page > this.pagination.last_page) {
-        //     page = this.pagination.last_page;
-        //   }
-        //   axios
-        //     .get("/api/apartmentsInRadius", {
-        //       params: {
-        //         page,
-        //         filter: search,
-        //       },
-        //     })
-        //     .then((resp) => {
-        //       this.newApartments = resp.data.data;
-        //       console.log(this.newApartments);
-        //     });
-        // },
-        clickSearch(luogo) {
-            this.search = luogo;
-            this.searchBox();
-        },
-        filterApartments() {
-            this.apartments.forEach((element) => {
-                let distance = Math.sqrt(
-                    Math.pow(
-                        this.singleLocation.position.lat - element.latitude,
-                        2
-                    ) +
-                        Math.pow(
-                            this.singleLocation.position.lon -
-                                element.longitude,
-                            2
-                        )
-                );
-                let realDistance = distance * 0.996 * 100;
-                console.log(realDistance, " km, sono la prima prova");
-                if (realDistance <= 20) {
-                    this.apartments = element;
-                }
-            });
-            console.log(this.nearbyApartment);
-        },
-        searchSubmit() {
-            // sfrutto postapi
-            //parto da  pagina 1 e secondo argomento
-            this.decodeApartmentsJson(
-                1,
-                this.search,
-                this.rooms,
-                this.beds,
-                this.picked
-            );
-        },
-    },
-    mounted() {
-        this.decodeApartmentsJson(
-            1,
-            this.search,
-            this.rooms,
-            this.beds,
-            this.picked
+          });
+        return resp;
+      } catch (e) {
+        console.log(
+          "catturato errore , magari la città non è prensete nel db  " +
+            e.message
         );
-        // this.filterApartments(this.singleLocation.position.lat, this.singleLocation.position.lon)
+      }
     },
+    async searchBox() {
+      if (this.search.length >= 2) {
+        const result = await axios
+          .get(
+            `https://api.tomtom.com/search/2/geocode/${this.search}.json?storeResult=false&limit=5&countrySet=it&radius=5&view=Unified&key=Z4C8r6rK8x69JksEOmCX43MGffYO83xu`
+          )
+          .then((res) => {
+            this.luoghi = res.data.results;
+            if (this.luoghi.length > 0) {
+              let coords = this.luoghi[0].position;
+              this.lat = coords.lat;
+              this.long = coords.lon;
+            }
+          });
+        return result;
+      } else {
+        this.lat = null;
+        this.long = null;
+        this.luoghi = "";
+      }
+    },
+    // getRadiusApartments(page = 1, search = null) {
+    //   if (page < 1) {
+    //     page = 1;
+    //   }
+    //   if (page > this.pagination.last_page) {
+    //     page = this.pagination.last_page;
+    //   }
+    //   axios
+    //     .get("/api/apartmentsInRadius", {
+    //       params: {
+    //         page,
+    //         filter: search,
+    //       },
+    //     })
+    //     .then((resp) => {
+    //       this.newApartments = resp.data.data;
+    //       console.log(this.newApartments);
+    //     });
+    // },
+    clickSearch(luogo) {
+      this.search = luogo;
+      this.searchBox();
+    },
+    // filterApartments() {
+    //     this.apartments.forEach((element) => {
+    //         let distance = Math.sqrt(
+    //             Math.pow(
+    //                 this.singleLocation.position.lat - element.latitude,
+    //                 2
+    //             ) +
+    //                 Math.pow(
+    //                     this.singleLocation.position.lon -
+    //                         element.longitude,
+    //                     2
+    //                 )
+    //         );
+    //         let realDistance = distance * 0.996 * 100;
+    //         console.log(realDistance, " km, sono la prima prova");
+    //         if (realDistance <= 20) {
+    //             this.apartments = element;
+    //         }
+    //     });
+    //     console.log(this.nearbyApartment);
+    // },
+    searchSubmit() {
+      // sfrutto postapi
+      //parto da  pagina 1 e secondo argomento
+      this.decodeApartmentsJson(
+        1,
+        this.search,
+        this.rooms,
+        this.beds,
+        this.picked,
+        this.radius
+      );
+    },
+  },
+  mounted() {
+    this.decodeApartmentsJson(
+      1,
+      this.search,
+      this.rooms,
+      this.beds,
+      this.picked,
+      this.radius
+    );
+    // this.filterApartments(this.singleLocation.position.lat, this.singleLocation.position.lon)
+  },
 };
 </script>
 
 <style lang="scss" scoped>
 .box {
-    background-color: white;
-    .my-autocomplete {
-        cursor: pointer;
-        &:hover {
-            background-color: rgba(152, 152, 246, 0.328);
-        }
+  background-color: white;
+  .my-autocomplete {
+    cursor: pointer;
+    &:hover {
+      background-color: rgba(152, 152, 246, 0.328);
     }
+  }
 }
 </style>
