@@ -10,7 +10,7 @@
 
         {{-- Title --}}
         <div class="col-md-6">
-            <label class="form-label">Titolo</label>
+            <label class="form-label">Titolo*</label>
             <input type="text" name="title" class="form-control @error('title') is-invalid @enderror"
                 value="{{ old('title',$apartment->title) }}">
             @error('title')
@@ -19,7 +19,7 @@
         </div>
 
         <div class="col-md-6">
-            <label class="form-label">Numero di stanze</label>
+            <label class="form-label">Numero di stanze*</label>
             <input type="number" name="room_numbers" class="form-control @error('room_numbers') is-invalid @enderror"
                 value="{{ old('room_numbers', $apartment->room_numbers)}}">
             @error('room_numbers')
@@ -28,7 +28,7 @@
         </div>
 
         <div class="col-md-6">
-            <label class="form-label">Numero di letti</label>
+            <label class="form-label">Numero di letti*</label>
             <input type="number" name="bed_numbers" class="form-control @error('bed_numbers') is-invalid @enderror"
                 value="{{ old('bed_numbers',$apartment->bed_numbers)}}">
             @error('bed_numbers')
@@ -37,7 +37,7 @@
         </div>
 
         <div class="col-md-6">
-            <label class="form-label">Numero di bagni</label>
+            <label class="form-label">Numero di bagni*</label>
             <input type="number" name="bathroom_numbers"
                 class="form-control @error('bathroom_numbers') is-invalid @enderror"
                 value="{{ old('bathroom_numbers',$apartment->bathroom_numbers) }}">
@@ -47,7 +47,7 @@
         </div>
 
         <div class="col-md-6">
-            <label class="form-label">Metratura</label>
+            <label class="form-label">Metratura*</label>
             <input type="number" name="square_meters" class="form-control @error('square_meters') is-invalid @enderror"
                 value="{{ old('square_meters',$apartment->square_meters) }}">
             @error('square_meters')
@@ -57,7 +57,7 @@
 
 
         <div class="col-md-6">
-            <label class="form-label">Immagine di copertina</label>
+            <label class="form-label">Immagine di copertina*</label>
             <input type="file" name='cover' class="form-control @error('cover') is-invalid @enderror">
             <div class="col-3"><img class="img-fluid" src="{{ asset('storage/' . $apartment->cover) }}" alt=""
                     class="post-img"></div>
@@ -67,7 +67,7 @@
         </div>
 
         <div class="col-md-6">
-            <label class="form-label">Prezzo per notte</label>
+            <label class="form-label">Prezzo per notte*</label>
             <input type="number" name="price_per_night"
                 class="form-control @error('price_per_night') is-invalid @enderror"
                 value="{{ old('price_per_night', $apartment->price_per_night) }}">
@@ -123,7 +123,7 @@
 
         <div class="form-check mb-3">
             <label class="form-check-label" for="flexCheckDefault">
-                L'appartamento è visibile?
+                L'appartamento è visibile?*
             </label>
             <input type="hidden" name='isVisible' value="0">
             <input class="form-check-input" type="checkbox" value="1" id="flexCheckDefault" name="isVisible" {{
@@ -132,7 +132,7 @@
 
         {{-- contenuto del post --}}
         <div class="col-md-12">
-            <label>Contenuto</label>
+            <label>Contenuto*</label>
             <textarea name="description" rows="10"
                 class="form-control @error('description') is-invalid @enderror">{{ old('description',$apartment->description) }}</textarea>
             @error('description')
@@ -159,7 +159,7 @@
         </div>
 
         <div class="mb-3">
-            <label>Tags</label><br>
+            <label>Tags*</label><br>
             @foreach ($tags as $tag)
             <div class="form-check form-check-inline">
                 <input class="form-check-input @error('tags') is-invalid @enderror" type="checkbox" value="{{ $tag->id }}" id="tag_{{ $tag->id }}"
