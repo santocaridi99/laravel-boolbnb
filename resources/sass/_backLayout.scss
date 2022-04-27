@@ -117,6 +117,7 @@
     .tags_container > img {
         width: 45px;
         opacity: .5;
+        margin: 5px 0;
     }
 }
 
@@ -174,18 +175,25 @@
 }
 
 
+// MEDIA QUERY
 @media screen and (max-width: 575px) {
 
-    // .back_ap {
-    //     .i_buttons .edit_btn > i,
-    //     .i_buttons .dng_btn > i {
-    //         height: 25px;
-    //         width: 25px;
-    //         font-size: 12px;
-    //         line-height: 25px;
-    //     }
-    // }
-    
+    .back_ap {
+
+        .tags_container>img {
+            width: 36px;
+        }
+    }
+}
+
+@media screen and (max-width: 767px) {
+
+    .back_ap {
+
+        .tags_container>img {
+            width: 36px;
+        }
+    }
 }
 
 @media screen and (max-width: 991px) {

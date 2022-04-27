@@ -127,9 +127,9 @@
                                         @endif
 
                                         @if ($apartment->bed_numbers === 1)
-                                        {{$apartment->bed_numbers}} camera da letto &#10022;
+                                        {{$apartment->bed_numbers}} posto letto &#10022;
                                         @else
-                                        {{$apartment->bed_numbers}} camere da letto &#10022;
+                                        {{$apartment->bed_numbers}} posti letto &#10022;
                                         @endif
 
                                         @if ($apartment->bathroom_numbers === 1)
@@ -175,6 +175,8 @@
                                 {{-- icons --}}
                                 @foreach ($apartment->tags as $tag)
                                     <img class="mx-3" src="{{$tag->icon}}" alt="{{$tag->name}}" title="{{$tag->name}}">
+
+                                    <span class="badge bg-secondary visually-hidden mx-3">{{$tag->name}}</span>
                                 @endforeach
                             </div>
 
