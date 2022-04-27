@@ -162,21 +162,19 @@
             </div>
         </div>
         <!-- cards -->
-        <div
-            class="d-flex d-flex justify-content-center align-items-center flex-wrap"
-        >
-            <!-- <ApartmentCard></ApartmentCard>
+
+        <!-- <ApartmentCard></ApartmentCard>
             <div v-if="singleLocation !== null">
                 {{ singleLocation.address.freeformAddress }}
             </div> -->
 
-            <div class="my-card-cont d-flex">
-                <div
-                    v-for="apartment of apartments"
-                    :key="apartment.id"
-                    class="apartment-card m-4"
-                >
-                    <!--  <div>{{ apartment.title }}</div>
+        <div class="my-card-cont d-flex flex-wrap">
+            <div
+                v-for="apartment of apartments"
+                :key="apartment.id"
+                class="apartment-card m-3"
+            >
+                <!--  <div>{{ apartment.title }}</div>
                     <div
                         class="tags-class d-flex"
                         v-for="tag of apartment.tags"
@@ -185,43 +183,46 @@
                         {{ tag.name }}
                     </div> -->
 
-                    <div class="card" style="width: 18rem">
-                        <!-- <img
-                            class="card-img-top"
-                           
-                            :src="apartment.cover"
-                            alt="Dummy Image"
-                        /> -->
-                        <img
+                <div class="card" style="width: 18rem">
+                    <!-- <img
+                            v-if="
+                                apartment.cover ===
+                                'http://127.0.0.1:8000/storage/cover'
+                            "
                             class="card-img-top"
                             src="https://fakeimg.pl/350x200/?text=Scarpe"
                             alt="Dummy Image"
-                        />
-                        <div class="card-body">
-                            <h5 class="card-title">{{ apartment.title }}</h5>
-                            <p class="card-text">
-                                {{ apartment.description }}
-                            </p>
+                        /> -->
+                    <img
+                        class="card-img-top"
+                        :src="apartment.cover"
+                        alt="Dummy Image"
+                    />
+                    <div class="card-body">
+                        <h5 class="card-title">{{ apartment.title }}</h5>
+                        <p class="card-text">
+                            {{ apartment.description }}
+                        </p>
 
-                            <div class="d-flex">
-                                <div
-                                    class="tags-class me-1"
-                                    v-for="tag of apartment.tags"
-                                    :key="tag.id"
-                                >
-                                    {{ tag.name + " - " }}
-                                </div>
-                            </div>
-                            <router-link
-                                class="btn btn-primary"
-                                :to="`/apartments/${apartment.slug}`"
-                                >Mostra apartamento</router-link
+                        <div class="d-flex">
+                            <div
+                                class="tags-class me-1"
+                                v-for="tag of apartment.tags"
+                                :key="tag.id"
                             >
+                                {{ tag.name + " - " }}
+                            </div>
                         </div>
+                        <router-link
+                            class="btn btn-primary"
+                            :to="`/apartments/${apartment.slug}`"
+                            >Mostra apartamento</router-link
+                        >
                     </div>
                 </div>
             </div>
-            <!-- <nav>
+        </div>
+        <!-- <nav>
                 <ul class="my-pages">
                     <li v-for="page in pagination.last_page" :key="page">
                         <a class="my-page-link" @click="decodePostJson(page)">
@@ -230,7 +231,6 @@
                     </li>
                 </ul>
             </nav> -->
-        </div>
     </div>
 </template>
 
