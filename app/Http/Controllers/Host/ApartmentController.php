@@ -188,7 +188,7 @@ class ApartmentController extends Controller
             "bed_numbers" => "required|integer|between:1,100",
             "bathroom_numbers" => "required|integer|between:1,100",
             "square_meters" => "required|integer|between:1,1200",
-            "cover" => "nullable|mimes:jpeg,bmp,png",
+            "cover" => "required|mimes:jpeg,bmp,png",
             "price_per_night" => "required|numeric|min:0",
             "country" => "required|regex:/^[\pL\s\-]+$/u",
             "region" => "required|regex:/^[\pL\s\-]+$/u",
@@ -212,15 +212,6 @@ class ApartmentController extends Controller
         }
 
 
-        if (key_exists("cover", $data)) {
-            if ($apartment->cover) {
-                Storage::delete($apartment->cover);
-            }
-            $coverImg = Storage::put("coversImg", $data["cover"]);
-
-            $apartment->cover = $coverImg;
-            $apartment->save();
-        }
         $apartment->update($data);
 
         if (key_exists("tags", $data)) {
@@ -238,6 +229,18 @@ class ApartmentController extends Controller
         // svolgo le seguenti operazioni
         // se ho già elementi nell'appartamento , cancello questa parte di request $apartment->images()
         // altrimenti procede normalmente e salva le immagini uplodate come da procedimento sulla funzione store.
+
+        if (key_exists("cover", $data)) {
+            $coverImg=$request->file('cover');
+            if ($apartment->cover) {
+                Storage::delete($apartment->cover);
+            }
+            $coverImg = Storage::put("coversImg", $data["cover"]);
+
+            $apartment->cover = $coverImg;
+            $apartment->save();
+        }
+        
         if ($request->hasFile("images")) {
             if ($apartment->images) {
                 $apartment->images()->delete();
