@@ -20558,7 +20558,7 @@ fieldset:disabled .btn {
 }
 
 .back_ap .create_container {
-  height: 50px;
+  height: 40px;
   width: 400px;
   display: block;
   overflow: hidden;
@@ -20569,14 +20569,14 @@ fieldset:disabled .btn {
 }
 
 .back_ap .create_container .create_svg {
-  z-index: 1000;
+  z-index: 1;
   width: 40px;
   background-color: #111;
 }
 
 .back_ap .create_container .create_slide {
   position: relative;
-  top: -35px;
+  top: -32px;
   left: -280px;
   height: 40px;
   transition: all linear 1s;
@@ -20587,13 +20587,17 @@ fieldset:disabled .btn {
   height: 350px;
 }
 
+.back_ap .title_a:hover {
+  color: white;
+}
+
 .back_ap .dng_btn i {
   color: white;
   text-align: center;
   border: none;
-  height: 35px;
-  width: 35px;
-  line-height: 35px;
+  height: 40px;
+  width: 40px;
+  line-height: 40px;
   border-radius: 50%;
   background-color: #FF385C;
   transition: all 0.3s ease-in-out;
@@ -20609,9 +20613,9 @@ fieldset:disabled .btn {
   color: white;
   text-align: center;
   border: none;
-  height: 35px;
-  width: 35px;
-  line-height: 35px;
+  height: 40px;
+  width: 40px;
+  line-height: 40px;
   border-radius: 50%;
   background-color: #FF6332;
   transition: all 0.3s ease-in-out;
@@ -20623,9 +20627,27 @@ fieldset:disabled .btn {
   transition: all 0.3s ease-in-out;
 }
 
-.back_ap .ap_title h2 > a,
-.back_ap .ap_title .h2 > a {
-  color: rgb(219, 219, 219);
+.back_ap .restore_btn i {
+  color: white;
+  text-align: center;
+  border: none;
+  height: 40px;
+  width: 40px;
+  line-height: 40px;
+  border-radius: 50%;
+  background-color: rgb(66, 173, 66);
+  transition: all 0.3s ease-in-out;
+}
+
+.back_ap .restore_btn i:hover {
+  color: rgb(66, 173, 66);
+  background-color: white;
+  transition: all 0.3s ease-in-out;
+}
+
+.back_ap .tags_container > img {
+  width: 45px;
+  opacity: 0.5;
 }
 
 .ap_show {
@@ -20762,20 +20784,28 @@ li {
   opacity: 0.4;
 }
 
+.op_9 {
+  opacity: 0.9;
+}
+
 .blk_bg {
   background-color: #111;
 }
 
 .blk_op_bg {
-  background-color: hsla(207deg, 10%, 21%, 0.219);
+  background-color: #292f33;
+}
+
+.transparent_bg {
+  background-color: transparent;
 }
 
 .blk_font {
   color: #111;
 }
 
-.transparent_bg {
-  background-color: transparent;
+.white_font {
+  color: rgb(219, 219, 219);
 }
 
 .f_12 {
@@ -20804,10 +20834,6 @@ li {
 .obj_fit {
   -o-object-fit: cover;
      object-fit: cover;
-}
-
-.blk_op_bg {
-  background-color: #292f33;
 }
 
 /*the container must be positioned relative:*/

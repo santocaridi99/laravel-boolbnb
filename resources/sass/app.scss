@@ -63,29 +63,45 @@ li {
   list-style-type: none;
 }
 
+// OPACITY
+
 .op {
   opacity: .4;
 }
+
+.op_9 {
+  opacity: .9;
+}
+
+// BG COLORS
 
 .blk_bg {
   background-color: $blk;
 }
 
 .blk_op_bg {
-  background-color: hsla(207, 10%, 21%, 0.219);
-}
-
-.blk_font {
-  color: $blk;
+  background-color: #292f33;
 }
 
 .transparent_bg {
   background-color: transparent;
 }
 
+// FONT COLORS
+
+.blk_font {
+  color: $blk;
+}
+
+.white_font {
+  color: rgb(219, 219, 219);
+}
+
 .f_12 {
   font-size: 12px;
 }
+
+// WIDTH/HEIGHT
 
 .max_450 {
   max-width: 450px;
@@ -105,12 +121,10 @@ li {
   height: 150px;
 }
 
+// OBJ FIT
+
 .obj_fit {
   object-fit: cover;
-}
-
-.blk_op_bg {
-  background-color: #292f33;
 }
 
 // DIV SUGGESTION
