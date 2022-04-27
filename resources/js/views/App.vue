@@ -49,4 +49,20 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+body {
+  background-color: #111;
+  padding-top: 180px; 
+}
+::-webkit-scrollbar {
+  width: 0.5em;
+  height: 0.5em;
+  margin-right: 10px;
+}
+::-webkit-scrollbar-thumb {
+  min-height: 0.8em;
+  min-width: 0.8em;
+  background-color: #222;
+  border: none;
+}
+</style>

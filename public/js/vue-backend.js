@@ -12641,7 +12641,7 @@ var app = new Vue({
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\total\Desktop\BOOLEAN\PROGETTO TEAM\laravel-boolbnb\resources\js\vue-backend.js */"./resources/js/vue-backend.js");
+module.exports = __webpack_require__(/*! C:\Users\lucre\Desktop\Laravel\laravel-boolbnb\resources\js\vue-backend.js */"./resources/js/vue-backend.js");
 
 
 /***/ })

@@ -72,17 +72,17 @@ class ApartmentController extends Controller
             // dd($radius);
             // $notFilteredApartments = Apartment::all();
             if ($filter && $rooms && $beds) {
-                $notFilteredApartments = Apartment::where("isVisible", "=", "1")->where("room_numbers", "=", "$rooms")->where("bed_numbers", "=", "$beds")->orderBy('streetAddress', 'DESC')->paginate(5);
+                $notFilteredApartments = Apartment::where("isVisible", "=", "1")->where("room_numbers", "=", "$rooms")->where("bed_numbers", "=", "$beds")->orderBy('streetAddress', 'DESC')->paginate(15);
             } elseif ($filter && $rooms) {
-                $notFilteredApartments = Apartment::where("isVisible", "=", "1")->where("room_numbers", "=", "$rooms")->orderBy('streetAddress', 'DESC')->paginate(5);
+                $notFilteredApartments = Apartment::where("isVisible", "=", "1")->where("room_numbers", "=", "$rooms")->orderBy('streetAddress', 'DESC')->paginate(15);
             } elseif ($filter && $picked) {
                 $notFilteredApartments = Apartment::whereHas('tags', function ($query) use ($picked) {
-                    $query->where('tag_id', $picked)->where("isVisible", "=", "1")->orderBy('streetAddress', 'DESC');
-                })->paginate(5);
+                    $query->whereIn('tag_id', $picked)->where("isVisible", "=", "1")->orderBy('streetAddress', 'DESC');
+                })->paginate(15);
             } elseif ($filter && $beds) {
-                $notFilteredApartments = Apartment::where("isVisible", "=", "1")->where("bed_numbers", "=", "$beds")->orderBy('streetAddress', 'DESC')->paginate(5);
+                $notFilteredApartments = Apartment::where("isVisible", "=", "1")->where("bed_numbers", "=", "$beds")->orderBy('streetAddress', 'DESC')->paginate(15);
             } else {
-                $notFilteredApartments = Apartment::where("isVisible", "=", "1")->orderBy('streetAddress', 'DESC')->paginate(5);
+                $notFilteredApartments = Apartment::where("isVisible", "=", "1")->orderBy('streetAddress', 'DESC')->paginate(15);
             }
 
 
@@ -113,17 +113,17 @@ class ApartmentController extends Controller
             return response()->json($filteredApartments);
         } else {
             if ($rooms && $beds) {
-                $apartments = Apartment::where("isVisible", "=", "1")->where("room_numbers", "=", "$rooms")->where("bed_numbers", "=", "$beds")->orderBy('streetAddress', 'DESC')->paginate(5);
+                $apartments = Apartment::where("isVisible", "=", "1")->where("room_numbers", "=", "$rooms")->where("bed_numbers", "=", "$beds")->orderBy('streetAddress', 'DESC')->paginate(15);
             } elseif ($rooms) {
-                $apartments = Apartment::where("isVisible", "=", "1")->where("room_numbers", "=", "$rooms")->orderBy('streetAddress', 'DESC')->paginate(5);
+                $apartments = Apartment::where("isVisible", "=", "1")->where("room_numbers", "=", "$rooms")->orderBy('streetAddress', 'DESC')->paginate(15);
             } elseif ($picked) {
                 $apartments = Apartment::whereHas('tags', function ($query) use ($picked) {
-                    $query->where('tag_id', $picked)->where("isVisible", "=", "1")->orderBy('streetAddress', 'DESC');
-                })->paginate(5);
+                    $query->whereIn('tag_id', $picked)->where("isVisible", "=", "1")->orderBy('streetAddress', 'DESC');
+                })->paginate(15);
             } elseif ($beds) {
-                $apartments = Apartment::where("isVisible", "=", "1")->where("bed_numbers", "=", "$beds")->orderBy('streetAddress', 'DESC')->paginate(5);
+                $apartments = Apartment::where("isVisible", "=", "1")->where("bed_numbers", "=", "$beds")->orderBy('streetAddress', 'DESC')->paginate(15);
             } else {
-                $apartments = Apartment::where("isVisible", "=", "1")->orderBy('streetAddress', 'DESC')->paginate(10);
+                $apartments = Apartment::where("isVisible", "=", "1")->orderBy('streetAddress', 'DESC')->paginate(15);
             }
 
 
