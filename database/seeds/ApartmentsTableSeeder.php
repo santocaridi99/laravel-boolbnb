@@ -1,12 +1,15 @@
 <?php
 
 use App\Apartment;
-
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Str;
 
-class ApartmentsSeeder extends Seeder
+class ApartmentsTableSeeder extends Seeder
 {
+    /**
+     * Run the database seeds.
+     *
+     * @return void
+     */
     public function run()
     {
         $apartments = [
@@ -225,6 +228,6 @@ class ApartmentsSeeder extends Seeder
             $newApartment = new Apartment();
             $newApartment->fill($apartment);
             $newApartment->save();
-          }
+        }
     }
 }
