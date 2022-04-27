@@ -1,171 +1,90 @@
 <template>
     <div>
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <div class="container-fluid">
-                <!-- Nav -->
-                <router-link class="navbar-brand" :to="{ name: 'home.index' }"
-                    >Navbar</router-link
-                >
-                <button
-                    class="navbar-toggler"
-                    type="button"
-                    data-bs-toggle="collapse"
-                    data-bs-target="#navbarSupportedContent"
-                    aria-controls="navbarSupportedContent"
-                    aria-expanded="false"
-                    aria-label="Toggle navigation"
-                >
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div
-                    class="collapse navbar-collapse"
-                    id="navbarSupportedContent"
-                >
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                        <!-- home -->
-                        <li class="nav-item">
-                            <router-link
-                                class="nav-link active"
-                                aria-current="page"
-                                :to="{ name: 'home.index' }"
-                            >
-                                Home
-                            </router-link>
-                        </li>
-                        <!-- links -->
-                        <li class="nav-item">
-                            <router-link
-                                class="nav-link active"
-                                aria-current="page"
-                                :to="{ name: 'apartments.index' }"
-                            >
-                                Alloggi
-                            </router-link>
-                        </li>
-                        <!-- dropdown -->
-                        <li class="nav-item dropdown">
-                            <a
-                                class="nav-link dropdown-toggle"
-                                href="#"
-                                id="navbarDropdown"
-                                role="button"
-                                data-bs-toggle="dropdown"
-                                aria-expanded="false"
-                            >
-                                Dropdown
-                            </a>
-                            <ul
-                                class="dropdown-menu"
-                                aria-labelledby="navbarDropdown"
-                            >
-                                <li>
-                                    <a class="dropdown-item" href="#">Action</a>
-                                </li>
-                                <li>
-                                    <a class="dropdown-item" href="#"
-                                        >Another action</a
-                                    >
-                                </li>
-                                <li><hr class="dropdown-divider" /></li>
-                                <li>
-                                    <a class="dropdown-item" href="#"
-                                        >Something else here</a
-                                    >
-                                </li>
-                            </ul>
-                        </li>
+        <nav class="fixed-top custom_nav d-flex align-items-center p-4">
+            <!-- Navbar -->
+            <router-link class="navbar-brand" :to="{ name:'home.index' }"><img src="/img/boolbnb.svg" alt=""></router-link>
 
-                        <!-- search bar -->
-                        <div class="d-flex">
-                            <input
-                                name="query"
-                                class="form-control me-2"
-                                placeholder="Search"
-                                aria-label="Search"
-                                v-model="query"
-                                @keyup="this.searchBox"
-                            />
-                            <router-link
-                                :to="'/apartments'"
-                                class="btn btn-outline-light"
-                                :class="[query === '' ? 'btnStop' : '']"
-                                @click.native="onClickButton()"
-                            >
-                                Search
-                            </router-link>
-                        </div>
-                    </ul>
-                    <!-- login/register area -->
-                    <ul class="navbar-nav ml-auto">
-                        <li class="nav-item dropdown" v-if="!user">
-                            <a
-                                class="nav-link dropdown-toggle"
-                                href="#"
-                                id="navbarDropdown"
-                                role="button"
-                                data-bs-toggle="dropdown"
-                                aria-expanded="false"
-                            >
-                                Login / Register
-                            </a>
-                            <ul
-                                class="dropdown-menu"
-                                aria-labelledby="navbarDropdown"
-                            >
-                                <li>
-                                    <a class="dropdown-item" href="/login"
-                                        >Login</a
-                                    >
-                                </li>
-                                <li>
-                                    <a class="dropdown-item" href="/register"
-                                        >Register</a
-                                    >
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="nav-item dropdown" v-else>
-                            <a
-                                class="nav-link dropdown-toggle"
-                                href="#"
-                                id="navbarDropdown"
-                                role="button"
-                                data-bs-toggle="dropdown"
-                                aria-expanded="false"
-                            >
-                                {{ user.name }} {{ user.lastname }}
-                            </a>
-                            <ul
-                                class="dropdown-menu"
-                                aria-labelledby="navbarDropdown"
-                            >
-                                <li>
-                                    <a class="dropdown-item" href="/host"
-                                        >Logout</a
-                                    >
-                                </li>
-                                <li>
-                                    <a
-                                        class="dropdown-item"
-                                        href="/host/apartments"
-                                        >I miei appartamenti</a
-                                    >
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
-            </div>
+            <ul class="custom_link d-flex align-items-center" v-if="user" >
+            <!-- links -->
+                <!-- I miei alloggi - desktop -->
+                <li>
+                    <a class="nav_text" aria-current="page" href="/host/apartments">I miei alloggi</a>
+                </li>
+                <!-- I miei alloggi - mobile -->
+                <li>
+                    <a class="nav_icon text-center" aria-current="page" href="/host/apartments">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="none"><g style="animation:slide-right 1s cubic-bezier(.75,.02,.2,1.06) infinite alternate both" stroke-width="1.5"><path stroke="#111" d="M17 10.193c0 2.867-4.5 8.307-5 8.307s-5-5.44-5-8.307C7 7.325 9.239 5 12 5s5 2.325 5 5.193z"/><circle cx="12" cy="10" r="2" stroke="#FF385C"/></g></svg>
+                        <p class="nav_icon_text">I miei alloggi</p>
+                    </a>
+                </li>
+                <!-- Nome utente - desktop -->
+                <li>
+                    <a class="nav_text" aria-current="page" href="/host">{{ user.name }}</a>
+                </li>
+                <!-- Nome utente - mobile -->
+                <li>
+                    <a class="nav_icon text-center" aria-current="page" href="/host">
+                        <i class="icon fas fa-user-circle"></i>
+                        <p class="nav_icon_text">{{ user.name }}</p>
+                    </a>
+                </li>
+            </ul>
+            <ul class="custom_link d-flex align-items-center" v-else>
+                <!-- Accedi - desktop -->
+                <li>
+                    <a class="nav_text" aria-current="page"  href="/login">Accedi</a>
+                </li>
+                <!-- Accedi - mobile -->
+                <li>
+                    <a class="nav_icon text-center " aria-current="page" href="/login">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="none"><path fill="#FF385C" d="M15.236 10.811a.736.736 0 01-.736-.736V8.811a2.5 2.5 0 00-5 0v5H8v-5a4 4 0 018 0v1.236a.764.764 0 01-.764.764z" style="animation:lock 1s cubic-bezier(1,-.43,0,1.29) both infinite alternate-reverse"/><path fill="#fff" d="M6.6 13.704a3 3 0 013-3h4.8a3 3 0 013 3v3a3 3 0 01-3 3H9.6a3 3 0 01-3-3v-3z"/><path fill="#0A0A30" d="M9.6 11.454h4.8v-1.5H9.6v1.5zm7.05 2.25v3h1.5v-3h-1.5zm-2.25 5.25H9.6v1.5h4.8v-1.5zm-7.05-2.25v-3h-1.5v3h1.5zm2.25 2.25a2.25 2.25 0 01-2.25-2.25h-1.5a3.75 3.75 0 003.75 3.75v-1.5zm7.05-2.25a2.25 2.25 0 01-2.25 2.25v1.5a3.75 3.75 0 003.75-3.75h-1.5zm-2.25-5.25a2.25 2.25 0 012.25 2.25h1.5a3.75 3.75 0 00-3.75-3.75v1.5zm-4.8-1.5a3.75 3.75 0 00-3.75 3.75h1.5a2.25 2.25 0 012.25-2.25v-1.5zm1.543 5.198a.857.857 0 011.714 0v.104a.857.857 0 11-1.714 0v-.104z"/></svg>
+                        <p class="nav_icon_text">Accedi</p>
+                    </a>
+                </li>
+                <!-- Diventa un host - desktop -->
+                <li>
+                    <a class="nav_text" aria-current="page" href="/register">Diventa un host</a>
+                </li>
+                <!-- Diventa un host - mobile -->
+                <li>
+                    <a class="nav_icon text-center" aria-current="page" href="/register"><i class="icon fas fa-ghost"></i>
+                        <p class="nav_icon_text">Diventa un host</p>
+                    </a>
+                </li>
+            </ul>
         </nav>
-        <div v-if="luoghi.length !== 0" class="box">
-            <div
+
+        <div class="fixed-top black_banner d-flex flex-column justify-content-center align-items-center">  
+            <div class="search_container text-center d-flex align-items-center justify-content-center">
+                <!-- <button class="button_forward d-flex align-items-center mt-5 px-4"><router-link class=" text-white" aria-current="page" :to="{ name: 'host.index' }">Alloggi</router-link> <img class="ps-2" src="/img/frecce.svg" alt=""></button> -->
+
+                <!-- search bar -->
+                <input
+                name="query"
+                class="search_bar ps-3"
+                placeholder="Dove vuoi andare?"
+                v-model="query"
+                @keyup="this.searchBox"/>
+                <router-link
+                :to="'/apartments'"
+                class="button_search_bar ms-2"
+                :class="[query === '' ? 'btnStop' : '']"
+                @click.native="onClickButton()"
+                >
+                <i class="fas fa-search"></i>
+                </router-link>
+            </div>
+            <div v-if="luoghi.length !== 0" class="box p-2">
+                <div
                 v-for="(luogo, i) in luoghi"
                 :key="luogo + i"
-                class="my-autocomplete"
-            >
-                <div @click="clickSearch(luogo.address.freeformAddress)">
-                    {{ luogo.address.freeformAddress }}
+                class="my-autocomplete p-2"
+                >
+                    <div @click="clickSearch(luogo.address.freeformAddress)">
+                        {{ luogo.address.freeformAddress }}
+                    </div>
                 </div>
+
             </div>
         </div>
     </div>

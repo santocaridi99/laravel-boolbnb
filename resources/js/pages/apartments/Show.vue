@@ -23,7 +23,7 @@
                         v-for="tag of apartmentDet.tags"
                         :key="tag.id"
                     >
-                        {{ tag.name }}
+                        <img :src="tag.icon" alt="">
                     </div>
                 </div>
             </div>
@@ -124,25 +124,25 @@ img {
 }
 .secondary-infos {
     margin-top: 30px;
-    .my-tags {
-        display: flex;
-        align-items: baseline;
-        font-size: 0.8rem;
-        margin-bottom: 8px;
-        span {
-            font-weight: 600;
-            margin: 0 4px;
-        }
-        .tags-class {
-            color: white;
-            padding: 0 5px;
-            border-radius: 5px;
-        }
+    // .my-tags {
+    //     display: flex;
+    //     align-items: baseline;
+    //     font-size: 0.8rem;
+    //     margin-bottom: 8px;
+    //     span {
+    //         font-weight: 600;
+    //         margin: 0 4px;
+    //     }
+    //     .tags-class {
+    //         color: white;
+    //         padding: 0 5px;
+    //         border-radius: 5px;
+    //     }
 
-        .tags-class {
-            margin: 0 3px;
-            background-color: rgb(14, 126, 231);
-        }
-    }
+    //     .tags-class {
+    //         margin: 0 3px;
+    //         background-color: rgb(14, 126, 231);
+    //     }
+    // }
 }
 </style>
