@@ -17,7 +17,7 @@
                             <div class="col-md-6">
                                 <input id="name" type="text" class="form-control @error('name') is-invalid @enderror"
                                     name="name" value="{{ old('name') }}" required autocomplete="name"
-                                    data-parsley-pattern="[a-zA-Z]+$" data-parsley-length='[2,100]' data-parsley-trigger='keyup' autofocus>
+                                    data-parsley-pattern="[a-zA-Z]+$" data-parsley-length='[2,100]' data-parsley-trigger='change' autofocus>
 
                                 @error('name')
                                 <span class="invalid-feedback" role="alert">
@@ -35,7 +35,7 @@
                                 <input id="lastname" type="text"
                                     class="form-control @error('lastname') is-invalid @enderror" name="lastname"
                                     value="{{ old('lastname') }}" required autocomplete="lastname"
-                                    data-parsley-pattern="[a-zA-Z]+$" data-parsley-length='[2,100]' data-parsley-trigger='keyup' autofocus>
+                                    data-parsley-pattern="[a-zA-Z]+$" data-parsley-length='[2,100]' data-parsley-trigger='change' autofocus>
 
                                 @error('lastname')
                                 <span class="invalid-feedback" role="alert">
@@ -68,7 +68,7 @@
 
                             <div class="col-md-6">
                                 <input id="email" type="email" class="form-control @error('email') is-invalid @enderror"
-                                    name="email" value="{{ old('email') }}" required autocomplete="email"  data-parsley-type="email" data-parsley-trigger='keyup' >
+                                    name="email" value="{{ old('email') }}" required autocomplete="email"  data-parsley-type="email" data-parsley-trigger='change' >
 
                                 @error('email')
                                 <span class="invalid-feedback" role="alert">

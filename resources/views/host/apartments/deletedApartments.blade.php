@@ -67,7 +67,7 @@
                                     <div class="d-flex mx-4 i_buttons">
                                         {{-- form delete --}}
                                         <div class="ms-3">
-                                            <form action="{{ route('host.apartments.destroy', $apartment->id) }}" method="POST" class="d-inline-block">
+                                            <form action="{{ route('host.apartments.destroy', $apartment->id) }}" method="POST" class="delete d-inline-block">
                                                 @csrf
                                                 @method("delete")
                                                 <button type="submit" class="dng_btn p-0 border-0 transparent_bg">

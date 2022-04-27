@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container mt-5" id="root">
+<div class="container mt-5 text-white" id="root">
   <form class="row g-3" id="formid" autocomplete="off" action="{{ route('host.apartments.store') }}" method="post"
     enctype="multipart/form-data">
 
@@ -55,16 +55,6 @@
       @enderror
     </div>
 
-      <div class="col-md-6">
-        <label class="form-label">Numero di bagni*</label>
-        <input type="number" min="0" name="bathroom_numbers"
-          class="form-control @error('bathroom_numbers') is-invalid @enderror"
-          placeholder="Inserisci qui il numero dei bagni" value="{{ old('bathroom_numbers') }}" required>
-        @error('bathroom_numbers')
-        <div class="invalid-feedback">{{ $message }}</div>
-        @enderror
-      </div>
-
     <div class="col-md-3">
       <label class="form-label">Immagine di copertina*</label>
       <input type="file" name='cover' class="form-control @error('cover') is-invalid @enderror" required>
@@ -110,8 +100,8 @@
       @enderror
     </div>
 
-    <div class="col-md-6 autocomplete">
-      <label class="form-label">Indirizzo completo - (Via civico, CAP Città)</label>
+    <div class="col-md-6 autocomplete text-black">
+      <label class="form-label text-white">Indirizzo completo - (Via civico, CAP Città)</label>
       <input id='geoAddress' type="text" name="streetAddress" class="form-control @error('streetAddress') is-invalid @enderror"
         placeholder="Inserisci qui l'indirizzo" value="{{ old('streetAddress') }}" required onkeyup="if (this.value.length > 6) beforeSubmit()">
       @error('streetAddress')
@@ -136,51 +126,6 @@
       <div class="invalid-feedback">{{ $message }}</div>
       @enderror
     </div>
-
-      <div class="col-md-6">
-        <label class="form-label">Regione*</label>
-        <input type="text" name="region" class="form-control @error('region') is-invalid @enderror"
-          placeholder="Inserisci qui la regione" value="{{ old('region') }}" required>
-        @error('region')
-        <div class="invalid-feedback">{{ $message }}</div>
-        @enderror
-      </div>
-
-      <div class="col-md-6">
-        <label class="form-label">Provincia*</label>
-        <input type="text" name="province" class="form-control @error('province') is-invalid @enderror"
-          placeholder="Inserisci qui la provincia" value="{{ old('province') }}" required>
-        @error('province')
-        <div class="invalid-feedback">{{ $message }}</div>
-        @enderror
-      </div>
-
-      <div class="col-md-6 autocomplete">
-        <label class="form-label">Indirizzo completo (Via civico, CAP Città)*</label>
-        <input id='geoAddress' type="text" name="streetAddress" class="form-control @error('streetAddress') is-invalid @enderror"
-          placeholder="Inserisci qui l'indirizzo" value="{{ old('streetAddress') }}" onkeyup="if (this.value.length > 6) beforeSubmit()" required>
-        @error('streetAddress')
-        <div class="invalid-feedback">{{ $message }}</div>
-        @enderror
-      </div>
-
-      <div class="form-check mb-3">
-        <label class="form-check-label" for="flexCheckDefault">
-          L'appartamento è visibile?*
-        </label>
-        <input class="form-check-input" type="checkbox" value="1" id="flexCheckDefault" name="isVisible" {{
-          old('isVisible') ? 'checked' : '' }} required>
-      </div>
-
-      {{-- contenuto del post --}}
-      <div class="col-md-12">
-        <label>Contenuto*</label>
-        <textarea name="description" rows="10" class="form-control @error('description') is-invalid @enderror"
-          placeholder="Inizia a scrivere qualcosa..." required>{{ old('description') }}</textarea>
-        @error('description')
-        <div class="invalid-feedback">{{ $message }}</div>
-        @enderror
-      </div>
 
       <div class="col-md-2 d-none">
         <label class="form-label">Longitudine</label>
