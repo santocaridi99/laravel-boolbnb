@@ -188,7 +188,14 @@
           <div class="card" style="width: 18rem">
             <img
               class="card-img-top"
+              v-if="apartment.cover"
               :src="apartment.cover"
+              alt="Dummy Image"
+            />
+            <img
+              class="card-img-top"
+              v-else
+              src="https://fakeimg.pl/350x200/?text=Scarpe"
               alt="Dummy Image"
             />
             <div class="card-body">
