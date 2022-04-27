@@ -10,7 +10,7 @@
             alt="Dummy Image"
         />
 
-        <div id="map" class="map"></div>
+        <div id="map" class="ms-auto map"></div>
 
         <div class="secondary-infos">
             <div class="my-tags">
