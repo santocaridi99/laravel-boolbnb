@@ -12,7 +12,7 @@
         <div class="col-md-6">
             <label class="form-label">Titolo*</label>
             <input type="text" name="title" class="form-control @error('title') is-invalid @enderror"
-                value="{{ old('title',$apartment->title) }}" required data-parsley-pattern="^(?:[A-Za-z]+[ -])*[A-Za-z]+$" data-parsley-length='[5,35]' data-parsley-trigger='change'>
+                value="{{ old('title',$apartment->title) }}" required data-parsley-pattern="^(?:[A-Za-z]+[ -])*[A-Za-z]+$" data-parsley-length='[5,100]' data-parsley-trigger='change'>
             @error('title')
             <div class="invalid-feedback">{{ $message }}</div>
             @enderror
@@ -58,7 +58,7 @@
 
         <div class="col-md-6">
             <label class="form-label">Immagine di copertina*</label>
-            <input type="file" name='cover' class="form-control @error('cover') is-invalid @enderror">
+            <input type="file" name='cover' class="form-control @error('cover') is-invalid @enderror" value="{{old('cover',$apartment->cover)}}">
             <div class="col-3"><img class="img-fluid" src="{{ asset('storage/' . $apartment->cover) }}" alt=""
                     class="post-img"></div>
             @error('cover')
@@ -134,7 +134,7 @@
         <div class="col-md-12">
             <label>Contenuto*</label>
             <textarea name="description" rows="10"
-                class="form-control @error('description') is-invalid @enderror" required   data-parsley-length='[20,100]'  data-parsley-trigger="change">{{ old('description',$apartment->description) }}</textarea>
+                class="form-control @error('description') is-invalid @enderror" required   data-parsley-length='[20,250]'  data-parsley-trigger="change">{{ old('description',$apartment->description) }}</textarea>
             @error('description')
             <div class="invalid-feedback">{{ $message }}</div>
             @enderror
