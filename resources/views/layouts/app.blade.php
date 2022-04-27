@@ -108,6 +108,9 @@
     $(function(){
         $('#registerForm').parsley();
     })
+    $(function(){
+        $('#formid').parsley();
+    })
 </script>
 
 </html>

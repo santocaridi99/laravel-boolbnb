@@ -12,7 +12,7 @@
         <div class="col-md-6">
             <label class="form-label">Titolo*</label>
             <input type="text" name="title" class="form-control @error('title') is-invalid @enderror"
-                value="{{ old('title',$apartment->title) }}">
+                value="{{ old('title',$apartment->title) }}" required data-parsley-pattern="^(?:[A-Za-z]+[ -])*[A-Za-z]+$" data-parsley-length='[5,35]' data-parsley-trigger='change'>
             @error('title')
             <div class="invalid-feedback">{{ $message }}</div>
             @enderror
@@ -21,7 +21,7 @@
         <div class="col-md-6">
             <label class="form-label">Numero di stanze*</label>
             <input type="number" name="room_numbers" class="form-control @error('room_numbers') is-invalid @enderror"
-                value="{{ old('room_numbers', $apartment->room_numbers)}}">
+                value="{{ old('room_numbers', $apartment->room_numbers)}}" required data-parsley-type='number' min="1" max="100"  data-parsley-pattern="[0-9]+$" data-parsley-length='[1,3]' data-parsley-trigger='change'>
             @error('room_numbers')
             <div class="invalid-feedback">{{ $message }}</div>
             @enderror
@@ -30,7 +30,7 @@
         <div class="col-md-6">
             <label class="form-label">Numero di letti*</label>
             <input type="number" name="bed_numbers" class="form-control @error('bed_numbers') is-invalid @enderror"
-                value="{{ old('bed_numbers',$apartment->bed_numbers)}}">
+                value="{{ old('bed_numbers',$apartment->bed_numbers)}}" required data-parsley-type='number' min="1" max="100"  data-parsley-pattern="[0-9]+$" data-parsley-length='[1,3]' data-parsley-trigger='change'>
             @error('bed_numbers')
             <div class="invalid-feedback">{{ $message }}</div>
             @enderror
@@ -40,7 +40,7 @@
             <label class="form-label">Numero di bagni*</label>
             <input type="number" name="bathroom_numbers"
                 class="form-control @error('bathroom_numbers') is-invalid @enderror"
-                value="{{ old('bathroom_numbers',$apartment->bathroom_numbers) }}">
+                value="{{ old('bathroom_numbers',$apartment->bathroom_numbers) }}" required data-parsley-type='number' min="1" max="100"  data-parsley-pattern="[0-9]+$" data-parsley-length='[1,3]' data-parsley-trigger='change'>
             @error('bathroom_numbers')
             <div class="invalid-feedback">{{ $message }}</div>
             @enderror
@@ -49,7 +49,7 @@
         <div class="col-md-6">
             <label class="form-label">Metratura*</label>
             <input type="number" name="square_meters" class="form-control @error('square_meters') is-invalid @enderror"
-                value="{{ old('square_meters',$apartment->square_meters) }}">
+                value="{{ old('square_meters',$apartment->square_meters) }}" required data-parsley-type='number' min="1" max="1200"  data-parsley-pattern="[0-9]+$" data-parsley-length='[1,4]' data-parsley-trigger='change'>
             @error('square_meters')
             <div class="invalid-feedback">{{ $message }}</div>
             @enderror
@@ -70,7 +70,7 @@
             <label class="form-label">Prezzo per notte*</label>
             <input type="number" name="price_per_night"
                 class="form-control @error('price_per_night') is-invalid @enderror"
-                value="{{ old('price_per_night', $apartment->price_per_night) }}">
+                value="{{ old('price_per_night', $apartment->price_per_night) }}" required data-parsley-type='number' min="1" max="100000"  data-parsley-pattern="[0-9]+$" data-parsley-length='[1,6]' data-parsley-trigger='change'>
             @error('price_per_night')
             <div class="invalid-feedback">{{ $message }}</div>
             @enderror
@@ -79,7 +79,7 @@
         <div class="col-md-6">
             <label class="form-label">Paese</label>
             <input type="text" name="country" class="form-control @error('country') is-invalid @enderror"
-                value="{{ old('country', $apartment->country) }}">
+                value="{{ old('country', $apartment->country) }}"  required  data-parsley-pattern="^(?:[A-Za-z]+[ -])*[A-Za-z]+$" data-parsley-length='[2,100]' data-parsley-trigger='change'>
             @error('country')
             <div class="invalid-feedback">{{ $message }}</div>
             @enderror
@@ -88,7 +88,7 @@
         <div class="col-md-6">
             <label class="form-label">Regione</label>
             <input type="text" name="region" class="form-control @error('region') is-invalid @enderror"
-                value="{{ old('region',$apartment->region) }}">
+                value="{{ old('region',$apartment->region) }}"  required  data-parsley-pattern="^(?:[A-Za-z]+[ -])*[A-Za-z]+$" data-parsley-length='[2,100]' data-parsley-trigger='change'>
             @error('region')
             <div class="invalid-feedback">{{ $message }}</div>
             @enderror
@@ -97,7 +97,7 @@
         <div class="col-md-6">
             <label class="form-label">Provincia</label>
             <input type="text" name="province" class="form-control @error('province') is-invalid @enderror"
-                value="{{ old('province' , $apartment->province) }}">
+                value="{{ old('province' , $apartment->province) }}"  required  data-parsley-pattern="^(?:[A-Za-z]+[ -])*[A-Za-z]+$" data-parsley-length='[2,100]' data-parsley-trigger='change'>
             @error('province')
             <div class="invalid-feedback">{{ $message }}</div>
             @enderror
@@ -134,7 +134,7 @@
         <div class="col-md-12">
             <label>Contenuto*</label>
             <textarea name="description" rows="10"
-                class="form-control @error('description') is-invalid @enderror">{{ old('description',$apartment->description) }}</textarea>
+                class="form-control @error('description') is-invalid @enderror" required   data-parsley-length='[20,100]'  data-parsley-trigger="change">{{ old('description',$apartment->description) }}</textarea>
             @error('description')
             <div class="invalid-feedback">{{ $message }}</div>
             @enderror

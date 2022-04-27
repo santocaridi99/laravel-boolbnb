@@ -53,11 +53,11 @@ class ApartmentController extends Controller
     {
         $data = $request->validate([
             "title" => "required|min:5|max:35",
-            "description" => "required|min:20",
+            "description" => "required|min:20|max:200",
             "room_numbers" => "required|integer|between:1,100",
             "bed_numbers" => "required|integer|between:1,100",
             "bathroom_numbers" => "required|integer|between:1,100",
-            "square_meters" => "required|integer|min:0",
+            "square_meters" => "required|integer|between:1,1200",
             "cover" => "required|mimes:jpeg,bmp,png",
             "price_per_night" => "required|numeric|min:0",
             "country" => "required|regex:/^[\pL\s\-]+$/u",
@@ -183,11 +183,11 @@ class ApartmentController extends Controller
     {
         $data = $request->validate([
             "title" => "required|min:5|max:35",
-            "description" => "required|min:20",
+            "description" => "required|min:20|max:200",
             "room_numbers" => "required|integer|between:1,100",
             "bed_numbers" => "required|integer|between:1,100",
             "bathroom_numbers" => "required|integer|between:1,100",
-            "square_meters" => "required|integer|min:0",
+            "square_meters" => "required|integer|between:1,1200",
             "cover" => "nullable|mimes:jpeg,bmp,png",
             "price_per_night" => "required|numeric|min:0",
             "country" => "required|regex:/^[\pL\s\-]+$/u",
