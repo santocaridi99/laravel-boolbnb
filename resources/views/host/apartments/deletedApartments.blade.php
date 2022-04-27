@@ -8,11 +8,11 @@
             <div class="col-10 mt-3">
                 {{-- back button --}}
                 <div class="me-auto my-3">
-                    <button class="d-flex align-items-center px-4 button_back">
-                        <a class="text-white" href="{{ route('host.apartments.index') }}">
+                    <a class="text-white" href="{{ route('host.apartments.index') }}">
+                        <button class="d-flex align-items-center px-4 button_back">
                             <img class="ps-2" src="/img/frecce.svg" alt=""> Torna indietro
-                        </a>
-                    </button>
+                        </button>
+                    </a>
                 </div>
 
                 {{-- APARTMENTS CARDS --}}
