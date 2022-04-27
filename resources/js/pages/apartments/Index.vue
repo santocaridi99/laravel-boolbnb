@@ -85,6 +85,7 @@
                     name="rooms"
                     v-model="rooms"
                     placeholder="rooms"
+                    @change="searchSubmit"
                 />
                 <input
                     class="input_bar m-2"
@@ -92,6 +93,7 @@
                     name="beds"
                     v-model="beds"
                     placeholder="beds"
+                    @change="searchSubmit"
                 />
             </div>
             <div>
@@ -101,6 +103,7 @@
                     value="1"
                     v-model="picked"
                     name="picked[]"
+                    @change="searchSubmit"
                 />
                 <label for="1">Piscina</label>
                 <br />
@@ -110,6 +113,7 @@
                     value="2"
                     v-model="picked"
                     name="picked[]"
+                    @change="searchSubmit"
                 />
                 <label for="2">Cortile</label>
                 <br />
@@ -119,6 +123,7 @@
                     value="3"
                     v-model="picked"
                     name="picked[]"
+                    @change="searchSubmit"
                 />
                 <label for="3">Colazione incluse</label>
                 <br />
@@ -128,6 +133,7 @@
                     value="4"
                     v-model="picked"
                     name="picked[]"
+                    @change="searchSubmit"
                 />
                 <label for="4">Vista mare</label>
                 <br />
@@ -137,6 +143,7 @@
                     value="5"
                     v-model="picked"
                     name="picked[]"
+                    @change="searchSubmit"
                 />
                 <label for="5">Posto auto</label>
                 <br />
@@ -146,6 +153,7 @@
                     value="6"
                     v-model="picked"
                     name="picked[]"
+                    @change="searchSubmit"
                 />
                 <label for="6">Ingresso privato</label>
                 <br />
@@ -155,6 +163,7 @@
                     value="7"
                     v-model="picked"
                     name="picked[]"
+                    @change="searchSubmit"
                 />
                 <label for="7">Patio o balcone</label>
                 <br />
@@ -164,6 +173,7 @@
                     value="8"
                     v-model="picked"
                     name="picked[]"
+                    @change="searchSubmit"
                 />
                 <label for="8">TV</label>
                 <br />
@@ -173,6 +183,7 @@
                     value="9"
                     v-model="picked"
                     name="picked[]"
+                    @change="searchSubmit"
                 />
                 <label for="9">Wi-fi</label>
                 <br />

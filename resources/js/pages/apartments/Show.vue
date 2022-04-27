@@ -1,4 +1,8 @@
 <template>
+    <div>
+        <!-- <div class="circle">
+            <div class="circle2"></div>
+        </div> -->
     <div class="container-fluid m-5">
         <!-- title - Nome Appartamento --> 
         <h1 class="front_show">{{ apartmentDet.title }}</h1>
@@ -32,6 +36,7 @@
         <div v-if="apartmentDet.id" class="my-form">
             <contact-form :apartment_id="apartmentDet.id"></contact-form>
         </div>
+    </div>
     </div>
 </template>
 
@@ -115,9 +120,9 @@ export default {
 // }
 /* ---------------- */
 
-h1 {
-    color: rgb(14, 126, 231);
-}
+// h1 {
+//     color: rgb(14, 126, 231);
+// }
 img {
     margin: 40px auto;
     width: 500px;
