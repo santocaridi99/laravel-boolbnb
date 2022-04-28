@@ -86,16 +86,23 @@
         </h1> 
       </div>
 
-      <div class="row my-4 ispirations">
-        <router-link :to="{ name:'apartments.index' }" class="col-sm-12 col-md-6 col-lg-4" >
-          <img src="/img/colosseo.svg" alt="..." title="Rome">
-        </router-link>
-        <router-link :to="{ name:'apartments.index' }" class="col-sm-12 col-md-6 col-lg-4">
-          <img src="/img/duomo-di-milano.svg" alt="..." title="Milan">
-        </router-link>
-        <router-link :to="{ name:'apartments.index' }" class="col-sm-12 col-md-6 col-lg-4">
-          <img src="/img/torre-di-pisa.svg" alt="..." title="Pisa">
-        </router-link>
+      <div class="row my-4 ispirations align-items-end">
+        <a href="http://127.0.0.1:8000/apartments/Appartamento-a-torino-5" class="city col-sm-12 col-md-6 col-lg-3">
+          <img src="/img/torino.svg" alt="Milan" title="Torino">
+          <div class="city_badge badge bg-warning text-dark">TORINO</div>
+        </a>
+        <a href="http://127.0.0.1:8000/apartments/Appartamento-a-roma-5" class="city col-sm-12 col-md-6 col-lg-3" >
+          <img src="/img/roma.svg" alt="Rome" title="Roma">
+          <div class="city_badge badge bg-warning text-dark">ROMA</div>
+        </a>
+        <a href="http://127.0.0.1:8000/apartments/Appartamento-a-firenze-5" class="city col-sm-12 col-md-6 col-lg-3">
+          <img src="/img/firenze.svg" alt="Milan" title="Firenze">
+          <div class="city_badge badge bg-warning text-dark">FIRENZE</div>
+        </a>
+        <a href="http://127.0.0.1:8000/apartments/Appartamento-a-milano-2" class="city col-sm-12 col-md-6 col-lg-3">
+          <img src="/img/milano.svg" alt="Milan" title="Milano">
+          <div class="city_badge badge bg-warning text-dark">MILANO</div>
+        </a>                
       </div>
 
     </div>

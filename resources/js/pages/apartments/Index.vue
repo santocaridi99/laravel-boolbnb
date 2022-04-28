@@ -251,11 +251,24 @@
             <div class="ap_card">
                 <div class="row flat_row g-0">
                     <div
-                        class="col-xxl-3 col-lg-4 col-md-6 col-sm-12 px-3 mb-5 d-flex align-items-stretch"
+                        class="col-xxl-3 col-lg-4 col-md-6 col-sm-12 px-3 mb-4 d-flex align-items-stretch"
                         v-for="apartment of apartments"
                         :key="apartment.id"
                     >
-                        <div class="flat">
+
+                        <div class="flat pb-5">
+                            <button class="button_forward button_rel d-flex align-items-center ms-auto mt-4 py-2 px-3">
+                                <router-link
+                                    class="text-white"
+                                    :to="`/apartments/${apartment.slug}`"
+                                    >Scopri
+                                    <img
+                                        class="ps-1"
+                                        src="/img/frecce.svg"
+                                        alt=""
+                                /></router-link>
+                            </button>
+                            
                             <router-link
                                 class="w-100 ex"
                                 :to="`/apartments/${apartment.slug}`"
@@ -353,7 +366,7 @@
                                 </div>
 
                                 <!-- {{-- tags --}} -->
-                                <div class="bg-light text-center py-4 pt-3">
+                                <div class="text-center py-4 pt-3">
                                     <!-- {{-- icons --}} -->
                                     <span
                                         class="tags_class px-2"
@@ -366,22 +379,8 @@
                                             :title="tag.name"
                                         />
                                     </span>
-                                    <div class="text-break p-3 bg-light">
-                                        <button
-                                            class="button_forward d-flex align-items-center ms-auto mt-4 py-2 px-3"
-                                        >
-                                            <router-link
-                                                class="text-white"
-                                                :to="`/apartments/${apartment.slug}`"
-                                                >Scopri
-                                                <img
-                                                    class="ps-1"
-                                                    src="/img/frecce.svg"
-                                                    alt=""
-                                            /></router-link>
-                                        </button>
-                                    </div>
                                 </div>
+                                
 
                                 <!-- {{-- descrizione --}} -->
                                 <!-- <h5 class="px-3">Su questo annuncio:</h5>
@@ -595,18 +594,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-// .box {
-//     background-color: white;
-//     .my-autocomplete {
-//         cursor: pointer;
-//         &:hover {
-//             background-color: rgba(152, 152, 246, 0.328);
-//         }
-//     }
-// }
-
-.hide{
-    display: none;
-}
 
 </style>

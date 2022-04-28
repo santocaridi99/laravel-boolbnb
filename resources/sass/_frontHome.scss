@@ -156,6 +156,18 @@
     }
 }
 
+.city {
+    position: relative;
+    .city_badge {
+        position: absolute;
+        right: 10px;
+        bottom: 10px;
+        transform: rotate(-35deg);
+        font-size: 20px;
+        padding: 10px;
+    }
+}
+
 @media screen and (max-width: 575px) {
     .triangle {
         display: none;
