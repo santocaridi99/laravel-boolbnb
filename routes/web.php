@@ -25,7 +25,7 @@ Route::middleware('auth')
     ->namespace('Host')->prefix('host')->name('host.')
     ->group(function () {
         Route::get('/', 'HomeController@index')->name('home');
-        
+
         // rotta v/appartamenti cestinati
         Route::get("apartments/deletedApartments", "ApartmentController@deletedApartments")->name('apartments.deletedApartments');
         // soft delete degli appartamenti
@@ -33,10 +33,12 @@ Route::middleware('auth')
         // restore degli appartamenti cancellati
         Route::get("apartments/{apartment}/restoreApartment", "ApartmentController@restoreApartment")->name("apartments.restoreApartment");
 
+        //Rotta statistiche appartamenti
+        Route::get('/statistics', 'StatisticController@index')->name('statistics');
+
         // !! LASCIARE INFONDO A TUTTE LE ALTRE ROTTE !!
         // resource prende tutte le pagine relative alla crud Apartment
         Route::resource('apartments', 'ApartmentController');
-
     });
 
 Route::get("{any?}", function () {
