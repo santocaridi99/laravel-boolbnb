@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="circle">
-          <div class="circle2"></div>
+            <div class="circle2"></div>
         </div>
 
         <div
@@ -71,7 +71,7 @@
                     v-for="(luogo, i) in luoghi"
                     :key="luogo + i"
                     class="my-autocomplete p-2"
-                    :class="autocomplete? 'hide' : ''"
+                    :class="autocomplete ? 'hide' : ''"
                 >
                     <div @click="clickSearch(luogo.address.freeformAddress)">
                         {{ luogo.address.freeformAddress }}
@@ -98,6 +98,15 @@
                     name="beds"
                     v-model="beds"
                     placeholder="beds"
+                    @change="searchSubmit"
+                />
+
+                <input
+                    class="input_bar m-2"
+                    type="number"
+                    name="price"
+                    v-model="price"
+                    placeholder="price"
                     @change="searchSubmit"
                 />
             </div>
@@ -242,9 +251,9 @@
         <!-- appartamenti -->
         <div class="back_ap">
             <div class="ap_card">
-                <div class="row flat_row g-0 ">
+                <div class="row flat_row g-0">
                     <div
-                        class="col-xxl-3 col-lg-4 col-md-6 col-sm-12 px-3 mb-5 d-flex align-items-stretch" 
+                        class="col-xxl-3 col-lg-4 col-md-6 col-sm-12 px-3 mb-5 d-flex align-items-stretch"
                         v-for="apartment of apartments"
                         :key="apartment.id"
                     >
@@ -346,9 +355,7 @@
                                 </div>
 
                                 <!-- {{-- tags --}} -->
-                                <div
-                                    class="bg-light text-center py-4 pt-3"
-                                >
+                                <div class="bg-light text-center py-4 pt-3">
                                     <!-- {{-- icons --}} -->
                                     <span
                                         class="tags_class px-2"
@@ -362,21 +369,20 @@
                                         />
                                     </span>
                                     <div class="text-break p-3 bg-light">
-                                    
-                                    <button
-                                        class="button_forward d-flex align-items-center ms-auto mt-4 py-2 px-3"
-                                    >
-                                        <router-link
-                                            class="text-white"
-                                            :to="`/apartments/${apartment.slug}`"
-                                            >Scopri
-                                            <img
-                                                class="ps-1"
-                                                src="/img/frecce.svg"
-                                                alt=""
-                                        /></router-link>
-                                    </button>
-                                </div>
+                                        <button
+                                            class="button_forward d-flex align-items-center ms-auto mt-4 py-2 px-3"
+                                        >
+                                            <router-link
+                                                class="text-white"
+                                                :to="`/apartments/${apartment.slug}`"
+                                                >Scopri
+                                                <img
+                                                    class="ps-1"
+                                                    src="/img/frecce.svg"
+                                                    alt=""
+                                            /></router-link>
+                                        </button>
+                                    </div>
                                 </div>
 
                                 <!-- {{-- descrizione --}} -->
@@ -420,6 +426,7 @@ export default {
             long: null,
             rooms: null,
             beds: null,
+            price: null,
             radius: 20,
         };
     },
@@ -430,6 +437,7 @@ export default {
             search = null,
             rooms = "*",
             beds = "*",
+            price = null,
             picked = [],
             radius = 20
         ) {
@@ -450,6 +458,7 @@ export default {
                             filter: search,
                             rooms: rooms,
                             beds: beds,
+                            price: price,
                             picked: picked,
                             radius: radius,
                         },
@@ -549,26 +558,28 @@ export default {
                 1,
                 this.search,
                 this.rooms,
+                this.price,
                 this.beds,
                 this.picked,
                 this.radius
             );
         },
         showFilters() {
-            return this.show = !this.show;
+            return (this.show = !this.show);
         },
         showAutocomplete() {
             return this.autocomplete === false;
         },
         hideAutocomplete() {
             return this.autocomplete === true;
-        }
+        },
     },
     mounted() {
         this.decodeApartmentsJson(
             1,
             this.search,
             this.rooms,
+            this.price,
             this.beds,
             this.picked,
             this.radius
@@ -588,5 +599,4 @@ export default {
 //         }
 //     }
 // }
-
 </style>
