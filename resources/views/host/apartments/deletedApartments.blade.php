@@ -3,19 +3,18 @@
 @section('content')
     <div class="container back_ap">
         <h1 class="text-center text-white fw-bold mt-4">Appartamenti cancellati</h1>
-
         <div class="row justify-content-center">
             <div class="col-10 mt-3">
                 {{-- back button --}}
                 <div class="me-auto my-3">
                     <a class="text-white" href="{{ route('host.apartments.index') }}">
-                        <button class="d-flex align-items-center px-4 button_back">
+                        <button class="d-flex align-items-center px-4 py-2 button_back">
                             <img class="ps-2" src="/img/frecce.svg" alt=""> Torna indietro
                         </button>
                     </a>
                 </div>
 
-                {{-- APARTMENTS CARDS --}}
+                {{-- APARTMENTS CARDS --}} 
                 @foreach ($apartments as $apartment)
                 <div class="ap_card bg-light rounded mx-3 mb-5">
                     <div class="row g-0">
@@ -121,7 +120,6 @@
                     </div>
                 </div>
                 @endforeach
-        
             </div>
         </div>
     </div>

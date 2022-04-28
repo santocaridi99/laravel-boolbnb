@@ -60,6 +60,7 @@
 </html>
 <style>
     body {
+        font-family: 'Inter', sans-serif;
         margin-top: 105px;
     }
 </style>

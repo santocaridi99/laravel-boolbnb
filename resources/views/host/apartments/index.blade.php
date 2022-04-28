@@ -14,7 +14,7 @@
         <div class="col-10 mt-3">
             <div class="d-flex justify-content-center mb-3">
                 {{-- create --}}
-                <div class="create_container">
+                <div class="create_box">
                     <a class="create_svg" href="{{ route('host.apartments.create') }}">
                         <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" width="37" height="37" fill="none">
                             <style>

@@ -34,7 +34,6 @@ button {
   font-size: 18px;
   border: none;
   outline: none;
-  height: 50px;
   border-radius: 50px;
   &:hover {
     color: #fff;
@@ -64,6 +63,11 @@ li {
   list-style-type: none;
 }
 
+// MARGINS
+.mt_100 {
+  margin-top: 100px;
+}
+
 // OPACITY
 
 .op {
@@ -84,6 +88,18 @@ li {
   background-color: #292f33;
 }
 
+.pink_custom {
+  background-color: $red_org;
+}
+
+.orange_custom {
+  background-color: $dark_org
+}
+
+.ocra_custom {
+  background-color: $ocra;
+}
+
 .transparent_bg {
   background-color: transparent;
 }
@@ -98,8 +114,18 @@ li {
   color: rgb(219, 219, 219);
 }
 
+// FONT SIZES
+
 .f_12 {
   font-size: 12px;
+}
+
+.f_18 {
+  font-size: 18px;
+}
+
+.f_45 {
+  font-size: 45px;
 }
 
 // WIDTH/HEIGHT
@@ -114,12 +140,20 @@ li {
   object-fit: cover;
 }
 
+.w_600 {
+  width: 600px;
+}
+
 .h_100 {
   height: 100px;
 }
 
 .h_150 {
   height: 150px;
+}
+
+.p_80 {
+  padding: 80px;
 }
 
 // OBJ FIT

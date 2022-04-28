@@ -22,7 +22,7 @@
 .back_ap {
     font-family: 'Inter', sans-serif;
 
-    .create_container {
+    .create_box {
         height:40px;
         width:400px;
         display:block;
@@ -123,9 +123,6 @@
 
 // SHOW
 .ap_show {
-    font-family: 'Inter',
-    sans-serif;
-
     .button_back {
         background-color: $dark_org;
         border: none;
@@ -170,6 +167,50 @@
         .edit_container {
             top: 15px;
             right: 30px;
+        }
+    }
+}
+
+// CREATE
+
+.ap_create_edit {
+    .form_container {
+        border-radius: 20px;
+
+        .cerchietti {
+            top: -20px;
+            right: 50px;
+
+            div {
+                height: 40px;
+                width: 40px;
+                margin: 0 5px;
+            }
+        }
+    }
+
+    .buttons_box {
+        border-radius: 0 0 20px 20px;
+
+        button, a {
+            color:white;
+            font-size: 18px;
+            border: none;
+            outline: none;
+            height: 50px;
+            border-radius: 50px;
+        }
+
+        .save, .undo {
+            box-shadow: 2px 2px 2px 2px #94a3ac;
+        }
+
+        .save:hover {
+            color: #fac8d1;
+        }
+
+        .undo a:hover {
+            color: #ffbca8;
         }
     }
 }

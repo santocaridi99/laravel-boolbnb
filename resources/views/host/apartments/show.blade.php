@@ -4,6 +4,9 @@
   <div class="container ap_show">
 
     <div class="d-flex justify-content-between align-items-center my-3">
+      {{-- title --}}
+      <h1 class="text-center text-white fw-bold mt-4">I miei alloggi</h1>
+      
       {{-- back button --}}
       <div>
         <a class="button_back btn d-flex align-items-center px-4" href="{{ route('host.apartments.index') }}">
