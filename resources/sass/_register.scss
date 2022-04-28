@@ -1,0 +1,31 @@
+.register_container {
+    .b_r {
+        border-radius: 15px;
+    }
+
+    .b_bottom_top {
+        border-radius: 0 15px 15px 0;
+    }
+
+    .register_button > button {
+        color: white;
+        font-size: 18px;
+        border: none;
+        outline: none;
+        height: 50px;
+        border-radius: 50px;
+    
+        &:hover {
+            color: #fac8d1;
+        }
+    }
+
+    // .side_img {
+    //     background: url('https: //cdn.dribbble.com/users/3562273/screenshots/12301613/media/46bf05eb6571d78629285638e8da8e41.jpg');
+    // }
+
+    .side_img {
+        background: url('https://cdn.dribbble.com/users/433036/screenshots/18066579/media/5bd4b5ff496eeed22894928a8a3fcb89.jpg');
+        // background-size: 400px;
+    }
+}

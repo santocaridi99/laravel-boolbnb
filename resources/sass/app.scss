@@ -19,6 +19,8 @@
 
 // Back scss
 @import "backLayout";
+@import "register"
+;@import "login";
 
 // UTILITIES
 
@@ -114,6 +116,10 @@ li {
   color: rgb(219, 219, 219);
 }
 
+.pink_font {
+  color: $red_org;
+}
+
 // FONT SIZES
 
 .f_12 {
@@ -140,6 +146,10 @@ li {
   object-fit: cover;
 }
 
+.w_416 {
+  width: 416px;
+}
+
 .w_600 {
   width: 600px;
 }
@@ -160,6 +170,10 @@ li {
 
 .obj_fit {
   object-fit: cover;
+}
+
+.obj_fit_contain {
+  object-fit: contain;
 }
 
 // DIV SUGGESTION
