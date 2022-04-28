@@ -1,5 +1,9 @@
 <template>
     <div>
+        <div class="circle">
+          <div class="circle2"></div>
+        </div>
+
         <div
             class="fixed-top black_banner d-flex flex-column justify-content-center align-items-center"
         >
@@ -67,6 +71,7 @@
                     v-for="(luogo, i) in luoghi"
                     :key="luogo + i"
                     class="my-autocomplete p-2"
+                    :class="autocomplete? 'hide' : ''"
                 >
                     <div @click="clickSearch(luogo.address.freeformAddress)">
                         {{ luogo.address.freeformAddress }}
@@ -237,9 +242,9 @@
         <!-- appartamenti -->
         <div class="back_ap">
             <div class="ap_card">
-                <div class="row flat_row g-0">
+                <div class="row flat_row g-0 ">
                     <div
-                        class="col-xxl-3 col-lg-4 col-md-6 col-sm-12 px-3 mb-5"
+                        class="col-xxl-3 col-lg-4 col-md-6 col-sm-12 px-3 mb-5 d-flex align-items-stretch" 
                         v-for="apartment of apartments"
                         :key="apartment.id"
                     >
@@ -342,7 +347,7 @@
 
                                 <!-- {{-- tags --}} -->
                                 <div
-                                    class="bg-light text-center border py-4 pt-3 tags_container"
+                                    class="bg-light text-center py-4 pt-3"
                                 >
                                     <!-- {{-- icons --}} -->
                                     <span
@@ -356,18 +361,10 @@
                                             :title="tag.name"
                                         />
                                     </span>
-                                </div>
-
-                                <!-- {{-- descrizione --}} -->
-                                <div class="text-break p-3 bg-light">
-                                    <!-- <h5 class="px-3">Su questo annuncio:</h5>
-                                    <p
-                                        class="ap_text font-monospace lh-base overflow-hidden mb-0 px-3 h_100 op_9"
-                                    >
-                                        {{ apartment.description }}
-                                    </p> -->
+                                    <div class="text-break p-3 bg-light">
+                                    
                                     <button
-                                        class="button_forward d-flex align-items-center ms-auto px-3"
+                                        class="button_forward d-flex align-items-center ms-auto mt-4 py-2 px-3"
                                     >
                                         <router-link
                                             class="text-white"
@@ -380,6 +377,15 @@
                                         /></router-link>
                                     </button>
                                 </div>
+                                </div>
+
+                                <!-- {{-- descrizione --}} -->
+                                <!-- <h5 class="px-3">Su questo annuncio:</h5>
+                                    <p
+                                        class="ap_text font-monospace lh-base overflow-hidden mb-0 px-3 h_100 op_9"
+                                    >
+                                        {{ apartment.description }}
+                                    </p> -->
                             </div>
                         </div>
                     </div>
@@ -401,6 +407,7 @@ export default {
     },
     data() {
         return {
+            autocomplete: false,
             show: false,
             apartments: [],
             pagination: {},
@@ -548,8 +555,14 @@ export default {
             );
         },
         showFilters() {
-            return (this.show = !this.show);
+            return this.show = !this.show;
         },
+        showAutocomplete() {
+            return this.autocomplete === false;
+        },
+        hideAutocomplete() {
+            return this.autocomplete === true;
+        }
     },
     mounted() {
         this.decodeApartmentsJson(

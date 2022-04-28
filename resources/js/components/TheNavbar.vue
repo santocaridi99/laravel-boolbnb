@@ -8,7 +8,9 @@
             <!-- links -->
                 <!-- I miei alloggi - desktop -->
                 <li>
-                    <a class="nav_text" aria-current="page" href="/host/apartments">I miei alloggi</a>
+                    <a class="nav_text" aria-current="page" href="/host/apartments">
+                        I miei alloggi
+                    </a>
                 </li>
                 <!-- I miei alloggi - mobile -->
                 <li>

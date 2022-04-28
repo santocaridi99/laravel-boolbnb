@@ -6,7 +6,7 @@
  <!-- button - cerca gli alloggi  -->
   <div class="fixed-top black_banner d-flex flex-column justify-content-center align-items-center">  
     <div class="search_container text-center d-flex align-items-center justify-content-center">
-        <button class="button_forward d-flex align-items-center px-4"><router-link class=" text-white" aria-current="page" :to="{ name: 'apartments.index' }">Cerca gli alloggi</router-link> <img class="ps-2" src="/img/frecce.svg" alt=""></button>
+        <button class="button_forward d-flex align-items-center py-2 px-4"><router-link class=" text-white" aria-current="page" :to="{ name: 'apartments.index' }">Cerca gli alloggi</router-link> <img class="ps-2" src="/img/frecce.svg" alt=""></button>
     </div>
   </div>
   
@@ -73,7 +73,7 @@
     <!-- <img src="/img/mountains-banner.png" alt=""> -->
       <div class="banner_text">
       <h2>Sei <br> povero?</h2>
-      <button class="button_forward d-flex align-items-center mt-5 px-4"><router-link class=" text-white" aria-current="page" :to="{ name: 'apartments.index' }">Consigliami</router-link> <img class="ps-2" src="/img/frecce.svg" alt=""></button>
+      <button class="button_forward d-flex align-items-center mt-5 py-2 px-4"><router-link class=" text-white" aria-current="page" :to="{ name: 'apartments.index' }">Consigliami</router-link> <img class="ps-2" src="/img/frecce.svg" alt=""></button>
       </div>
     </div>
   

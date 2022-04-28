@@ -1,7 +1,7 @@
 <template>
-    <div>
+    <div v-if="open === false">
         <!-- titolo e immagini -->
-        <div class="container" v-if="open === false">  
+        <div class="container" >  
             <h1 class="front_show">{{ apartmentDet.title }}</h1>
             <!-- img lg -->
             <div class="row g-0 img_lg"> 
@@ -93,7 +93,7 @@
 
                     <div class="col-lg-5 col-md-12 d-flex flex-column align-items-start">
                         <div id="map" class="map mb-5"></div>
-                        <h3 class="">price: <strong> {{apartmentDet.price_per_night}} &euro; </strong></h3>            
+                        <h3 class="">prezzo: <strong> {{apartmentDet.price_per_night}} &euro; </strong></h3>            
                     </div>
                 </div>
                 
@@ -120,15 +120,21 @@
                 </div>
             </div>
         </div>
-        <div class="message_window d-flex flex-column align-items-center justify-content-center" v-if="open">
+    </div>
+    <div class="message_window d-flex flex-column align-items-center justify-content-center" v-else>
+            <img class="loader" src="/img/bool_load.gif" alt="boolbnb">
             <div v-if="apartmentDet.id" class="my-form m-5">
-                <div>
-                    <i class="icon_x fas fa-window-close" @click="toggleForm"></i>
+                <div class="x d-flex">
+                    <div class="icon_x">
+                        <i class=" fas fa-window-close" @click="reloadPage"></i>
+                    </div>
+                    <div class="x_text d-flex align-items-center">
+                        <p class="p-0 m-0"> Chiudi </p>
+                    </div>  
                 </div>  
                 <contact-form :apartment_id="apartmentDet.id"></contact-form>
             </div>
         </div>
-    </div>
 </template>
 
 <script>
@@ -191,6 +197,9 @@ export default {
         },
         toggleForm() {
             return this.open= !this.open;
+        },
+        reloadPage(){
+            window.location.reload();
         }
     },
     mounted() {

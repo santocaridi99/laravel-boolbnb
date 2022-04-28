@@ -1,6 +1,117 @@
 @keyframes slide{0%{transform:translateX(0)}to{transform:translateX(10px)}};
 @keyframes slide-2{0%{transform:translateX(0)}to{transform:translateX(-10px)}};
 
+.circle {
+    border-radius:50%;
+    width: 100px;
+    height: 100px;
+    position: fixed;
+    top: 20px;
+    right: 30px;
+    z-index: 1200;
+    &::before {
+        content: "";
+        border-radius:50%;
+        position: absolute;
+        width: 60px;
+        height: 60px;
+        position: fixed;
+        top: 100px;
+        right: 100px;
+        z-index: 1210;
+        transform: translateX(-50px);
+        animation: animateBg3 10s infinite alternate;
+        background:
+        radial-gradient(circle at 50% 0,
+            rgb(255, 0, 81),
+            rgba(255,0,0,0) 70.71%),
+        radial-gradient(circle at 6.7% 75%,
+            rgb(255, 247, 0),
+            rgba(0,0,255,0) 40%),
+            radial-gradient(circle at 93.3% 75%,
+            rgb(255, 238, 0),
+            rgba(0,255,0,0) 40%) #ffc800;
+        background-size: 300% 100%;
+    }
+    &::after {
+        content: "";
+        border-radius:50%;
+        position: absolute;
+        width: 40px;
+        height: 40px;
+        position: fixed;
+        top: 100px;
+        right: 50px;
+        z-index: 1210;
+        transform: translateY(50px);
+        animation: animateBg3 10s infinite alternate;
+        background:
+        radial-gradient(circle at 50% 0,
+            rgb(255, 0, 81),
+            rgba(255,0,0,0) 70.71%),
+        radial-gradient(circle at 6.7% 75%,
+            rgb(255, 247, 0),
+            rgba(0,0,255,0) 40%),
+            radial-gradient(circle at 93.3% 75%,
+            rgb(255, 238, 0),
+            rgba(0,255,0,0) 40%) #ffc800;
+        background-size: 300% 100%;
+    }
+       /* box-shadow: 0 0 20px 2px #111; */
+}
+.circle {
+    animation: animateBg3 10s infinite alternate;
+    background:
+      radial-gradient(circle at 50% 0,
+        rgb(255, 0, 81),
+        rgba(255,0,0,0) 70.71%),
+      radial-gradient(circle at 6.7% 75%,
+        rgb(255, 247, 0),
+        rgba(0,0,255,0) 40%),
+        radial-gradient(circle at 93.3% 75%,
+        rgb(255, 238, 0),
+        rgba(0,255,0,0) 40%) #ffc800;
+       background-size: 300% 100%;
+}
+
+@keyframes animateBg3 {
+  0% { background-position: 0% 0%; }
+   25% { background-position: 100% 20%; }
+   50% { background-position: 40% 100%; }
+   75% { background-position: 90% 20%; }
+  100% { background-position: 20% 90%; }
+}
+
+.circle2 {
+    border-radius:50%;
+    width: 100px;
+     height: 100px;
+     position: absolute;
+     top: 0;
+     right: 0;
+     z-index: 1199;
+       /* box-shadow: 0 0 20px 2px #111; */
+}
+.circle2 {
+    animation: animateBg4 10s infinite alternate;
+    background:
+      radial-gradient(circle at 50% 0,
+        rgb(255, 221, 0),
+        rgba(255,0,0,0) 40%),
+      radial-gradient(circle at 6.7% 75%,
+        rgb(255, 0, 68),
+        rgba(0,0,255,0) 70.71%);
+       background-size: 300% 100%;
+}
+
+@keyframes animateBg4 {
+  0% { background-position: 0% 0%; }
+   50% { background-position: 100% 20%; }
+  100% { background-position: 20% 90%; }
+}
+
+
+
 .filter_button {
     color: #fff;
     background-color: $dark_org;
@@ -11,12 +122,12 @@
 }
 
 .flat_row {
-    margin-top: 80px;
+    margin: 80px;
     .flat {
         border-radius: 15px;
         overflow: hidden;
         background-color: #fff;
-       
+        position: relative;
     }
 }
 
@@ -178,4 +289,11 @@
         }
     }
 
+    .circle, .circle2 {
+        display: none;
+    }
+
+    .hide {
+        display: none;
+    }
 }

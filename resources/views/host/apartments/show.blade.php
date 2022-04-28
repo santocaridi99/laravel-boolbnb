@@ -72,12 +72,14 @@
             
           </div>
         </div>
-        <h3>Messaggi:</h3>
-        @foreach ($messages as $message)
-          <div class="col-md-2">
-            {{$message->content}}
+          <div class="messages_box">
+            <h3 class="ps-4">Messaggi:</h3>
+            @foreach ($messages as $message)
+              <div class="col-md-8">
+                <p class="ps-4">{{$message->email}} : {{$message->content}} - {{$message->created_at}}</p>  
+              </div>
+            @endforeach
           </div>
-        @endforeach
       </div>
     </div>
 
