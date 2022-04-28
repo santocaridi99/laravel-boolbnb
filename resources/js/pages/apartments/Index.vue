@@ -100,7 +100,6 @@
                     placeholder="beds"
                     @change="searchSubmit"
                 />
-
                 <input
                     class="input_bar m-2"
                     type="number"
@@ -558,8 +557,8 @@ export default {
                 1,
                 this.search,
                 this.rooms,
-                this.price,
                 this.beds,
+                this.price,
                 this.picked,
                 this.radius
             );
@@ -579,8 +578,8 @@ export default {
             1,
             this.search,
             this.rooms,
-            this.price,
             this.beds,
+            this.price,
             this.picked,
             this.radius
         );
