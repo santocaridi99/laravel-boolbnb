@@ -203,9 +203,7 @@
           @enderror
         </div>
       </div>
-    </form>
-
-    {{-- BUTTONS --}}
+      {{-- BUTTONS --}}
       <div class="text-center mt-3 p-4 bg-light buttons_box">
         <div class="form-group">
           {{-- <a class="btn btn-success" onmousedown="beforeSubmit()">Salva appartamento</a> --}}
@@ -216,8 +214,11 @@
           </button>
         </div>
       </div>
-    </div>
+    </form>
   </div>
+</div>
+
+    
 
   
 <script type="text/javascript" src="{{ URL::asset('js/script/coordinates.js') }}"></script>

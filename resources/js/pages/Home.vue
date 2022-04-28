@@ -72,8 +72,8 @@
     <div class="container-fluid custom_cont_fluid mt-5">
     <!-- <img src="/img/mountains-banner.png" alt=""> -->
       <div class="banner_text">
-      <h2>Sei <br> povero?</h2>
-      <button class="button_forward d-flex align-items-center mt-5 py-2 px-4"><router-link class=" text-white" aria-current="page" :to="{ name: 'apartments.index' }">Consigliami</router-link> <img class="ps-2" src="/img/frecce.svg" alt=""></button>
+      <h2>Hai poco <br> budget?</h2>
+      <button class="button_forward d-flex align-items-center mt-5 py-2 px-4"><router-link class=" text-white" aria-current="page" :to="{ name: 'apartments.index' }">Destinazioni low-cost</router-link> <img class="ps-2" src="/img/frecce.svg" alt=""></button>
       </div>
     </div>
   

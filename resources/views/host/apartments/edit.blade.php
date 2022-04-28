@@ -86,9 +86,9 @@
                     <label class="form-label">Immagine di copertina*</label>
                     <input type="file" name='cover' class="form-control @error('cover') is-invalid @enderror" value="{{old('cover',$apartment->cover)}}">
                     {{-- anteprima img --}}
-                    {{-- <div class="col-3">
+                    <div class="col-3">
                         <img class="img-fluid" src="{{ asset('storage/' . $apartment->cover) }}" alt="" class="post-img">
-                    </div> --}}
+                    </div>
                     @error('cover')
                     <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
@@ -217,20 +217,21 @@
                     @enderror
                 </div>
             </div>
-        </form>
-
-        {{-- BUTTONS --}}
-        <div class="text-center mt-3 p-4 bg-light buttons_box">
-            <div class="form-group">
-                {{-- <a class="btn btn-success" onmousedown="beforeSubmit()">Salva appartamento</a> --}}
-                {{-- <a id="geocodeBtn" class="btn btn-success">Geolocalizza</a> --}}
-                <button type="submit" class="px-4 pink_custom save">Salva appartamento</button>
-                <button class="px-4 ms-3 orange_custom undo">
-                    <a href="{{ route('host.apartments.index') }}">Annulla</a>
-                </button>
+            {{-- BUTTONS --}}
+            <div class="text-center mt-3 p-4 bg-light buttons_box">
+                <div class="form-group">
+                    {{-- <a class="btn btn-success" onmousedown="beforeSubmit()">Salva appartamento</a> --}}
+                    {{-- <a id="geocodeBtn" class="btn btn-success">Geolocalizza</a> --}}
+                    <button type="submit" class="px-4 pink_custom save">Salva appartamento</button>
+                    <button class="px-4 ms-3 orange_custom undo">
+                        <a href="{{ route('host.apartments.index') }}">Annulla</a>
+                    </button>
+                </div>
             </div>
         </div>
-    </div>
+    </form>
+
+        
 </div>
 <script type="text/javascript" src="{{ URL::asset('js/script/coordinates.js') }}"></script>
 @endsection
