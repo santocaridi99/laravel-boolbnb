@@ -16,10 +16,19 @@
         border-radius: 15px;
         overflow: hidden;
         background-color: #fff;
-        min-height: 780px;
+       
     }
 }
 
+.my-input-num {
+    background-color: transparent;
+    color: white;
+    width: 65px;
+
+    &:focus {
+        outline: none;
+    }
+}
 // .flat_row {
 //     margin-top: 80px;
 //     .flat_card {
