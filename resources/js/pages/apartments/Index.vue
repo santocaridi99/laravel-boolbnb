@@ -101,14 +101,14 @@
                     @change="searchSubmit"
                 />
 
-                <!-- <input
+                <input
                     class="input_bar m-2"
                     type="number"
                     name="price"
                     v-model="price"
                     placeholder="price"
                     @change="searchSubmit"
-                /> -->
+                />
             </div>
             <div>
                 <input
