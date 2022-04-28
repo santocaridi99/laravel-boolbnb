@@ -60,6 +60,7 @@ class ApartmentController extends Controller
         // return response()->json($apartments);
         $rooms = $request->input("rooms");
         $beds = $request->input('beds');
+        $price = $request->input('price');
         $picked = $request->input('picked');
         $filter = $request->input("filter");
         $radius = $request->input('radius');
@@ -71,8 +72,20 @@ class ApartmentController extends Controller
             $lon = $coordinate["results"][0]["position"]["lon"];
             // dd($radius);
             // $notFilteredApartments = Apartment::all();
-            if ($filter && $rooms && $beds) {
+            if ($filter && $picked && $beds && $rooms) {
+                $notFilteredApartments = Apartment::whereHas('tags', function ($query) use ($picked) {
+                    $query->whereIn('tag_id', $picked)->where("isVisible", "=", "1")->orderBy('streetAddress', 'DESC');
+                })->where("bed_numbers", "=", "$beds")->where("room_numbers", "=", "$rooms")->paginate(15);
+            } elseif ($filter && $rooms && $beds) {
                 $notFilteredApartments = Apartment::where("isVisible", "=", "1")->where("room_numbers", "=", "$rooms")->where("bed_numbers", "=", "$beds")->orderBy('streetAddress', 'DESC')->paginate(15);
+            } elseif ($filter && $picked && $beds) {
+                $notFilteredApartments = Apartment::whereHas('tags', function ($query) use ($picked) {
+                    $query->whereIn('tag_id', $picked)->where("isVisible", "=", "1")->orderBy('streetAddress', 'DESC');
+                })->where("bed_numbers", "=", "$beds")->paginate(15);
+            } elseif ($filter && $picked && $rooms) {
+                $notFilteredApartments = Apartment::whereHas('tags', function ($query) use ($picked) {
+                    $query->whereIn('tag_id', $picked)->where("isVisible", "=", "1")->orderBy('streetAddress', 'DESC');
+                })->where("room_numbers", "=", "$rooms")->paginate(15);
             } elseif ($filter && $rooms) {
                 $notFilteredApartments = Apartment::where("isVisible", "=", "1")->where("room_numbers", "=", "$rooms")->orderBy('streetAddress', 'DESC')->paginate(15);
             } elseif ($filter && $picked) {
@@ -112,16 +125,28 @@ class ApartmentController extends Controller
             // dd($filteredApartments);
             return response()->json($filteredApartments);
         } else {
-            if ($rooms && $beds) {
-                $apartments = Apartment::where("isVisible", "=", "1")->where("room_numbers", "=", "$rooms")->where("bed_numbers", "=", "$beds")->orderBy('streetAddress', 'DESC')->paginate(15);
-            } elseif ($rooms) {
-                $apartments = Apartment::where("isVisible", "=", "1")->where("room_numbers", "=", "$rooms")->orderBy('streetAddress', 'DESC')->paginate(15);
+            if ($rooms && $beds && $picked) {
+                $apartments = Apartment::whereHas('tags', function ($query) use ($picked) {
+                    $query->whereIn('tag_id', $picked)->where("isVisible", "=", "1")->orderBy('streetAddress', 'DESC')->orderBy('streetAddress', 'DESC');
+                })->where("room_numbers", "=", "$rooms")->where("bed_numbers", "=", "$beds")->paginate(15);
+            } elseif ($rooms && $picked) {
+                $apartments = Apartment::whereHas('tags', function ($query) use ($picked) {
+                    $query->whereIn('tag_id', $picked)->where("isVisible", "=", "1")->orderBy('streetAddress', 'DESC')->orderBy('streetAddress', 'DESC');
+                })->where("room_numbers", "=", "$rooms")->paginate(15);
+            } elseif ($beds && $picked) {
+                $apartments = Apartment::whereHas('tags', function ($query) use ($picked) {
+                    $query->whereIn('tag_id', $picked)->where("isVisible", "=", "1")->orderBy('streetAddress', 'DESC')->orderBy('streetAddress', 'DESC');
+                })->where("bed_numbers", "=", "$beds")->paginate(15);
+            } elseif ($rooms && $beds) {
+                $apartments = Apartment::where("isVisible", "=", "1")->where("bed_numbers", "=", "$beds")->where("room_numbers", "=", "$rooms")->orderBy('streetAddress', 'DESC')->paginate(15);
             } elseif ($picked) {
                 $apartments = Apartment::whereHas('tags', function ($query) use ($picked) {
                     $query->whereIn('tag_id', $picked)->where("isVisible", "=", "1")->orderBy('streetAddress', 'DESC');
                 })->paginate(15);
-            } elseif ($beds) {
+            } elseif ($beds){
                 $apartments = Apartment::where("isVisible", "=", "1")->where("bed_numbers", "=", "$beds")->orderBy('streetAddress', 'DESC')->paginate(15);
+            } elseif ($rooms){
+                $apartments = Apartment::where("isVisible", "=", "1")->where("room_numbers", "=", "$rooms")->orderBy('streetAddress', 'DESC')->paginate(15);
             } else {
                 $apartments = Apartment::where("isVisible", "=", "1")->orderBy('streetAddress', 'DESC')->paginate(15);
             }
