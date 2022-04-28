@@ -17,7 +17,7 @@
                     class="search_bar ps-3"
                     placeholder="Inserisci la via [Premi Invio]"
                     v-model="search"
-                    @keydown="searchBox"
+                    @keyup="searchBox"
                 />
                 <button class="button_search_bar ms-2" @click="searchSubmit">
                     <i class="fas fa-search"></i>
@@ -66,12 +66,11 @@
                 </button>
             </div>
 
-            <div v-if="luoghi.length !== 0" class="box p-2">
+            <div v-if="luoghi.length !== 0" class="box p-2" :class="autocomplete ? 'hide' : ''">
                 <div
                     v-for="(luogo, i) in luoghi"
                     :key="luogo + i"
                     class="my-autocomplete p-2"
-                    :class="autocomplete ? 'hide' : ''"
                 >
                     <div @click="clickSearch(luogo.address.freeformAddress)">
                         {{ luogo.address.freeformAddress }}
@@ -505,6 +504,7 @@ export default {
                 this.long = null;
                 this.luoghi = "";
             }
+            
         },
         // getRadiusApartments(page = 1, search = null) {
         //   if (page < 1) {
@@ -528,6 +528,7 @@ export default {
         clickSearch(luogo) {
             this.search = luogo;
             this.searchBox();
+            this.toggleAutocomplete();
         },
         // filterApartments() {
         //     this.apartments.forEach((element) => {
@@ -566,11 +567,8 @@ export default {
         showFilters() {
             return (this.show = !this.show);
         },
-        showAutocomplete() {
-            return this.autocomplete === false;
-        },
-        hideAutocomplete() {
-            return this.autocomplete === true;
+        toggleAutocomplete() {
+           this.autocomplete=true;
         },
     },
     mounted() {
@@ -584,7 +582,15 @@ export default {
             this.radius
         );
         // this.filterApartments(this.singleLocation.position.lat, this.singleLocation.position.lon)
+
     },
+    computed:{
+        resetAutocomplete(){
+            if(this.search===''){
+                this.autocomplete=false
+            }
+        }
+    }
 };
 </script>
 
@@ -598,4 +604,9 @@ export default {
 //         }
 //     }
 // }
+
+.hide{
+    display: none;
+}
+
 </style>

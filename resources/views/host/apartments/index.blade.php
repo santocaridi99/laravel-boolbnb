@@ -140,6 +140,15 @@
 
                                         {{$apartment->square_meters}} mq
                                     </small>
+
+                                     {{-- isVisible? --}}
+                                    <div class="p-0 mt-2 mb-0">
+                                        @if($apartment->isVisible)
+                                        <p class="badge bg-dark">visibile <i class="text-success fas fa-check-circle"></i></p>
+                                        @else 
+                                        <p class="badge bg-dark">non visibile <i class="text-danger fas fa-times-circle"></i></p>
+                                        @endif
+                                    </div>
                                 </div>
                                 
                                 {{-- BUTTONS --}}
@@ -189,7 +198,7 @@
                                     {{$apartment->description}}
                                 </p> 
                             </div>
-                            
+                                                        
                         </div>
                     </div>
                 </div>

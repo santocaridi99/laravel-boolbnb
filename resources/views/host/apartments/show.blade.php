@@ -68,6 +68,11 @@
               <li>{{$apartment->streetAddress}}</li>
               <li>{{$apartment->province}}, {{$apartment->region}}</li>
               <li>{{$apartment->country}}</li>
+              @if($apartment->isVisible)
+                <li class="mt-5">visibile <i class="text-success fas fa-check-circle"></i></li>
+              @else 
+                <li class="mt-5">non visibile <i class="text-danger fas fa-times-circle"></i></li>
+              @endif
             </ul>
             
           </div>
