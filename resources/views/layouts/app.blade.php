@@ -62,6 +62,11 @@
     body {
         font-family: 'Inter', sans-serif;
         margin-top: 105px;
+        
+    }
+    .parsley-errors-list li{
+        color:red;
+        list-style: none;
     }
 </style>
 

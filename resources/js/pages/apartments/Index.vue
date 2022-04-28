@@ -71,7 +71,7 @@
                     v-for="(luogo, i) in luoghi"
                     :key="luogo + i"
                     class="my-autocomplete p-2"
-                    :class="autocomplete? 'hide' : ''"
+                    :class="{'hide' : autocomplete === true}"
                 >
                     <div @click="clickSearch(luogo.address.freeformAddress)">
                         {{ luogo.address.freeformAddress }}
@@ -497,6 +497,7 @@ export default {
                 this.long = null;
                 this.luoghi = "";
             }
+            
         },
         // getRadiusApartments(page = 1, search = null) {
         //   if (page < 1) {
@@ -520,6 +521,7 @@ export default {
         clickSearch(luogo) {
             this.search = luogo;
             this.searchBox();
+            this.hideAutocomplete()
         },
         // filterApartments() {
         //     this.apartments.forEach((element) => {
@@ -555,13 +557,14 @@ export default {
             );
         },
         showFilters() {
-            return this.show = !this.show;
+            this.show = !this.show;
         },
         showAutocomplete() {
-            return this.autocomplete === false;
+            this.autocomplete = false;
         },
         hideAutocomplete() {
-            return this.autocomplete === true;
+            this.autocomplete = true;
+            console.log(this.autocomplete);
         }
     },
     mounted() {

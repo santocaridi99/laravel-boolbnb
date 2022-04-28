@@ -98,7 +98,7 @@
                                     <div class="">
                                         <input id="password" type="password" class="form-control @error('password') is-invalid @enderror"
                                             name="password" required autocomplete="new-password" data-parsley-length='[8,16]'
-                                            data-parsley-trigger='keyup'>
+                                            data-parsley-trigger='change'>
                     
                                         @error('password')
                                         <span class="invalid-feedback" role="alert">
