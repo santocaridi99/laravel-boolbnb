@@ -18,6 +18,7 @@
                     placeholder="Inserisci la via [Premi Invio]"
                     v-model="search"
                     @keyup="searchBox"
+                    @keyup.delete="autocompleteReset"
                 />
                 <button class="button_search_bar ms-2" @click="searchSubmit">
                     <i class="fas fa-search"></i>
@@ -570,6 +571,11 @@ export default {
         toggleAutocomplete() {
            this.autocomplete=true;
         },
+          autocompleteReset(){
+            if(this.search===''){
+                this.autocomplete=false
+            }
+        }
     },
     mounted() {
         this.decodeApartmentsJson(
@@ -584,13 +590,6 @@ export default {
         // this.filterApartments(this.singleLocation.position.lat, this.singleLocation.position.lon)
 
     },
-    computed:{
-        resetAutocomplete(){
-            if(this.search===''){
-                this.autocomplete=false
-            }
-        }
-    }
 };
 </script>
 
