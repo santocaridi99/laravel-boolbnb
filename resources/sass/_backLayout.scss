@@ -1,12 +1,5 @@
 // NAVBAR
 .back_nav {
-    font-family: "Inter", sans-serif;
-
-    .navbar-brand > svg {
-        width: 120px;
-        object-fit: 100%;
-    }
-
     .log_red:hover {
         color: #ff6332;
         transition: all 0.3s linear;
@@ -16,6 +9,7 @@
         display: flex;
         justify-content: flex-start;
     }
+
 }
 
 // INDEX
