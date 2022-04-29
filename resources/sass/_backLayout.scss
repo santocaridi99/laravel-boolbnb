@@ -1,15 +1,15 @@
 // NAVBAR
 .back_nav {
-    font-family: 'Inter', sans-serif;
+    font-family: "Inter", sans-serif;
 
-    .navbar-brand>svg {
+    .navbar-brand > svg {
         width: 120px;
         object-fit: 100%;
     }
 
     .log_red:hover {
-        color: #FF6332;
-        transition: all .3s linear;
+        color: #ff6332;
+        transition: all 0.3s linear;
     }
 
     .flex_start {
@@ -20,14 +20,14 @@
 
 // INDEX
 .back_ap {
-    font-family: 'Inter', sans-serif;
+    font-family: "Inter", sans-serif;
 
     .create_box {
-        height:40px;
-        width:400px;
-        display:block;
-        overflow:hidden;
-        
+        height: 40px;
+        width: 400px;
+        display: block;
+        overflow: hidden;
+
         &:hover .create_slide {
             left: 50px;
         }
@@ -39,7 +39,7 @@
         }
 
         .create_slide {
-            position:relative;
+            position: relative;
             top: -32px;
             left: -280px;
             height: 40px;
@@ -67,12 +67,12 @@
         line-height: 40px;
         border-radius: 50%;
         background-color: $red_org;
-        transition: all .3s ease-in-out;
+        transition: all 0.3s ease-in-out;
 
         &:hover {
             color: $red_org;
             background-color: white;
-            transition: all .3s ease-in-out;
+            transition: all 0.3s ease-in-out;
         }
     }
 
@@ -86,12 +86,12 @@
         line-height: 40px;
         border-radius: 50%;
         background-color: $dark_org;
-        transition: all .3s ease-in-out;
+        transition: all 0.3s ease-in-out;
 
         &:hover {
             color: $dark_org;
             background-color: white;
-            transition: all .3s ease-in-out;
+            transition: all 0.3s ease-in-out;
         }
     }
 
@@ -105,18 +105,18 @@
         line-height: 40px;
         border-radius: 50%;
         background-color: rgb(66, 173, 66);
-        transition: all .3s ease-in-out;
-    
+        transition: all 0.3s ease-in-out;
+
         &:hover {
             color: rgb(66, 173, 66);
             background-color: white;
-            transition: all .3s ease-in-out;
+            transition: all 0.3s ease-in-out;
         }
     }
 
     .tags_container > img {
         width: 45px;
-        opacity: .5;
+        opacity: 0.5;
         margin: 5px 0;
     }
 }
@@ -137,7 +137,7 @@
             object-fit: contain;
             transform: rotateY(180deg);
         }
-    } 
+    }
 
     .edit_btn i {
         color: white;
@@ -148,12 +148,12 @@
         line-height: 35px;
         border-radius: 50%;
         background-color: $dark_org;
-        transition: all .3s ease-in-out;
-    
+        transition: all 0.3s ease-in-out;
+
         &:hover {
             color: $dark_org;
             background-color: white;
-            transition: all .3s ease-in-out;
+            transition: all 0.3s ease-in-out;
         }
     }
 
@@ -171,6 +171,33 @@
     }
     .messages_box {
         color: #fff;
+    }
+
+    .stats {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+        position: relative;
+    }
+
+    /* .progress-ring {
+    } */
+
+    .progress-ring__circle {
+        transition: 0.35s stroke-dashoffset;
+        // axis compensation
+        transform: rotate(-90deg);
+        transform-origin: 50% 50%;
+    }
+
+    .statsinput {
+        font-size: 15;
+        color: white;
+        background-color: transparent;
+        top: 10px;
+        left: 10px;
+        width: 80px;
     }
 }
 
@@ -195,8 +222,9 @@
     .buttons_box {
         border-radius: 0 0 20px 20px;
 
-        button, a {
-            color:white;
+        button,
+        a {
+            color: white;
             font-size: 18px;
             border: none;
             outline: none;
@@ -204,7 +232,8 @@
             border-radius: 50px;
         }
 
-        .save, .undo {
+        .save,
+        .undo {
             box-shadow: 2px 2px 2px 2px #94a3ac;
         }
 
@@ -218,30 +247,24 @@
     }
 }
 
-
 // MEDIA QUERY
 @media screen and (max-width: 575px) {
-
     .back_ap {
-
-        .tags_container>img {
+        .tags_container > img {
             width: 36px;
         }
     }
 }
 
 @media screen and (max-width: 767px) {
-
     .back_ap {
-
-        .tags_container>img {
+        .tags_container > img {
             width: 36px;
         }
     }
 }
 
 @media screen and (max-width: 991px) {
-
     .back_ap {
         .show_img {
             height: 200px;
@@ -251,8 +274,8 @@
             position: relative;
         }
 
-        .i_buttons .edit_btn>i,
-        .i_buttons .dng_btn>i,
+        .i_buttons .edit_btn > i,
+        .i_buttons .dng_btn > i,
         .i_buttons .restore_btn {
             height: 42px;
             width: 42px;
@@ -261,7 +284,7 @@
             position: absolute;
         }
 
-        .edit_btn>i {
+        .edit_btn > i {
             top: -190px;
             right: 10px;
         }
@@ -271,12 +294,9 @@
             right: 10px;
         }
 
-        .dng_btn>i {
+        .dng_btn > i {
             top: -140px;
             right: 10px;
         }
-
-        
     }
-
 }
