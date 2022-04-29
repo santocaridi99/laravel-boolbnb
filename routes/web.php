@@ -33,7 +33,9 @@ Route::middleware('auth')
         // restore degli appartamenti cancellati
         Route::get("apartments/{apartment}/restoreApartment", "ApartmentController@restoreApartment")->name("apartments.restoreApartment");
         // rotta sponsor
-        Route::get("sponsor/{apartment}", "SponsorshipController@show")->name('sponsor.show');
+        Route::get("sponsor/{apartment}", "SponsorshipController@index")->name('sponsor.index');
+        Route::get("sponsor/show/{apartment}", "SponsorshipController@show")->name('sponsor.show');
+       
 
 
         // !! LASCIARE INFONDO A TUTTE LE ALTRE ROTTE !!

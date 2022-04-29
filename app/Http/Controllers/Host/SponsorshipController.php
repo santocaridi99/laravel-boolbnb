@@ -15,11 +15,14 @@ class SponsorshipController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($slug)
     {
-    //     $sponsorship = Sponsorship::all();
-    //     $apartments = Apartment::where("user_id", Auth::user()->id);
-    //     return view('host.sponsor.index', compact('sponsorship', 'apartments'));
+        //     $sponsorship = Sponsorship::all();
+        //     $apartments = Apartment::where("user_id", Auth::user()->id);
+        //     return view('host.sponsor.index', compact('sponsorship', 'apartments'));
+        $sponsorship = Sponsorship::all();
+        $apartments = Apartment::where("slug", $slug)->first();
+        return view('host.sponsor.index', compact('sponsorship', 'apartments'));
     }
 
     /**
@@ -49,11 +52,10 @@ class SponsorshipController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($slug)
+    public function show($id)
     {
-        $sponsorship = Sponsorship::all();
-        $apartments = Apartment::where("slug", $slug)->first();
-        return view('host.sponsor.show', compact('sponsorship', 'apartments'));
+        $sponsorship=Sponsorship::where("id",$id)->first();    
+        return view('host.sponsor.show', compact('sponsorship'));
     }
 
     /**
