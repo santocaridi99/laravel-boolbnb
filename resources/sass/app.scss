@@ -18,7 +18,11 @@
 @import "frontLayout";
 
 // Back scss
-@import "backLayout";
+@import "/backLayout/backNav";
+@import "/backLayout/backIndex";
+@import "/backLayout/backShow";
+@import "/backLayout/backEditCreate";
+
 @import "register"
 ;@import "login";
 

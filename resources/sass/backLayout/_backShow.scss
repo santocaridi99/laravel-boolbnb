@@ -1,0 +1,80 @@
+.ap_show {
+    .button_back {
+        background-color: $dark_org;
+        border: none;
+        outline: none;
+        height: 50px;
+        border-radius: 50px;
+        color: #fff;
+
+        img {
+            width: 30px;
+            height: 30px;
+            object-fit: contain;
+            transform: rotateY(180deg);
+        }
+    }
+
+    .edit_btn i {
+        color: white;
+        text-align: center;
+        border: none;
+        height: 35px;
+        width: 35px;
+        line-height: 35px;
+        border-radius: 50%;
+        background-color: $dark_org;
+        transition: all 0.3s ease-in-out;
+        box-shadow: 0px 2px 2px #1e1e22;
+
+        &:hover {
+            color: $dark_org;
+            background-color: white;
+            transition: all 0.3s ease-in-out;
+        }
+    }
+
+    .card {
+        background-color: #292f33;
+
+        h2 {
+            color: rgb(219, 219, 219);
+        }
+
+        .edit_container {
+            top: 15px;
+            right: 30px;
+        }
+    }
+
+    .messages_box {
+        color: #fff;
+    }
+
+    .stats {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+        position: relative;
+    }
+
+    /* .progress-ring {
+    } */
+
+    .progress-ring__circle {
+        transition: 0.35s stroke-dashoffset;
+        // axis compensation
+        transform: rotate(-90deg);
+        transform-origin: 50% 50%;
+    }
+
+    .statsinput {
+        font-size: 15;
+        color: white;
+        background-color: transparent;
+        top: 10px;
+        left: 10px;
+        width: 80px;
+    }
+}
