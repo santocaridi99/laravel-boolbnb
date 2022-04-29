@@ -76,12 +76,8 @@
         line-height: 40px;
         border-radius: 50%;
         background-color: $red_org;
-<<<<<<< HEAD
         transition: all .3s ease-in-out;
         box-shadow: 0px 0px 5px 1px #1e1e22;
-=======
-        transition: all 0.3s ease-in-out;
->>>>>>> 69190832976c22d938b5ececb022ebac605a2df8
 
         &:hover {
             color: $red_org;
@@ -100,12 +96,8 @@
         line-height: 40px;
         border-radius: 50%;
         background-color: $dark_org;
-<<<<<<< HEAD
         transition: all .3s ease-in-out;
         box-shadow: 0px 0px 5px 1px #1e1e22;
-=======
-        transition: all 0.3s ease-in-out;
->>>>>>> 69190832976c22d938b5ececb022ebac605a2df8
 
         &:hover {
             color: $dark_org;
@@ -124,14 +116,9 @@
         line-height: 40px;
         border-radius: 50%;
         background-color: rgb(66, 173, 66);
-<<<<<<< HEAD
         transition: all .3s ease-in-out;
         box-shadow: 0px 0px 5px 1px rgb(23, 23, 26);
     
-=======
-        transition: all 0.3s ease-in-out;
-
->>>>>>> 69190832976c22d938b5ececb022ebac605a2df8
         &:hover {
             color: rgb(66, 173, 66);
             background-color: white;
@@ -139,7 +126,6 @@
         }
     }
 
-<<<<<<< HEAD
     .tags_container {
         img {
             width: 45px;
@@ -150,12 +136,6 @@
         div {
             display: none;
         }
-=======
-    .tags_container > img {
-        width: 45px;
-        opacity: 0.5;
-        margin: 5px 0;
->>>>>>> 69190832976c22d938b5ececb022ebac605a2df8
     }
 }
 
@@ -286,22 +266,14 @@
 }
 
 // MEDIA QUERY
-<<<<<<< HEAD
 @media screen and (max-width:575px) {
 
     .back_ap {
 
         h1 {
             font-size: 35px;
-=======
-@media screen and (max-width: 575px) {
-    .back_ap {
-        .tags_container > img {
-            width: 36px;
->>>>>>> 69190832976c22d938b5ececb022ebac605a2df8
         }
 
-<<<<<<< HEAD
         .show_img {
             height: 200px;
         }
@@ -365,22 +337,12 @@
         
         .visible_box_bottom {
             display: block;
-=======
-@media screen and (max-width: 767px) {
-    .back_ap {
-        .tags_container > img {
-            width: 36px;
->>>>>>> 69190832976c22d938b5ececb022ebac605a2df8
         }
     }
 }
 
-<<<<<<< HEAD
 @media screen and (min-width: 576px) and (max-width: 991px) {
 
-=======
-@media screen and (max-width: 991px) {
->>>>>>> 69190832976c22d938b5ececb022ebac605a2df8
     .back_ap {
 
         h1 {
@@ -398,15 +360,9 @@
         .ap_body {
             position: relative;
         }
-<<<<<<< HEAD
         
         .i_buttons .edit_btn>i,
         .i_buttons .dng_btn>i,
-=======
-
-        .i_buttons .edit_btn > i,
-        .i_buttons .dng_btn > i,
->>>>>>> 69190832976c22d938b5ececb022ebac605a2df8
         .i_buttons .restore_btn {
             height: 45px;
             width: 45px;
@@ -415,24 +371,16 @@
             position: absolute;
             box-shadow: 0px 4px 1px #2f2f33;
         }
-<<<<<<< HEAD
         
         .edit_btn>i {
             top: -290px;
             right: 12px;
-=======
-
-        .edit_btn > i {
-            top: -190px;
-            right: 10px;
->>>>>>> 69190832976c22d938b5ececb022ebac605a2df8
         }
         
         .restore_btn {
             top: -290px;
             right: 12px;
         }
-<<<<<<< HEAD
         
         .dng_btn>i {
             top: -235px;
@@ -504,12 +452,3 @@
 //     }
 
 // }
-=======
-
-        .dng_btn > i {
-            top: -140px;
-            right: 10px;
-        }
-    }
-}
->>>>>>> 69190832976c22d938b5ececb022ebac605a2df8
