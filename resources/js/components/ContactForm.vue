@@ -126,7 +126,6 @@ import {
   required,
   minLength,
   email,
-  between,
   maxLength,
   alpha,
 } from "vuelidate/lib/validators";
