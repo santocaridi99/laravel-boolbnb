@@ -73,15 +73,16 @@
             name="end_date" data-parsley-type="date" required autocomplete="end_date"
             data-parsley-required-message="inserisci una data " 
             value="@php
+            use Carbon\Carbon;
             if ($sponsorship->duration = '24 ore') {
                 $dt = new Carbon();
-                $endDate = $dt->subYears(18)->format('Y-m-d');
+                $endDate = $dt->subHours(18)->format('Y-m-d');
             } elseif ($sponsorship->duration = '72 ore') {
                 $dt = new Carbon();
-                $endDate = $dt->subYears(18)->format('Y-m-d');
+                $endDate = $dt->subHours(72)->format('Y-m-d');
             } else {
                 $dt = new Carbon();
-                $endDate = $dt->subYears(18)->format('Y-m-d');
+                $endDate = $dt->subHours(144)->format('Y-m-d');
             }
             @endphp  " data-parsley-trigger='change' autofocus>
 
