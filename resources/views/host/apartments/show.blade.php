@@ -77,6 +77,37 @@
             
           </div>
         </div>
+          <div class="stats m-5">
+            <svg
+              class="progress-ring"
+              width="120"
+              height="120">
+              <circle
+                class="progress-ring__circle"
+                stroke="white"
+                stroke-width="5"
+                fill="#ff6333"
+                r="52"
+                cx="60"
+                cy="60"/>
+            </svg>
+
+            <div class="text-white">
+              <div> Numero totale</div>
+              <span>di visualizzazioni ricevute: </span>
+              <input
+                id='input'
+                class="statsinput"
+                value="{{$apartment->views}}"
+                type="number"
+                step="5"
+                min="0"
+                max="100"
+                placeholder="progress"
+                disabled
+              >
+            </div>
+          </div>
           <div class="messages_box">
             <h3 class="ps-4">Messaggi:</h3>
             @foreach ($messages as $message)
@@ -87,6 +118,5 @@
           </div>
       </div>
     </div>
-
   </div>
 @endsection

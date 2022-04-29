@@ -1,8 +1,8 @@
 <template>
     <div v-if="open === false">
         <!-- titolo e immagini -->
-        <div class="container" >  
-            <h1 class="front_show">{{ apartmentDet.title }}</h1>
+        <div class="container" > 
+            <h1 class="front_show mb-4">{{ apartmentDet.title }}</h1> 
             <!-- img lg -->
             <div class="row g-0 img_lg"> 
                 <div class="col-lg-10 col-md-10 col-sm-10">
@@ -37,12 +37,12 @@
             </div>
         </div>
         <!-- info appartamento -->
-        <div class="container-fluid bg-light p-5">
+        <div class="container-fluid bg-light px-4 py-4">
             <div class="info_container align-items-center justify-content-center">
                 <div class="row info_row align-items-start justify-content-center">
 
                     <div class="col-lg-7 col-md-12 d-flex flex-column align-items-start pe-5">
-                        <h2 class="mb-2 text-start">{{apartmentDet.title}}</h2>
+                        <h2 class="mb-2">{{apartmentDet.title}}</h2>
                         <small class="">
                             <i class="fas fa-map-marker-alt me-1 mb-5" ></i>
                             {{apartmentDet.streetAddress}}
@@ -93,7 +93,7 @@
 
                     <div class="col-lg-5 col-md-12 d-flex flex-column align-items-start">
                         <div id="map" class="map mb-5"></div>
-                        <h3 class="">prezzo: <strong> {{apartmentDet.price_per_night}} &euro; </strong></h3>            
+                        <h2 class="">prezzo: <strong> {{apartmentDet.price_per_night}} &euro; </strong></h2>            
                     </div>
                 </div>
                 
@@ -101,7 +101,7 @@
             <div class="info_container align-items-center justify-content-center">
                 <div class="row d-flex align-items-space-center justify-content-between">
                     <div class="col-lg-5 col-md-6 col-sm-6">
-                        <button class="button_back d-flex align-items-center px-3">
+                        <button class="button_back d-flex align-items-center px-3 my-2">
                             <router-link
                                 class="text-white"
                                 :to="{ name: 'apartments.index' }"
@@ -112,7 +112,7 @@
                     </div>                        
 
                     <div class="col-lg-5 col-md-6 col-sm-6">
-                        <button class="button_forward d-flex align-items-center px-3" @click="toggleForm">
+                        <button class="button_forward d-flex align-items-center px-3 my-2" @click="toggleForm">
                             Contatta l'host  
                             <img class="ps-1" src="/img/frecce.svg" alt=""/>       
                         </button> 
@@ -121,9 +121,10 @@
             </div>
         </div>
     </div>
-    <div class="message_window d-flex flex-column align-items-center justify-content-center" v-else>
-            <img class="loader" src="/img/bool_load.gif" alt="boolbnb">
-            <div v-if="apartmentDet.id" class="my-form m-5">
+    <!-- form contatti -->
+    <div class="message_window d-flex flex-column align-items-center justify-content-start" v-else>
+        <img class="loader mt-5" src="/img/bool_load.gif" alt="boolbnb">
+            <div v-if="apartmentDet.id" class="my-form mx-5"> 
                 <div class="x d-flex">
                     <div class="icon_x">
                         <i class=" fas fa-window-close" @click="reloadPage"></i>
@@ -224,32 +225,5 @@ export default {
 //   width: 50px;
 //   height: 70px;
 // }
-/* ---------------- */
-
-// h1 {
-//     color: rgb(14, 126, 231);
-// }
-
-
-    // .my-tags {
-    //     display: flex;
-    //     align-items: baseline;
-    //     font-size: 0.8rem;
-    //     margin-bottom: 8px;
-    //     span {
-    //         font-weight: 600;
-    //         margin: 0 4px;
-    //     }
-    //     .tags-class {
-    //         color: white;
-    //         padding: 0 5px;
-    //         border-radius: 5px;
-    //     }
-
-    //     .tags-class {
-    //         margin: 0 3px;
-    //         background-color: rgb(14, 126, 231);
-    //     }
-    // }
 
 </style>

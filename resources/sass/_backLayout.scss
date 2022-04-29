@@ -1,15 +1,15 @@
 // NAVBAR
 .back_nav {
-    font-family: 'Inter', sans-serif;
+    font-family: "Inter", sans-serif;
 
-    .navbar-brand>svg {
+    .navbar-brand > svg {
         width: 120px;
         object-fit: 100%;
     }
 
     .log_red:hover {
-        color: #FF6332;
-        transition: all .3s linear;
+        color: #ff6332;
+        transition: all 0.3s linear;
     }
 
     .flex_start {
@@ -20,14 +20,14 @@
 
 // INDEX
 .back_ap {
-    font-family: 'Inter', sans-serif;
+    font-family: "Inter", sans-serif;
 
     .create_box {
-        height:40px;
-        width:400px;
-        display:block;
-        overflow:hidden;
-        
+        height: 40px;
+        width: 400px;
+        display: block;
+        overflow: hidden;
+
         &:hover .create_slide {
             left: 50px;
         }
@@ -76,13 +76,17 @@
         line-height: 40px;
         border-radius: 50%;
         background-color: $red_org;
+<<<<<<< HEAD
         transition: all .3s ease-in-out;
         box-shadow: 0px 0px 5px 1px #1e1e22;
+=======
+        transition: all 0.3s ease-in-out;
+>>>>>>> 69190832976c22d938b5ececb022ebac605a2df8
 
         &:hover {
             color: $red_org;
             background-color: white;
-            transition: all .3s ease-in-out;
+            transition: all 0.3s ease-in-out;
         }
     }
 
@@ -96,13 +100,17 @@
         line-height: 40px;
         border-radius: 50%;
         background-color: $dark_org;
+<<<<<<< HEAD
         transition: all .3s ease-in-out;
         box-shadow: 0px 0px 5px 1px #1e1e22;
+=======
+        transition: all 0.3s ease-in-out;
+>>>>>>> 69190832976c22d938b5ececb022ebac605a2df8
 
         &:hover {
             color: $dark_org;
             background-color: white;
-            transition: all .3s ease-in-out;
+            transition: all 0.3s ease-in-out;
         }
     }
 
@@ -116,16 +124,22 @@
         line-height: 40px;
         border-radius: 50%;
         background-color: rgb(66, 173, 66);
+<<<<<<< HEAD
         transition: all .3s ease-in-out;
         box-shadow: 0px 0px 5px 1px rgb(23, 23, 26);
     
+=======
+        transition: all 0.3s ease-in-out;
+
+>>>>>>> 69190832976c22d938b5ececb022ebac605a2df8
         &:hover {
             color: rgb(66, 173, 66);
             background-color: white;
-            transition: all .3s ease-in-out;
+            transition: all 0.3s ease-in-out;
         }
     }
 
+<<<<<<< HEAD
     .tags_container {
         img {
             width: 45px;
@@ -136,6 +150,12 @@
         div {
             display: none;
         }
+=======
+    .tags_container > img {
+        width: 45px;
+        opacity: 0.5;
+        margin: 5px 0;
+>>>>>>> 69190832976c22d938b5ececb022ebac605a2df8
     }
 }
 
@@ -155,7 +175,7 @@
             object-fit: contain;
             transform: rotateY(180deg);
         }
-    } 
+    }
 
     .edit_btn i {
         color: white;
@@ -166,12 +186,12 @@
         line-height: 35px;
         border-radius: 50%;
         background-color: $dark_org;
-        transition: all .3s ease-in-out;
-    
+        transition: all 0.3s ease-in-out;
+
         &:hover {
             color: $dark_org;
             background-color: white;
-            transition: all .3s ease-in-out;
+            transition: all 0.3s ease-in-out;
         }
     }
 
@@ -189,6 +209,33 @@
     }
     .messages_box {
         color: #fff;
+    }
+
+    .stats {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+        position: relative;
+    }
+
+    /* .progress-ring {
+    } */
+
+    .progress-ring__circle {
+        transition: 0.35s stroke-dashoffset;
+        // axis compensation
+        transform: rotate(-90deg);
+        transform-origin: 50% 50%;
+    }
+
+    .statsinput {
+        font-size: 15;
+        color: white;
+        background-color: transparent;
+        top: 10px;
+        left: 10px;
+        width: 80px;
     }
 }
 
@@ -213,8 +260,9 @@
     .buttons_box {
         border-radius: 0 0 20px 20px;
 
-        button, a {
-            color:white;
+        button,
+        a {
+            color: white;
             font-size: 18px;
             border: none;
             outline: none;
@@ -222,7 +270,8 @@
             border-radius: 50px;
         }
 
-        .save, .undo {
+        .save,
+        .undo {
             box-shadow: 2px 2px 2px 2px #94a3ac;
         }
 
@@ -236,16 +285,23 @@
     }
 }
 
-
 // MEDIA QUERY
+<<<<<<< HEAD
 @media screen and (max-width:575px) {
 
     .back_ap {
 
         h1 {
             font-size: 35px;
+=======
+@media screen and (max-width: 575px) {
+    .back_ap {
+        .tags_container > img {
+            width: 36px;
+>>>>>>> 69190832976c22d938b5ececb022ebac605a2df8
         }
 
+<<<<<<< HEAD
         .show_img {
             height: 200px;
         }
@@ -309,12 +365,22 @@
         
         .visible_box_bottom {
             display: block;
+=======
+@media screen and (max-width: 767px) {
+    .back_ap {
+        .tags_container > img {
+            width: 36px;
+>>>>>>> 69190832976c22d938b5ececb022ebac605a2df8
         }
     }
 }
 
+<<<<<<< HEAD
 @media screen and (min-width: 576px) and (max-width: 991px) {
 
+=======
+@media screen and (max-width: 991px) {
+>>>>>>> 69190832976c22d938b5ececb022ebac605a2df8
     .back_ap {
 
         h1 {
@@ -332,9 +398,15 @@
         .ap_body {
             position: relative;
         }
+<<<<<<< HEAD
         
         .i_buttons .edit_btn>i,
         .i_buttons .dng_btn>i,
+=======
+
+        .i_buttons .edit_btn > i,
+        .i_buttons .dng_btn > i,
+>>>>>>> 69190832976c22d938b5ececb022ebac605a2df8
         .i_buttons .restore_btn {
             height: 45px;
             width: 45px;
@@ -343,16 +415,24 @@
             position: absolute;
             box-shadow: 0px 4px 1px #2f2f33;
         }
+<<<<<<< HEAD
         
         .edit_btn>i {
             top: -290px;
             right: 12px;
+=======
+
+        .edit_btn > i {
+            top: -190px;
+            right: 10px;
+>>>>>>> 69190832976c22d938b5ececb022ebac605a2df8
         }
         
         .restore_btn {
             top: -290px;
             right: 12px;
         }
+<<<<<<< HEAD
         
         .dng_btn>i {
             top: -235px;
@@ -424,3 +504,12 @@
 //     }
 
 // }
+=======
+
+        .dng_btn > i {
+            top: -140px;
+            right: 10px;
+        }
+    }
+}
+>>>>>>> 69190832976c22d938b5ececb022ebac605a2df8

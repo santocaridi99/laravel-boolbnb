@@ -78,7 +78,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        
         <!-- <button class="col-2" @click="getRadiusApartments()">
     Filtra gli appartamenti
 </button> -->
@@ -246,6 +246,7 @@
                     />
                 </div>
             </div>
+        </div>
         </div>
         <!-- appartamenti -->
         <div class="back_ap">
