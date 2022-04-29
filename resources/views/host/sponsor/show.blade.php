@@ -56,18 +56,42 @@
 
 
 <body>
+    <form class="form_box p-5" id="formid" autocomplete="off" action="{{ route('host.apartments.store') }}" method="post"
+    enctype="multipart/form-data">
 
-    <h1>show</h1>
-    <h1>{{$sponsorship->type}}</h1>
-    <h2>{{$sponsorship->price}}€</h2>
-    <h3>{{$sponsorship->duration}}</h3>
+        <h1>show</h1>
+        <h1>{{$sponsorship->type}}</h1>
+        <h2>{{$sponsorship->price}}€</h2>
+        <h3>{{$sponsorship->duration}}</h3>
 
-    <div id="dropin-container"></div>
-    <button id="submit-button" class="button button--small button--green">Purchase</button>
-    <button id="prova" class="porcodio">prova</button>
-    <div>
-        <a href="{{ route('host.sponsor.index', $sponsorship->id) }}">torna dietro</a>
-    </div>
+        <label>Inserisci la data di inizio</label>
+        <input id="start_date" type="date" class="form-control"
+            name="start_date" data-parsley-type="date" required autocomplete="start_date"
+            data-parsley-required-message="inserisci una data " data-parsley-trigger='change' autofocus>
+
+        <input id="end_date" type="date" class="form-control porcodio"
+            name="end_date" data-parsley-type="date" required autocomplete="end_date"
+            data-parsley-required-message="inserisci una data " 
+            value="@php
+            if ($sponsorship->duration = '24 ore') {
+                $dt = new Carbon();
+                $endDate = $dt->subYears(18)->format('Y-m-d');
+            } elseif ($sponsorship->duration = '72 ore') {
+                $dt = new Carbon();
+                $endDate = $dt->subYears(18)->format('Y-m-d');
+            } else {
+                $dt = new Carbon();
+                $endDate = $dt->subYears(18)->format('Y-m-d');
+            }
+            @endphp  " data-parsley-trigger='change' autofocus>
+
+        <div id="dropin-container"></div>
+        <button id="submit-button" class="button button--small button--green">Purchase</button>
+        <button type="submit" id="prova" class="porcodio">prova</button>
+        <div>
+            <a href="{{ route('host.sponsor.index', $sponsorship->id) }}">torna dietro</a>
+        </div>
+    </form>
 </body>
 
 </html>
@@ -76,6 +100,10 @@
     var button = document.querySelector('#submit-button');
     let flag = false;
     let prova=document.getElementById('prova');
+    let dataInizio = document.getElementById('start_date');
+    let dataFine = document.getElementById('end_date');
+
+    dataFine.value = dataInizio;
 
 braintree.dropin.create({
   authorization: 'sandbox_g42y39zw_348pk9cgf3bgyw2b',
@@ -83,15 +111,18 @@ braintree.dropin.create({
 }, function (err, instance) {
   button.addEventListener('click', function () {
     flag = true;
+    console.log(flag);
     instance.requestPaymentMethod(function (err, payload) {
       // Submit payload.nonce to your server
     });
+    if(flag===true){
+        console.log(flag);
+        console.log(prova);
+        prova.classList.remove('porcodio');
+        button.classList.add('porcodio');
+
+    }
   })
 });
-if(flag===true){
 
-
-    prova.classList.remove('porcodio');
-
-}
 </script>

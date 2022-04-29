@@ -43,7 +43,23 @@ class SponsorshipController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->validate([
+            "id" => "required",
+            "apartment_id" => "required",
+            "sponsorship_id" => "required",
+            "start_date" => "required",
+            "end_date" => "required",
+        ]);
+
+        $sponsor = new Sponsorship();
+
+        $sponsor->fill($data);
+
+        $sponsor->save();
+
+        $sponsor->apartments()->attach($data["apartment_id"]);
+
+        return redirect()->route("host.apartments.index");
     }
 
     /**
