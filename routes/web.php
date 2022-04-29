@@ -32,6 +32,9 @@ Route::middleware('auth')
         Route::delete("apartments/{apartment}/softDeleteApartment", "ApartmentController@softDeleteApartment")->name('apartments.softDeleteApartment');
         // restore degli appartamenti cancellati
         Route::get("apartments/{apartment}/restoreApartment", "ApartmentController@restoreApartment")->name("apartments.restoreApartment");
+        // rotta sponsor
+        Route::get("sponsor/{apartment}", "SponsorshipController@show")->name('sponsor.show');
+
 
         // !! LASCIARE INFONDO A TUTTE LE ALTRE ROTTE !!
         // resource prende tutte le pagine relative alla crud Apartment

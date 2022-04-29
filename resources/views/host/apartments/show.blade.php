@@ -85,6 +85,12 @@
               </div>
             @endforeach
           </div>
+
+          <div>
+            <button>
+              <a href="{{ route('host.sponsor.show', $apartment->slug) }}">bottone brutto per le sponsor</a>
+            </button>
+          </div>
       </div>
     </div>
 
