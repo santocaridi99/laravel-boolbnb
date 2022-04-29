@@ -67,6 +67,10 @@ li {
 }
 
 // MARGINS
+.mt_50 {
+  margin-top: 50px;
+}
+
 .mt_100 {
   margin-top: 100px;
 }
@@ -75,6 +79,10 @@ li {
 
 .op {
   opacity: .4;
+}
+
+.op_7 {
+  opacity: .7;
 }
 
 .op_9 {
@@ -119,6 +127,14 @@ li {
 
 .pink_font {
   color: $red_org;
+}
+
+.orange_font {
+  color: $dark_org
+}
+
+.green_font {
+  color: rgb(66, 173, 66);
 }
 
 // FONT SIZES

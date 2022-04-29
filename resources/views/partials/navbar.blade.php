@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm fixed-top back_nav">
+<nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm fixed-top p-1 back_nav">
     <div class="container-fluid flex_start">
         <a class="navbar-brand" href="{{ url('/') }}">
             <svg version="1.1" id="Livello_1" xmlns="http://www.w3.org/2000/svg"

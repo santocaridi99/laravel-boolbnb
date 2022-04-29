@@ -3,17 +3,20 @@
 @section('content')
 <div class="container text-white ap_create_edit">
 
-    {{-- titolo --}}
-    <h1 class="text-center text-white fw-bold mt-4 mb-5">Modifica l'appartamento</h1>
-    
-    {{-- back button --}}
-    <div class="me-auto mb-4">
-        <a class="text-white" href="{{ route('host.apartments.index') }}">
-            <button class="d-flex align-items-center py-2 px-4 button_back">
-                <img class="ps-2" src="/img/frecce.svg" alt=""> Torna indietro
-            </button>
-        </a>
+    <div class="w-100 d-flex justify-content-between align-items-center mt-4 mb-5">
+       {{-- titolo --}}
+        <h1 class="text-white fw-bold">Modifica l'appartamento</h1>
+        
+        {{-- back button --}}
+        <div class="">
+            <a class="text-white" href="{{ route('host.apartments.index') }}">
+                <button class="d-flex align-items-center py-2 px-4 button_back">
+                    <img class="ps-2" src="/img/frecce.svg" alt=""> Torna indietro
+                </button>
+            </a>
+        </div> 
     </div>
+    
 
     <div class="form_container blk_op_bg f_18 position-relative">
 
@@ -158,7 +161,7 @@
                 <div class="col-md-12 px-4">
                     <div class="form-check mb-3">
                     <label class="form-check-label" for="flexCheckDefault">
-                        L'appartamento è visibile?*
+                        L'appartamento è visibile?
                     </label>
                     <input type="hidden" name='isVisible' value="0">
                     <input class="form-check-input" type="checkbox" value="1" id="flexCheckDefault" name="isVisible" {{
@@ -218,7 +221,7 @@
                 </div>
             </div>
             {{-- BUTTONS --}}
-            <div class="text-center mt-3 p-4 bg-light buttons_box">
+            <div class="text-center mt-3 p-4 buttons_box">
                 <div class="form-group">
                     {{-- <a class="btn btn-success" onmousedown="beforeSubmit()">Salva appartamento</a> --}}
                     {{-- <a id="geocodeBtn" class="btn btn-success">Geolocalizza</a> --}}
