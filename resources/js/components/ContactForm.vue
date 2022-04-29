@@ -199,20 +199,40 @@ export default {
 
 <style lang="scss" scoped>
 .title_back{
-        max-width: 680px;
+    max-width: 680px;
+    margin: 0 auto;
+    h1{
+    position: relative;
+    font-size: 80px;
+    font-weight: 700;
+        .title_front {
+            font-size: 38px;
+            font-weight: 500;
+            padding-left: 60px;
+            position:absolute;
+            top: 20px;
+            color: #fff;
+        }
+    }
+}
+
+@media screen and (max-width: 575px) {
+
+    .loader {
+        width: 50px;
+    }
+    .title_back{
+        max-width: 500px;
         margin: 0 auto;
         h1{
         position: relative;
-        font-size: 80px;
-        font-weight: 700;
+        font-size: 40px;
+        font-weight: 500;
+        color: #fff;
             .title_front {
-                font-size: 38px;
-                font-weight: 500;
-                padding-left: 60px;
-                position:absolute;
-                top: 20px;
-                color: #fff;
+                display: none;
             }
         }
-    }
+    } 
+}
 </style>

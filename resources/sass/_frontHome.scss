@@ -63,7 +63,7 @@
     100% { background-position: 20% 90%; }
   }
 
-//   searchbar
+//   banner nero per bottone "vai agli alloggi"
   .blackbanner {
     background-color: $blk;
     width: 100%;
@@ -72,47 +72,47 @@
     z-index: 1098;
    }
 
-
 //   container Carousel and Ispirations
-.custom_container {
-    .title_back{
-        max-width: 680px;
-        margin: 0 auto;
-        h1{
-        position: relative;
-        font-size: 80px;
-        font-weight: 700;
-            .title_front {
-                font-size: 38px;
-                font-weight: 500;
-                padding-left: 30px;
-                position:absolute;
-                top: 20px;
-                color: #fff;
-            }
+.title_back{
+    max-width: 680px;
+    margin: 0 auto;
+    h1{
+    position: relative;
+    font-size: 80px;
+    font-weight: 700;
+        .title_front {
+            font-size: 38px;
+            font-weight: 500;
+            padding-left: 30px;
+            position:absolute;
+            top: 20px;
+            color: #fff;
         }
     }
-    .ispirations {
-        padding: 0 80px;
-    }
 }
+.ispirations {
+    padding: 0 80px;
+}
+
 .custom_carousel {
     border-radius: 25px;
     overflow: hidden;
+    width: 500px;
+        height: 450px;
     .custom_slide { 
         border-radius: 25px; 
-        width: 500px;
-        height: 450px;
         overflow: hidden;
         img {
             height: 100%;
+            position: relative;
         }
         .custom_text_carousel{
             padding: 35px 0;
             background-color: #fff;
             border-radius: 25px;
             box-shadow: 0 0 15px 5px rgb(0 0 0 / 60%);
-            bottom: 0;
+            position: absolute;
+            top: 280px;
             right: 0;
             left: 0;
             width: 100%;
@@ -120,6 +120,66 @@
         }
     }
 }
+.box-slide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow-x: auto;
+    height: 520px;
+    .arrow {
+        font-size: 50px;
+        color: #fff;
+        cursor: pointer;
+        }
+        .slider_container{
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            width: 500px;
+            height: 500px;
+            border-radius: 50px;
+            box-shadow: 0 0 10px 0 rgb(0, 0, 0);
+            .slider_img {        
+                height: 80%;
+                object-fit: cover;
+                transform: translate(0, -35%);
+            }
+            .slider_text {
+                background-color: #fff;
+                font-size: 15px;
+                height: 200px;
+                padding: 20px;
+                width: 100%;
+                position: absolute;
+                bottom: 0;        
+            }
+            .dot-space {
+                margin: 0 5px;
+                cursor: pointer; 
+                }
+                
+                .dot-position {
+                font-size: 12px;
+                position: absolute;
+                bottom: 10px;
+                }
+        }
+}
+
+
+
+.active {
+color: $red_org;
+transform: scale(1.2);
+}
+
+.disable {
+color: #333;
+}
+
 
 // banner
 .custom_cont_fluid{
@@ -131,9 +191,8 @@
     background: url("/img/img-banner.png") no-repeat bottom;
     background-size: cover;
     .banner_text {
-        width: 40%;
+        width: 70%;
         position:absolute;
-        top: 28%;
         left: 60px;
         h2 {
             font-size: 80px;
@@ -193,6 +252,7 @@
         } 
     }
     .custom_cont_fluid{
+        justify-content: center;
         .banner_text {
             h2 {
                 font-size: 60px;
@@ -202,6 +262,7 @@
         }
     }
 }
+
 
 
 

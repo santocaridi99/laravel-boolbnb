@@ -20,38 +20,53 @@
     </div>
 
     <!-- carousel -->
+    
     <div class="d-flex justify-content-center align-items-center">
+      <div v-if="apartments.length" class="box-slide">
+           
+          <div class="container d-flex justify-content-center align-items-center">
+             <!-- funzione al click della freccia -->
+          <i @click="prevImage" class="text-white arrow fas fa-chevron-left"></i>
+            <div class="slider_container">
+                <img class="slider_img" :src="apartments[currentIndex].cover" alt="random-image" @mouseover="resetAutoPlay" @mouseleave="restartAutoPlay" />
+                <div class="slider_text d-flex flex-column justify-content-center">
+                  <h4>{{apartments[currentIndex].title}}</h4>
+                  <p>{{apartments[currentIndex].description}}</p>
+                  <p>prezzo: <strong>{{apartments[currentIndex].price_per_night}} &euro;</strong></p>
+                </div>
+              <div class="dot-position">
+              <!-- v-for: crea un pallino per ogni immagine in images    |    se currentIndex è uguale all'indice dell'immagine attiva la classe active (pallino bianco), altrimenti attiva disable -->
+                <i v-for="(apartment, i) in apartments" :key="i" class="fas fa-circle dot-space" :class="currentIndex === i ? 'active' : 'disable'" @click="currentIndex = i"></i>
+              </div>
+            </div>
+            <!-- funzione al click della freccia -->
+           <i @click="nextImage" class="text-white arrow fas fa-chevron-right"></i>
+          </div>          
+          
+      </div>
 
-      <div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
+      <!-- <div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
         <div class="carousel-indicators">
           <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-          <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
-          <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3"></button>
+          <button v-for="apartment in apartments" :key="apartment.id" type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" :aria-label="apartment"></button>
+          <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3"></button> 
         </div>
         
         <div class="carousel-inner custom_carousel">
           <div class="carousel-item custom_slide active" data-bs-interval="10000">
-            <img src="/img/roma2.jpg" class="d-block" alt="...">
-            <div class="carousel-caption custom_text_carousel d-none d-md-block">
-              <h5>First slide label</h5>
-              <p>Some representative placeholder content for the first slide.</p>
-            </div>
-          </div>
-          <div class="carousel-item custom_slide" data-bs-interval="10000">
             <img src="/img/venice.jpg" class="d-block" alt="...">
             <div class="carousel-caption custom_text_carousel d-none d-md-block">
               <h5>First slide label</h5>
               <p>Some representative placeholder content for the first slide.</p>
             </div>
           </div>
-          <div class="carousel-item custom_slide" data-bs-interval="10000">
-            <img src="/img/bosco.webp" class="d-block" alt="...">
+          <div v-for="apartment in apartments" :key="apartment.id" class="carousel-item custom_slide" data-bs-interval="10000">
+            <img :src="apartment.cover" class="d-block" alt="...">
             <div class="carousel-caption custom_text_carousel d-none d-md-block">
-              <h5>First slide label</h5>
-              <p>Some representative placeholder content for the first slide.</p>
+              <h5>{{apartment.title}}</h5>
+              <p>{{apartment.description}}</p>
             </div>
-          </div>
-          
+          </div>          
         </div>
 
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
@@ -63,13 +78,13 @@
           <span class="carousel-control-next-icon" aria-hidden="true"></span>
           <span class="visually-hidden">Next</span>
         </button>
-      </div>
+      </div> -->
     </div>
 
   </div>
 
   <!-- banner -->
-    <div class="container-fluid custom_cont_fluid mt-5">
+    <div class="container-fluid d-flex align-items-center custom_cont_fluid mt-5">
     <!-- <img src="/img/mountains-banner.png" alt=""> -->
       <div class="banner_text">
       <h2>Hai poco <br> budget?</h2>
@@ -111,9 +126,112 @@
 </template>
 
 <script>
-export default {
+import axios from "axios";
 
-}
+export default {
+    components: {
+    },
+    props: {
+        singleLocation: Object,
+    },
+    data() {
+        return {
+          currentIndex: 0,
+          timer: 0,
+          apartments: [],
+          pagination: {},
+          nearbyApartment: [],
+          newApartments: [],
+          search: "",
+          picked: [],
+          luoghi: [],
+          lat: null,
+          long: null,
+          rooms: null,
+          beds: null,
+          price: null,
+          radius: 20,
+        };
+    },
+    methods: {
+        // assegnavo valore di default alla pagina 1
+        async decodeApartmentsJson(
+            page = 1,
+            search = null,
+            rooms = "*",
+            beds = "*",
+            price = null,
+            picked = [],
+            radius = 20
+        ) {
+            
+            try {
+                const resp = await axios
+                    .get("/api/apartments", {
+                        params: {
+                            page,
+                            filter: search,
+                            rooms: rooms,
+                            beds: beds,
+                            price: price,
+                            picked: picked,
+                            radius: radius,
+                        },
+                    })
+                    .then((resp) => {
+                            this.apartments = resp.data.data;
+                            console.log(this.apartments, "sono apartments");
+                            });
+                return resp;
+            } catch (e) {
+                console.log(
+                    "catturato errore , magari la città non è prensete nel db  " +
+                        e.message
+                );
+            }
+        },
+        // funzione per scorrere le immagini incrementando il contatore (se il contatore arriva all'ultima immagine riparte da zero)
+        nextImage() {
+          this.currentIndex++;
+          if (this.currentIndex > this.apartments.length - 1) {
+            this.currentIndex = 0;
+          }
+        },
+        // funzione per scorrere le immagini decrementando il contatore (se il contatore arriva a zero riparte dall'ultima immagine)
+        prevImage() {
+          this.currentIndex--;
+          if (this.currentIndex < 0) {
+            this.currentIndex = this.apartments.length - 1;
+          }
+        },
+        autoplay() {
+          this.timer = setInterval( () => {
+            this.nextImage();
+          }, 3000);
+        },
+        resetAutoPlay() {
+          clearInterval(this.timer);
+          
+        },
+        restartAutoPlay() {
+          this.autoplay();
+        },
+      },
+    mounted() {
+      this.autoplay(),
+        this.decodeApartmentsJson(
+            1,
+            this.search,
+            this.rooms,
+            this.beds,
+            this.price,
+            this.picked,
+            this.radius
+        );
+        // this.filterApartments(this.singleLocation.position.lat, this.singleLocation.position.lon)
+
+    },
+};
 </script>
 
 <style>
