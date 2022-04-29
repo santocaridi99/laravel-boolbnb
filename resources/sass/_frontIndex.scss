@@ -110,8 +110,6 @@
   100% { background-position: 20% 90%; }
 }
 
-
-
 .filter_button {
     color: #fff;
     background-color: $dark_org;
@@ -128,7 +126,12 @@
         overflow: hidden;
         background-color: #fff;
         position: relative;
-    }
+        .button_rel {
+            position:absolute;
+            bottom: 10px;
+            right: 10px;
+        }
+    } 
 }
 
 .my-input-num {
@@ -173,53 +176,10 @@
     border-radius: 25px;
     display:block;
 }
-// .background_row {
-//     margin-top: 150px;
-//     background-color: #111;
-//     .flat {
-//         background-color: #fff;
-//         border-radius: 25px;
-//         overflow: hidden;
-//         height: 500px;
-//         min-width: 400px;
-//         width: 400px;
-//         .flat_cover {
-            
-//             border-radius: 25px;
-//             img{
-//                 width: 100%;
-//                 // object-fit: cover;
-//                 transform: scale(1.5);
-//             }
-//         }
-//         .flat_info {
-//             padding: 20px;
-//             width: 100%;
-//             // max-width: 600px;
-//             // box-shadow: 0 0 15px 5px rgb(0 0 0 / 60%);
-//         }
-//         .tags_class {
-//             width:100px;
-//             img {
-//                 width: 25px;
-//             }
-//         }
-//     }
-// }
 
-// .background_row_right {
-//     height: 100vh;
-//     overflow-y: hidden;
-//     margin-top: 150px;
-//     .mappa {
-//             position: fixed;
-//             width: 100%;
-//             object-fit: cover;
-//             position: relative;
-//             top: 0;
-//             border-radius: 25px;
-//     }
-// }
+.hide {
+    display: none;
+}
 
 @media screen and (max-width: 575px) {
 
@@ -293,7 +253,5 @@
         display: none;
     }
 
-    .hide {
-        display: none;
-    }
+    
 }

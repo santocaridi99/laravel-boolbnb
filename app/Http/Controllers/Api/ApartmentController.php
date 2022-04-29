@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Tag;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
+use App\ApartmentView;
 
 class ApartmentController extends Controller
 {
@@ -248,11 +249,25 @@ class ApartmentController extends Controller
     {
         $apartmentDetails = Apartment::where("slug", $slug)
             ->with(["tags", "user", 'images'])
+            // ->with('category', 'user')
+            // ->withCount('favorites')
+            // ->find($apartmentDetails->id)
             ->first();
 
-        if (!$apartmentDetails) {
-            abort(404);
-        }
+            if (!$apartmentDetails) {
+                abort(404);
+            }
+
+            // $apart = Apartment::with('category', 'user')
+            //         ->withCount('favorites')
+            //         ->find($apart->id);
+
+            if($apartmentDetails->showApartment()){// this will test if the user viwed the post or not
+                return response()->json($apartmentDetails);
+            }
+
+            $apartmentDetails->increment('views');//I have a separate column for views in the post table. This will increment the views column in the posts table.
+            ApartmentView::createViewLog($apartmentDetails);
 
         return response()->json($apartmentDetails);
     }
