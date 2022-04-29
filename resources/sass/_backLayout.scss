@@ -1,5 +1,7 @@
 // NAVBAR
 .back_nav {
+    z-index: 2000;
+
     .log_red:hover {
         color: #ff6332;
         transition: all 0.3s linear;
@@ -71,7 +73,7 @@
         border-radius: 50%;
         background-color: $red_org;
         transition: all .3s ease-in-out;
-        box-shadow: 0px 0px 5px 1px #1e1e22;
+        box-shadow: 0px 2px 2px #1e1e22;
 
         &:hover {
             color: $red_org;
@@ -91,7 +93,7 @@
         border-radius: 50%;
         background-color: $dark_org;
         transition: all .3s ease-in-out;
-        box-shadow: 0px 0px 5px 1px #1e1e22;
+        box-shadow: 0px 2px 2px #1e1e22;
 
         &:hover {
             color: $dark_org;
@@ -111,7 +113,7 @@
         border-radius: 50%;
         background-color: rgb(66, 173, 66);
         transition: all .3s ease-in-out;
-        box-shadow: 0px 0px 5px 1px rgb(23, 23, 26);
+        box-shadow: 0px 2px 2px rgb(23, 23, 26);
     
         &:hover {
             color: rgb(66, 173, 66);
@@ -161,6 +163,7 @@
         border-radius: 50%;
         background-color: $dark_org;
         transition: all 0.3s ease-in-out;
+        box-shadow: 0px 2px 2px #1e1e22;
 
         &:hover {
             color: $dark_org;
@@ -217,18 +220,175 @@
 
 .ap_create_edit {
     .form_container {
+        margin-top: 70px;
         border-radius: 20px;
 
-        .cerchietti {
-            top: -20px;
-            left: 50px;
+        .back_circle {
 
-            div {
-                height: 40px;
-                width: 40px;
-                margin: 0 5px;
+            @keyframes slide {
+                0% {
+                    transform: translateX(0)
+                }
+            
+                to {
+                    transform: translateX(10px)
+                }
+            }
+            
+            ;
+            
+            @keyframes slide-2 {
+                0% {
+                    transform: translateX(0)
+                }
+            
+                to {
+                    transform: translateX(-10px)
+                }
+            }
+            
+            ;
+            
+            .circle {
+                border-radius: 50%;
+                width: 55px;
+                height: 55px;
+                position: absolute;
+                top: -32px;
+                left: 100px;
+            
+                &::before {
+                    content: "";
+                    border-radius: 50%;
+                    position: absolute;
+                    width: 45px;
+                    height: 45px;
+                    top: 5px;
+                    left: -15px;
+                    transform: translateX(-50px);
+                    animation: animateBg3 10s infinite alternate;
+                    background:
+                        radial-gradient(circle at 50% 0,
+                            rgb(255, 0, 81),
+                            rgba(255, 0, 0, 0) 70.71%),
+                        radial-gradient(circle at 6.7% 75%,
+                            rgb(255, 247, 0),
+                            rgba(0, 0, 255, 0) 40%),
+                        radial-gradient(circle at 93.3% 75%,
+                            rgb(255, 238, 0),
+                            rgba(0, 255, 0, 0) 40%) #ffc800;
+                    background-size: 300% 100%;
+                }
+            
+                &::after {
+                    content: "";
+                    border-radius: 50%;
+                    position: absolute;
+                    width: 30px;
+                    height: 30px;
+                    top: -37px;
+                    left: 75px;
+                    transform: translateY(50px);
+                    animation: animateBg3 10s infinite alternate;
+                    background:
+                        radial-gradient(circle at 50% 0,
+                            rgb(255, 0, 81),
+                            rgba(255, 0, 0, 0) 70.71%),
+                        radial-gradient(circle at 6.7% 75%,
+                            rgb(255, 247, 0),
+                            rgba(0, 0, 255, 0) 40%),
+                        radial-gradient(circle at 93.3% 75%,
+                            rgb(255, 238, 0),
+                            rgba(0, 255, 0, 0) 40%) #ffc800;
+                    background-size: 300% 100%;
+                }
+            
+                /* box-shadow: 0 0 20px 2px #111; */
+            }
+            
+            .circle {
+                animation: animateBg3 10s infinite alternate;
+                background:
+                    radial-gradient(circle at 50% 0,
+                        rgb(255, 0, 81),
+                        rgba(255, 0, 0, 0) 70.71%),
+                    radial-gradient(circle at 6.7% 75%,
+                        rgb(255, 247, 0),
+                        rgba(0, 0, 255, 0) 40%),
+                    radial-gradient(circle at 93.3% 75%,
+                        rgb(255, 238, 0),
+                        rgba(0, 255, 0, 0) 40%) #ffc800;
+                background-size: 300% 100%;
+            }
+            
+            @keyframes animateBg3 {
+                0% {
+                    background-position: 0% 0%;
+                }
+            
+                25% {
+                    background-position: 100% 20%;
+                }
+            
+                50% {
+                    background-position: 40% 100%;
+                }
+            
+                75% {
+                    background-position: 90% 20%;
+                }
+            
+                100% {
+                    background-position: 20% 90%;
+                }
+            }
+            
+            .circle2 {
+                border-radius: 50%;
+                width: 55px;
+                height: 55px;
+                position: absolute;
+                top: 0;
+                right: 0;
+                /* box-shadow: 0 0 20px 2px #111; */
+            }
+            
+            .circle2 {
+                animation: animateBg4 10s infinite alternate;
+                background:
+                    radial-gradient(circle at 50% 0,
+                        rgb(255, 221, 0),
+                        rgba(255, 0, 0, 0) 40%),
+                    radial-gradient(circle at 6.7% 75%,
+                        rgb(255, 0, 68),
+                        rgba(0, 0, 255, 0) 70.71%);
+                background-size: 300% 100%;
+            }
+            
+            @keyframes animateBg4 {
+                0% {
+                    background-position: 0% 0%;
+                }
+            
+                50% {
+                    background-position: 100% 20%;
+                }
+            
+                100% {
+                    background-position: 20% 90%;
+                }
             }
         }
+        // .cerchietti {
+        //     top: -20px;
+        //     left: 50px;
+
+        //     div {
+        //         height: 40px;
+        //         width: 40px;
+        //         margin: 0 5px;
+        //     }
+        // }
     }
 
     .buttons_box {
@@ -246,7 +406,7 @@
 
         .save,
         .undo {
-            box-shadow: 2px 2px 2px 2px #94a3ac;
+            box-shadow: 0px 2px 2px #2f2f33;
         }
 
         .save:hover {
@@ -274,12 +434,12 @@
         
         .ap_title {
             h2 {
-                font-size: 26px;
+                font-size: 24px;
             }
         }
 
         .ap_address {
-            font-size: 14px;
+            font-size: 13px;
         }
         
         .ap_body {

@@ -20,19 +20,25 @@
 
     <div class="form_container blk_op_bg f_18 position-relative">
 
-        <div class="cerchietti position-absolute d-flex">
+        {{-- <div class="cerchietti position-absolute d-flex">
             <div class="rounded-circle pink_custom"></div>
             <div class="rounded-circle orange_custom"></div>
             <div class="rounded-circle ocra_custom"></div>
-        </div>
+        </div> --}}
 
-        <form class="form_box p-5" id="formid" autocomplete="off" action="{{ route('host.apartments.update',$apartment->id) }}" method="post"
+        <span class="back_circle d-inline position absolute">
+            <div class="circle">
+                <div class="circle2"></div>
+            </div>
+        </span>
+
+        <form class="form_box" id="formid" autocomplete="off" action="{{ route('host.apartments.update',$apartment->id) }}" method="post"
             enctype="multipart/form-data">
 
             @csrf
             @method('patch')
 
-            <div class="row g-3">
+            <div class="row g-3 p-5">
                 {{-- Title --}}
                 <div class="col-md-6 px-4">
                     <label class="form-label">Titolo*</label>
@@ -221,7 +227,7 @@
                 </div>
             </div>
             {{-- BUTTONS --}}
-            <div class="text-center mt-3 p-4 buttons_box">
+            <div class="text-center bg-light mt-3 px-0 py-4 buttons_box">
                 <div class="form-group">
                     {{-- <a class="btn btn-success" onmousedown="beforeSubmit()">Salva appartamento</a> --}}
                     {{-- <a id="geocodeBtn" class="btn btn-success">Geolocalizza</a> --}}
