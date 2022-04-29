@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\ApartmentView;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
@@ -46,5 +47,23 @@ class Apartment extends Model
     public function messages()
     {
         return $this->hasMany('App\Message');
+    }
+
+    public function apartmentView()
+    {
+        return $this->hasMany(ApartmentView::class);
+    }
+
+    public function showApartment()
+    {
+        if(auth()->id()==null){
+            return $this->apartmentView()
+            ->where('ip', '=',  request()->ip())->exists();
+        }
+
+        return $this->apartmentView()
+        ->where(function($apartmentViewsQuery) { $apartmentViewsQuery
+            ->where('session_id', '=', request()->getSession()->getId())
+            ->orWhere('user_id', '=', (auth()->check()));})->exists();
     }
 }
