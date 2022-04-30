@@ -20,7 +20,10 @@
                     @keyup="searchBox"
                     @keyup.delete="autocompleteReset"
                 />
-                <button class="button_search_bar ms-2" @click="searchSubmit">
+                <button
+                    class="button_search_bar ms-2"
+                    @click="searchSubmit(), toggleAutocomplete()"
+                >
                     <i class="fas fa-search"></i>
                 </button>
                 <button class="filter_button ms-2" @click="showFilters">
@@ -67,7 +70,11 @@
                 </button>
             </div>
 
-            <div v-if="luoghi.length !== 0" class="box p-2" :class="autocomplete ? 'hide' : ''">
+            <div
+                v-if="luoghi.length !== 0"
+                class="box p-2"
+                :class="autocomplete ? 'hide' : ''"
+            >
                 <div
                     v-for="(luogo, i) in luoghi"
                     :key="luogo + i"
@@ -78,175 +85,175 @@
                     </div>
                 </div>
             </div>
-        
-        <!-- <button class="col-2" @click="getRadiusApartments()">
+
+            <!-- <button class="col-2" @click="getRadiusApartments()">
     Filtra gli appartamenti
 </button> -->
-        <div class="m-5 text-white" v-if="show">
-            <div class="">
-                <input
-                    class="input_bar m-2"
-                    type="number"
-                    name="rooms"
-                    v-model="rooms"
-                    placeholder="rooms"
-                    @change="searchSubmit"
-                />
-                <input
-                    class="input_bar m-2"
-                    type="number"
-                    name="beds"
-                    v-model="beds"
-                    placeholder="beds"
-                    @change="searchSubmit"
-                />
-                <input
-                    class="input_bar m-2"
-                    type="number"
-                    name="price"
-                    v-model="price"
-                    placeholder="price"
-                    @change="searchSubmit"
-                />
-            </div>
-            <div>
-                <input
-                    type="checkbox"
-                    id="1"
-                    value="1"
-                    v-model="picked"
-                    name="picked[]"
-                    @change="searchSubmit"
-                />
-                <label for="1">Piscina</label>
-                <br />
-                <input
-                    type="checkbox"
-                    id="2"
-                    value="2"
-                    v-model="picked"
-                    name="picked[]"
-                    @change="searchSubmit"
-                />
-                <label for="2">Cortile</label>
-                <br />
-                <input
-                    type="checkbox"
-                    id="three"
-                    value="3"
-                    v-model="picked"
-                    name="picked[]"
-                    @change="searchSubmit"
-                />
-                <label for="3">Colazione incluse</label>
-                <br />
-                <input
-                    type="checkbox"
-                    id="4"
-                    value="4"
-                    v-model="picked"
-                    name="picked[]"
-                    @change="searchSubmit"
-                />
-                <label for="4">Vista mare</label>
-                <br />
-                <input
-                    type="checkbox"
-                    id="5"
-                    value="5"
-                    v-model="picked"
-                    name="picked[]"
-                    @change="searchSubmit"
-                />
-                <label for="5">Posto auto</label>
-                <br />
-                <input
-                    type="checkbox"
-                    id="6"
-                    value="6"
-                    v-model="picked"
-                    name="picked[]"
-                    @change="searchSubmit"
-                />
-                <label for="6">Ingresso privato</label>
-                <br />
-                <input
-                    type="checkbox"
-                    id="7"
-                    value="7"
-                    v-model="picked"
-                    name="picked[]"
-                    @change="searchSubmit"
-                />
-                <label for="7">Patio o balcone</label>
-                <br />
-                <input
-                    type="checkbox"
-                    id="8"
-                    value="8"
-                    v-model="picked"
-                    name="picked[]"
-                    @change="searchSubmit"
-                />
-                <label for="8">TV</label>
-                <br />
-                <input
-                    type="checkbox"
-                    id="9"
-                    value="9"
-                    v-model="picked"
-                    name="picked[]"
-                    @change="searchSubmit"
-                />
-                <label for="9">Wi-fi</label>
-                <br />
-                <input
-                    type="checkbox"
-                    id="10"
-                    value="10"
-                    v-model="picked"
-                    name="picked[]"
-                    @change="searchSubmit"
-                />
-                <label for="10">Riscaldamenti</label>
-                <br />
-                <input
-                    type="checkbox"
-                    id="11"
-                    value="11"
-                    v-model="picked"
-                    name="picked[]"
-                    @change="searchSubmit"
-                />
-                <label for="11">Aria condizionata</label>
-                <br />
-                <input
-                    type="checkbox"
-                    id="12"
-                    value="12"
-                    v-model="picked"
-                    name="picked[]"
-                    @change="searchSubmit"
-                />
-                <label for="12">Vicino al centro</label>
-                <br />
-                <div class="d-flex">
+            <div class="m-5 text-white" v-if="show">
+                <div class="">
                     <input
-                        type="range"
-                        min="10"
-                        max="150"
-                        v-model="radius"
-                        step="10"
+                        class="input_bar m-2"
+                        type="number"
+                        name="rooms"
+                        v-model="rooms"
+                        placeholder="rooms"
+                        @change="searchSubmit"
                     />
                     <input
+                        class="input_bar m-2"
                         type="number"
-                        class="my-input-num"
-                        v-model="radius"
-                        disabled
+                        name="beds"
+                        v-model="beds"
+                        placeholder="beds"
+                        @change="searchSubmit"
+                    />
+                    <input
+                        class="input_bar m-2"
+                        type="number"
+                        name="price"
+                        v-model="price"
+                        placeholder="price"
+                        @change="searchSubmit"
                     />
                 </div>
+                <div>
+                    <input
+                        type="checkbox"
+                        id="1"
+                        value="1"
+                        v-model="picked"
+                        name="picked[]"
+                        @change="searchSubmit"
+                    />
+                    <label for="1">Piscina</label>
+                    <br />
+                    <input
+                        type="checkbox"
+                        id="2"
+                        value="2"
+                        v-model="picked"
+                        name="picked[]"
+                        @change="searchSubmit"
+                    />
+                    <label for="2">Cortile</label>
+                    <br />
+                    <input
+                        type="checkbox"
+                        id="three"
+                        value="3"
+                        v-model="picked"
+                        name="picked[]"
+                        @change="searchSubmit"
+                    />
+                    <label for="3">Colazione incluse</label>
+                    <br />
+                    <input
+                        type="checkbox"
+                        id="4"
+                        value="4"
+                        v-model="picked"
+                        name="picked[]"
+                        @change="searchSubmit"
+                    />
+                    <label for="4">Vista mare</label>
+                    <br />
+                    <input
+                        type="checkbox"
+                        id="5"
+                        value="5"
+                        v-model="picked"
+                        name="picked[]"
+                        @change="searchSubmit"
+                    />
+                    <label for="5">Posto auto</label>
+                    <br />
+                    <input
+                        type="checkbox"
+                        id="6"
+                        value="6"
+                        v-model="picked"
+                        name="picked[]"
+                        @change="searchSubmit"
+                    />
+                    <label for="6">Ingresso privato</label>
+                    <br />
+                    <input
+                        type="checkbox"
+                        id="7"
+                        value="7"
+                        v-model="picked"
+                        name="picked[]"
+                        @change="searchSubmit"
+                    />
+                    <label for="7">Patio o balcone</label>
+                    <br />
+                    <input
+                        type="checkbox"
+                        id="8"
+                        value="8"
+                        v-model="picked"
+                        name="picked[]"
+                        @change="searchSubmit"
+                    />
+                    <label for="8">TV</label>
+                    <br />
+                    <input
+                        type="checkbox"
+                        id="9"
+                        value="9"
+                        v-model="picked"
+                        name="picked[]"
+                        @change="searchSubmit"
+                    />
+                    <label for="9">Wi-fi</label>
+                    <br />
+                    <input
+                        type="checkbox"
+                        id="10"
+                        value="10"
+                        v-model="picked"
+                        name="picked[]"
+                        @change="searchSubmit"
+                    />
+                    <label for="10">Riscaldamenti</label>
+                    <br />
+                    <input
+                        type="checkbox"
+                        id="11"
+                        value="11"
+                        v-model="picked"
+                        name="picked[]"
+                        @change="searchSubmit"
+                    />
+                    <label for="11">Aria condizionata</label>
+                    <br />
+                    <input
+                        type="checkbox"
+                        id="12"
+                        value="12"
+                        v-model="picked"
+                        name="picked[]"
+                        @change="searchSubmit"
+                    />
+                    <label for="12">Vicino al centro</label>
+                    <br />
+                    <div class="d-flex">
+                        <input
+                            type="range"
+                            min="10"
+                            max="150"
+                            v-model="radius"
+                            step="10"
+                        />
+                        <input
+                            type="number"
+                            class="my-input-num"
+                            v-model="radius"
+                            disabled
+                        />
+                    </div>
+                </div>
             </div>
-        </div>
         </div>
         <!-- appartamenti -->
         <div class="back_ap">
@@ -257,9 +264,10 @@
                         v-for="apartment of apartments"
                         :key="apartment.id"
                     >
-
                         <div class="flat pb-5">
-                            <button class="button_forward button_rel d-flex align-items-center ms-auto mt-4 py-2 px-3">
+                            <button
+                                class="button_forward button_rel d-flex align-items-center ms-auto mt-4 py-2 px-3"
+                            >
                                 <router-link
                                     class="text-white"
                                     :to="`/apartments/${apartment.slug}`"
@@ -270,7 +278,7 @@
                                         alt=""
                                 /></router-link>
                             </button>
-                            
+
                             <router-link
                                 class="w-100 ex"
                                 :to="`/apartments/${apartment.slug}`"
@@ -382,7 +390,6 @@
                                         />
                                     </span>
                                 </div>
-                                
 
                                 <!-- {{-- descrizione --}} -->
                                 <!-- <h5 class="px-3">Su questo annuncio:</h5>
@@ -505,7 +512,6 @@ export default {
                 this.long = null;
                 this.luoghi = "";
             }
-            
         },
         // getRadiusApartments(page = 1, search = null) {
         //   if (page < 1) {
@@ -569,13 +575,13 @@ export default {
             return (this.show = !this.show);
         },
         toggleAutocomplete() {
-           this.autocomplete=true;
+            this.autocomplete = true;
         },
-          autocompleteReset(){
-            if(this.search===''){
-                this.autocomplete=false
+        autocompleteReset() {
+            if (this.search === "") {
+                this.autocomplete = false;
             }
-        }
+        },
     },
     mounted() {
         this.decodeApartmentsJson(
@@ -588,11 +594,8 @@ export default {
             this.radius
         );
         // this.filterApartments(this.singleLocation.position.lat, this.singleLocation.position.lon)
-
     },
 };
 </script>
 
-<style lang="scss" scoped>
-
-</style>
+<style lang="scss" scoped></style>
