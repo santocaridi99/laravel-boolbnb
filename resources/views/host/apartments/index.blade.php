@@ -8,15 +8,16 @@
         <button class="button_search_bar text-white"><i class="fas fa-search"></i></button>
     </div> --}}
 
-    <h1 class="text-center text-white fw-bold mt-4">I miei alloggi</h1>
-
     <div class="row justify-content-center">
-        <div class="col-10 mt-3">
-            <div class="d-flex justify-content-center mb-3">
+        <div class="col-lg-10 col-md-12 col-sm-12 mt-3">
+            
+            <h1 class="text-start text-white fw-bold mt-4 f_45">I miei alloggi</h1>
+
+            <div class="d-flex justify-content-center mb-3 mt_50">
                 {{-- create --}}
                 <div class="create_box">
                     <a class="create_svg" href="{{ route('host.apartments.create') }}">
-                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" width="37" height="37" fill="none">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" width="39" height="39" fill="none">
                             <style>
                                 @keyframes bounce {
                                     0% {
@@ -56,8 +57,8 @@
                 
                 {{-- trash bin --}}
                 <a class="ms-auto" href="{{ route('host.apartments.deletedApartments')}}" title="Cestino">
-                    {{-- <span class="text-white">Cestino</span> --}}
-                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" width="37" height="37" fill="none">
+                    <span class="text-white align-middle bin_text f_18 op_7">Cestino</span>
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="none">
                         <style>
                             @keyframes rotate-tr {
                                 0% {
@@ -106,20 +107,30 @@
                     <div class="col-lg-12 col-md-12 col-sm-12">
                         <div class="ap_body">
                             {{-- titolo --}}
-                            <div class="d-flex justify-content-between align-items-center flex-wrap py-3 px-3 w-100 blk_op_bg">
-
+                            <div class="d-flex justify-content-between align-items-center flex-wrap p-3 w-100 blk_op_bg">
+                                
                                 <div class="ap_title me-2 ms-3 text-break">
-                                    <h2 class="fw-bold">
-                                        <a class="white_font title_a" href="{{ route('host.apartments.show', $apartment->slug) }}">
-                                            {{$apartment->title}}
-                                        </a>
-                                    </h2>
+                                    <div class="d-flex">
+                                        <h2 class="fw-bold">
+                                            <a class="white_font title_a" href="{{ route('host.apartments.show', $apartment->slug) }}">
+                                                {{$apartment->title}}
+                                            </a>
+                                        </h2>
+                                        {{-- isVisible? --}}
+                                        <div class="visible_box_top mx-2">
+                                            @if($apartment->isVisible)
+                                            <small class="badge bg-dark"><i class="me-1 green_font fas fa-check-circle"></i> visibile</small>
+                                            @else
+                                            <small class="badge bg-dark"><i class="me-1 pink_font fas fa-times-circle"></i> non visibile</small>
+                                            @endif
+                                        </div>
+                                    </div>
 
-                                    <p class="text-white mb-3 op f_12">
+                                    <p class="text-white mb-3 ap_address op f_12">
                                         <i class="fas fa-map-marker-alt me-1"></i> {{$apartment->streetAddress}}
                                     </p>
 
-                                    <small class="text-white">
+                                    <small class="ap_info text-white">
                                         @if ($apartment->room_numbers === 1)
                                             {{$apartment->room_numbers}} stanza &#10022; 
                                         @else 
@@ -141,20 +152,19 @@
                                         {{$apartment->square_meters}} mq
                                     </small>
 
-                                     {{-- isVisible? --}}
-                                    <div class="p-0 mt-2 mb-0">
+                                    <div class="visible_box_bottom ms-0 mt-2">
                                         @if($apartment->isVisible)
-                                        <p class="badge bg-dark">visibile <i class="text-success fas fa-check-circle"></i></p>
-                                        @else 
-                                        <p class="badge bg-dark">non visibile <i class="text-danger fas fa-times-circle"></i></p>
+                                        <small class="badge bg-dark"><i class="me-1 green_font fas fa-check-circle"></i> visibile</small>
+                                        @else
+                                        <small class="badge bg-dark"><i class="me-1 pink_font fas fa-times-circle"></i> non visibile</small>
                                         @endif
                                     </div>
                                 </div>
                                 
                                 {{-- BUTTONS --}}
-                                <div class="d-flex mx-4 i_buttons">
+                                <div class="d-flex ms-4 i_buttons">
                                     {{-- edit button --}}
-                                    <div class="ms-3">
+                                    <div class="">
                                         <a class="edit_btn" type="button"
                                             href="{{ route('host.apartments.edit', $apartment->slug) }}"
                                             title="Modifica appartamento">
@@ -180,17 +190,20 @@
                             </div>
 
                             {{-- tags --}}
-                            <div class="col-lg-12 col-md-12 col-sm-12 text-center border px-4 py-4 mt-3 tags_container">
-                                {{-- icons --}}
-                                @foreach ($apartment->tags as $tag)
-                                    <img class="mx-3" src="{{$tag->icon}}" alt="{{$tag->name}}" title="{{$tag->name}}">
+                            <div class="pd">
+                                <div class="d-flex justify-content-between flex-wrap border px-4 py-4 mt-3 tags_container">
+                                    {{-- icons --}}
+                                    @foreach ($apartment->tags as $tag)
+                                        <img class="mx-3" src="{{$tag->icon}}" alt="{{$tag->name}}" title="{{$tag->name}}">
 
-                                    <span class="badge bg-secondary visually-hidden mx-3">{{$tag->name}}</span>
-                                @endforeach
+                                        <div class="badge m-1 blk_op_bg">{{$tag->name}}</div>
+                                    @endforeach
+                                </div> 
                             </div>
+                            
 
                             {{-- descrizione --}}
-                            <div class="col-lg-12 col-md-12 col-sm-12 text-break p-3">
+                            <div class="text-break p-3 description">
                                 <h5 class="px-3">
                                     Su questo annuncio:
                                 </h5>

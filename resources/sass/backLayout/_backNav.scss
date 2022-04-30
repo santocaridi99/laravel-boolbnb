@@ -1,0 +1,14 @@
+.back_nav {
+    z-index: 2000;
+
+    .log_red:hover {
+        color: #ff6332;
+        transition: all 0.3s linear;
+    }
+
+    .flex_start {
+        display: flex;
+        justify-content: flex-start;
+    }
+
+}

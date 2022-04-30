@@ -3,33 +3,42 @@
 @section('content')
 <div class="container text-white ap_create_edit">
 
-    {{-- titolo --}}
-    <h1 class="text-center text-white fw-bold mt-4 mb-5">Modifica l'appartamento</h1>
-    
-    {{-- back button --}}
-    <div class="me-auto mb-4">
-        <a class="text-white" href="{{ route('host.apartments.index') }}">
-            <button class="d-flex align-items-center py-2 px-4 button_back">
-                <img class="ps-2" src="/img/frecce.svg" alt=""> Torna indietro
-            </button>
-        </a>
+    <div class="w-100 d-flex justify-content-between align-items-center mt-4 mb-5">
+       {{-- titolo --}}
+        <h1 class="text-white fw-bold">Modifica l'appartamento</h1>
+        
+        {{-- back button --}}
+        <div class="">
+            <a class="text-white" href="{{ route('host.apartments.index') }}">
+                <button class="d-flex align-items-center py-2 px-4 button_back">
+                    <img class="ps-2" src="/img/frecce.svg" alt=""> Torna indietro
+                </button>
+            </a>
+        </div> 
     </div>
+    
 
     <div class="form_container blk_op_bg f_18 position-relative">
 
-        <div class="cerchietti position-absolute d-flex">
+        {{-- <div class="cerchietti position-absolute d-flex">
             <div class="rounded-circle pink_custom"></div>
             <div class="rounded-circle orange_custom"></div>
             <div class="rounded-circle ocra_custom"></div>
-        </div>
+        </div> --}}
 
-        <form class="form_box p-5" id="formid" autocomplete="off" action="{{ route('host.apartments.update',$apartment->id) }}" method="post"
+        <span class="back_circle d-inline position absolute">
+            <div class="circle">
+                <div class="circle2"></div>
+            </div>
+        </span>
+
+        <form class="form_box" id="formid" autocomplete="off" action="{{ route('host.apartments.update',$apartment->id) }}" method="post"
             enctype="multipart/form-data">
 
             @csrf
             @method('patch')
 
-            <div class="row g-3">
+            <div class="row g-3 p-5">
                 {{-- Title --}}
                 <div class="col-md-6 px-4">
                     <label class="form-label">Titolo*</label>
@@ -158,7 +167,7 @@
                 <div class="col-md-12 px-4">
                     <div class="form-check mb-3">
                     <label class="form-check-label" for="flexCheckDefault">
-                        L'appartamento è visibile?*
+                        L'appartamento è visibile?
                     </label>
                     <input type="hidden" name='isVisible' value="0">
                     <input class="form-check-input" type="checkbox" value="1" id="flexCheckDefault" name="isVisible" {{
@@ -218,7 +227,7 @@
                 </div>
             </div>
             {{-- BUTTONS --}}
-            <div class="text-center mt-3 p-4 bg-light buttons_box">
+            <div class="text-center bg-light mt-3 px-0 py-4 buttons_box">
                 <div class="form-group">
                     {{-- <a class="btn btn-success" onmousedown="beforeSubmit()">Salva appartamento</a> --}}
                     {{-- <a id="geocodeBtn" class="btn btn-success">Geolocalizza</a> --}}
