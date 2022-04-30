@@ -23,7 +23,6 @@
         >
       </div>
       <p class="text-danger" v-if="!$v.formData.name.required">required</p>
-      <p class="text-danger" v-if="!$v.formData.name.alpha">solo lettere</p>
       <p class="text-danger" v-if="!$v.formData.name.minLength">
         Minimo 2 lettere
       </p>
@@ -47,7 +46,6 @@
         >
       </div>
       <p class="text-danger" v-if="!$v.formData.lastname.required">required</p>
-      <p class="text-danger" v-if="!$v.formData.lastname.alpha">solo lettere</p>
       <p class="text-danger" v-if="!$v.formData.lastname.minLength">
         Minimo 2 lettere
       </p>
@@ -150,13 +148,11 @@ export default {
     formData: {
       name: {
         required,
-        alpha,
         minLength: minLength(2),
         maxLength: maxLength(20),
       },
       lastname: {
         required,
-        alpha,
         minLength: minLength(2),
         maxLength: maxLength(50),
       },

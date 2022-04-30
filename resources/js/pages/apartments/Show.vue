@@ -1,5 +1,5 @@
 <template>
-    <div v-if="open === false">
+    <div id="show" v-if="open === false">
         <!-- titolo e immagini -->
         <div class="container" > 
             <h1 class="front_show mb-4">{{ apartmentDet.title }}</h1> 
@@ -139,6 +139,7 @@
 </template>
 
 <script>
+
 import axios from "axios";
 import tt from "@tomtom-international/web-sdk-maps";
 import ContactForm from "../../components/ContactForm.vue";
@@ -201,7 +202,7 @@ export default {
         },
         reloadPage(){
             window.location.reload();
-        }
+        },
     },
     mounted() {
         this.decodeApartment();
@@ -212,7 +213,7 @@ export default {
 
 <style lang="scss" scoped>
 /* Show - map style */
-#map {
+.map {
     width: 100%;
     height: 300px;
     border-radius: 25px;

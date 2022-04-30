@@ -28,7 +28,7 @@
             <div class="col text-white">
               <div class="p-3 text-center">
                 <h4>Kevin</h4>
-                <a class="text-white d-block" href="linkedin.com/in/kevin-corigliano-8a8730226/"  target="_blank"><i class="pe-2 fab fa-linkedin"></i> <small> Linkedin </small></a> 
+                <a class="text-white d-block" href="https://www.linkedin.com/in/kevin-corigliano-8a8730226/"  target="_blank"><i class="pe-2 fab fa-linkedin"></i> <small> Linkedin </small></a> 
                 <a class="text-white d-block" href="https://github.com/KCorigliano"  target="_blank"><i class="pe-2 fab fa-github"></i> <small> Github </small></a> 
               </div>
             </div>
