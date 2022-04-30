@@ -5,7 +5,7 @@
 
     <div class="row justify-content-center mt_100">
         <div class="col-md-8">
-            <div class="register_card bg-light blk_font b_r">
+            <div class="register_card bg-white blk_font b_r">
                 <div class="row">
                     <div class="col-md-6">
 
