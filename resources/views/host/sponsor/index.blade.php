@@ -15,7 +15,7 @@
     <h2>{{$sponsor->price}}€</h2>
     <h3>{{$sponsor->duration}}</h3>
 
-    <a class="white_font title_a" href="{{ route('host.sponsor.show', $sponsor->id) }}">
+    <a class="white_font title_a" href="{{ route('host.sponsor.create', $sponsor->id) }}">
         Visualizza questa sponsorizzazione
     </a>
 

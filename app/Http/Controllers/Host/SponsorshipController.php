@@ -30,9 +30,11 @@ class SponsorshipController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($id)
     {
-        //
+
+        $sponsorship = Sponsorship::where("id", $id)->first();
+        return view('host.sponsor.create', compact('sponsorship'));
     }
 
     /**
@@ -41,23 +43,21 @@ class SponsorshipController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request , Apartment $apartment)
     {
-        $data = $request->validate([
-            "id" => "required",
-            "apartment_id" => "required",
-            "sponsorship_id" => "required",
-            "start_date" => "required",
-            "end_date" => "required",
-        ]);
+        $data = $request->all();
+        dd($request->all());
 
-        $sponsor = new Sponsorship();
+        
+        
 
-        $sponsor->fill($data);
+        // $sponsorship_id=$data['id'];
+        // $apartment=Apartment::where()
 
-        $sponsor->save();
 
-        $sponsor->apartments()->attach($data["apartment_id"]);
+        
+        
+        // $apartment->apartments()->attach($data["apartment_id"]);
 
         return redirect()->route("host.apartments.index");
     }
@@ -70,8 +70,6 @@ class SponsorshipController extends Controller
      */
     public function show($id)
     {
-        $sponsorship=Sponsorship::where("id",$id)->first();    
-        return view('host.sponsor.show', compact('sponsorship'));
     }
 
     /**

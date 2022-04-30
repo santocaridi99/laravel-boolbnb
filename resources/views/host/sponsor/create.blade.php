@@ -7,6 +7,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <script src="https://js.braintreegateway.com/web/dropin/1.33.1/js/dropin.js"></script>
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
 </head>
 
@@ -56,35 +58,25 @@
 
 
 <body>
-    <form class="form_box p-5" id="formid" autocomplete="off" action="{{ route('host.apartments.store') }}" method="post"
-    enctype="multipart/form-data">
+    <form class="form_box p-5" id="formid" autocomplete="off" action="{{ route('host.sponsor.store') }}" method="post"
+        enctype="multipart/form-data">
+        @csrf
+
 
         <h1>show</h1>
         <h1>{{$sponsorship->type}}</h1>
-        <h2>{{$sponsorship->price}}€</h2>
+        <h2>{{$sponsorship->price}}</h2>
         <h3>{{$sponsorship->duration}}</h3>
 
-        <label>Inserisci la data di inizio</label>
-        <input id="start_date" type="date" class="form-control"
-            name="start_date" data-parsley-type="date" required autocomplete="start_date"
-            data-parsley-required-message="inserisci una data " data-parsley-trigger='change' autofocus>
+        <input type="hidden" name="price" value="{{$sponsorship->price}}">
+        <input type="hidden" name="type" value="{{$sponsorship->type}}">
+        <input type="hidden" name="duration" value="{{$sponsorship->duration}}">
+        <input type="hidden" name="id" value="{{$sponsorship->id}}">
 
-        <input id="end_date" type="date" class="form-control porcodio"
-            name="end_date" data-parsley-type="date" required autocomplete="end_date"
-            data-parsley-required-message="inserisci una data " 
-            value="@php
-            use Carbon\Carbon;
-            if ($sponsorship->duration = '24 ore') {
-                $dt = new Carbon();
-                $endDate = $dt->subHours(18)->format('Y-m-d');
-            } elseif ($sponsorship->duration = '72 ore') {
-                $dt = new Carbon();
-                $endDate = $dt->subHours(72)->format('Y-m-d');
-            } else {
-                $dt = new Carbon();
-                $endDate = $dt->subHours(144)->format('Y-m-d');
-            }
-            @endphp  " data-parsley-trigger='change' autofocus>
+        <label>Inserisci la data di inizio</label>
+        <input id="start_date" type="date" class="form-control" name="start_date" data-parsley-type="date" required
+            autocomplete="start_date" data-parsley-required-message="inserisci una data " data-parsley-trigger='change'>
+
 
         <div id="dropin-container"></div>
         <button id="submit-button" class="button button--small button--green">Purchase</button>
@@ -102,9 +94,9 @@
     let flag = false;
     let prova=document.getElementById('prova');
     let dataInizio = document.getElementById('start_date');
-    let dataFine = document.getElementById('end_date');
+    
 
-    dataFine.value = dataInizio;
+   
 
 braintree.dropin.create({
   authorization: 'sandbox_g42y39zw_348pk9cgf3bgyw2b',

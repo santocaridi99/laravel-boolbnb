@@ -34,7 +34,8 @@ Route::middleware('auth')
         Route::get("apartments/{apartment}/restoreApartment", "ApartmentController@restoreApartment")->name("apartments.restoreApartment");
         // rotta sponsor
         Route::get("sponsor/{apartment}", "SponsorshipController@index")->name('sponsor.index');
-        Route::get("sponsor/show/{apartment}", "SponsorshipController@show")->name('sponsor.show');
+        Route::get("sponsor/create/{apartment}", "SponsorshipController@create")->name('sponsor.create');
+        Route::post("/sponsor","SponsorshipController@store")->name('sponsor.store');
        
 
 
