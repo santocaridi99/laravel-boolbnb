@@ -8,10 +8,16 @@
         <h1 class="text-white fw-bold">Modifica l'appartamento</h1>
         
         {{-- back button --}}
-        <div class="">
-            <a class="text-white" href="{{ route('host.apartments.index') }}">
+        <div class="edit_create_back">
+            <a class="text-white ec_back" href="{{ route('host.apartments.index') }}">
                 <button class="d-flex align-items-center py-2 px-4 button_back">
                     <img class="ps-2" src="/img/frecce.svg" alt=""> Torna indietro
+                </button>
+            </a>
+
+            <a class="text-white resp_back ms-4" href="{{ route('host.apartments.index') }}">
+                <button class="d-flex align-items-center p-2 button_back">
+                    <img class="ps-2" src="/img/frecce.svg" alt="">
                 </button>
             </a>
         </div> 
@@ -32,7 +38,7 @@
             </div>
         </span>
 
-        <form class="form_box" id="formid" autocomplete="off" action="{{ route('host.apartments.update',$apartment->id) }}" method="post"
+        <form class="form_box " id="formid" autocomplete="off" action="{{ route('host.apartments.update',$apartment->id) }}" method="post"
             enctype="multipart/form-data">
 
             @csrf
@@ -40,7 +46,7 @@
 
             <div class="row g-3 p-5">
                 {{-- Title --}}
-                <div class="col-md-6 px-4">
+                <div class="col-lg-6 col-md-12 col-sm-12">
                     <label class="form-label">Titolo*</label>
                     <input type="text" name="title" class="form-control @error('title') is-invalid @enderror"
                         value="{{ old('title',$apartment->title) }}" required data-parsley-pattern="^(?:[A-Za-z]+[ -])*[A-Za-z]+$" data-parsley-length='[5,100]' data-parsley-trigger='change'>
@@ -50,7 +56,7 @@
                 </div>
 
                 {{-- stanze --}}
-                <div class="col-md-6 px-4">
+                <div class="col-lg-6 col-md-12 col-sm-12">
                     <label class="form-label">Numero di stanze*</label>
                     <input type="number" name="room_numbers" class="form-control @error('room_numbers') is-invalid @enderror"
                         value="{{ old('room_numbers', $apartment->room_numbers)}}" required data-parsley-type='number' min="1" max="100"  data-parsley-pattern="[0-9]+$" data-parsley-length='[1,3]' data-parsley-trigger='change'>
@@ -60,7 +66,7 @@
                 </div>
 
                 {{-- letti --}}
-                <div class="col-md-6 px-4">
+                <div class="col-lg-6 col-md-12 col-sm-12">
                     <label class="form-label">Numero di letti*</label>
                     <input type="number" name="bed_numbers" class="form-control @error('bed_numbers') is-invalid @enderror"
                         value="{{ old('bed_numbers',$apartment->bed_numbers)}}" required data-parsley-type='number' min="1" max="100"  data-parsley-pattern="[0-9]+$" data-parsley-length='[1,3]' data-parsley-trigger='change'>
@@ -70,7 +76,7 @@
                 </div>
 
                 {{-- bagni --}}
-                <div class="col-md-6 px-4">
+                <div class="col-lg-6 col-md-12 col-sm-12">
                     <label class="form-label">Numero di bagni*</label>
                     <input type="number" name="bathroom_numbers"
                         class="form-control @error('bathroom_numbers') is-invalid @enderror"
@@ -81,7 +87,7 @@
                 </div>
 
                 {{-- MQ --}}
-                <div class="col-md-6 px-4">
+                <div class="col-lg-6 col-md-12 col-sm-12">
                     <label class="form-label">Metratura*</label>
                     <input type="number" name="square_meters" class="form-control @error('square_meters') is-invalid @enderror"
                         value="{{ old('square_meters',$apartment->square_meters) }}" required data-parsley-type='number' min="1" max="1200"  data-parsley-pattern="[0-9]+$" data-parsley-length='[1,4]' data-parsley-trigger='change'>
@@ -91,20 +97,22 @@
                 </div>
 
                 {{-- cover --}}
-                <div class="col-md-6 px-4">
+                <div class="col-lg-6 col-md-12 col-sm-12">
                     <label class="form-label">Immagine di copertina*</label>
                     <input type="file" name='cover' class="form-control @error('cover') is-invalid @enderror" value="{{old('cover',$apartment->cover)}}">
                     {{-- anteprima img --}}
-                    <div class="col-3">
-                        <img class="img-fluid" src="{{ asset('storage/' . $apartment->cover) }}" alt="" class="post-img">
+                    <div class="row g-0">
+                        <div class="col-lg-4 col-md-4 col-sm-5">
+                            <img class="img-fluid mt-2 rounded" src="{{ asset('storage/' . $apartment->cover) }}" alt="" class="post-img">
+                        </div>
+                        @error('cover')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
                     </div>
-                    @error('cover')
-                    <div class="invalid-feedback">{{ $message }}</div>
-                    @enderror
                 </div>
 
                 {{-- prezzo per notte --}}
-                <div class="col-md-6 px-4">
+                <div class="col-lg-6 col-md-12 col-sm-12">
                     <label class="form-label">Prezzo per notte*</label>
                     <input type="number" name="price_per_night"
                         class="form-control @error('price_per_night') is-invalid @enderror"
@@ -115,7 +123,7 @@
                 </div>
 
                 {{-- paese --}}
-                <div class="col-md-6 px-4">
+                <div class="col-lg-6 col-md-12 col-sm-12">
                     <label class="form-label">Paese*</label>
                     <input type="text" name="country" class="form-control @error('country') is-invalid @enderror"
                         value="{{ old('country', $apartment->country) }}"  required  data-parsley-pattern="^(?:[A-Za-z]+[ -])*[A-Za-z]+$" data-parsley-length='[2,100]' data-parsley-trigger='change'>
@@ -125,7 +133,7 @@
                 </div>
 
                 {{-- regione --}}
-                <div class="col-md-6 px-4">
+                <div class="col-lg-6 col-md-12 col-sm-12">
                     <label class="form-label">Regione*</label>
                     <input type="text" name="region" class="form-control @error('region') is-invalid @enderror"
                         value="{{ old('region',$apartment->region) }}"  required  data-parsley-pattern="^(?:[A-Za-z]+[ -])*[A-Za-z]+$" data-parsley-length='[2,100]' data-parsley-trigger='change'>
@@ -135,7 +143,7 @@
                 </div>
 
                 {{-- provincia --}}
-                <div class="col-md-6 px-4">
+                <div class="col-lg-6 col-md-12 col-sm-12">
                     <label class="form-label">Provincia*</label>
                     <input type="text" name="province" class="form-control @error('province') is-invalid @enderror"
                         value="{{ old('province' , $apartment->province) }}"  required  data-parsley-pattern="^(?:[A-Za-z]+[ -])*[A-Za-z]+$" data-parsley-length='[2,100]' data-parsley-trigger='change'>
@@ -154,7 +162,7 @@
                 </div> --}}
 
                 {{-- indirizzo --}}
-                <div class="col-md-12 autocomplete blk_font px-4">
+                <div class="col-12 autocomplete blk_font">
                     <label class="form-label text-white">Indirizzo completo (Via civico, CAP Città)*</label>
                     <input id='geoAddress' type="text" name="streetAddress" class="form-control @error('streetAddress') is-invalid @enderror"
                     placeholder="Inserisci qui l'indirizzo" value="{{ old('streetAddress', $apartment->streetAddress) }}" required onkeyup="if (this.value.length > 6) beforeSubmit()">
@@ -164,7 +172,7 @@
                 </div>
 
                 {{-- visibilità --}}
-                <div class="col-md-12 px-4">
+                <div class="col-12">
                     <div class="form-check mb-3">
                     <label class="form-check-label" for="flexCheckDefault">
                         L'appartamento è visibile?
@@ -176,7 +184,7 @@
                 </div>
                 
                 {{-- contenuto del post --}}
-                <div class="col-md-12 px-4">
+                <div class="col-12">
                     <label>Descrizione dell'appartamento*</label>
                     <textarea name="description" rows="10"
                         class="form-control @error('description') is-invalid @enderror" required   data-parsley-length='[20,250]'  data-parsley-trigger="change">{{ old('description',$apartment->description) }}</textarea>
@@ -185,7 +193,7 @@
                     @enderror
                 </div>
 
-                <div class="col-md-2 d-none">
+                <div class="col-12 d-none">
                     <label class="form-label">Longitudine</label>
                     <input id='longitudeHtml' type="text" name="longitude"
                         class=" form-control @error('longitude') is-invalid @enderror" placeholder="longitude" value="{{ old('longitude', $apartment->longitude) }}">
@@ -194,7 +202,7 @@
                     @enderror
                 </div>
 
-                <div class="col-md-2 d-none">
+                <div class="col-12 d-none">
                     <label class="form-label">Latitudine</label>
                     <input id='latitudeHtml' type="text" name="latitude"
                         class=" form-control @error('latitude') is-invalid @enderror" placeholder="latitude" value="{{ old('latitude', $apartment->latitude) }}">
@@ -204,7 +212,7 @@
                 </div>
 
                 {{-- tags --}}
-                <div class="col-md-12 mb-3 px-4">
+                <div class="col-12">
                     <div class="tags_box border-bottom pb-3">
                         <label class="d-block border-bottom pb-2 mb-2">Tags*</label>
                         @foreach ($tags as $tag)
@@ -218,23 +226,29 @@
                 </div>
 
                 {{-- images --}}
-                <div class="col-md-12 px-4">
-                    <label class="mb-3">Aggiungi altre immagini relative all'appartamento</label>
+                <div class="col-12">
+                    <label class="mb-3">Aggiungi altre immagini</label>
                     <input type="file" id="input-file-now-custom-3" class="form-control @error('images.*') is-invalid @enderror " name="images[]" multiple>
                     @error('images.*')
                     <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
                 </div>
-            </div>
-            {{-- BUTTONS --}}
-            <div class="text-center bg-light mt-3 px-0 py-4 buttons_box">
-                <div class="form-group">
-                    {{-- <a class="btn btn-success" onmousedown="beforeSubmit()">Salva appartamento</a> --}}
-                    {{-- <a id="geocodeBtn" class="btn btn-success">Geolocalizza</a> --}}
-                    <button type="submit" class="px-4 pink_custom save">Salva appartamento</button>
-                    <button class="px-4 ms-3 orange_custom undo">
-                        <a href="{{ route('host.apartments.index') }}">Annulla</a>
-                    </button>
+            
+                {{-- BUTTONS --}}
+                <div class="col-12 text-end buttons_box">
+                    <div class="form-group">
+                        {{-- <a class="btn btn-success" onmousedown="beforeSubmit()">Salva appartamento</a> --}}
+                        {{-- <a id="geocodeBtn" class="btn btn-success">Geolocalizza</a> --}}
+                        <button class="px-4 me-3 orange_custom undo">
+                            <a href="{{ route('host.apartments.index') }}">Annulla</a>
+                        </button>
+                        <button type="submit" class="px-4 pink_custom save">Salva i cambiamenti</button>
+
+                        {{-- undo resp --}}
+                        <button class="px-4 mt-3 orange_custom undo_resp">
+                            <a href="{{ route('host.apartments.index') }}">Annulla</a>
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>

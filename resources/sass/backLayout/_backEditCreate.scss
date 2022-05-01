@@ -34,7 +34,7 @@
                 width: 55px;
                 height: 55px;
                 position: absolute;
-                top: -32px;
+                top: -30px;
                 left: 100px;
             
                 &::before {
@@ -43,8 +43,8 @@
                     position: absolute;
                     width: 45px;
                     height: 45px;
-                    top: 5px;
-                    left: -15px;
+                    top: 7px;
+                    left: -10px;
                     transform: translateX(-50px);
                     animation: animateBg3 10s infinite alternate;
                     background:
@@ -66,8 +66,8 @@
                     position: absolute;
                     width: 30px;
                     height: 30px;
-                    top: -37px;
-                    left: 75px;
+                    top: -35px;
+                    left: 70px;
                     transform: translateY(50px);
                     animation: animateBg3 10s infinite alternate;
                     background:
@@ -171,8 +171,15 @@
         // }
     }
 
+    .edit_create_back {
+        .resp_back {
+            display: none;
+        }   
+    }
+    
+
     .buttons_box {
-        border-radius: 0 0 20px 20px;
+        margin-top: 60px;
 
         button,
         a {
@@ -185,7 +192,8 @@
         }
 
         .save,
-        .undo {
+        .undo,
+        .undo_resp {
             box-shadow: 0px 2px 2px #2f2f33;
         }
 
@@ -193,8 +201,47 @@
             color: #fac8d1;
         }
 
-        .undo a:hover {
+        .undo a:hover,
+        .undo_resp a:hover {
             color: #ffbca8;
+        }
+
+        .undo_resp {
+            display: none;
+        }
+    }
+
+    // MEDIA
+    @media screen and (max-width: 991px) {
+        .edit_create_back {
+            .ec_back {
+                display: none;
+            }
+
+            .resp_back {
+                display: block;
+                box-shadow: 0px 3px 1px #252529;
+                border-radius: 50%;
+            }
+        }
+
+        .tags_box>div {
+            font-size: 14px;
+        }
+
+        .buttons_box {
+            .undo {
+                display: none;
+            }
+
+            .undo_resp {
+                display: block;
+                width: 100%;
+            }
+
+            .save {
+                width: 100%;
+            }
         }
     }
 }
