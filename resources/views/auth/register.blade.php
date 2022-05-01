@@ -5,10 +5,10 @@
 
     <div class="row justify-content-center mt_100">
         <div class="col-md-8">
-            <div class="register_card bg-white blk_font b_r">
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="title text-center pt-5 pb-4">
+            <div class="register_card blk_font b_r">
+                <div class="row g-0">
+                    <div class="col-lg-6 col-md-12 col-sm-12">
+                        <div class="title text-center mt-5 mb-4">
                             <h2 class="fw-bold pink_font">
                                 {{ __('Register') }}
                             </h2>
@@ -123,8 +123,8 @@
 
                                 {{-- BUTTONS --}}
                                 <div class="form-group mb-2 mt-4 text-center">
-                                    <div class="register_button">
-                                        <button type="submit" class="px-4 pink_custom save">
+                                    <div class="text-center mb-4">
+                                        <button type="submit" class="w-100 rounded px-4 pink_custom save register_button">
                                             {{ __('Register') }}
                                         </button>
                                     </div>
@@ -134,7 +134,7 @@
                     </div> 
 
                     {{-- img --}}
-                    <div class="col-md-6">
+                    <div class="col-lg-6 side_col">
                         <div class="w-100 h-100 b_bottom_top op_9 side_img">
                             {{-- <img class="bg-fluid b_bottom_top" src="https://cdn.dribbble.com/users/3562273/screenshots/12301613/media/46bf05eb6571d78629285638e8da8e41.jpg" height="850" alt=""> --}}
                         </div>
