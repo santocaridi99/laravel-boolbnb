@@ -5,8 +5,8 @@
     <div class="container">
       <div class="d-flex align-items-center mb-4">
         {{-- title --}}
-        <h1 class="text-white fw-bold mt-4">{{$apartment->title}}</h1>
-        {{-- <div class="visible_box_top mx-2">
+        <h1 class="text-white fw-bold mt-4 show_h1">{{$apartment->title}}</h1>
+        {{-- <div class="show_visible_box_top mx-2">
           @if($apartment->isVisible)
           <small class="badge bg-dark"><i class="me-1 green_font fas fa-check-circle"></i> visibile</small>
           @else

@@ -14,13 +14,13 @@
                     <img class="ps-2" src="/img/frecce.svg" alt=""> Torna indietro
                 </button>
             </a>
-
+        
             <a class="text-white resp_back ms-4" href="{{ route('host.apartments.index') }}">
-                <button class="d-flex align-items-center p-2 button_back">
-                    <img class="ps-2" src="/img/frecce.svg" alt="">
+                <button class="d-flex align-items-center button_back">
+                    <img class="" src="/img/frecce.svg" alt="">
                 </button>
             </a>
-        </div> 
+        </div>
     </div>
     
 
