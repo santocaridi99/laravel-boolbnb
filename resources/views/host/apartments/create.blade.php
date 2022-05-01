@@ -229,7 +229,7 @@
             </button>
             <button type="submit" class="px-4 pink_custom save">Salva appartamento</button>
             {{-- undo resp --}}
-            <button class="px-4 me-3 orange_custom undo_resp">
+            <button class="px-4 mt-3 orange_custom undo_resp">
               <a href="{{ route('host.apartments.index') }}">Annulla</a>
             </button>
           </div>
