@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container text-white ap_create_edit" id="root">
+<div class="container text-white ap_create_edit mb-5" id="root">
 
   <div class="w-100 d-flex justify-content-between align-items-center mt-4">
     {{-- titolo --}}
@@ -16,8 +16,8 @@
       </a>
 
       <a class="text-white resp_back ms-4" href="{{ route('host.apartments.index') }}">
-        <button class="d-flex align-items-center p-2 button_back">
-          <img class="ps-2" src="/img/frecce.svg" alt="">
+        <button class="d-flex align-items-center button_back">
+          <img class="" src="/img/frecce.svg" alt="">
         </button>
       </a>
     </div>

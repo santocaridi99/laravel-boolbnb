@@ -1,121 +1,181 @@
 @extends('layouts.app')
 
 @section('content')
-  <div class="container ap_show">
+  <div class="ap_show">
+    <div class="container">
+      <div class="d-flex align-items-center mb-4">
+        {{-- title --}}
+        <h1 class="text-white fw-bold mt-4">{{$apartment->title}}</h1>
+        {{-- <div class="visible_box_top mx-2">
+          @if($apartment->isVisible)
+          <small class="badge bg-dark"><i class="me-1 green_font fas fa-check-circle"></i> visibile</small>
+          @else
+          <small class="badge bg-dark"><i class="me-1 pink_font fas fa-times-circle"></i> non visibile</small>
+          @endif
+        </div> --}}
+        
+        {{-- back button --}}
+        <div class="show_back ms-auto">
+          <a class="text-white ec_back" href="{{ route('host.apartments.index') }}">
+            <button class="d-flex align-items-center py-2 px-4 text-white button_back">
+              <img class="ps-2" src="/img/frecce.svg" alt=""> Torna indietro
+            </button>
+          </a>
 
-    <div class="d-flex justify-content-between align-items-center my-3">
-      {{-- title --}}
-      <h1 class="text-center text-white fw-bold mt-4">I miei alloggi</h1>
-      
-      {{-- back button --}}
-      <div>
-        <a class="button_back btn d-flex align-items-center px-4" href="{{ route('host.apartments.index') }}">
-          <img class="ps-2" src="/img/frecce.svg" alt=""> Torna indietro 
-        </a>
+          {{-- responsive back --}}
+          <a class="text-white resp_back ms-4" href="{{ route('host.apartments.index') }}">
+            <button class="d-flex align-items-center button_back">
+              <img class="" src="/img/frecce.svg" alt="">
+            </button>
+          </a>
+        </div>
       </div>
-    </div>
 
-    <div class="card position-relative py-3">
-      {{-- edit button --}}
-      <div class="edit_container position-absolute">
-        <a class="btn rounded-circle edit_btn d-block" type="button"
-          href="{{ route('host.apartments.edit', $apartment->slug) }}" title="Modifica appartamento">
-          <i class="fa-solid fa-pen-to-square"></i>
-        </a>
-      </div>
-
-      {{-- ROW --}}
-      <div class="row g-0">
-
-        <div class="col-lg-5 col-md-12 col-sm-12 text-center py-2">
-          {{-- ap title --}}
-          <h2 class="mt-2 mb-3 fw-bold">{{$apartment->title}}</h2>
-
+      {{-- cover --}}
+      <div class="row g-0 w-100 d-flex justify-content-center">
+        <div class="col-lg-10 col-md-12 col-sm-12 d-flex justify-content-center">
           {{-- img --}}
           @if ($apartment->cover !== 'cover')
-            <a href="{{ route('host.apartments.show', $apartment->slug) }}" class="w-100 ex">
-                <img 
-                    class="w-100 rounded obj_fit show_img"
-                    src="{{ asset('storage/' . $apartment->cover) }}"
-                    alt=""
-                />
+            <a href="{{ route('host.apartments.show', $apartment->slug) }}" class="w-100">
+              <img 
+                  class="w-100 obj_fit show_img"
+                  src="{{ asset('storage/' . $apartment->cover) }}"
+                  alt=""
+              />
             </a>
           @else
             <a href="{{ route('host.apartments.show', $apartment->slug) }}" class="w-100">
-                <img 
-                    class="w-100 rounded obj_fit show_img"
-                    src="https://fakeimg.pl/800x600/?text=Scarpe"
-                    alt=""
-                />
+              <img 
+                  class="w-100 obj_fit show_img"
+                  src="https://fakeimg.pl/800x600/?text=Scarpe"
+                  alt=""
+              />
             </a>
           @endif
         </div>
-        
-        <div class="col-lg-7 col-md-12 col-sm-12 text-white ps-4 d-flex flex-column justify-content-center">
-          <h3 class="op">Immagini relative all'appartamento:</h3>
 
-          <div class="row p-2 mb-3">
+        {{-- images --}}
+        <div class="col-lg-2 col-md-12 col-sm-12">
+          
             @foreach ($apartment->images as $item)
-              <div class="col-lg-3 col-md-4 col-sm-4 pe-1">
-                <img class="h-100 w-100 rounded" src="{{ asset('image/' . $item->images) }}" alt="" class="post-img">
+              <div class="images_extra">
+                <img class="h-100 w-100" src="{{ asset('image/' . $item->images) }}" alt="" class="post-img">
               </div>
             @endforeach
-          </div>
-
-          <h3 class="op">Indirizzo:</h3>
-          <div class="d-flex">
-            <ul class="p-0 m-0">
-              <li>{{$apartment->streetAddress}}</li>
-              <li>{{$apartment->province}}, {{$apartment->region}}</li>
-              <li>{{$apartment->country}}</li>
-              @if($apartment->isVisible)
-                <li class="mt-5">visibile <i class="text-success fas fa-check-circle"></i></li>
-              @else 
-                <li class="mt-5">non visibile <i class="text-danger fas fa-times-circle"></i></li>
-              @endif
-            </ul>
-            
-          </div>
+        
         </div>
-          <div class="stats m-5">
-            <svg
-              class="progress-ring"
-              width="120"
-              height="120">
-              <circle
-                class="progress-ring__circle"
-                stroke="white"
-                stroke-width="5"
-                fill="#ff6333"
-                r="52"
-                cx="60"
-                cy="60"/>
-            </svg>
+      </div>
+    </div>
 
-            <div class="text-white">
-              <div> Numero totale</div>
-              <span>di visualizzazioni ricevute: </span>
-              <input
-                id='input'
-                class="statsinput"
-                value="{{$apartment->views}}"
-                type="number"
-                step="5"
-                min="0"
-                max="100"
-                placeholder="progress"
-                disabled
-              >
+    <div class="w-100 bg-white">
+      <div class="visible_box_middle ps-5 pt-3">
+        @if($apartment->isVisible)
+        <small class="badge bg-dark"><i class="me-1 green_font fas fa-check-circle"></i> visibile</small>
+        @else
+        <small class="badge bg-dark"><i class="me-1 pink_font fas fa-times-circle"></i> non visibile</small>
+        @endif
+      </div>
+
+      <div class="px-5 py_50">
+        <div class="row g-0 w-100">
+          {{-- info --}}
+          <div class="col-lg-4 col-md-12 col-sm-12">
+            <div class="show_address mb-5">
+              <h3>Indirizzo</h3>
+
+              <ul class="p-0">
+                <li>{{$apartment->streetAddress}}</li>
+                <li>{{$apartment->province}}, {{$apartment->region}}</li>
+                <li>{{$apartment->country}}</li>
+              </ul>
+            </div>
+            
+            <div class="show_servizi mb-5">
+              <h3>Servizi aggiuntivi</h3>
+              <div class="w-100 d-flex align-items-center flex-wrap">
+                @foreach ($apartment->tags as $tag)
+                  <div class="badge m-1 blk_op_bg">{{$tag->name}}</div>
+                @endforeach
+              </div>
+            </div>
+            
+            <div class="show_descrizione mb-5">
+              <h3>Descrizione dell'appartamento</h3>
+              <p class="font-monospace lh-base mb-0">
+                {{$apartment->description}}
+              </p>
+            </div>
+
+            <div class="show_edit">
+              <button class="edit_btn">
+                <a class="text-white align-middle py-2 px-4" href="{{ route('host.apartments.edit', $apartment->slug) }}">
+                  Modifica le informazioni <i class="fa-solid fa-pen-to-square ps-2"></i>
+                </a>
+              </button>
+            </div>
+              
+          </div>
+
+          <div class="col-lg-4 col-md-12 col-sm-12 d-flex justify-content-center align-items-center py_100 stat">
+            {{-- statistiche --}}
+            <div class="d-flex justify-content-center align-items-center">
+              <div class="row g-0">
+                <div class="col-lg-6 col-md-12 col-sm-12 d-flex justify-content-center align-items-center">
+                  <svg
+                    class="progress-ring mx-4"
+                    width="120"
+                    height="120">
+                    <circle
+                      class="progress-ring__circle"
+                      stroke="white"
+                      stroke-width="10"
+                      fill="#FF6332"
+                      r="52"
+                      cx="60"
+                      cy="60"
+                    />
+                  </svg>
+                </div>
+              
+                <div class="col-lg-6 col-md-12 col-sm-12 d-flex flex-column justify-content-center align-items-center">
+                  <p class="text-break fw-bold mb-0 pb-0 f_18 w_250 stat_text">Numero totale di visualizzazioni ricevute:</p> 
+                  <input
+                    id='input'
+                    class="statsinput bg-transparent w_100 f_18 orange_font"
+                    value="{{$apartment->views}}"
+                    {{-- type="number" --}}
+                    step="5"
+                    min="0"
+                    max="100"
+                    placeholder="progress"
+                    disabled
+                  >
+                </div>
+              </div>
             </div>
           </div>
-          <div class="messages_box">
-            <h3 class="ps-4">Messaggi:</h3>
-            @foreach ($messages as $message)
-              <div class="col-md-8">
-                <p class="ps-4">{{$message->email}} : {{$message->content}} - {{$message->created_at}}</p>  
+          
+          {{-- messaggi --}}
+          <div class="col-lg-4 col-md-12 col-sm-12">
+            <div class="blk_font">
+              <h3 class="mb-3">Lista dei messaggi ricevuti</h3>
+              <div class="messages_container overflow-auto maxh_450">
+                @foreach ($messages as $message)
+                  <div class="message_box mb-4 g_shadow border rounded border-secondary me-2">
+                    <h6 class="w-100 bg-dark text-white p-2 mb-0">Nuovo messaggio</h6>
+                    
+                    <div class="message_body bg-light px-3 pb-2">
+                      <p class="mb-0 py-2 border-bottom bb_gray"><span class="me-2 op_9">inviato da:</span>{{$message->email}}</p>
+                      <p class="mb-0 py-3 mb-3 text-break overflow-hidden h_100">{{$message->content}}</p>
+                      <small class=""><span class="me-1 op_9">Ricevuto il</span><small>{{$message->created_at}}</small></small>
+                    </div>  
+                  </div>
+                @endforeach
               </div>
-            @endforeach
+            </div>
           </div>
+        </div>
+
       </div>
     </div>
   </div>

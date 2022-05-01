@@ -11,7 +11,7 @@
     <div class="row justify-content-center">
         <div class="col-lg-10 col-md-12 col-sm-12 mt-3">
             
-            <h1 class="text-start text-white fw-bold mt-4 f_45">I miei alloggi</h1>
+            <h1 class="text-start text-white fw-bold f_45">I miei alloggi</h1>
 
             <div class="d-flex justify-content-center mb-3 mt_50">
                 {{-- create --}}
@@ -191,7 +191,7 @@
 
                             {{-- tags --}}
                             <div class="pd">
-                                <div class="d-flex justify-content-between flex-wrap border px-4 py-4 mt-3 tags_container">
+                                <div class="d-flex justify-content-center flex-wrap border px-4 py-4 mt-3 tags_container">
                                     {{-- icons --}}
                                     @foreach ($apartment->tags as $tag)
                                         <img class="mx-3" src="{{$tag->icon}}" alt="{{$tag->name}}" title="{{$tag->name}}">

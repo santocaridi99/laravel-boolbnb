@@ -1,4 +1,4 @@
-<footer class="mt_80 bg-dark">
+<footer class="bg-dark">
     <!-- <div class="container d-flex justify-content-center align-items-center"> -->
     <div class="container flex-column text-center">
         <a href="{{ url('/') }}">

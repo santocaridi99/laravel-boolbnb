@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container text-white ap_create_edit">
+<div class="container text-white ap_create_edit mb-5">
 
     <div class="w-100 d-flex justify-content-between align-items-center mt-4 mb-5">
        {{-- titolo --}}

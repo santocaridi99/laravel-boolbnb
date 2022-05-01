@@ -70,7 +70,7 @@ li {
   list-style-type: none;
 }
 
-// MARGINS
+// MARGINS - PADDINGS
 .mt_50 {
   margin-top: 50px;
 }
@@ -81,6 +81,18 @@ li {
 
 .mt_100 {
   margin-top: 100px;
+}
+
+.p_80 {
+  padding: 80px;
+}
+
+.py_50 {
+  padding: 50px 0;
+}
+
+.py_100 {
+  padding: 100px 0;
 }
 
 // OPACITY
@@ -159,10 +171,18 @@ li {
   font-size: 45px;
 }
 
-// WIDTH/HEIGHT
+// WIDTH - HEIGHT
 
 .max_450 {
   max-width: 450px;
+}
+
+.w_100 {
+  width: 100px;
+}
+
+.w_250 {
+  width: 250px;
 }
 
 .w_300 {
@@ -179,6 +199,10 @@ li {
   width: 600px;
 }
 
+.maxh_450 {
+  max-height: 450px;
+}
+
 .h_100 {
   height: 100px;
 }
@@ -187,8 +211,13 @@ li {
   height: 150px;
 }
 
-.p_80 {
-  padding: 80px;
+.h_120 {
+  height: 150px;
+}
+
+// BORDERS
+.bb_gray {
+  border-bottom: 1px solid gray;
 }
 
 // OBJ FIT
@@ -200,6 +229,11 @@ li {
 .obj_fit_contain {
   object-fit: contain;
 }
+
+// SHADOW
+// .g_shadow {
+//   box-shadow: 1px 1px 4px 1px #62626e;
+// }
 
 // DIV SUGGESTION
 
