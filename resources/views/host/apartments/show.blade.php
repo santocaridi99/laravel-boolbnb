@@ -99,9 +99,9 @@
               </div>
             </div>
             
-            <div class="show_descrizione mb-5">
+            <div class="show_descrizione mb-5 text-break">
               <h3>Descrizione dell'appartamento</h3>
-              <p class="font-monospace lh-base mb-0">
+              <p class="font-monospace text-break lh-base mb-0">
                 {{$apartment->description}}
               </p>
             </div>
