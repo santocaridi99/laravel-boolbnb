@@ -92,6 +92,21 @@
                 <li>{{$apartment->country}}</li>
               </ul>
             </div>
+
+            <div class="show_info mb-5">
+              <h3>Informazioni generali</h3>
+
+              <ul class="p-0">
+                <li>Numero di stanze: <strong>{{$apartment->room_numbers}}</strong></li>
+                
+                <li>Numero di posti letto: <strong>{{$apartment->bed_numbers}}</strong></li>
+                
+                <li>Numero di bagni: <strong>{{$apartment->bathroom_numbers}}</strong></li>
+
+                <li>Metri quadri totali: <strong>{{$apartment->square_meters}}</strong></li>
+              </ul>
+            </div>
+            
             
             {{-- servizi --}}
             <div class="show_servizi mb-5">
@@ -145,7 +160,7 @@
 
             <div class="blk_font">
               <h3 class="mb-3">Lista dei messaggi ricevuti</h3>
-              <div class="messages_container overflow-auto maxh_220">
+              <div class="messages_container overflow-auto maxh_370">
                 @if(!count($messages))
                   <div class="message_box mb-4 g_shadow border rounded mx-3">
                     <div class="w-100 bg-dark rounded-top p-3 mb-0"></div>
