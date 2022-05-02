@@ -72,7 +72,7 @@ class ApartmentController extends Controller
             "tags" => "required|exists:tags,id",
             "latitude" => "required",
             "longitude" => "required",
-            "images" => "nullable",
+            "images" => "nullable|max:4",
             "images.*" => "nullable|mimes:jpeg,bmp,png",
             'isVisible' => 'boolean'
         ]);
@@ -202,7 +202,7 @@ class ApartmentController extends Controller
             "tags" => "required|exists:tags,id",
             "latitude" => "required",
             "longitude" => "required",
-            "images" => "nullable",
+            "images" => "nullable|max:4",
             "images.*" => "nullable|mimes:jpeg,bmp,png",
             "isVisible" => "boolean"
         ]);
@@ -232,7 +232,7 @@ class ApartmentController extends Controller
         // altrimenti procede normalmente e salva le immagini uplodate come da procedimento sulla funzione store.
 
         if (key_exists("cover", $data)) {
-            $coverImg=$request->file('cover');
+            $coverImg = $request->file('cover');
             if ($apartment->cover) {
                 Storage::delete($apartment->cover);
             }
@@ -241,7 +241,7 @@ class ApartmentController extends Controller
             $apartment->cover = $coverImg;
             $apartment->save();
         }
-        
+
         if ($request->hasFile("images")) {
             if ($apartment->images) {
                 $apartment->images()->delete();
