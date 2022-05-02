@@ -127,9 +127,9 @@
                     height="120">
                     <circle
                       class="progress-ring__circle"
-                      stroke="white"
-                      stroke-width="10"
-                      fill="#FF6332"
+                      stroke="#111111"
+                      stroke-width="6"
+                      fill="#FF385C"
                       r="52"
                       cx="60"
                       cy="60"
