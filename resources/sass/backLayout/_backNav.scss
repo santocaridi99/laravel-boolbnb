@@ -19,4 +19,12 @@
         }
     }
 
+    .log_b {
+        color: $blk;
+    
+        &:hover {
+            color: $red_org;
+        }
+    }
+
 }

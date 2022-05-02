@@ -20,7 +20,7 @@
 
                                 {{-- nome --}}
                                 <div class="form-group mb-2">
-                                    <label for="name" class="">{{ __('Name') }}*</label>
+                                    <label for="name" class="">{{ __('Name') }}<span class="pink_font">*</span></label>
                     
                                     <div class="">
                                         <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name"
@@ -37,8 +37,7 @@
                     
                                 {{-- cognome --}}
                                 <div class="form-group mb-2">
-                                    <label for="lastname" class="">{{ __('Lastname')
-                                        }}*</label>
+                                    <label for="lastname" class="">{{ __('Lastname') }}<span class="pink_font">*</span></label>
                     
                                     <div class="">
                                         <input id="lastname" type="text" class="form-control @error('lastname') is-invalid @enderror"
@@ -56,8 +55,7 @@
                     
                                 {{-- data di nascita --}}
                                 <div class="form-group mb-2">
-                                    <label for="birth_date" class="">{{ __('Birth date')
-                                        }}*</label>
+                                    <label for="birth_date" class="">{{ __('Birth date') }}<span class="pink_font"><span class="pink_font">*</span></span></label>
                     
                                     <div class="">
                                         <input id="birth_date" type="date" class="form-control @error('birth_date') is-invalid @enderror"
@@ -74,8 +72,7 @@
                     
                                 {{-- email --}}
                                 <div class="form-group mb-2">
-                                    <label for="email" class="">{{ __('E-Mail Address')
-                                        }}*</label>
+                                    <label for="email" class="">{{ __('E-Mail Address') }}<span class="pink_font">*</span></label>
                     
                                     <div class="">
                                         <input id="email" type="email" class="form-control @error('email') is-invalid @enderror"
@@ -92,8 +89,7 @@
                                 
                                 {{-- password --}}
                                 <div class="form-group mb-2">
-                                    <label for="password" class="">{{ __('Password')
-                                        }}*</label>
+                                    <label for="password" class="">{{ __('Password') }}<span class="pink_font">*</span></label>
                     
                                     <div class="">
                                         <input id="password" type="password" class="form-control @error('password') is-invalid @enderror"
@@ -110,8 +106,7 @@
                                 
                                 {{-- password 2 --}}
                                 <div class="form-group mb-2">
-                                    <label for="password-confirm" class="">{{ __('Confirm
-                                        Password') }}*</label>
+                                    <label for="password-confirm" class="">{{ __('Confirm Password') }}<span class="pink_font">*</span></label>
                     
                                     <div class="">
                                         <input id="password-confirm" type="password" class="form-control" name="password_confirmation"
