@@ -227,7 +227,7 @@
 
                 {{-- images --}}
                 <div class="col-12">
-                    <label class="mb-3">Aggiungi altre immagini</label>
+                    <label class="mb-3">Aggiungi altre immagini <span class="text-danger">(Max. 4)</span></label>
                     <input type="file" id="input-file-now-custom-3" class="form-control @error('images.*') is-invalid @enderror " name="images[]" multiple>
                     @error('images.*')
                     <div class="invalid-feedback">{{ $message }}</div>

@@ -8,7 +8,8 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    {{-- <title>{{ config('app.name', 'Laravel') }}</title> --}}
+    <title>Bool B&B</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -57,29 +58,6 @@
     })
 </script>
 
-<script>
-    var circle = document.querySelector('circle');
-    var radius = circle.r.baseVal.value;
-    var circumference = radius * 2 * Math.PI;
-
-    circle.style.strokeDasharray = `${circumference} ${circumference}`;
-    circle.style.strokeDashoffset = `${circumference}`;
-
-    function setProgress(percent) {
-      const offset = circumference - percent / 100 * circumference;
-      circle.style.strokeDashoffset = offset;
-    };
-
-    const input = document.getElementById('input');
-    setProgress(input.value);
-
-    input.addEventListener('change', function() {
-      if (input.value < 101 && input.value > -1) {
-        setProgress(input.value);
-      }  
-    })
-  </script>
-
 </html>
 <style>
     body {
@@ -90,6 +68,19 @@
     .parsley-errors-list li{
         color:red;
         list-style: none;
+    }
+
+    /* SCROLLBAR */
+    ::-webkit-scrollbar {
+    width: 0.5em;
+    height: 0.5em;
+    margin-right: 10px;
+    }
+    ::-webkit-scrollbar-thumb {
+    min-height: 0.8em;
+    min-width: 0.8em;
+    background-color: #222;
+    border: none;
     }
 </style>
 

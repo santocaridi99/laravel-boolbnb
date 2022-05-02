@@ -20207,6 +20207,10 @@ fieldset:disabled .btn {
   font-weight: 800;
 }
 
+.custom_cont_fluid .banner_text .img_banner {
+  width: 100px;
+}
+
 .custom_cont_fluid .banner_text .button_banner {
   background-color: #FF385C;
   border: none;
@@ -20893,6 +20897,14 @@ fieldset:disabled .btn {
   justify-content: flex-start;
 }
 
+.back_nav .log_a {
+  color: #111;
+}
+
+.back_nav .log_a:hover {
+  color: #111;
+}
+
 .back_ap {
   font-family: "Inter", sans-serif;
 }
@@ -20917,7 +20929,7 @@ fieldset:disabled .btn {
 .back_ap .create_box .create_slide {
   position: relative;
   font-size: 18px;
-  top: -36px;
+  top: -37px;
   left: -280px;
   height: 40px;
   transition: all linear 1s;
@@ -21178,6 +21190,19 @@ fieldset:disabled .btn {
   transition: 0.35s stroke-dashoffset;
   transform: rotate(-90deg);
   transform-origin: 50% 50%;
+}
+
+.ap_show ::-webkit-scrollbar {
+  width: 0.5em;
+  height: 0.5em;
+  margin-right: 10px;
+}
+
+.ap_show ::-webkit-scrollbar-thumb {
+  min-height: 0.8em;
+  min-width: 0.8em;
+  background-color: #222;
+  border: none;
 }
 
 @media screen and (max-width: 575px) {
@@ -21695,12 +21720,20 @@ li {
   width: 416px;
 }
 
+.w_500 {
+  width: 450px;
+}
+
 .w_600 {
   width: 600px;
 }
 
-.maxh_450 {
-  max-height: 450px;
+.maxh_220 {
+  max-height: 220px;
+}
+
+.minh_460 {
+  min-height: calc(100vh - 460px);
 }
 
 .h_100 {
