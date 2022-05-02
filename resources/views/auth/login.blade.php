@@ -66,7 +66,7 @@
                                 <div class="form-group mb-2 mt-4">
                                     <div class="">
                                         <div class="text-center mb-4">
-                                            <button type="submit" class="w-100 rounded px-4 pink_custom save login_button">
+                                            <button type="submit" class="w-100 fw-bold rounded px-4 pink_custom save login_button">
                                                 {{ __('Login') }}
                                             </button>
                                         </div>

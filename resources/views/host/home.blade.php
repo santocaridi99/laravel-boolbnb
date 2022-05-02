@@ -23,10 +23,10 @@
                                 <div class="mb-5">{{ Auth::user()->email }}</div>
 
                                 <div class="text-center">
-                                    <a class="badge dropdown-item pink_custom log_red p-3" href="{{ route('logout') }}"
+                                    <a class="pink_custom" href="{{ route('logout') }}"
                                         onclick="event.preventDefault();
                                                             document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
+                                        <button class="w-100 fw-bold rounded px-4 pink_custom login_button">{{ __('Logout') }}</button>
                                     </a>
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
