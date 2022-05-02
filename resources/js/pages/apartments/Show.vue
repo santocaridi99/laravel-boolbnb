@@ -6,10 +6,10 @@
             <!-- img lg -->
             <div class="row g-0 img_lg"> 
                 <div class="col-lg-10 col-md-10 col-sm-10">
-                    <img class="cover_img" :src="'http://127.0.0.1:8000/storage/' + apartmentDet.cover" alt="Flat cover"/>  
+                    <img class="cover_img pointer" :src="'http://127.0.0.1:8000/storage/' + apartmentDet.cover" alt="Flat cover"/>  
                 </div>
                 <div class="col-lg-2 col-md-2 col-sm-2">
-                    <div class="" v-for="(item, index) in apartmentDet.images" :key="index">
+                    <div class="pointer" v-for="(item, index) in apartmentDet.images" :key="index">
                         <img class="flat_pic w-100" :src="'/image/' + item.images" alt="Flat pic">
                     </div>
                 </div>      

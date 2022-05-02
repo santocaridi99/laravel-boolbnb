@@ -1,6 +1,3 @@
-@keyframes slide{0%{transform:translateX(0)}to{transform:translateX(10px)}};
-@keyframes slide-2{0%{transform:translateX(0)}to{transform:translateX(-10px)}};
-
 .circle {
     border-radius:50%;
     width: 100px;
@@ -127,9 +124,10 @@
         background-color: #fff;
         position: relative;
         .button_rel {
+            width: 100%;
             position:absolute;
             bottom: 10px;
-            right: 10px;
+         
         }
     } 
 }
@@ -142,6 +140,9 @@
     &:focus {
         outline: none;
     }
+}
+.km {
+    margin-left: -25px;
 }
 
 
@@ -182,6 +183,11 @@
 .hide {
     display: none;
 }
+
+@keyframes slide{0%{transform:translateX(0)}to{transform:translateX(10px)}};
+@keyframes slide-2{0%{transform:translateX(0)}to{transform:translateX(-10px)}};
+
+@keyframes blink-1{0%,50%,to{opacity:1}25%{opacity:0}};
 
 @media screen and (max-width: 575px) {
 
