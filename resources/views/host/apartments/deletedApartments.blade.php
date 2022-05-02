@@ -2,22 +2,26 @@
 
 @section('content')
 <div class="container back_ap">
-    <h1 class="text-center text-white fw-bold mt-4">Appartamenti cancellati</h1>
     <div class="row justify-content-center">
         <div class="col-10 mt-3">
-            {{-- back button --}}
-            <div class="me-auto my-3">
-                <a class="text-white" href="{{ route('host.apartments.index') }}">
-                    <button class="d-flex align-items-center px-4 py-2 button_back">
-                        <img class="ps-2" src="/img/frecce.svg" alt=""> Torna indietro
-                    </button>
-                </a>
+            <div class="d-flex justify-content-between align-items-center">
+                {{-- title --}}
+                <h1 class="text-white fw-bold mt-4">Appartamenti cancellati</h1>
+                {{-- back button --}}
+                <div class="">
+                    <a class="text-white" href="{{ route('host.apartments.index') }}">
+                        <button class="d-flex align-items-center px-4 py-2 button_back">
+                            <img class="ps-2" src="/img/frecce.svg" alt=""> Torna indietro
+                        </button>
+                    </a>
+                </div>  
             </div>
+            
 
             {{-- APARTMENTS CARDS --}}
             @if(!count($apartments))
             <div class="minh_460">
-                <h3 class="text-white text-center py_100 op_7">Non ci sono appartamenti cancellati</h3>
+                <h3 class="text-white text-center py_280_350 op_7">Non ci sono appartamenti cancellati da visualizzare</h3>
             </div>
             @else
             @foreach ($apartments as $apartment)
