@@ -138,7 +138,7 @@
           
               <div class="d-flex flex-column justify-content-center">
                 <p class="text-break fw-bold mb-0 pb-0 f_18 w_250 stat_text">Numero totale di visualizzazioni ricevute:</p>
-                <input id='input' class="statsinput bg-transparent p-0 m-0 w_100 f_18 orange_font" value="{{$apartment->views}}" {{--
+                <input id='input' class="statsinput fw-bold bg-transparent p-0 m-0 w_100 f_18 orange_font" value="{{$apartment->views}}" {{--
                   type="number" --}} step="5" min="0" max="100" placeholder="progress" disabled>
               </div>
             </div>
