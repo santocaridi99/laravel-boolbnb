@@ -21,7 +21,7 @@
 
     <!-- carousel -->
     
-    <div class="d-flex justify-content-center align-items-center">
+    <div class="d-flex justify-content-center align-items-center pointer">
       <div v-if="apartments.length" class="box-slide">
            
           <div class="container d-flex justify-content-center align-items-center">

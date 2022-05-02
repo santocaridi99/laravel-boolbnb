@@ -15,7 +15,7 @@
                     name="search"
                     type="text"
                     class="search_bar ps-3"
-                    placeholder="Inserisci l'indirizzo'"
+                    placeholder="Inserisci l'indirizzo"
                     v-model="search"
                     @keyup="searchBox"
                     @keyup.delete="autocompleteReset"
@@ -26,47 +26,11 @@
                 >
                     <i class="fas fa-search"></i>
                 </button>
-                <button class="filter_button ms-2" @click="showFilters">
-                    <svg
-                        viewBox="0 0 24 24"
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="28"
-                        height="28"
-                        fill="none"
-                    >
-                        <path
-                            stroke="#fff"
-                            stroke-linecap="round"
-                            stroke-width="1.5"
-                            d="M6 8.746h12M6 15.317h12"
-                        />
-                        <circle
-                            cx="7.5"
-                            cy="8.746"
-                            r="1.5"
-                            fill="#fff"
-                            stroke="#fff"
-                            stroke-width="1.5"
-                            style="
-                                animation: slide 1.5s
-                                    cubic-bezier(0.86, 0, 0.07, 1) infinite
-                                    alternate both;
-                            "
-                        />
-                        <circle
-                            cx="16.5"
-                            cy="15.254"
-                            r="1.5"
-                            fill="#fff"
-                            stroke="#fff"
-                            stroke-width="1.5"
-                            style="
-                                animation: slide-2 1.5s
-                                    cubic-bezier(0.86, 0, 0.07, 1) infinite
-                                    alternate both;
-                            "
-                        />
-                    </svg>
+                <button v-if="!show" class="filter_button ms-2" @click="showFilters">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="none"><path stroke="#fff" stroke-linecap="round" stroke-width="1.5" d="M6 8.746h12M6 15.317h12"/> <circle cx="7.5" cy="8.746" r="1.5" fill="#fff" stroke="#fff" stroke-width="1.5" style=" animation: slide 1.5s cubic-bezier(0.86, 0, 0.07, 1) infinite alternate both;"/><circle cx="16.5" cy="15.254" r="1.5" fill="#fff" stroke="#fff" stroke-width="1.5" style="animation: slide-2 1.5s cubic-bezier(0.86, 0, 0.07, 1) infinite alternate both;"/></svg>
+                </button>
+                <button v-else class="filter_button ms-2" @click="showFilters">
+                     <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"><rect width="16" height="16" x="4" y="4" stroke="#fff" stroke-width="1.5" rx="2.075"/><path fill="#fff" d="M10.242 9.18a.75.75 0 00-1.061 1.062l1.79 1.79-1.79 1.79a.75.75 0 001.06 1.06l1.79-1.79 1.79 1.79a.75.75 0 001.062-1.06l-1.79-1.79 1.79-1.79a.75.75 0 10-1.061-1.061l-1.79 1.79-1.79-1.79z" style="animation:blink-1 2s steps(1,end) infinite both"/></svg>
                 </button>
             </div>
 
@@ -89,7 +53,7 @@
             <!-- <button class="col-2" @click="getRadiusApartments()">
     Filtra gli appartamenti
 </button> -->
-            <div class="m-5 text-white" v-if="show">
+            <div class="m-5 text-white d-lg-flex" v-if="show">
                 <div class="">
                     <input
                         class="input_bar m-2"
@@ -115,8 +79,25 @@
                         placeholder="price"
                         @change="searchSubmit"
                     />
+                    <div class="d-flex align-items-center ms-2">
+                        <input
+                            class=""
+                            type="range"
+                            min="10"
+                            max="150"
+                            v-model="radius"
+                            step="10"
+                            
+                        />
+                        <input
+                            type="number"
+                            class="my-input-num"
+                            v-model="radius"
+                            disabled
+                        /> <span class="km">km</span> 
+                    </div>
                 </div>
-                <div>
+                <div class="">
                     <input
                         type="checkbox"
                         id="1"
@@ -237,21 +218,7 @@
                     />
                     <label for="12">Vicino al centro</label>
                     <br />
-                    <div class="d-flex">
-                        <input
-                            type="range"
-                            min="10"
-                            max="150"
-                            v-model="radius"
-                            step="10"
-                        />
-                        <input
-                            type="number"
-                            class="my-input-num"
-                            v-model="radius"
-                            disabled
-                        />
-                    </div>
+                    
                 </div>
             </div>
         </div>
@@ -265,10 +232,13 @@
                         :key="apartment.id"
                     >
                         <div class="flat pb-5">
-                            <button
-                                class="button_forward button_rel d-flex align-items-center ms-auto mt-4 py-2 px-3"
+                            <div class="button_rel d-flex align-items-center justify-content-between py-2 px-4">
+                                <h5 class="p-0 m-0">prezzo: <strong>{{apartment.price_per_night}} &euro;</strong></h5>
+                                 <button
+                                class="button_forward "
                             >
                                 <router-link
+                                    target="_blank"
                                     class="text-white"
                                     :to="`/apartments/${apartment.slug}`"
                                     >Scopri
@@ -278,6 +248,9 @@
                                         alt=""
                                 /></router-link>
                             </button>
+
+                            </div>
+                           
 
                             <router-link
                                 class="w-100 ex"
@@ -373,7 +346,7 @@
                                 </div>
 
                                 <!-- {{-- tags --}} -->
-                                <div class="text-center py-4 pt-3">
+                                <div class="text-center mb-4 py-4 pt-3">
                                     <!-- {{-- icons --}} -->
                                     <span
                                         class="tags_class px-2"
