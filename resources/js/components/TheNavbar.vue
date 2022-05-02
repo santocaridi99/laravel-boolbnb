@@ -21,11 +21,11 @@
                 </li>
                 <!-- Nome utente - desktop -->
                 <li>
-                    <a class="nav_text pointer" aria-current="page">{{ user.name }}</a>
+                    <a class="nav_text pointer" aria-current="page" href="/host">{{ user.name }}</a>
                 </li>
                 <!-- Nome utente - mobile -->
                 <li>
-                    <a class="nav_icon pointer text-center" aria-current="page">
+                    <a class="nav_icon pointer text-center" aria-current="page" href="/hosts">
                         <i class="icon fas fa-user-circle"></i>
                         <p class="nav_icon_text">{{ user.name }}</p>
                     </a>

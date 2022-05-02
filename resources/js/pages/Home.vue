@@ -27,9 +27,9 @@
           <div class="container d-flex justify-content-center align-items-center">
              <!-- funzione al click della freccia -->
           <i @click="prevImage" class="text-white arrow fas fa-chevron-left"></i>
-            <div class="slider_container" @click="goToShow(apartments[currentIndex].slug)">
-                <img class="slider_img" :src="apartments[currentIndex].cover" alt="random-image" @mouseover="resetAutoPlay" @mouseleave="restartAutoPlay" />
-                <div class="slider_text d-flex flex-column justify-content-center">
+            <div class="slider_container">
+                <img class="slider_img"  @click="goToShow(apartments[currentIndex].slug)" :src="apartments[currentIndex].cover" alt="random-image" @mouseover="resetAutoPlay" @mouseleave="restartAutoPlay" />
+                <div class="slider_text d-flex flex-column justify-content-center" @click="goToShow(apartments[currentIndex].slug)">
                   <h4>{{apartments[currentIndex].title}}</h4>
                   <p>{{apartments[currentIndex].description}}</p>
                   <p>prezzo: <strong>{{apartments[currentIndex].price_per_night}} &euro;</strong></p>

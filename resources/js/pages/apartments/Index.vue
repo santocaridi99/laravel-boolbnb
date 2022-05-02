@@ -15,7 +15,7 @@
                     name="search"
                     type="text"
                     class="search_bar ps-3"
-                    placeholder="Inserisci la via [Premi Invio]"
+                    placeholder="Inserisci l'indirizzo'"
                     v-model="search"
                     @keyup="searchBox"
                     @keyup.delete="autocompleteReset"
@@ -328,12 +328,10 @@
                                                 "
                                                 class="text-white"
                                             >
-                                                &#10022;
                                                 {{ apartment.room_numbers }}
                                                 stanza &#10022;
                                             </span>
                                             <span v-else class="text-white">
-                                                &#10022;
                                                 {{ apartment.room_numbers }}
                                                 stanze &#10022;
                                             </span>
@@ -369,7 +367,6 @@
                                             <!-- mq -->
                                             <span class="text-white">
                                                 {{ apartment.square_meters }} mq
-                                                &#10022;
                                             </span>
                                         </small>
                                     </div>
