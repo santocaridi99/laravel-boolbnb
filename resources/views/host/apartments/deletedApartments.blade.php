@@ -78,7 +78,7 @@
                                         </div>
             
                                         {{-- BUTTONS --}}
-                                        <div class="d-flex mx-4 i_buttons">
+                                        <div class="d-flex ms-4 me-2 i_buttons">
                                             {{-- form delete --}}
                                             <div class="ms-3">
                                                 <form action="{{ route('host.apartments.destroy', $apartment->id) }}" method="POST" class="delete d-inline-block">

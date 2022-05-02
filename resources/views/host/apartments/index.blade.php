@@ -171,7 +171,7 @@
                                     </div>
                                     
                                     {{-- BUTTONS --}}
-                                    <div class="d-flex ms-4 i_buttons">
+                                    <div class="d-flex ms-4 me-2 i_buttons">
                                         {{-- edit button --}}
                                         <div class="">
                                             <a class="edit_btn" type="button"
