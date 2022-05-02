@@ -207,12 +207,20 @@ li {
   width: 416px;
 }
 
+.w_500 {
+  width: 450px;
+}
+
 .w_600 {
   width: 600px;
 }
 
-.maxh_450 {
-  max-height: 450px;
+.maxh_220 {
+  max-height: 220px;
+}
+
+.minh_460 {
+  min-height: calc(100vh - 460px);
 }
 
 .h_100 {

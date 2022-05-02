@@ -68,18 +68,21 @@
     </div>
 
     <div class="w-100 bg-white">
-      <div class="visible_box_middle ps-5 pt-3">
-        @if($apartment->isVisible)
-        <small class="badge bg-dark"><i class="me-1 green_font fas fa-check-circle"></i> visibile</small>
-        @else
-        <small class="badge bg-dark"><i class="me-1 pink_font fas fa-times-circle"></i> non visibile</small>
-        @endif
-      </div>
+      <div class="container py_50">
 
-      <div class="px-5 py_50">
-        <div class="row g-0 w-100">
+        {{-- visibilità --}}
+        <div class="visible_box_middle pt-2 pb-4">
+          @if($apartment->isVisible)
+          <small class="badge bg-dark"><i class="me-1 green_font fas fa-check-circle"></i> visibile</small>
+          @else
+          <small class="badge bg-dark"><i class="me-1 pink_font fas fa-times-circle"></i> non visibile</small>
+          @endif
+        </div>
+
+        <div class="row">
           {{-- info --}}
-          <div class="col-lg-4 col-md-12 col-sm-12">
+          <div class="col-lg-6 col-md-12 col-sm-12 pe-5">
+            {{-- indirizzo --}}
             <div class="show_address mb-5">
               <h3>Indirizzo</h3>
 
@@ -90,6 +93,7 @@
               </ul>
             </div>
             
+            {{-- servizi --}}
             <div class="show_servizi mb-5">
               <h3>Servizi aggiuntivi</h3>
               <div class="w-100 d-flex align-items-center flex-wrap">
@@ -99,6 +103,7 @@
               </div>
             </div>
             
+            {{-- descrizione --}}
             <div class="show_descrizione mb-5 text-break">
               <h3>Descrizione dell'appartamento</h3>
               <p class="font-monospace text-break lh-base mb-0">
@@ -116,61 +121,52 @@
               
           </div>
 
-          <div class="col-lg-4 col-md-12 col-sm-12 d-flex justify-content-center align-items-center py_100 stat">
-            {{-- statistiche --}}
-            <div class="d-flex justify-content-center align-items-center">
-              <div class="row g-0">
-                <div class="col-lg-6 col-md-12 col-sm-12 d-flex justify-content-center align-items-center">
-                  <svg
-                    class="progress-ring mx-4"
-                    width="120"
-                    height="120">
-                    <circle
-                      class="progress-ring__circle"
-                      stroke="#111111"
-                      stroke-width="6"
-                      fill="#FF385C"
-                      r="52"
-                      cx="60"
-                      cy="60"
-                    />
-                  </svg>
-                </div>
-              
-                <div class="col-lg-6 col-md-12 col-sm-12 d-flex flex-column justify-content-center align-items-center">
-                  <p class="text-break fw-bold mb-0 pb-0 f_18 w_250 stat_text">Numero totale di visualizzazioni ricevute:</p> 
-                  <input
-                    id='input'
-                    class="statsinput bg-transparent w_100 f_18 orange_font"
-                    value="{{$apartment->views}}"
-                    {{-- type="number" --}}
-                    step="5"
-                    min="0"
-                    max="100"
-                    placeholder="progress"
-                    disabled
-                  >
-                </div>
-              </div>
-            </div>
-          </div>
+          {{-- <div class="col-lg-4 col-md-12 col-sm-12 d-flex justify-content-center align-items-center py_100 stat">
+            
+          </div> --}}
           
           {{-- messaggi --}}
-          <div class="col-lg-4 col-md-12 col-sm-12">
+          <div class="col-lg-6 col-md-12 col-sm-12 ps-5">
+            {{-- statistiche --}}
+            <h3>Statistiche</h3>
+            <div class="d-flex justify-items-center mb-5">
+              <div class="d-flex justify-content-center">
+                <svg class="progress-ring me-4" width="120" height="120">
+                  <circle class="progress-ring__circle" stroke="#111111" stroke-width="6" fill="#FF6332" r="32" cx="60" cy="60" />
+                </svg>
+              </div>
+          
+              <div class="d-flex flex-column justify-content-center">
+                <p class="text-break fw-bold mb-0 pb-0 f_18 w_250 stat_text">Numero totale di visualizzazioni ricevute:</p>
+                <input id='input' class="statsinput bg-transparent p-0 m-0 w_100 f_18 orange_font" value="{{$apartment->views}}" {{--
+                  type="number" --}} step="5" min="0" max="100" placeholder="progress" disabled>
+              </div>
+            </div>
+
             <div class="blk_font">
               <h3 class="mb-3">Lista dei messaggi ricevuti</h3>
-              <div class="messages_container overflow-auto maxh_450">
-                @foreach ($messages as $message)
-                  <div class="message_box mb-4 g_shadow border rounded border-secondary me-2">
-                    <h6 class="w-100 bg-dark text-white p-2 mb-0">Nuovo messaggio</h6>
-                    
+              <div class="messages_container overflow-auto maxh_220">
+                @if(!count($messages))
+                  <div class="message_box mb-4 g_shadow border rounded mx-3">
+                    <div class="w-100 bg-dark rounded-top p-3 mb-0"></div>
+                  
                     <div class="message_body bg-light px-3 pb-2">
-                      <p class="mb-0 py-2 border-bottom bb_gray"><span class="me-2 op_9">inviato da:</span>{{$message->email}}</p>
-                      <p class="mb-0 py-3 mb-3 text-break overflow-hidden h_100">{{$message->content}}</p>
-                      <small class=""><span class="me-1 op_9">Ricevuto il</span><small>{{$message->created_at}}</small></small>
-                    </div>  
+                      <p class="mb-0 py-3 mb-3 text-break overflow-hidden fs-5 h_100">Non ci sono messaggio da mostrare</p>
+                    </div>
                   </div>
-                @endforeach
+                @else
+                  @foreach ($messages as $message)
+                    <div class="message_box g_shadow border rounded mb-4 mx-3">
+                      <h6 class="w-100 bg-dark text-white rounded-top p-2 mb-0">Nuovo messaggio</h6>
+                      
+                      <div class="message_body bg-light px-3 pb-2">
+                        <p class="mb-0 py-2 border-bottom bb_gray"><span class="me-2 op_9">inviato da:</span>{{$message->email}}</p>
+                        <p class="mb-0 py-3 mb-3 text-break overflow-hidden h_100">{{$message->content}}</p>
+                        {{-- <small class=""><span class="me-1 op_9">Ricevuto il</span><small>{{$message->created_at}}</small></small> --}}
+                      </div>  
+                    </div>
+                  @endforeach
+                @endif
               </div>
             </div>
           </div>

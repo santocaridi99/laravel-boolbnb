@@ -66,6 +66,20 @@
     //     left: 10px;
     //     width: 80px;
     // }
+
+    ::-webkit-scrollbar {
+        width: 0.5em;
+        height: 0.5em;
+        margin-right: 10px;
+    }
+    
+    ::-webkit-scrollbar-thumb {
+        min-height: 0.8em;
+        min-width: 0.8em;
+        background-color: #222;
+        border: none;
+    }
+    
     @media screen and (max-width:575px) {
         .show_h1 {
             font-size: 35px;

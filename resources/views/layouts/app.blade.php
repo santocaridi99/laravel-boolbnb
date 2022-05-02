@@ -8,7 +8,8 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    {{-- <title>{{ config('app.name', 'Laravel') }}</title> --}}
+    <title>Bool B&B</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -90,6 +91,19 @@
     .parsley-errors-list li{
         color:red;
         list-style: none;
+    }
+
+    /* SCROLLBAR */
+    ::-webkit-scrollbar {
+    width: 0.5em;
+    height: 0.5em;
+    margin-right: 10px;
+    }
+    ::-webkit-scrollbar-thumb {
+    min-height: 0.8em;
+    min-width: 0.8em;
+    background-color: #222;
+    border: none;
     }
 </style>
 
