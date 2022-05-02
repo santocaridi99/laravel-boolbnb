@@ -70,6 +70,10 @@ li {
   list-style-type: none;
 }
 
+.pointer {
+  cursor: pointer;
+}
+
 // MARGINS - PADDINGS
 .mt_50 {
   margin-top: 50px;
@@ -81,6 +85,14 @@ li {
 
 .mt_100 {
   margin-top: 100px;
+}
+
+.mt_150 {
+  margin-top: 150px;
+}
+
+.mb_200 {
+  margin-bottom: 200px;
 }
 
 .p_80 {

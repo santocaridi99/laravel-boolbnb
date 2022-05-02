@@ -27,7 +27,7 @@
           <div class="container d-flex justify-content-center align-items-center">
              <!-- funzione al click della freccia -->
           <i @click="prevImage" class="text-white arrow fas fa-chevron-left"></i>
-            <div class="slider_container">
+            <div class="slider_container" @click="goToShow(apartments[currentIndex].slug)">
                 <img class="slider_img" :src="apartments[currentIndex].cover" alt="random-image" @mouseover="resetAutoPlay" @mouseleave="restartAutoPlay" />
                 <div class="slider_text d-flex flex-column justify-content-center">
                   <h4>{{apartments[currentIndex].title}}</h4>
@@ -52,8 +52,10 @@
     <div class="container-fluid d-flex align-items-center custom_cont_fluid mt-5">
     <!-- <img src="/img/mountains-banner.png" alt=""> -->
       <div class="banner_text">
-      <h2>Hai poco <br> budget?</h2>
-      <button class="button_forward d-flex align-items-center mt-5 py-2 px-4"><router-link class=" text-white" aria-current="page" :to="{ name: 'apartments.index' }">Destinazioni low-cost</router-link> <img class="ps-2" src="/img/frecce.svg" alt=""></button>
+      <h2 class="mb-4">Hai poco <br> budget?</h2>
+      <!-- <img class="img_banner" src="/img/boolbnb.svg" alt=""> -->
+      <span class="align-bottom"> <h4><strong> Filtra le tue destinazioni per prezzo! </strong></h4> </span>
+      <button class="button_forward d-flex align-items-center mt-4 py-2 px-4"><router-link class=" text-white" aria-current="page" :to="{ name: 'apartments.index' }">Destinazioni</router-link> <img class="ps-2" src="/img/frecce.svg" alt=""></button>
       </div>
     </div>
   
@@ -181,6 +183,9 @@ export default {
         restartAutoPlay() {
           this.autoplay();
         },
+        goToShow(link){
+          location.href= "http://127.0.0.1:8000/apartments/" + link;
+        }
       },
     mounted() {
       this.autoplay(),

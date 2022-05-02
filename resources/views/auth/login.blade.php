@@ -3,7 +3,7 @@
 @section('content')
 <div class="container login_container">
 
-    <div class="row justify-content-center mt_100">
+    <div class="row justify-content-center mt_150 mb_200">
         <div class="col-md-8">
             <div class="login_card blk_font b_r">
                 <div class="row g-0">
