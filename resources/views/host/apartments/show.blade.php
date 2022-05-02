@@ -151,7 +151,7 @@
                     <div class="w-100 bg-dark rounded-top p-3 mb-0"></div>
                   
                     <div class="message_body bg-light px-3 pb-2">
-                      <p class="mb-0 py-3 mb-3 text-break overflow-hidden fs-5 h_100">Non ci sono messaggio da mostrare</p>
+                      <p class="mb-0 py-3 mb-3 text-break overflow-hidden fs-5 h_100">Non ci sono nuovi messaggi da mostrare</p>
                     </div>
                   </div>
                 @else
