@@ -118,27 +118,25 @@
                 </div>
             </div>
             <!-- Modal -->
-            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+            <div class="modal fade mt_350" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
                 aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                            <h5 class="modal-title" id="exampleModalLabel">Attenzione!</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
                             Sei sicuro di voler cancellare questo appartamento?
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="button" class="btn orange_custom text-white" data-bs-dismiss="modal">Annulla</button>
                             <div class="ms-3">
                                 <form action="{{ route('host.apartments.destroy', $apartment->id) }}" method="POST"
                                     class="delete d-inline-block">
                                     @csrf
                                     @method("delete")
-                                    <button type="submit" class="dng_btn p-0 border-0 transparent_bg">
-                                        <i class="fa-solid fa-trash-can"></i>
-                                    </button>
+                                    <button type="submit" class="btn pink_custom text-white">Elimina</button>
                                 </form>
                             </div>
                         </div>
