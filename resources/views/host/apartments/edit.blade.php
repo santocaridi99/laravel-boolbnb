@@ -174,7 +174,7 @@
                 {{-- visibilità --}}
                 <div class="col-12">
                     <div class="form-check mb-3">
-                    <label class="form-check-label" for="flexCheckDefault">
+                    <label class="form-check-label ms-2 align-middle" for="flexCheckDefault">
                         L'appartamento è visibile?
                     </label>
                     <input type="hidden" name='isVisible' value="0">
