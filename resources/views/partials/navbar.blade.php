@@ -14,7 +14,7 @@
         </li>
         @endif
         @else
-        <li class="nav-item dropdown text-center ms-3">
+        <li class="nav-item dropdown text-center ms-3 log_a">
             <a class="nav-link blk_font log_a" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown"
                 aria-expanded="false">
         
@@ -23,7 +23,7 @@
                 </span>
         
                 {{-- username --}}
-                <span>
+                <span class="">
                     {{ Auth::user()->name }}
         
                     {{-- user arrow --}}

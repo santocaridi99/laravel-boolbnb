@@ -20897,6 +20897,14 @@ fieldset:disabled .btn {
   justify-content: flex-start;
 }
 
+.back_nav .log_a {
+  color: #111;
+}
+
+.back_nav .log_a:hover {
+  color: #111;
+}
+
 .back_ap {
   font-family: "Inter", sans-serif;
 }
