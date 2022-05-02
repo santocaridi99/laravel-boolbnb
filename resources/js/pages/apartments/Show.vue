@@ -56,12 +56,10 @@
                         <small class="mb-4">
                             <!-- stanze -->
                             <span v-if="apartmentDet.room_numbers === 1">
-                                &#10022;
                                 {{ apartmentDet.room_numbers }}
                                 stanza &#10022;
                             </span>
                             <span v-else>
-                                &#10022;
                                 {{ apartmentDet.room_numbers }}
                                 stanze &#10022;
                             </span>
@@ -86,7 +84,6 @@
                             <!-- mq -->
                             <span>
                                 {{ apartmentDet.square_meters }} mq
-                                &#10022;
                             </span>
                         </small>             
                     </div>

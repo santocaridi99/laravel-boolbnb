@@ -4,6 +4,8 @@
             <div class="circle2"></div>
         </div>
 
+        <a class="telegram d-flex align-items-center justify-content-center" href="https://t.me/BoolBnBot"><img class="telegram_image" src="/img/telegram.svg" alt=""></a>
+
         <div
             class="fixed-top black_banner d-flex flex-column justify-content-center align-items-center"
         >
@@ -96,8 +98,11 @@
                             disabled
                         /> <span class="km">km</span> 
                     </div>
+                    <div>
+                        <button class="clean" @click="cleanFilter">Clean</button>
+                    </div>
                 </div>
-                <div class="">
+                <div class="check">
                     <input
                         type="checkbox"
                         id="1"
@@ -235,7 +240,7 @@
                             <div class="button_rel d-flex align-items-center justify-content-between py-2 px-4">
                                 <h5 class="p-0 m-0">prezzo: <strong>{{apartment.price_per_night}} &euro;</strong></h5>
                                  <button
-                                class="button_forward "
+                                class="button_forward"
                             >
                                 <router-link
                                     target="_blank"
@@ -552,6 +557,13 @@ export default {
                 this.autocomplete = false;
             }
         },
+        cleanFilter() {
+            this.rooms = null,
+            this.beds = null,
+            this.price = null,
+            this.radius = 20,
+            this.picked = []
+        }
     },
     mounted() {
         this.decodeApartmentsJson(

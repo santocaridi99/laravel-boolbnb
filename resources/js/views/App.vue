@@ -3,7 +3,6 @@
         <TheNavbar @clicked="updateLocations"></TheNavbar>
 
         <router-view :singleLocation="callToLocations"></router-view>
-
         <TheFooter></TheFooter>
     </div>
 </template>
@@ -54,6 +53,7 @@ body {
   background-color: #111;
   padding-top: 180px; 
 }
+
 ::-webkit-scrollbar {
   width: 0.5em;
   height: 0.5em;
@@ -65,4 +65,5 @@ body {
   background-color: #222;
   border: none;
 }
+
 </style>

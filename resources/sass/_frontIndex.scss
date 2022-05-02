@@ -184,6 +184,15 @@
     display: none;
 }
 
+.clean {
+    background-color: $dark_org;
+    border: none;
+    outline: none;
+    padding: 10px;
+    border-radius: 25px;
+    color: #fff;
+}
+
 @keyframes slide{0%{transform:translateX(0)}to{transform:translateX(10px)}};
 @keyframes slide-2{0%{transform:translateX(0)}to{transform:translateX(-10px)}};
 
@@ -191,15 +200,6 @@
 
 @media screen and (max-width: 575px) {
 
-    // .back_ap {
-    //     .i_buttons .edit_btn > i,
-    //     .i_buttons .dng_btn > i {
-    //         height: 25px;
-    //         width: 25px;
-    //         font-size: 12px;
-    //         line-height: 25px;
-    //     }
-    // }
     .flat_row {
         margin: 20px;
         .flat {
