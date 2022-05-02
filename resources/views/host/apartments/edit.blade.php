@@ -47,7 +47,7 @@
             <div class="row g-3 p-5">
                 {{-- Title --}}
                 <div class="col-lg-6 col-md-12 col-sm-12">
-                    <label class="form-label">Titolo*</label>
+                    <label class="form-label">Titolo<span class="pink_font">*</span></label>
                     <input type="text" name="title" class="form-control @error('title') is-invalid @enderror"
                         value="{{ old('title',$apartment->title) }}" required data-parsley-pattern="^(?:[A-Za-z]+[ -])*[A-Za-z]+$" data-parsley-length='[5,100]' data-parsley-trigger='change'>
                     @error('title')
@@ -57,7 +57,7 @@
 
                 {{-- stanze --}}
                 <div class="col-lg-6 col-md-12 col-sm-12">
-                    <label class="form-label">Numero di stanze*</label>
+                    <label class="form-label">Numero di stanze<span class="pink_font">*</span></label>
                     <input type="number" name="room_numbers" class="form-control @error('room_numbers') is-invalid @enderror"
                         value="{{ old('room_numbers', $apartment->room_numbers)}}" required data-parsley-type='number' min="1" max="100"  data-parsley-pattern="[0-9]+$" data-parsley-length='[1,3]' data-parsley-trigger='change'>
                     @error('room_numbers')
@@ -67,7 +67,7 @@
 
                 {{-- letti --}}
                 <div class="col-lg-6 col-md-12 col-sm-12">
-                    <label class="form-label">Numero di letti*</label>
+                    <label class="form-label">Numero di letti<span class="pink_font">*</span></label>
                     <input type="number" name="bed_numbers" class="form-control @error('bed_numbers') is-invalid @enderror"
                         value="{{ old('bed_numbers',$apartment->bed_numbers)}}" required data-parsley-type='number' min="1" max="100"  data-parsley-pattern="[0-9]+$" data-parsley-length='[1,3]' data-parsley-trigger='change'>
                     @error('bed_numbers')
@@ -77,7 +77,7 @@
 
                 {{-- bagni --}}
                 <div class="col-lg-6 col-md-12 col-sm-12">
-                    <label class="form-label">Numero di bagni*</label>
+                    <label class="form-label">Numero di bagni<span class="pink_font">*</span></label>
                     <input type="number" name="bathroom_numbers"
                         class="form-control @error('bathroom_numbers') is-invalid @enderror"
                         value="{{ old('bathroom_numbers',$apartment->bathroom_numbers) }}" required data-parsley-type='number' min="1" max="100"  data-parsley-pattern="[0-9]+$" data-parsley-length='[1,3]' data-parsley-trigger='change'>
@@ -88,7 +88,7 @@
 
                 {{-- MQ --}}
                 <div class="col-lg-6 col-md-12 col-sm-12">
-                    <label class="form-label">Metratura*</label>
+                    <label class="form-label">Metratura<span class="pink_font">*</span></label>
                     <input type="number" name="square_meters" class="form-control @error('square_meters') is-invalid @enderror"
                         value="{{ old('square_meters',$apartment->square_meters) }}" required data-parsley-type='number' min="1" max="1200"  data-parsley-pattern="[0-9]+$" data-parsley-length='[1,4]' data-parsley-trigger='change'>
                     @error('square_meters')
@@ -98,7 +98,7 @@
 
                 {{-- cover --}}
                 <div class="col-lg-6 col-md-12 col-sm-12">
-                    <label class="form-label">Immagine di copertina*</label>
+                    <label class="form-label">Immagine di copertina<span class="pink_font">*</span></label>
                     <input type="file" name='cover' class="form-control @error('cover') is-invalid @enderror" value="{{old('cover',$apartment->cover)}}">
                     {{-- anteprima img --}}
                     <div class="row g-0">
@@ -113,7 +113,7 @@
 
                 {{-- prezzo per notte --}}
                 <div class="col-lg-6 col-md-12 col-sm-12">
-                    <label class="form-label">Prezzo per notte*</label>
+                    <label class="form-label">Prezzo per notte<span class="pink_font">*</span></label>
                     <input type="number" name="price_per_night"
                         class="form-control @error('price_per_night') is-invalid @enderror"
                         value="{{ old('price_per_night', $apartment->price_per_night) }}" required data-parsley-type='number' min="1" max="100000"  data-parsley-pattern="[0-9]+$" data-parsley-length='[1,6]' data-parsley-trigger='change'>
@@ -124,7 +124,7 @@
 
                 {{-- paese --}}
                 <div class="col-lg-6 col-md-12 col-sm-12">
-                    <label class="form-label">Paese*</label>
+                    <label class="form-label">Paese<span class="pink_font">*</span></label>
                     <input type="text" name="country" class="form-control @error('country') is-invalid @enderror"
                         value="{{ old('country', $apartment->country) }}"  required  data-parsley-pattern="^(?:[A-Za-z]+[ -])*[A-Za-z]+$" data-parsley-length='[2,100]' data-parsley-trigger='change'>
                     @error('country')
@@ -134,7 +134,7 @@
 
                 {{-- regione --}}
                 <div class="col-lg-6 col-md-12 col-sm-12">
-                    <label class="form-label">Regione*</label>
+                    <label class="form-label">Regione<span class="pink_font">*</span></label>
                     <input type="text" name="region" class="form-control @error('region') is-invalid @enderror"
                         value="{{ old('region',$apartment->region) }}"  required  data-parsley-pattern="^(?:[A-Za-z]+[ -])*[A-Za-z]+$" data-parsley-length='[2,100]' data-parsley-trigger='change'>
                     @error('region')
@@ -144,7 +144,7 @@
 
                 {{-- provincia --}}
                 <div class="col-lg-6 col-md-12 col-sm-12">
-                    <label class="form-label">Provincia*</label>
+                    <label class="form-label">Provincia<span class="pink_font">*</span></label>
                     <input type="text" name="province" class="form-control @error('province') is-invalid @enderror"
                         value="{{ old('province' , $apartment->province) }}"  required  data-parsley-pattern="^(?:[A-Za-z]+[ -])*[A-Za-z]+$" data-parsley-length='[2,100]' data-parsley-trigger='change'>
                     @error('province')
@@ -163,7 +163,7 @@
 
                 {{-- indirizzo --}}
                 <div class="col-12 autocomplete blk_font">
-                    <label class="form-label text-white">Indirizzo completo (Via civico, CAP Città)*</label>
+                    <label class="form-label text-white">Indirizzo completo (Via civico, CAP Città)<span class="pink_font">*</span></label>
                     <input id='geoAddress' type="text" name="streetAddress" class="form-control @error('streetAddress') is-invalid @enderror"
                     placeholder="Inserisci qui l'indirizzo" value="{{ old('streetAddress', $apartment->streetAddress) }}" required onkeyup="if (this.value.length > 6) beforeSubmit()">
                     @error('streetAddress')
@@ -185,7 +185,7 @@
                 
                 {{-- contenuto del post --}}
                 <div class="col-12">
-                    <label>Descrizione dell'appartamento*</label>
+                    <label>Descrizione dell'appartamento<span class="pink_font">*</span></label>
                     <textarea name="description" rows="10"
                         class="form-control @error('description') is-invalid @enderror" required   data-parsley-length='[20,250]'  data-parsley-trigger="change">{{ old('description',$apartment->description) }}</textarea>
                     @error('description')
@@ -214,7 +214,7 @@
                 {{-- tags --}}
                 <div class="col-12">
                     <div class="tags_box border-bottom pb-3">
-                        <label class="d-block border-bottom pb-2 mb-2">Tags*</label>
+                        <label class="d-block border-bottom pb-2 mb-2">Tags<span class="pink_font">*</span></label>
                         @foreach ($tags as $tag)
                         <div class="form-check form-check-inline mt-2">
                             <input class="form-check-input @error('tags') is-invalid @enderror" type="checkbox" value="{{ $tag->id }}" id="tag_{{ $tag->id }}"

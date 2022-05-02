@@ -20905,6 +20905,14 @@ fieldset:disabled .btn {
   color: #111;
 }
 
+.back_nav .log_b {
+  color: #111;
+}
+
+.back_nav .log_b:hover {
+  color: #FF385C;
+}
+
 .back_ap {
   font-family: "Inter", sans-serif;
 }

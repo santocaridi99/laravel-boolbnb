@@ -134,7 +134,7 @@
         form.addEventListener("submit", function(event) {
           event.preventDefault();
     
-        const result = confirm("Are you sure?");
+        const result = confirm("Confermi la tua scelta?");
     
         if (result) {
             form.submit();
