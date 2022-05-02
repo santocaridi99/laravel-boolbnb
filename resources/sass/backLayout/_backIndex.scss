@@ -45,6 +45,14 @@
         display: none;
     }
 
+    // create2
+    .create_empty>a {
+        border: none;
+        outline: none;
+        height: 50px;
+        border-radius: 50px;
+    }
+
     // red button
     .dng_btn i {
         color: white;

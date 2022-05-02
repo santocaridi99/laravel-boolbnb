@@ -20952,6 +20952,13 @@ fieldset:disabled .btn {
   display: none;
 }
 
+.back_ap .create_empty > a {
+  border: none;
+  outline: none;
+  height: 50px;
+  border-radius: 50px;
+}
+
 .back_ap .dng_btn i {
   color: white;
   text-align: center;
@@ -21617,6 +21624,10 @@ li {
   margin-bottom: 200px;
 }
 
+.my_300 {
+  margin: 260px 0 300px 0;
+}
+
 .p_80 {
   padding: 80px;
 }
@@ -21691,6 +21702,10 @@ li {
 
 .f_18 {
   font-size: 18px;
+}
+
+.f_35 {
+  font-size: 35px;
 }
 
 .f_45 {
