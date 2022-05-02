@@ -44,10 +44,10 @@
                     <div class="col-lg-7 col-md-12 d-flex flex-column align-items-start pe-5">
                         <h2 class="mb-2">{{apartmentDet.title}}</h2>
                         <small class="">
-                            <i class="fas fa-map-marker-alt me-1 mb-5" ></i>
+                            <i class="fas fa-map-marker-alt me-1" ></i>
                             {{apartmentDet.streetAddress}}
                         </small>
-                        <p class="mb-5">{{apartmentDet.description}}</p>
+                        <p class="my-4">{{apartmentDet.description}}</p>
                         <div>
                             <span class="" v-for="tag of apartmentDet.tags" :key="tag.id">
                                 <img class="tag_icon mb-5" :src="tag.icon" :alt="tag.name" :title="tag.name">  
