@@ -4,7 +4,7 @@
             <div class="circle2"></div>
         </div>
 
-        <a class="telegram d-flex align-items-center justify-content-center" href="https://t.me/BoolBnBot"><img class="telegram_image" src="/img/telegram.svg" alt=""></a>
+        <a class="telegram d-flex align-items-center justify-content-center" target="_blank" href="https://t.me/BoolBnBot"><img class="telegram_image" src="/img/telegram.svg" alt=""></a>
 
         <div
             class="fixed-top black_banner d-flex flex-column justify-content-center align-items-center"

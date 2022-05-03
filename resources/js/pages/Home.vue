@@ -2,7 +2,7 @@
 <div>
   <div class="triangle"></div>
   <div class="triangle2"></div>
-  <a class="telegram d-flex align-items-center justify-content-center" href="https://t.me/BoolBnBot"><img class="telegram_image" src="/img/telegram.svg" alt=""></a>
+  <a class="telegram d-flex align-items-center justify-content-center" target="_blank" href="https://t.me/BoolBnBot"><img class="telegram_image" src="/img/telegram.svg" alt=""></a>
  <!-- button - cerca gli alloggi  -->
   <div class="fixed-top black_banner d-flex flex-column justify-content-center align-items-center">  
     <div class="search_container text-center d-flex align-items-center justify-content-center">

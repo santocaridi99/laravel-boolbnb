@@ -59,7 +59,7 @@
           
             @foreach ($apartment->images as $item)
               <div class="images_extra">
-                <img class="h-100 w-100" src="{{ asset('image/' . $item->images) }}" alt="" class="post-img">
+                <img class="h-100 w-100 pointer" src="{{ asset('image/' . $item->images) }}" alt="" class="post-img">
               </div>
             @endforeach
         
