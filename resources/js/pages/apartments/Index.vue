@@ -243,7 +243,7 @@
                                 class="button_forward"
                             >
                                 <router-link
-                                    target="_blank"
+                                    
                                     class="text-white"
                                     :to="`/apartments/${apartment.slug}`"
                                     >Scopri
@@ -365,14 +365,6 @@
                                         />
                                     </span>
                                 </div>
-
-                                <!-- {{-- descrizione --}} -->
-                                <!-- <h5 class="px-3">Su questo annuncio:</h5>
-                                    <p
-                                        class="ap_text font-monospace lh-base overflow-hidden mb-0 px-3 h_100 op_9"
-                                    >
-                                        {{ apartment.description }}
-                                    </p> -->
                             </div>
                         </div>
                     </div>

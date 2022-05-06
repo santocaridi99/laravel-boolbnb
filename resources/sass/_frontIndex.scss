@@ -54,8 +54,8 @@
             rgba(0,255,0,0) 40%) #ffc800;
         background-size: 300% 100%;
     }
-       /* box-shadow: 0 0 20px 2px #111; */
 }
+
 .circle {
     animation: animateBg3 10s infinite alternate;
     background:
@@ -68,11 +68,11 @@
         radial-gradient(circle at 93.3% 75%,
         rgb(255, 238, 0),
         rgba(0,255,0,0) 40%) #ffc800;
-       background-size: 300% 100%;
+    background-size: 300% 100%;
 }
 
 @keyframes animateBg3 {
-  0% { background-position: 0% 0%; }
+    0% { background-position: 0% 0%; }
    25% { background-position: 100% 20%; }
    50% { background-position: 40% 100%; }
    75% { background-position: 90% 20%; }
@@ -82,13 +82,13 @@
 .circle2 {
     border-radius:50%;
     width: 100px;
-     height: 100px;
-     position: absolute;
-     top: 0;
-     right: 0;
-     z-index: 1199;
-       /* box-shadow: 0 0 20px 2px #111; */
+    height: 100px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 1199;
 }
+
 .circle2 {
     animation: animateBg4 10s infinite alternate;
     background:
@@ -98,7 +98,7 @@
       radial-gradient(circle at 6.7% 75%,
         rgb(255, 0, 68),
         rgba(0,0,255,0) 70.71%);
-       background-size: 300% 100%;
+    background-size: 300% 100%;
 }
 
 @keyframes animateBg4 {
@@ -107,15 +107,53 @@
   100% { background-position: 20% 90%; }
 }
 
-.filter_button {
-    color: #fff;
-    background-color: $dark_org;
-    border-radius: 50%;
-    border: none;
-    width: 50px;
-    height: 50px;
+//   searchbar
+.black_banner {
+    background-color: $blk;
+    width: 100%;
+    padding: 30px 0;
+    margin-top: 108.91px;
+    z-index: 1098;
+    // box autocompletamento searchbar
+    .box {
+        position: absolute;
+        top: 82px;
+        background-color: #fff;
+        color: $blk;
+        width: 280px;
+        border-radius: 25px;
+        .my-autocomplete {
+        cursor: pointer;
+        &:hover {
+            background-color: rgba(255, 56, 96, 0.4);
+            border-radius: 15px;
+        }
+        }
+    }
+    .search_container {
+        input {
+            width: 200px;
+            height: 50px;
+            border-radius: 50px;
+            background-color: #fff;
+            outline: none;
+            border: none;
+        }
+        .button_search_bar {
+            color: #fff;
+            background-color: $red_org;
+            border-radius: 50%;
+            border: none;
+            width: 50px;
+            height: 50px;
+            i {
+            line-height: 50px;
+            }
+        }
+    }
 }
 
+// appartamenti
 .flat_row {
     margin: 80px;
     .flat {
@@ -126,17 +164,25 @@
         .button_rel {
             width: 100%;
             position:absolute;
-            bottom: 10px;
-         
+            bottom: 10px;  
         }
     } 
+}
+
+// classi filtri
+.filter_button {
+    color: #fff;
+    background-color: $dark_org;
+    border-radius: 50%;
+    border: none;
+    width: 50px;
+    height: 50px;
 }
 
 .my-input-num {
     background-color: transparent;
     color: white;
     width: 65px;
-
     &:focus {
         outline: none;
     }
@@ -144,29 +190,6 @@
 .km {
     margin-left: -25px;
 }
-
-
-// .flat_row {
-//     margin-top: 80px;
-//     .flat_card {
-//         height: 500px;
-//         background-color: #fff;
-//         border-radius: 15px;
-//         overflow:hidden;
-//         .flat_cover {
-//             height: 250px;
-//             overflow: hidden;
-//             img {
-//                 height: 100%;
-//                 width: 100%;
-//                 object-fit: cover;
-//             }
-//         }
-//         .flat_info {
-//             height: 180px;
-//         }
-//     }
-// }
 
 .tags_class {
     width: 100%;
@@ -184,6 +207,7 @@
     display: none;
 }
 
+// clean button per i filtri
 .clean {
     background-color: $dark_org;
     border: none;
@@ -193,13 +217,14 @@
     color: #fff;
 }
 
+// animazioni icone
 @keyframes slide{0%{transform:translateX(0)}to{transform:translateX(10px)}};
 @keyframes slide-2{0%{transform:translateX(0)}to{transform:translateX(-10px)}};
 
 @keyframes blink-1{0%,50%,to{opacity:1}25%{opacity:0}};
 
-@media screen and (max-width: 575px) {
 
+@media screen and (max-width: 575px) {
     .flat_row {
         margin: 20px;
         .flat {
@@ -212,7 +237,6 @@
 }
 
 @media screen and (max-width: 991px) {
-
     .back_ap {
         .show_img {
             height: 200px;

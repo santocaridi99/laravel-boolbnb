@@ -2,6 +2,7 @@
     width: 120px;
     object-fit: 100%;
 }
+// animazioni icone
 @keyframes slide-right{0%{transform:translateY(0)}to{transform:translateY(-2px)}};
 @keyframes happy{0%{stroke-dashoffset:0}to{stroke-dashoffset:200}};
 @keyframes lock{0%{transform:translateY(-2px)}to{transform:translateY(0)}};
@@ -18,52 +19,6 @@
             padding-left: 10px;
             a {
                 text-decoration: none;
-            }
-        }
-    }
-}
-
-//   searchbar
-.black_banner {
-background-color: $blk;
-width: 100%;
-padding: 30px 0;
-margin-top: 108.91px;
-z-index: 1098;
-    // box autocompletamento searchbar
-    .box {
-        position: absolute;
-        top: 82px;
-        background-color: #fff;
-        color: $blk;
-        width: 280px;
-        border-radius: 25px;
-        .my-autocomplete {
-        cursor: pointer;
-        &:hover {
-            background-color: rgba(255, 56, 96, 0.4);
-            border-radius: 15px;
-        }
-        }
-    }
-    .search_container {
-        input {
-            width: 200px;
-            height: 50px;
-            border-radius: 50px;
-            background-color: #fff;
-            outline: none;
-            border: none;
-        }
-        .button_search_bar {
-            color: #fff;
-            background-color: $red_org;
-            border-radius: 50%;
-            border: none;
-            width: 50px;
-            height: 50px;
-            i {
-            line-height: 50px;
             }
         }
     }

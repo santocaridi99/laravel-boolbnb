@@ -1,11 +1,9 @@
+// titolo appartamento
 .front_show {
     color: #fff;
 }
 
-.info_container{
-    width: 70%;
-    margin: 0 auto;
-}
+// cover e immagini appartamento
 .cover_img {
     width: 100%;
 }
@@ -13,19 +11,25 @@
 .flat_pic {
     width: 100%;
 }
-
+// carousel di immagini che si attiva nelle media query
 .img_md {
     display: none;
 }
 
-.info_row {
-    padding: 20px 0;
-    .tag_icon {
-        width: 50px;
-        padding: 0 5px;
+// info appartamento
+.info_container{
+    width: 70%;
+    margin: 0 auto;
+    .info_row {
+        padding: 20px 0;
+        .tag_icon {
+            width: 50px;
+            padding: 0 5px;
+        }
     }
 }
 
+// finestra contatta l'host
 .message_window {
     position: absolute;
     top: 0;
@@ -34,6 +38,7 @@
     height: 100vh;
     background-color: #111;
     z-index: 1111;
+    // icona chiusura finestra
     .x {
         padding-top: 20px;
         &:hover .x_text p {
@@ -56,14 +61,16 @@
                 top: 0;
                 left: -52px;
             }
-            }
+        }
     }
 }
 
+// gif boolbnb
 .loader {
     width: 120px;
 }
     
+
 @media screen and (max-width: 575px) {
 
     .loader {

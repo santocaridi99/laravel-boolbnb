@@ -217,11 +217,4 @@ export default {
     box-shadow: 0 0 15px 5px rgb(0 0 0 / 20%);
 }
 
-// #marker {
-//   background-image: url('/img/marker3.png');
-//   background-size: cover;
-//   width: 50px;
-//   height: 70px;
-// }
-
 </style>
